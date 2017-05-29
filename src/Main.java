@@ -10,10 +10,17 @@ public class Main {
     private static int getNumSquares(int start, int end) {
         int sqrtStart = (int) (Math.sqrt(start)); // round down
         int sqrtEnd = (int) (Math.sqrt(end)); // round down
-
-        if (sqrtStart == sqrtEnd && !isSquare(sqrtStart, start) && !isSquare(sqrtStart, start)) { // [7, 8]
-            return 0;
+System.out.println(sqrtStart + ", " + sqrtEnd);
+        boolean startIsSquare = isSquare(sqrtStart, start);
+        boolean endIsSquare = isSquare(sqrtEnd, end);
+System.out.println(startIsSquare + ", " + endIsSquare);
+        if (startIsSquare && endIsSquare) {
+            return (sqrtEnd - sqrtStart + 1);
+        } else if (!startIsSquare && !endIsSquare) {
+            return (sqrtEnd - sqrtStart);
         } else {
+            sqrtStart = startIsSquare ? sqrtStart : (sqrtStart + 1);
+
             return (sqrtEnd - sqrtStart + 1);
         }
     }
@@ -43,28 +50,52 @@ public class Main {
         int left = 4;
         int right = 17;
 
-        System.out.println("num of squares: " + solution(left, right));
+        System.out.println("num of squares in [" + left + ", " + right + "]: " + solution(left, right));
 
         left = -10000;
         right = 10000;
 
-        System.out.println("num of squares: " + solution(left, right));
+        System.out.println("num of squares in [" + left + ", " + right + "]: " + solution(left, right));
 
         left = -10;
         right = 27;
 
-        System.out.println("num of squares: " + solution(left, right));
+        System.out.println("num of squares in [" + left + ", " + right + "]: " +  solution(left, right));
 
         left = 100;
         right = -100;
 
-        System.out.println("num of squares: " + solution(left, right));
+        System.out.println("num of squares in [" + left + ", " + right + "]: " +  solution(left, right));
 
         left = 5;
         right = 8;
 
-        System.out.println("num of squares: " + solution(left, right));
+        System.out.println("num of squares in [" + left + ", " + right + "]: " +  solution(left, right));
 
+        left = 2;
+        right = 9;
+
+        System.out.println("num of squares in [" + left + ", " + right + "]: " +  solution(left, right));
+
+        left = 2;
+        right = 10;
+
+        System.out.println("num of squares in [" + left + ", " + right + "]: " +  solution(left, right));
+
+        left = 9;
+        right = 10;
+
+        System.out.println("num of squares in [" + left + ", " + right + "]: " +  solution(left, right));
+
+        left = 4;
+        right = 10;
+
+        System.out.println("num of squares in [" + left + ", " + right + "]: " +  solution(left, right));
+
+        left = 5;
+        right = 10;
+
+        System.out.println("num of squares in [" + left + ", " + right + "]: " +  solution(left, right));
 
     }
 }
