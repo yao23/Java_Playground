@@ -48,7 +48,8 @@ public class Main {
             if (A[i] == A[i + 1])
                 result = result + 1;
         }
-        int r = 0;
+        System.out.println("tmp result: " + result);
+        int r = -1;
         for (int i = 0; i < n; i++) {
             int count = 0;
             if (i > 0) {
@@ -63,9 +64,11 @@ public class Main {
                 else
                     count = count - 1;
             }
+            System.out.println("index: " + i + ", count: " + count);
             r = Math.max(r, count);
         }
-        return result + r;
+        System.out.println("tmp r: " + r);
+        return result + (r >= 0 ? r : -1);
     }
 
     public static void main(String[] args) {
@@ -125,5 +128,15 @@ public class Main {
         System.out.println("num of squares in [" + left + ", " + right + "]: " +  solution(left, right));
 */
         System.out.println("max num of consecutive pairs: " + solution2(new int[]{1, 1, 0, 1, 0, 0}));
+
+        System.out.println("max num of consecutive pairs: " + solution2(new int[]{1, 1, 1, 1}));
+
+        System.out.println("max num of consecutive pairs: " + solution2(new int[]{1, 1, 0, 0}));
+
+        System.out.println("max num of consecutive pairs: " + solution2(new int[]{1, 1, 0, 0, 0}));
+
+        System.out.println("max num of consecutive pairs: " + solution2(new int[]{1, 0, 1, 0}));
+
+        System.out.println("max num of consecutive pairs: " + solution2(new int[]{1, 1, 0, 1}));
     }
 }
