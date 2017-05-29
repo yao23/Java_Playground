@@ -48,8 +48,8 @@ public class Main {
             if (A[i] == A[i + 1])
                 result = result + 1;
         }
-        System.out.println("tmp result: " + result);
-        int r = -1;
+
+        int r = -1; // one of coins must be reversed, head or tail, changed from 0 to -1
         for (int i = 0; i < n; i++) {
             int count = 0;
             if (i > 0) {
@@ -64,11 +64,11 @@ public class Main {
                 else
                     count = count - 1;
             }
-            System.out.println("index: " + i + ", count: " + count);
+
             r = Math.max(r, count);
         }
-        System.out.println("tmp r: " + r);
-        return result + (r >= 0 ? r : -1);
+
+        return result + r;
     }
 
     public static void main(String[] args) {
