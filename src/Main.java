@@ -13,6 +13,12 @@ public class Main {
     private static int solution(int A, int B) {
         // write your code in Java SE 8
 
+        if (A > B) { // corner case when start is larger than end, then switch
+            int tmp = B;
+            B = A;
+            A = tmp;
+        }
+
         // check start number
         int start = (A < 0) ? 0 : A; // whole square starts from zero to positive numbers
         int end = B;
@@ -38,6 +44,11 @@ public class Main {
 
         left = -10;
         right = 27;
+
+        System.out.println("num of squares: " + solution(left, right));
+
+        left = 100;
+        right = -100;
 
         System.out.println("num of squares: " + solution(left, right));
 
