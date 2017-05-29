@@ -10,10 +10,10 @@ public class Main {
     private static int getNumSquares(int start, int end) {
         int sqrtStart = (int) (Math.sqrt(start)); // round down
         int sqrtEnd = (int) (Math.sqrt(end)); // round down
-System.out.println(sqrtStart + ", " + sqrtEnd);
+
         boolean startIsSquare = isSquare(sqrtStart, start);
         boolean endIsSquare = isSquare(sqrtEnd, end);
-System.out.println(startIsSquare + ", " + endIsSquare);
+
         if (startIsSquare && endIsSquare) {
             return (sqrtEnd - sqrtStart + 1);
         } else if (!startIsSquare && !endIsSquare) {
