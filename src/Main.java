@@ -3,11 +3,19 @@ public class Main {
         System.out.println("test");
     }
 
+    private static boolean isSquare(int x, int target) {
+        return (x * x == target);
+    }
+
     private static int getNumSquares(int start, int end) {
         int sqrtStart = (int) (Math.sqrt(start)); // round down
         int sqrtEnd = (int) (Math.sqrt(end)); // round down
 
-        return (sqrtEnd - sqrtStart + 1);
+        if (sqrtStart == sqrtEnd && !isSquare(sqrtStart, start) && !isSquare(sqrtStart, start)) { // [7, 8]
+            return 0;
+        } else {
+            return (sqrtEnd - sqrtStart + 1);
+        }
     }
 
     private static int solution(int A, int B) {
@@ -49,6 +57,11 @@ public class Main {
 
         left = 100;
         right = -100;
+
+        System.out.println("num of squares: " + solution(left, right));
+
+        left = 5;
+        right = 8;
 
         System.out.println("num of squares: " + solution(left, right));
 
