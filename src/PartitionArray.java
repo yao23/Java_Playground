@@ -7,14 +7,14 @@ public class PartitionArray {
         int right = arr.length-1;
 
         while (left < right) {
-            if (arr[left] < pivot && pivot < arr[right]) {
+            while (arr[left] < pivot && left <= right) {
                 left++;
+            }
+            while (arr[right] >= pivot && left < right) {
                 right--;
-            } else if (arr[left] > pivot) { // pivot > arr[right]
-                right--;
-            } else  if (arr[right] > pivot){ // arr[left] < pivot
-                left++;
-            } else {
+            }
+
+            if (left < right) {
                 // swap arr[left] and arr[right]
                 int tmp = arr[left];
                 arr[left] = arr[right];
