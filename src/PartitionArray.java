@@ -5,12 +5,16 @@ public class PartitionArray {
     public static int[] partitionArray(int[] arr, int pivot) {
         int left = 0;
         int right = arr.length-1;
+        int pivotIdx = -1;
 
         while (left < right) {
             while (arr[left] < pivot && left <= right) {
                 left++;
             }
             while (arr[right] >= pivot && left < right) {
+                if (arr[right] == pivot) {
+                    pivotIdx = right;
+                }
                 right--;
             }
 
@@ -23,6 +27,10 @@ public class PartitionArray {
                 right--;
             }
         }
+
+        int tmp = arr[left];
+        arr[left] = arr[pivotIdx];
+        arr[pivotIdx] = tmp;
 
         return arr;
     }
