@@ -127,15 +127,15 @@ public class Main {
 
         System.out.println("num of squares in [" + left + ", " + right + "]: " +  solution(left, right));
 */
-        System.out.println("max num of consecutive pairs: " + solution2(new int[]{1, 1, 0, 1, 0, 0}));
+//        System.out.println("max num of consecutive pairs: " + solution2(new int[]{1, 1, 0, 1, 0, 0}));
 
-        System.out.println("max num of consecutive pairs: " + solution2(new int[]{1, 1, 1, 1}));
+//        System.out.println("max num of consecutive pairs: " + solution2(new int[]{1, 1, 1, 1}));
 
-        System.out.println("max num of consecutive pairs: " + solution2(new int[]{1, 1, 0, 0}));
+//        System.out.println("max num of consecutive pairs: " + solution2(new int[]{1, 1, 0, 0}));
 
-        System.out.println("max num of consecutive pairs: " + solution2(new int[]{1, 1, 0, 0, 0}));
+//        System.out.println("max num of consecutive pairs: " + solution2(new int[]{1, 1, 0, 0, 0}));
 
-        System.out.println("max num of consecutive pairs: " + solution2(new int[]{1, 0, 1, 0}));
+//        System.out.println("max num of consecutive pairs: " + solution2(new int[]{1, 0, 1, 0}));
 
         System.out.println("max num of consecutive pairs: " + solution2(new int[]{1, 1, 0, 1}));
     }
