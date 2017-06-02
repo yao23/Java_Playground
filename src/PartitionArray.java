@@ -1,8 +1,15 @@
 /**
  * Created by liyao on 6/1/17.
  */
+
 public class PartitionArray {
-    public static int[] partitionArray(int[] arr, int pivot) {
+    private static void swap(int[] arr, int left, int right) {
+        int tmp = arr[left];
+        arr[left] = arr[right];
+        arr[right] = tmp;
+    }
+
+    private static int[] partitionArray(int[] arr, int pivot) {
         int left = 0;
         int right = arr.length-1;
         int pivotIdx = -1;
@@ -19,18 +26,13 @@ public class PartitionArray {
             }
 
             if (left < right) {
-                // swap arr[left] and arr[right]
-                int tmp = arr[left];
-                arr[left] = arr[right];
-                arr[right] = tmp;
+                swap(arr, left, right);
                 left++;
                 right--;
             }
         }
 
-        int tmp = arr[left];
-        arr[left] = arr[pivotIdx];
-        arr[pivotIdx] = tmp;
+        swap(arr, left, pivotIdx);
 
         return arr;
     }
@@ -39,16 +41,16 @@ public class PartitionArray {
 
         int[] arr = new int[] {2, 8, 7, 1, 3, 5, 6, 4};
 
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i] + " ");
+        for (int arrElement : arr) {
+            System.out.print(arrElement + " ");
         }
 
         int[] output = partitionArray(arr, 4);
 
         System.out.println();
 
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(output[i] + " ");
+        for (int outputElement : output) {
+            System.out.print(outputElement + " ");
         }
     }
 }
