@@ -5,7 +5,7 @@ import java.io.*;
 import java.util.*;
 
 public class PlusOne {
-    public static int[] plusOne(int[] arr) {
+    private static int[] plusOne(int[] arr) {
         int[] tmpRes = new int[arr.length];
         int carry = 1;
 
