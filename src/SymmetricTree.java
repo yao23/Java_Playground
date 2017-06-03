@@ -2,8 +2,7 @@
  * Created by liyao on 6/2/17.
  */
 
-import java.util.ArrayDeque;
-import java.util.Queue;
+import java.util.LinkedList;
 
 public class SymmetricTree {
     private static boolean recursiveFunc(TreeNode left, TreeNode right) { // recursive
@@ -21,38 +20,28 @@ public class SymmetricTree {
     }
 
     private static boolean iterativeFunc(TreeNode leftInput, TreeNode rightInput) { // iterative
-        Queue<TreeNode> leftList = new ArrayDeque<TreeNode>();
-        Queue<TreeNode> rightList = new ArrayDeque<TreeNode>();
+        // ArrayList takes time to remove element from head
+        // ArrayDeque cannot add null element (NullPointerException)
+        // LinkedList can add null element and easy to remove head element
+
+        LinkedList<TreeNode> leftList = new LinkedList<TreeNode>();
+        LinkedList<TreeNode> rightList = new LinkedList<TreeNode>();
+
         leftList.add(leftInput);
         rightList.add(rightInput);
+
         while (!leftList.isEmpty() && !rightList.isEmpty()) {
+
             TreeNode leftNode = leftList.poll();
             TreeNode rightNode = rightList.poll();
-            if (leftNode != null && rightNode != null) {
-                System.out.print(leftNode.val + ", " + rightNode.val);
-                System.out.println();
-                if (leftNode.val == rightNode.val) {
-                    if (leftNode.left != null && leftNode.right != null) {
-                        leftList.add(leftNode.left);
-                        leftList.add(leftNode.right);
-                    } else if (leftNode.left != null) {
-                        leftList.add(leftNode.left);
-                        leftList.add(new TreeNode(-1));
-                    } else if (leftNode.right != null) {
-                        leftList.add(new TreeNode(-1));
-                        leftList.add(leftNode.right);
-                    }
 
-                    if (rightNode.right != null && leftNode.left != null) {
-                        rightList.add(rightNode.right);
-                        rightList.add(rightNode.left);
-                    } else if (rightNode.right != null) {
-                        rightList.add(rightNode.right);
-                        rightList.add(new TreeNode(-1));
-                    } else if (leftNode.left != null) {
-                        rightList.add(new TreeNode(-1));
-                        rightList.add(rightNode.left);
-                    }
+            if (leftNode != null && rightNode != null) {
+                if (leftNode.val == rightNode.val) {
+                    leftList.add(leftNode.left);
+                    leftList.add(leftNode.right);
+
+                    rightList.add(rightNode.right);
+                    rightList.add(rightNode.left);
                 } else {
                     return false;
                 }
@@ -61,14 +50,21 @@ public class SymmetricTree {
             }
         }
 
-        return (leftList.isEmpty() && rightList.isEmpty());
+        return true; // Linked List can add null element, so no case for one list is empty and anther is not
     }
 
     private static boolean isSymmetric(TreeNode root) {
         if (root == null) {
             return true;
         } else {
-//            return recursiveFunc(root.left, root.right);
+            return recursiveFunc(root.left, root.right);
+        }
+    }
+
+    private static boolean isSymmetric1(TreeNode root) {
+        if (root == null) {
+            return true;
+        } else {
             return iterativeFunc(root.left, root.right);
         }
     }
@@ -89,13 +85,15 @@ public class SymmetricTree {
         node2.left = node5;
         node2.right = node6;
 
-        System.out.println("Tree 1 is symmetric: " + isSymmetric(node0)); // beats 24.60%
+        System.out.println("Tree 1 is symmetric (recursive): " + isSymmetric(node0)); // beats 24.60%
+        System.out.println("Tree 1 is symmetric (iterative): " + isSymmetric1(node0)); //
 
         node1.left = null;
         node1.right = node3;
         node2.left = null;
         node2.right = node6;
 
-        System.out.println("Tree 2 is symmetric: " + isSymmetric(node0));
+        System.out.println("Tree 2 is symmetric (recursive): " + isSymmetric(node0));
+        System.out.println("Tree 2 is symmetric (iterative): " + isSymmetric1(node0));
     }
 }
