@@ -46,7 +46,11 @@ public class SymmetricTree {
                     return false;
                 }
             } else {
-                return (leftNode == null && rightNode == null);
+                if (leftNode == null && rightNode == null) { // test case 3
+                    continue;
+                } else {
+                    return false;
+                }
             }
         }
 
