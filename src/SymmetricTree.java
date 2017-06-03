@@ -2,13 +2,15 @@
  * Created by liyao on 6/2/17.
  */
 
+import java.util.ArrayList;
+
 public class SymmetricTree {
-    private static boolean helperFunc(TreeNode left, TreeNode right) {
+    private static boolean recursiveFunc(TreeNode left, TreeNode right) { // recursive
         if (left == null && right == null) {
             return true;
         } else if (left != null && right != null) {
             if (left.val == right.val) {
-                return (helperFunc(left.left, right.right) && helperFunc(left.right, right.left));
+                return (recursiveFunc(left.left, right.right) && recursiveFunc(left.right, right.left));
             } else {
                 return false;
             }
@@ -17,11 +19,33 @@ public class SymmetricTree {
         }
     }
 
+    private static boolean iterativeFunc(TreeNode left, TreeNode right) { // iterative
+        ArrayList<TreeNode> leftList = new ArrayList<TreeNode>();
+        ArrayList<TreeNode> rightList = new ArrayList<TreeNode>();
+        leftList.add(left);
+        rightList.add(right);
+        while (!leftList.isEmpty() && !rightList.isEmpty()) {
+            TreeNode leftNode = leftList.remove(0);
+            TreeNode rightNode = rightList.remove(0);
+            if (leftNode.val == rightNode.val) {
+                leftList.add(left.left);
+                leftList.add(left.right);
+                rightList.add(right.right);
+                rightList.add(right.left);
+            } else {
+                return false;
+            }
+        }
+
+        return (leftList.isEmpty() && rightList.isEmpty());
+    }
+
     private static boolean isSymmetric(TreeNode root) {
         if (root == null) {
             return true;
         } else {
-            return helperFunc(root.left, root.right);
+            return recursiveFunc(root.left, root.right);
+//            return iterativeFunc(root.left, root.right);
         }
     }
 
