@@ -95,5 +95,27 @@ public class SymmetricTree {
 
         System.out.println("Tree 2 is symmetric (recursive): " + isSymmetric(node0));
         System.out.println("Tree 2 is symmetric (iterative): " + isSymmetric1(node0));
+
+        node0 = new TreeNode(9);
+        node1 = new TreeNode(-42);
+        node2 = new TreeNode(-42);
+        node3 = new TreeNode(76);
+        node4 = new TreeNode(76);
+        node5 = new TreeNode(13);
+        node6 = new TreeNode(13);
+
+        node0.left = node1;
+        node0.right = node2;
+        node1.left = null;
+        node1.right = node3;
+        node2.left = node4;
+        node2.right = null;
+        node3.left = null;
+        node3.right = node5;
+        node4.left = null;
+        node4.right = node6;
+
+        System.out.println("Tree 3 is symmetric (recursive): " + isSymmetric(node0));
+        System.out.println("Tree 3 is symmetric (iterative): " + isSymmetric1(node0));
     }
 }
