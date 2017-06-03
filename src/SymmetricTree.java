@@ -2,7 +2,8 @@
  * Created by liyao on 6/2/17.
  */
 
-import java.util.ArrayList;
+import java.util.ArrayDeque;
+import java.util.Queue;
 
 public class SymmetricTree {
     private static boolean recursiveFunc(TreeNode left, TreeNode right) { // recursive
@@ -19,21 +20,35 @@ public class SymmetricTree {
         }
     }
 
-    private static boolean iterativeFunc(TreeNode left, TreeNode right) { // iterative
-        ArrayList<TreeNode> leftList = new ArrayList<TreeNode>();
-        ArrayList<TreeNode> rightList = new ArrayList<TreeNode>();
-        leftList.add(left);
-        rightList.add(right);
+    private static boolean iterativeFunc(TreeNode leftInput, TreeNode rightInput) { // iterative
+        Queue<TreeNode> leftList = new ArrayDeque<TreeNode>();
+        Queue<TreeNode> rightList = new ArrayDeque<TreeNode>();
+        leftList.add(leftInput);
+        rightList.add(rightInput);
         while (!leftList.isEmpty() && !rightList.isEmpty()) {
-            TreeNode leftNode = leftList.remove(0);
-            TreeNode rightNode = rightList.remove(0);
-            if (leftNode.val == rightNode.val) {
-                leftList.add(left.left);
-                leftList.add(left.right);
-                rightList.add(right.right);
-                rightList.add(right.left);
+            TreeNode leftNode = leftList.poll();
+            TreeNode rightNode = rightList.poll();
+            if (leftNode != null && rightNode != null) {
+                System.out.print(leftNode.val + ", " + rightNode.val);
+                System.out.println();
+                if (leftNode.val == rightNode.val) {
+                    if (leftNode.left != null) {
+                        leftList.add(leftNode.left);
+                    }
+                    if (leftNode.right != null) {
+                        leftList.add(leftNode.right);
+                    }
+                    if (rightNode.right != null) {
+                        rightList.add(rightNode.right);
+                    }
+                    if (leftNode.left != null) {
+                        rightList.add(rightNode.left);
+                    }
+                } else {
+                    return false;
+                }
             } else {
-                return false;
+                return (leftNode == null && rightNode == null);
             }
         }
 
@@ -44,8 +59,8 @@ public class SymmetricTree {
         if (root == null) {
             return true;
         } else {
-            return recursiveFunc(root.left, root.right);
-//            return iterativeFunc(root.left, root.right);
+//            return recursiveFunc(root.left, root.right);
+            return iterativeFunc(root.left, root.right);
         }
     }
 
