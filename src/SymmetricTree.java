@@ -90,7 +90,7 @@ public class SymmetricTree {
         node2.right = node6;
 
         System.out.println("Tree 1 is symmetric (recursive): " + isSymmetric(node0)); // beats 24.60%
-        System.out.println("Tree 1 is symmetric (iterative): " + isSymmetric1(node0)); //
+        System.out.println("Tree 1 is symmetric (iterative): " + isSymmetric1(node0)); // beats 14.14%
 
         node1.left = null;
         node1.right = node3;
