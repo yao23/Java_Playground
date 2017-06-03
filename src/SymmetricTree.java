@@ -32,16 +32,25 @@ public class SymmetricTree {
                 System.out.print(leftNode.val + ", " + rightNode.val);
                 System.out.println();
                 if (leftNode.val == rightNode.val) {
-                    if (leftNode.left != null) {
+                    if (leftNode.left != null && leftNode.right != null) {
                         leftList.add(leftNode.left);
-                    }
-                    if (leftNode.right != null) {
+                        leftList.add(leftNode.right);
+                    } else if (leftNode.left != null) {
+                        leftList.add(leftNode.left);
+                        leftList.add(new TreeNode(-1));
+                    } else if (leftNode.right != null) {
+                        leftList.add(new TreeNode(-1));
                         leftList.add(leftNode.right);
                     }
-                    if (rightNode.right != null) {
+
+                    if (rightNode.right != null && leftNode.left != null) {
                         rightList.add(rightNode.right);
-                    }
-                    if (leftNode.left != null) {
+                        rightList.add(rightNode.left);
+                    } else if (rightNode.right != null) {
+                        rightList.add(rightNode.right);
+                        rightList.add(new TreeNode(-1));
+                    } else if (leftNode.left != null) {
+                        rightList.add(new TreeNode(-1));
                         rightList.add(rightNode.left);
                     }
                 } else {
