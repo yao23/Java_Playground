@@ -41,7 +41,7 @@ public class SymmetricTree {
         node2.left = node5;
         node2.right = node6;
 
-        System.out.println("Tree 1 is symmetric: " + isSymmetric(node0));
+        System.out.println("Tree 1 is symmetric: " + isSymmetric(node0)); // beats 24.60%
 
         node1.left = null;
         node1.right = node3;
