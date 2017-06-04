@@ -50,9 +50,12 @@ public class TopKFrequentElements {
         }
 
         for (int i = 0; i < k; i++) {
-            resultList.add(reversedList.get(reversedList.size()-1-i));
+            resultList.add(reversedList.get(i));
         }
 
         return resultList;
     }
+
+    // [1,1,1,2,2,3]
+    // [1,1,1,2,2,3,4,5,6,6,6,6]
 }
