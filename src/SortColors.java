@@ -34,7 +34,7 @@ public class SortColors {
         return j;
     }
 
-    public static void sortColors(int[] nums) {
+    public static void sortColors(int[] nums) { // beats 5.63%
         if (nums.length <= 1) { // array length is 0 or 1
             return;
         }
