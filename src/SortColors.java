@@ -8,13 +8,7 @@ public class SortColors {
         nums[right] = tmp;
     }
 
-    public static void sortColors(int[] nums) {
-        if (nums.length <= 1) { // array length is 0 or 1
-            return;
-        }
-
-        int i = 0, j = nums.length - 1;
-
+    private static int sortHelper(int[] nums, int i, int j, boolean shiftLeft) {
         while (i < j) {
             while (nums[i] == 0 && i < j) { // find white or blue in left side
                 i++;
@@ -26,11 +20,45 @@ public class SortColors {
 
             if (i < j) {
                 if (nums[i] == 1 && nums[j] == 1) { // left and right are white, but some colors are in middle
-                    j--;
+                    if (shiftLeft) {
+                        j--;
+                    } else {
+                        i++;
+                    }
                 } else {
                     swap(nums, i, j);
                 }
             }
+        }
+
+        return j;
+    }
+
+    public static void sortColors(int[] nums) {
+        if (nums.length <= 1) { // array length is 0 or 1
+            return;
+        }
+
+        int i = 0, j = nums.length - 1;
+
+        j = sortHelper(nums, i, j, true);
+
+        boolean isInOrder = true;
+
+        for (int m = 1; m < nums.length; m++) {
+            if (nums[m - 1] > nums[m]) {
+                isInOrder = false;
+                break;
+            } else {
+                continue;
+            }
+        }
+
+        if (!isInOrder) {
+            i = j;
+            j = nums.length - 1;
+
+            sortHelper(nums, i, j, false);
         }
     }
 
