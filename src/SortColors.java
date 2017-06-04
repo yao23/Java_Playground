@@ -25,10 +25,10 @@ public class SortColors {
             }
 
             if (i < j) {
-                swap(nums, i, j);
-
                 if (nums[i] == 1 && nums[j] == 1) { // left and right are white, but some colors are in middle
-                    i++;
+                    j--;
+                } else {
+                    swap(nums, i, j);
                 }
             }
         }
@@ -70,7 +70,7 @@ public class SortColors {
         testResults(arr2, 2);
 
         // case 3
-        testResults(arr3, 3);        
+        testResults(arr3, 3);
 
         // case 4
         testResults(arr4, 4);
