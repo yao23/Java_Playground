@@ -5,33 +5,22 @@ import java.util.*;
 
 public class TopKFrequentElements {
     public List<Integer> topKFrequent(int[] nums, int k) {
-        class Entry implements Comparable<Entry> {
-            private int key;
-            private int value;
-
-            Entry(int k, int v) {
-                this.key = k;
-                this.value = v;
-            }
-
-            public int getValue() {
-                return value;
-            }
-
-            @Override
-            public int compareTo(Entry other) {
-                return this.getValue().compareTo(other.getValue());
-            }
-        }
-
-        class NumOccrComparator implements Comparator {
+        class NumOccrComparator implements Comparator<Map.Entry> {
             @Override
             public int compare(Map.Entry e1, Map.Entry e2) {
-                return e2.getValue() - e1.getValue();
+                int e1Val = (Integer) e1.getValue();
+                int e2Val = (Integer) e2.getValue();
+                if (e2Val > e1Val) {
+                    return 1;
+                } else if (e2Val < e1Val) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+//                return e2.getValue() - e1.getValue();
             }
         }
 
-        ArrayList<Entry> numEntries = new ArrayList<Entry>();
         HashMap<Integer, Integer> numOccrHashMap = new HashMap<Integer, Integer>();
 
         for (int num : nums) {
@@ -56,12 +45,12 @@ public class TopKFrequentElements {
         while (it.hasNext()){
 
             System.out.println ( "Value: "+ it.next());
-
-            reversedList.add(it.next());
+            Map.Entry<Integer, Integer> numEntry = (Map.Entry<Integer, Integer>) it.next();
+            reversedList.add(numEntry.getKey());
         }
 
-        for (int i = reversedList.size()-1; i >= 0; i--) {
-            resultList.add(reversedList.get(i));
+        for (int i = 0; i < k; i++) {
+            resultList.add(reversedList.get(reversedList.size()-1-i));
         }
 
         return resultList;
