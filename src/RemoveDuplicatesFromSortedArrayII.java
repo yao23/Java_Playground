@@ -16,6 +16,7 @@ public class RemoveDuplicatesFromSortedArrayII {
                     curDupNum++;
 
                     if (curDupNum == 2) {
+                        nums[curAvailableIdx] = nums[curIdx]; // [1, 1, 1, 1, 2, 2, 3]
                         curAvailableIdx++;
                     } else {
                         continue;
@@ -28,7 +29,20 @@ public class RemoveDuplicatesFromSortedArrayII {
                 }
             }
 
+            if (curDupNum >= 2) {
+                nums[curAvailableIdx - 1] = nums[numsLength - 1]; // curAvailableIdx updated when curDupNum = 2, [1,1,1,1,3,3]
+            }
+
             return curAvailableIdx;
         }
     }
+
+    // []
+    // [1]
+    // [1, 1]
+    // [1, 1, 1]
+    // [1, 1, 1, 1, 1]
+    // [1, 1, 1, 1, 3, 3]
+    // [1, 1, 1, 1, 2, 2, 3]
+    // [1, 1, 1, 2, 2, 3]
 }
