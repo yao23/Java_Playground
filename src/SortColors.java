@@ -1,6 +1,7 @@
 /**
  * Created by liyao on 6/3/17.
  */
+
 public class SortColors {
     private static void swap(int[] nums, int left, int right) {
         int tmp = nums[left];
@@ -34,7 +35,7 @@ public class SortColors {
         return j;
     }
 
-    public static void sortColors(int[] nums) { // beats 5.63%
+    public static void sortColors(int[] nums) { // beats 5.63%, two pointers
         if (nums.length <= 1) { // array length is 0 or 1
             return;
         }
@@ -62,16 +63,57 @@ public class SortColors {
         }
     }
 
-    private static void testResults(int[] arr, int testCaseIdx) {
+    public static void sortColors1(int[] nums) { // beats 5.63%, three pointers
+        int numLength = nums.length;
+        if (numLength <= 1) {
+            return;
+        } else {
+            int curIdx = 0, redIdx = 0, blueIdx = numLength - 1;
+
+            while (curIdx <= blueIdx) {
+
+                int curElement = nums[curIdx];
+                if (curElement == 0) { // red
+                    if (curIdx != redIdx) {
+                        swap(nums, redIdx, curIdx);
+                    }
+
+                    redIdx++;
+                    curIdx++;
+                } else if (curElement == 2) {
+                    if (curIdx != blueIdx) {
+                        swap(nums, curIdx, blueIdx);
+                    }
+
+                    blueIdx--;
+                } else {
+                    curIdx++;
+                }
+            }
+        }
+    }
+
+    private static void testResults(int[] arr, int testCaseIdx, int solutionOption) {
         System.out.println("test case " + testCaseIdx);
 
         for (int inputElement : arr) {
             System.out.print(inputElement + " ");
         }
 
-        sortColors(arr);
+        long tStart = System.nanoTime();
+
+        if (solutionOption == 0) {
+            sortColors(arr);
+        } else {
+            sortColors1(arr);
+        }
+
+        long tEnd = System.nanoTime();
+        long tRes = tEnd - tStart; // time in nanoseconds
+        double elapsedSeconds = tRes / 1000000000.0;
 
         System.out.println();
+        System.out.println("time: " + elapsedSeconds);
 
         for (int outputElement : arr) {
             System.out.print(outputElement + " ");
@@ -89,18 +131,23 @@ public class SortColors {
         int[] arr4 = new int[] {2, 2, 1, 0, 2, 1, 2, 0, 1, 1, 0, 0, 0, 0};
 
         // case 0
-        testResults(arr0, 0);
+        testResults(arr0, 0, 0); // time: 4.0E-6
+//        testResults(arr0, 0, 1); // time: 3.0E-6
 
         // case 1
-        testResults(arr1, 1);
+        testResults(arr1, 1, 0); // time: 1.0E-6
+//        testResults(arr1, 1, 1); // time: 1.0E-6
 
         // case 2
-        testResults(arr2, 2);
+        testResults(arr2, 2, 0); // time: 2.0E-6
+//        testResults(arr2, 2, 1); // time: 2.0E-6
 
         // case 3
-        testResults(arr3, 3);
+        testResults(arr3, 3, 0); // time: 2.0E-6
+//        testResults(arr3, 3, 1); // time: 2.0E-6
 
         // case 4
-        testResults(arr4, 4);
+        testResults(arr4, 4, 0); // time: 3.0E-6
+//        testResults(arr4, 4, 1); // time: 2.0E-6
     }
 }
