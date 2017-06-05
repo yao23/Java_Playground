@@ -32,9 +32,9 @@ public class TopKFrequentElements {
         }
 
 //        PriorityQueue<Map.Entry<Integer, Integer>> maxHeap =
-//                new PriorityQueue<>((a,b)->(b.getValue()-a.getValue()));
+//                new PriorityQueue<Map.Entry<Integer, Integer>>((a,b)->(b.getValue()-a.getValue()));
         PriorityQueue<Map.Entry<Integer, Integer>> maxHeap = new PriorityQueue<Map.Entry<Integer, Integer>>(k, new NumOccrComparator());
-        for(Map.Entry numEntry : numOccrHashMap.entrySet()){
+        for(Map.Entry numEntry : numOccrHashMap.entrySet()) {
             System.out.println(numEntry.getKey() + " " + numEntry.getValue());
             maxHeap.add(numEntry);
         }
@@ -50,7 +50,7 @@ public class TopKFrequentElements {
             reversedList.add(e.getKey());
         }
 /*
-        Iterator it = maxHeap.iterator();
+        Iterator it = maxHeap.iterator(); //
 
         while (it.hasNext()){
 
@@ -79,4 +79,7 @@ public class TopKFrequentElements {
 
     // [1,1,1,2,2,3]
     // [1,1,1,2,2,3,4,5,6,6,6,6]
+
+
+    // beats 3.47%
 }
