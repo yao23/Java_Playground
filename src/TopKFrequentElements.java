@@ -4,7 +4,7 @@
 import java.util.*;
 
 public class TopKFrequentElements {
-    public List<Integer> topKFrequent(int[] nums, int k) {
+    public static List<Integer> topKFrequent(int[] nums, int k) {
         class NumOccrComparator implements Comparator<Map.Entry> {
             @Override
             public int compare(Map.Entry e1, Map.Entry e2) {
@@ -31,17 +31,25 @@ public class TopKFrequentElements {
             }
         }
 
-        PriorityQueue<Map.Entry<Integer, Integer>> maxHeap =
-                new PriorityQueue<>((a,b)->(b.getValue()-a.getValue()));
-//        PriorityQueue<Map.Entry<Integer, Integer>> maxHeap = new PriorityQueue<Map.Entry<Integer, Integer>>((a,b)->(b.getValue()-a.getValue()));
+//        PriorityQueue<Map.Entry<Integer, Integer>> maxHeap =
+//                new PriorityQueue<>((a,b)->(b.getValue()-a.getValue()));
+        PriorityQueue<Map.Entry<Integer, Integer>> maxHeap = new PriorityQueue<Map.Entry<Integer, Integer>>(k, new NumOccrComparator());
         for(Map.Entry numEntry : numOccrHashMap.entrySet()){
             System.out.println(numEntry.getKey() + " " + numEntry.getValue());
             maxHeap.add(numEntry);
         }
 
-        List<Integer> reversedList = new ArrayList<Integer>();
-        List<Integer> resultList = new ArrayList<Integer>();
+        List<Integer> reversedList = new ArrayList<>();
+        List<Integer> resultList = new ArrayList<>();
 
+
+        System.out.println("max heap size: " + maxHeap.size());
+        while (!maxHeap.isEmpty()) {
+            Map.Entry<Integer, Integer> e = maxHeap.poll();
+            System.out.println(e.getKey() + " " + e.getValue());
+            reversedList.add(e.getKey());
+        }
+/*
         Iterator it = maxHeap.iterator();
 
         while (it.hasNext()){
@@ -50,12 +58,23 @@ public class TopKFrequentElements {
             Map.Entry<Integer, Integer> numEntry = (Map.Entry<Integer, Integer>) it.next();
             reversedList.add(numEntry.getKey());
         }
-
+*/
         for (int i = 0; i < k; i++) {
             resultList.add(reversedList.get(i));
         }
 
         return resultList;
+    }
+
+    public static void main(String[] args) {
+        int [] input = new int[] {1,1,1,2,2,3,4,5,6,6,6,6};
+
+        List<Integer> output = topKFrequent(input, 2);
+
+        System.out.println("output: ");
+        for (Integer element : output) {
+            System.out.print(element + " ");
+        }
     }
 
     // [1,1,1,2,2,3]
