@@ -9,18 +9,48 @@ public class InvertBinaryTree {
             int tmp = left.val;
             left.val = right.val;
             right.val = tmp;
+
+            invertHelper(left.left, right.right);
+            invertHelper(left.right, right.left);
+
+            if (left != null) {
+                if (left.left != null) {
+                    System.out.println("left.left: " + left.left.val);
+                }
+                if (left.right != null) {
+                    System.out.println("left.right: " + left.right.val);
+                }
+            }
+
+            if (right != null) {
+                if (right.left != null) {
+                    System.out.println("right.left: " + right.left.val);
+                }
+                if (right.right != null) {
+                    System.out.println("right.right: " + right.right.val);
+                }
+            }
         } else { // left or right is not null
             if (left != null) { // left is not null
+                System.out.println("left: " + left.val);
                 right = new TreeNode(left.val);
+                right.left = left.right;
+                right.right = left.left;
                 left = null;
+
+                invertHelper(null, right.right);
+                invertHelper(null, right.left);
             } else { // right is not null
+                System.out.println("right: " + right.val);
                 left = new TreeNode(right.val);
+                left.left = right.right;
+                left.right = right.left;
                 right = null;
+
+                invertHelper(left.left, null);
+                invertHelper(left.right, null);
             }
         }
-
-        invertHelper(left.left, right.right);
-        invertHelper(left.right, right.left);
     }
 
     public TreeNode invertTree(TreeNode root) {
