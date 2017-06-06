@@ -25,7 +25,7 @@ public class InvertBinaryTree {
             }
         }
     }
-    
+
     private void invertHelper(TreeNode left, TreeNode right) {
         if (left == null && right == null) { // left and right are null
             return;
@@ -95,8 +95,10 @@ public class InvertBinaryTree {
         return root;
     }
 
+    // []
     // [4,2,7,1,3,6,9]
     // [1,2,3,4,null,null,5]
     // [1,2,3,null,4,null,5]
+    // [1,2,3,null,4,null,5,6,null,null,8]
 
 }
