@@ -11,21 +11,15 @@ public class InvertBinaryTree {
     private void invertHelper(TreeNode left, TreeNode right, TreeNode root) {
         if (left == null && right == null) { // left and right are null
             return;
-        } else if (left != null && right != null) { // left and right are not null
-            invertHelper(left.left, left.right, left);
-            invertHelper(right.left, right.right, right);
-
-            swap(left, right, root);
         } else { // left or right is not null
             if (left != null) { // left is not null
                 invertHelper(left.left, left.right, left);
-
-                swap(left, right, root);
-            } else { // right is not null
-                invertHelper(right.left, right.right, right);
-
-                swap(left, right, root);
             }
+            if (right != null) { // right is not null
+                invertHelper(right.left, right.right, right);
+            }
+
+            swap(left, right, root);
         }
     }
 
