@@ -43,4 +43,6 @@ public class InvertBinaryTree {
     // [1,2,3,null,4,null,5]
     // [1,2,3,null,4,null,5,6,null,null,8]
 
+    // beats 29.61%
+
 }
