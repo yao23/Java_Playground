@@ -44,6 +44,7 @@ public class BinarySearchTreeIterator {
     // [3,2,4,1,null,null,5] => 1,2,3,4,5
     // [3,1,5,null,2,4,null] => 1,2,3,4,5
 
+    // beats 47.43%
 }
 
 
