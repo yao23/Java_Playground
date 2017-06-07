@@ -47,6 +47,8 @@ public class MinStack {
     // ["MinStack","push","push","push","getMin","pop","top","getMin"]
     //  [[],[-2],[0],[-3],[],[],[],[]]
     // => [null,null,null,null,-3,null,0,-2]
+
+    // beats 27.97%
 }
 
 /**
