@@ -1,9 +1,10 @@
-import java.util.Deque;
-import java.util.ArrayDeque;
-
 /**
  * Created by liyao on 6/5/17.
  */
+
+import java.util.Deque;
+import java.util.ArrayDeque;
+
 public class BinarySearchTreeIterator {
     private Deque<TreeNode> stack;
 
