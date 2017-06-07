@@ -43,6 +43,10 @@ public class MinStack {
     public int getMin() {
         return minStack.peek();
     }
+
+    // ["MinStack","push","push","push","getMin","pop","top","getMin"]
+    //  [[],[-2],[0],[-3],[],[],[],[]]
+    // => [null,null,null,null,-3,null,0,-2]
 }
 
 /**
