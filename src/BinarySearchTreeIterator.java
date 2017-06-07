@@ -38,7 +38,12 @@ public class BinarySearchTreeIterator {
         return result.val;
     }
 
-    // [4,2,6,1,3,5,7], what's order? 1,2,3,4,5,6,7?
+    // [] => []
+    // [1,null,2] => 1,2
+    // [4,2,6,1,3,5,7] => 1,2,3,4,5,6,7
+    // [3,2,4,1,null,null,5] => 1,2,3,4,5
+    // [3,1,5,null,2,4,null] => 1,2,3,4,5
+
 }
 
 
