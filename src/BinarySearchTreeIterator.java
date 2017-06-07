@@ -1,19 +1,41 @@
+import java.util.Deque;
+import java.util.ArrayDeque;
+
 /**
  * Created by liyao on 6/5/17.
  */
 public class BinarySearchTreeIterator {
-    public BinarySearchTreeIterator(TreeNode root) {
+    private Deque<TreeNode> stack;
 
+    public BinarySearchTreeIterator(TreeNode root) {
+        stack = new ArrayDeque<TreeNode>();
+
+        // push left children into stack and most left one is smallest
+        while (root != null) {
+            stack.push(root);
+            root = root.left;
+        }
     }
 
     /** @return whether we have a next smallest number */
     public boolean hasNext() {
-        return true;
+        return !stack.isEmpty();
     }
 
     /** @return the next smallest number */
     public int next() {
-        return 0;
+        TreeNode result = stack.pop();
+
+        if (result.right != null) {
+            TreeNode tmpNode = result.right;
+
+            while (tmpNode != null) {
+                stack.push(tmpNode);
+                tmpNode = tmpNode.left;
+            }
+        }
+
+        return result.val;
     }
 
     // [4,2,6,1,3,5,7], what's order? 1,2,3,4,5,6,7?
