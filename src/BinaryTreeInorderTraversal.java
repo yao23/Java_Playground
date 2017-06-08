@@ -14,6 +14,29 @@ public class BinaryTreeInorderTraversal {
         TreeNode cur = root;
 
         while (!stack.isEmpty() || cur != null) {
+            if (cur != null) { // processing left children
+                stack.push(cur);
+                cur = cur.left;
+            } else { // left part is done
+                cur = stack.pop();
+                result.add(cur.val);
+                cur = cur.right;
+            }
+        }
+
+        return result;
+    }
+
+    public static List<Integer> inorderTraversalV0(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        if (root == null) {
+            return result;
+        }
+
+        Deque<TreeNode> stack = new ArrayDeque<>();
+        TreeNode cur = root;
+
+        while (!stack.isEmpty() || cur != null) {
             if (cur != null) {
                 if (cur.left == null) {
                     result.add(cur.val);
@@ -96,4 +119,5 @@ public class BinaryTreeInorderTraversal {
     // [1,2,3,4,5,6,7]
     // [1,null,2,3]
     // [1,null,2,null,3]
+    // [2,3,null,1]
 }
