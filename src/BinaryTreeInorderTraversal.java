@@ -120,4 +120,6 @@ public class BinaryTreeInorderTraversal {
     // [1,null,2,3]
     // [1,null,2,null,3]
     // [2,3,null,1]
+
+    // beats 4.36%
 }
