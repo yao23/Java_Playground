@@ -9,6 +9,47 @@ public class ThreeSum {
         if (nums.length < 3) {
             return result;
         }
+        Arrays.sort(nums);
+
+        for (int i = 0; i < nums.length - 2; i++) {
+
+            while (i > 0 && i < nums.length - 2 && nums[i-1] == nums[i]) {
+                i++;
+            }
+
+            int j = i + 1, k = nums.length -1;
+
+            while (j < k) {
+                int sum = nums[i] + nums[j] + nums[k];
+                if (sum == 0) {
+                    List<Integer> tmpResult = Arrays.asList(nums[i], nums[j], nums[k]);
+                    result.add(tmpResult);
+
+                    j++;
+                    while (j < nums.length-1 && nums[j-1] == nums[j]) {
+                        j++;
+                    }
+
+                    k--;
+                    while (k > j && nums[k] == nums[k+1]) {
+                        k--;
+                    }
+                } else if (sum < 0) {
+                    j++;
+                } else {
+                    k--;
+                }
+            }
+        }
+
+        return result;
+    }
+
+    public List<List<Integer>> threeSumV0(int[] nums) { // Brute Force: Time Limit Exceeded
+        List<List<Integer>> result = new ArrayList<>();
+        if (nums.length < 3) {
+            return result;
+        }
         Set<List<Integer>> resultSet = new HashSet<>();
 
         for (int i = 0; i < nums.length - 2; i++) {
