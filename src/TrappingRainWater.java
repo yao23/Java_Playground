@@ -4,7 +4,44 @@
 import java.lang.*;
 
 public class TrappingRainWater {
-    public int trap(int[] height) { // beats 0.66%
+    public int trap(int[] height) { // beats 60.02%
+        int result = 0;
+        int len = height.length;
+        if (len <= 2) {
+            return result;
+        }
+
+        int leftMax = height[0];
+        int rightMax = height[len-1];
+        int[] rightMaxValues = new int[len-2]; // cache
+
+        for (int i = rightMaxValues.length - 1; i >= 0; i--) {
+            int right = height[i+2]; // offset 2, rightLargeValues.length = height.length - 2
+            if (right > rightMax) {
+                rightMax = right;
+            }
+
+            rightMaxValues[i] = rightMax;
+        }
+
+        for (int i = 1; i < len - 1; i++) {
+            int left = height[i-1]; // last element
+            int cur = height[i];
+            if (left > leftMax) {
+                leftMax = left;
+            }
+
+            int minHeight = Math.min(leftMax, rightMaxValues[i-1]);
+
+            if (minHeight > cur) {
+                result += (minHeight - cur);
+            }
+        }
+
+        return result;
+    }
+
+    public int trapV0(int[] height) { // beats 0.66%
         int result = 0;
         int len = height.length;
         if (len <= 1) {
