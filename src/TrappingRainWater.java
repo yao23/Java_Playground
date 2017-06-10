@@ -4,7 +4,7 @@
 import java.lang.*;
 
 public class TrappingRainWater {
-    public int trap(int[] height) {
+    public int trap(int[] height) { // beats 0.66%
         int result = 0;
         int len = height.length;
         if (len <= 1) {
@@ -34,4 +34,8 @@ public class TrappingRainWater {
 
         return result;
     }
+
+    // [] => 0
+    // [0,1,0,2,1,0,1,3,2,1,2,1] => 6
+    // [2,1,5,6,2,3] => 2
 }
