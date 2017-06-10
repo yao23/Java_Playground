@@ -35,7 +35,7 @@ public class CopyListWithRandomPointer {
         RandomListNode dummy = new RandomListNode(0);
         dummy.next = hashMap.get(cur);
 
-        while (cur != null) {
+        while (cur != null) { // build new list
             RandomListNode newCur = hashMap.get(cur);
             newCur.next = hashMap.get(cur.next);
             newCur.random = hashMap.get(cur.random);
@@ -47,6 +47,8 @@ public class CopyListWithRandomPointer {
     }
 
     // {-1,1,#,#}
+
+    // beats 25.53%
 }
 
 class RandomListNode {
