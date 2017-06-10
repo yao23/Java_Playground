@@ -24,21 +24,21 @@ public class CopyListWithRandomPointer {
 
         RandomListNode cur = head;
 
-        while (cur != null) { // construct mapping relationship
+        while (cur != null) { // construct old-new node map
             RandomListNode newNode = new RandomListNode(cur.label);
             hashMap.put(cur,newNode);
+
+            cur = cur.next;
         }
 
         cur = head;
         RandomListNode dummy = new RandomListNode(0);
-        RandomListNode newPre = dummy;
+        dummy.next = hashMap.get(cur);
 
         while (cur != null) {
             RandomListNode newCur = hashMap.get(cur);
             newCur.next = hashMap.get(cur.next);
             newCur.random = hashMap.get(cur.random);
-            newPre.next = newCur;
-            newPre = newCur.next;
 
             cur = cur.next;
         }
