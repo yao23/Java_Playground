@@ -3,7 +3,7 @@
  */
 public class ReverseNodesInKGroup {
     public ListNode reverseKGroup(ListNode head, int k) {
-        if (head == null || head.next == null) {
+        if (head == null || head.next == null || k == 1) {
             return head;
         }
 
@@ -43,4 +43,9 @@ public class ReverseNodesInKGroup {
 
         return dummy.next;
     }
+
+    // [], 1 => []
+    // [1,2,3,4,5], 2 => [2,1,4,3,5]
+    // [1,2,3,4,5], 3 => [3,2,1,4,5]
+    // [1,2], 1 => [1,2]
 }
