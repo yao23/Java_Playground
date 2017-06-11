@@ -24,7 +24,7 @@ public class ThreeSumClosest {
             while (j < k) {
                 int sum = nums[i] + nums[j] + nums[k];
                 if (sum == target) { // find the target
-                    return 0;
+                    return target;
                 } else { // have difference with target
                     int diff = Math.abs(sum - target);
                     if (diff < minDiff) {
@@ -47,4 +47,7 @@ public class ThreeSumClosest {
     // [0,0,0], 1 => 0
     // [-1,2,1,-4], 1 => 2 (-1 + 2 + 1)
     // [1,1,1,1], 0 => 3
+    // [0,1,2], 3 => 3
+
+    // beats 73.41%
 }
