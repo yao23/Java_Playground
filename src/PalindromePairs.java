@@ -30,34 +30,43 @@ public class PalindromePairs {
         }
 
         Map<String, Integer> map = new HashMap<>();
+        Set<List<Integer>> set = new HashSet<>();
 
         for (int i = 0; i < len; i++) {
             map.put(words[i], i);
         }
 
-        for (String word : words) {
-            for (int i = 0; i < word.length(); i++) {
-                // left part reverse append to end of right part
-                String left = word.substring(0,i);
-                String right = word.substring(i);
-                if (isPalindrome(right)) {
+        for (int j = 0; j < words.length; j++) {
+            String word = words[j];System.out.println("word: " + word);
+            for (int i = 0; i <= word.length(); i++) {
+                String left = (i == 0) ? "" : word.substring(0,i);
+                String right = (i == word.length()) ? "" : word.substring(i);
+                System.out.println(i + ": " + left + ", " + right);
+                if (isPalindrome(right)) { // left part reverse append to end of right part
                     String leftReverse = new StringBuilder(left).reverse().toString();
-                    if (map.containsKey(leftReverse)) {
+                    System.out.println("left verse: " + leftReverse);
+                    if (map.containsKey(leftReverse) && j != map.get(leftReverse)) {
                         List<Integer> tuple = new ArrayList<>();
-                        tuple.add(i);
+                        tuple.add(j);
                         tuple.add(map.get(leftReverse));
-                        result.add(tuple);
+                        System.out.println("tuple: " + j + ", " + map.get(leftReverse));
+                        if (set.add(tuple)) {
+                            result.add(tuple);
+                        }
                     }
                 }
 
-                // right part reverse add to beginning of left part
-                if (isPalindrome(left)) {
+                if (isPalindrome(left)) { // right part reverse add to beginning of left part
                     String rightReverse = new StringBuilder(right).reverse().toString();
-                    if (map.containsKey(rightReverse)) {
+                    System.out.println("right verse: " + rightReverse);
+                    if (map.containsKey(rightReverse) && j != map.get(rightReverse)) {
                         List<Integer> tuple = new ArrayList<>();
                         tuple.add(map.get(rightReverse));
-                        tuple.add(i);
-                        result.add(tuple);
+                        tuple.add(j);
+                        System.out.println("tuple: " + map.get(rightReverse) + ", " + j);
+                        if (set.add(tuple)) {
+                            result.add(tuple);
+                        }
                     }
                 }
             }
