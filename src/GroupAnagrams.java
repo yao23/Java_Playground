@@ -38,4 +38,6 @@ public class GroupAnagrams {
 
     // [] => [[]]
     // ["eat", "tea", "tan", "ate", "nat", "bat"] => [["ate", "eat","tea"],["nat","tan"],["bat"]]
+
+    // beats 36.66%
 }
