@@ -35,4 +35,7 @@ public class GroupAnagrams {
 
         return result;
     }
+
+    // [] => [[]]
+    // ["eat", "tea", "tan", "ate", "nat", "bat"] => [["ate", "eat","tea"],["nat","tan"],["bat"]]
 }
