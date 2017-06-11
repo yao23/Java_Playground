@@ -18,7 +18,7 @@ public class FourSum {
                 i++;
             }
             for (int j = i + 1; j < len - 2; j++) {
-                while (j > 1 && j < len - 2 && nums[j-1] == nums[j]) { // prev same with cur in left side
+                while (j > 1 && j < len - 2 && nums[j-1] == nums[j] && j - i > 1) { // prev same with cur in left side
                     j++;
                 }
                 for (int k = j + 1; k < len - 1; k++) {
@@ -53,4 +53,8 @@ public class FourSum {
 
         return result;
     }
+
+    // [], 0 => []
+    // [1,0,-1,0,-2,2], 0 => [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]
+    // [-1,0,1,2,-1,-4], -1 => [[-4,0,1,2],[-1,-1,0,1]]
 }
