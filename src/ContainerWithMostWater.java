@@ -2,7 +2,28 @@
  * Created by liyao on 6/10/17.
  */
 public class ContainerWithMostWater {
-    public int maxArea(int[] height) {
+    public int maxArea(int[] height) { // optimal solution
+        int result = 0;
+        int left = 0, right = height.length - 1;
+
+        while (left < right) {
+            int minHeight = Math.min(height[left], height[right]);
+            int curArea = (right - left) * minHeight;
+            if (curArea > result) {
+                result = curArea;
+            }
+
+            if (height[left] < height[right]) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+
+        return result;
+    }
+
+    public int maxAreaV0(int[] height) { // Time Limit Exceeded
         int result = 0;
         int len = height.length;
 
