@@ -6,6 +6,69 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CopyListWithRandomPointer {
+    private void addNewNodes(RandomListNode head) { // add new nodes after original ones
+        RandomListNode cur = head;
+
+        while (cur != null) {
+            RandomListNode newNode = new RandomListNode(cur.label);
+            newNode.next = cur.next;
+            cur.next = newNode;
+
+            cur = newNode.next;
+        }
+    }
+
+    private void addRandomPointers(RandomListNode head) { // add random pointers for new nodes
+        RandomListNode cur = head;
+
+        while (cur != null) {
+            RandomListNode newNode = cur.next;
+            if (cur.random == null) {
+                newNode.random = null;
+            } else {
+                newNode.random = cur.random.next;
+            }
+
+            cur = newNode.next;
+        }
+    }
+
+    private RandomListNode splitNewNodes(RandomListNode head) { // 1-1'-2-2'-3-3' => 1-2-3,1'-2'-3'
+        RandomListNode cur = head;
+        RandomListNode newHead = head.next;
+
+        while (cur != null) {
+            RandomListNode newNode = cur.next;
+            cur.next = newNode.next; // 1-2-3
+            if (newNode.next == null) {
+                newNode.next = null;
+            } else {
+                newNode.next = newNode.next.next; // 1'-2'-3'
+            }
+
+            cur = cur.next;
+        }
+
+        return newHead;
+    }
+
+    public RandomListNode copyRandomList(RandomListNode head) { // without hashmap, beats 72.33%
+        if (head == null) {
+            return null;
+        }
+
+        RandomListNode tmpNode = processSingleNode(head);
+        if (tmpNode != null) {
+            return tmpNode;
+        }
+
+        addNewNodes(head);
+
+        addRandomPointers(head);
+
+        return splitNewNodes(head);
+    }
+
     private RandomListNode getNode(RandomListNode node, Map<RandomListNode,RandomListNode> hashMap) {
         RandomListNode newNode = hashMap.get(node);
         if (newNode == null) { // if not created in hashamp before
@@ -31,7 +94,7 @@ public class CopyListWithRandomPointer {
         }
     }
 
-    public RandomListNode copyRandomList(RandomListNode head) { // hashmap with one pass
+    public RandomListNode copyRandomListV1(RandomListNode head) { // hashmap with one pass, beats 25.53%
         if (head == null) {
             return null;
         }
@@ -60,7 +123,7 @@ public class CopyListWithRandomPointer {
         return dummy.next;
     }
 
-    public RandomListNode copyRandomListV0(RandomListNode head) { // hashmap with two passes
+    public RandomListNode copyRandomListV0(RandomListNode head) { // hashmap with two passes, beats 25.53%
         if (head == null) {
             return null;
         }
