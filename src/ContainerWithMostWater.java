@@ -7,14 +7,9 @@ public class ContainerWithMostWater {
         int len = height.length;
 
         for (int i = 0; i < len - 1; i++) {
-            int minHeight = height[i];
-
-            for (int j = 0; j < len; j++) {
-                int curHeight = height[j];
-                if (curHeight < minHeight) {
-                    minHeight = curHeight;
-                }
-                int curArea = (j - i + 1) * minHeight;
+            for (int j = i+1; j < len; j++) {
+                int minHeight = Math.min(height[i], height[j]);
+                int curArea = (j - i) * minHeight;
                 if (curArea > result) {
                     result = curArea;
                 }
@@ -23,4 +18,8 @@ public class ContainerWithMostWater {
 
         return result;
     }
+
+    // [1,1] => 1
+    // [1,2,4,3] => 4
+    // [3,2,1,3] => 9
 }
