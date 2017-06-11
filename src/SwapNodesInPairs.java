@@ -26,4 +26,8 @@ public class SwapNodesInPairs {
 
         return dummy.next;
     }
+
+    // [] => []
+    // [1,2,3,4] => [2,1,4,3]
+    // [1,2,3,4,5] => [2,1,4,3,5]
 }
