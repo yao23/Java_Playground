@@ -6,6 +6,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MissingRanges {
+    /**
+     *  Given a sorted integer array where the range of elements are [0, 99] inclusive, return its missing ranges.
+     *  For example, given [0, 1, 3, 50, 75], return [“2”, “4->49”, “51->74”, “76->99”]
+     */
     public List<String> findMissingRanges(int[] nums, int start, int end) {
         List<String> result = new ArrayList<>();
         int len = nums.length;
@@ -20,8 +24,16 @@ public class MissingRanges {
                 } else if (end == elem) {
                     result.add(start + "->" + (end-1));
                 } else {
-                    result.add(start + "->" + (elem-1));
-                    result.add((elem+1) + "->" + end);
+                    if (start+1 == elem) {
+                        result.add(Integer.toString(start));
+                    } else {
+                        result.add(start + "->" + (elem-1));
+                    }
+                    if (elem+1 == end) {
+                        result.add(Integer.toString(end));
+                    } else {
+                        result.add((elem+1) + "->" + end);
+                    }
                 }
             } else {
                 result.add(start + "->" + end);
@@ -48,7 +60,20 @@ public class MissingRanges {
                 }
             }
 
+            if (nums[len-1] < end) {
+                int newStart = nums[len-1] + 1, newEnd = end -1;
+                if (newStart == newEnd) {
+                    result.add(Integer.toString(newStart));
+                } else {
+                    result.add(newStart + "->" + newEnd);
+                }
+            }
+
             return result;
         }
     }
+
+    // [],0,99 => ["0->99"]
+    // [1],0,99 => ["0","2->99"]
+    // [0, 1, 3, 50, 75],0,99 => [“2”, “4->49”, “51->74”, “76->99”]
 }
