@@ -17,7 +17,8 @@ public class InsertInterval {
 
     public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
         List<Interval> result = new ArrayList<>();
-        if (intervals.size() == 0) {
+        if (intervals.size() == 0) { // test case 4
+            result.add(newInterval);
             return result;
         }
 
@@ -44,6 +45,16 @@ public class InsertInterval {
             }
         }
 
+        if (tmpInterval != null) { // test case 5
+            result.add(tmpInterval);
+        }
+
         return result;
     }
+
+    // [[]], [] => [[]]
+    // [[1,3],[6,9]], [2,5] => [[1,5],[6,9]]
+    // [1,2],[3,5],[6,7],[8,10],[12,16]], [4,9] => [[1,2],[3,10],[12,16]]
+    // [[]], [2,3] => [[2,3]]
+    // [[1,5]], [2,3] => [[1,5]]
 }
