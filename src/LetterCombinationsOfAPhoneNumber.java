@@ -71,4 +71,6 @@ public class LetterCombinationsOfAPhoneNumber {
 
     // "" => []
     // "23" => ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]
+
+    // beats 47.01%
 }
