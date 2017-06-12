@@ -68,4 +68,7 @@ public class LetterCombinationsOfAPhoneNumber {
         helper(0, digits, new StringBuilder(), result);
         return result;
     }
+
+    // "" => []
+    // "23" => ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]
 }
