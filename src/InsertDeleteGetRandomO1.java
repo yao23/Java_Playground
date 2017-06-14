@@ -44,11 +44,27 @@ public class InsertDeleteGetRandomO1 {
 
         /** Get a random element from the set. */
         public int getRandom() {
+            if (map.size() == 1) {
+                for (Map.Entry<Integer,Integer> entry : map.entrySet()) {
+                    return entry.getKey();
+                }
+            }
             Random random = new Random();
             int randomIdx = random.nextInt(counter)+1; // from 1 to counter, exclude 0
+            System.out.println("random idx: " + randomIdx);
+            for (Map.Entry<Integer,Integer> entry : helperMap.entrySet()) {
+                System.out.println(entry.getKey() + " " + entry.getValue());
+            }
 
-            while (!helperMap.containsKey(randomIdx)) { // find a valid index
-                randomIdx = random.nextInt(counter)+1;
+            while (!helperMap.containsKey(randomIdx)) {
+                if (helperMap.containsKey(randomIdx+1)) {
+                    randomIdx+=1;
+                    break;
+                } else if (helperMap.containsKey(randomIdx-1)) {
+                    randomIdx-=1;
+                    break;
+                }
+                randomIdx = random.nextInt(counter) + 1;
             }
 
             return helperMap.get(randomIdx);
