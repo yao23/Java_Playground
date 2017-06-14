@@ -35,7 +35,7 @@ public class InsertDeleteGetRandomO1 {
             if (map.containsKey(val)) {
                 helperMap.remove(map.get(val));
                 map.remove(val);
-                counter++;
+                counter--;
                 return true;
             } else {
                 return false;
