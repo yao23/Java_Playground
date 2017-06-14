@@ -35,7 +35,7 @@ public class InsertDeleteGetRandomO1 {
             if (map.containsKey(val)) {
                 helperMap.remove(map.get(val));
                 map.remove(val);
-                counter--;
+//                counter--; // will influence generate random index, i.e. insert 1,2 then remove 1, and get random
                 return true;
             } else {
                 return false;
@@ -45,7 +45,12 @@ public class InsertDeleteGetRandomO1 {
         /** Get a random element from the set. */
         public int getRandom() {
             Random random = new Random();
-            int randomIdx = random.nextInt(counter);
+            int randomIdx = random.nextInt(counter)+1; // from 1 to counter, exclude 0
+
+            while (!helperMap.containsKey(randomIdx)) { // find a valid index
+                randomIdx = random.nextInt(counter)+1;
+            }
+
             return helperMap.get(randomIdx);
         }
     }
