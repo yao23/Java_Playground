@@ -45,4 +45,11 @@ public class StrobogrammaticNumberI {
             }
         }
     }
+
+    // "" => true
+    // "1" => true
+    // "7" => false
+    // "69" => true
+    // "88" => true
+    // "818" => true
 }
