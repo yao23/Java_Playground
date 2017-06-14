@@ -102,4 +102,6 @@ public class InsertDeleteGetRandomO1 {
 
     // Since 2 is the only number in the set, getRandom always return 2.
     //randomSet.getRandom();
+
+    // beats 34.98%
 }
