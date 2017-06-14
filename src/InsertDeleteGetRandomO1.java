@@ -1,35 +1,52 @@
 /**
  * Created by liyao on 6/12/17.
  */
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class InsertDeleteGetRandomO1 {
     public class RandomizedSet {
-        Set<Integer> set;
+        private Map<Integer, Integer> map; // store <inputElement, curIndex> for insert and remove in o(1)
+        private Map<Integer, Integer> helperMap; // store <curIndex, inputElement> for getRandom in o(1)
+        private int counter;
 
         /** Initialize your data structure here. */
         public RandomizedSet() {
-            set = new HashSet<>();
+            map = new HashMap<>();
+            helperMap = new HashMap<>();
+            counter = 0;
         }
 
         /** Inserts a value to the set. Returns true if the set did not already contain the specified element. */
         public boolean insert(int val) {
-            return set.add(val);
+            if (map.containsKey(val)) {
+                return false;
+            } else {
+                counter++;
+                map.put(val,counter);
+                helperMap.put(counter,val);
+                return true;
+            }
         }
 
         /** Removes a value from the set. Returns true if the set contained the specified element. */
         public boolean remove(int val) {
-            return set.remove(val);
+            if (map.containsKey(val)) {
+                helperMap.remove(map.get(val));
+                map.remove(val);
+                counter++;
+                return true;
+            } else {
+                return false;
+            }
         }
 
         /** Get a random element from the set. */
         public int getRandom() {
             Random random = new Random();
-            int randomIdx = random.nextInt(set.size());
-            Integer[] arr = set.toArray(new Integer[set.size()]);
-            return arr[randomIdx];
+            int randomIdx = random.nextInt(counter);
+            return helperMap.get(randomIdx);
         }
     }
 
