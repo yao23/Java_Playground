@@ -2,10 +2,6 @@
  * Created by liyao on 6/13/17.
  */
 public class StrobogrammaticNumberI {
-    private boolean checkOneNumber(int num) {
-        return (num == 0 || num == 1 || num == 8);
-    }
-
     private boolean checkTwoNumbers(int a, int b) {
         if ((a == 6 && b == 9) || (a == 9 && b==6)) {
             return true;
@@ -27,7 +23,7 @@ public class StrobogrammaticNumberI {
         } else {
             int left = 0, right = len -1;
 
-            while (left < right) {
+            while (left <= right) {
                 int leftNum = Character.getNumericValue(num.charAt(left));
                 int rightNum = Character.getNumericValue(num.charAt(right));
                 if (checkTwoNumbers(leftNum, rightNum)) {
@@ -38,11 +34,7 @@ public class StrobogrammaticNumberI {
                 }
             }
 
-            if (left == right) {
-                return checkOneNumber(Character.getNumericValue(num.charAt(left)));
-            } else {
-                return true;
-            }
+            return true;
         }
     }
 
