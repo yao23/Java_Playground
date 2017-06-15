@@ -46,6 +46,8 @@ public class FractionToRecurringDecimal {
     // 2,1 => "2"
     // 2,3 => "0.(6)"
     // 667/1000 => "0.667"
+
+    // beats 28.15%
 }
 
 // all rational numbers are either terminating decimal or repeating decimal numerals
