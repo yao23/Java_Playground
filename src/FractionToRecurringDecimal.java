@@ -20,8 +20,8 @@ public class FractionToRecurringDecimal {
             return sign + nume/deno + "";
         }
 
-        Map<Long,Integer> map = new HashMap<Long,Integer>();
-        StringBuffer res = new StringBuffer(sign + nume/deno + ".");
+        Map<Long,Integer> map = new HashMap<>();
+        StringBuilder res = new StringBuilder(sign + nume/deno + "."); // StringBuffer is thread safe
         long end = nume % deno * 10;//The decimal portion of the value, after decimal point
         int i = 0;
 
@@ -39,6 +39,13 @@ public class FractionToRecurringDecimal {
 
         return res.toString();
     }
+
+    // 0,0 => ""
+    // 0,1 => "0"
+    // 1,5 => "0.2"
+    // 2,1 => "2"
+    // 2,3 => "0.(6)"
+    // 667/1000 => "0.667"
 }
 
 // all rational numbers are either terminating decimal or repeating decimal numerals
