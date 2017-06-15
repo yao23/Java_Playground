@@ -51,10 +51,6 @@ public class InsertDeleteGetRandomO1 {
             }
             Random random = new Random();
             int randomIdx = random.nextInt(counter) + 1; // from 1 to counter, exclude 0
-            System.out.println("random idx: " + randomIdx);
-            for (Map.Entry<Integer,Integer> entry : helperMap.entrySet()) {
-                System.out.println(entry.getKey() + " " + entry.getValue());
-            }
 
             while (!helperMap.containsKey(randomIdx)) {
                 if (helperMap.containsKey(randomIdx + 1)) {
