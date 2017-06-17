@@ -3,39 +3,37 @@
  */
 public class SearchA2DMatrix {
     public boolean searchMatrix(int[][] matrix, int target) {
-        public boolean searchMatrix(int[][] matrix, int target) {
-            int row = matrix.length;
-            if (row == 0) { // []
-                return false;
-            }
-            int col = matrix[0].length;
-            if (col == 0) { // [[]]
-                return false;
-            }
-            int start = 0, end = row * col - 1;
+        int row = matrix.length;
+        if (row == 0) { // []
+            return false;
+        }
+        int col = matrix[0].length;
+        if (col == 0) { // [[]]
+            return false;
+        }
+        int start = 0, end = row * col - 1;
 
-            while (start + 1 < end) {
-                int mid = start + (end - start) / 2;
-                int midElem = matrix[mid / row][mid % row];
-                if (midElem == target) {
-                    return true;
-                } else if (midElem < target) {
-                    start = mid;
-                } else {
-                    end = mid;
-                }
-            }
-            System.out.println(start+","+end);
-            int startElem = matrix[start / row][start % row]; //
-            if (startElem == target) {
+        while (start + 1 < end) {
+            int mid = start + (end - start) / 2;
+            int midElem = matrix[mid / col][mid % col];
+            if (midElem == target) {
                 return true;
-            }
-            int endElem = matrix[end / row][end % row]; // [[1,1]], 0, java.lang.ArrayIndexOutOfBoundsException: 1
-            if (endElem == target) {
-                return true;
+            } else if (midElem < target) {
+                start = mid;
             } else {
-                return false;
+                end = mid;
             }
+        }
+
+        int startElem = matrix[start / col][start % col];
+        if (startElem == target) {
+            return true;
+        }
+        int endElem = matrix[end / col][end % col]; // [[1,1]], 0, java.lang.ArrayIndexOutOfBoundsException: 1, if row instead of col
+        if (endElem == target) {
+            return true;
+        } else {
+            return false;
         }
     }
 
