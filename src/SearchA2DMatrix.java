@@ -3,7 +3,40 @@
  */
 public class SearchA2DMatrix {
     public boolean searchMatrix(int[][] matrix, int target) {
-        return true;
+        public boolean searchMatrix(int[][] matrix, int target) {
+            int row = matrix.length;
+            if (row == 0) { // []
+                return false;
+            }
+            int col = matrix[0].length;
+            if (col == 0) { // [[]]
+                return false;
+            }
+            int start = 0, end = row * col - 1;
+
+            while (start + 1 < end) {
+                int mid = start + (end - start) / 2;
+                int midElem = matrix[mid / row][mid % row];
+                if (midElem == target) {
+                    return true;
+                } else if (midElem < target) {
+                    start = mid;
+                } else {
+                    end = mid;
+                }
+            }
+            System.out.println(start+","+end);
+            int startElem = matrix[start / row][start % row]; //
+            if (startElem == target) {
+                return true;
+            }
+            int endElem = matrix[end / row][end % row]; // [[1,1]], 0, java.lang.ArrayIndexOutOfBoundsException: 1
+            if (endElem == target) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 
     // [
@@ -13,4 +46,6 @@ public class SearchA2DMatrix {
     //  ]
 
     // Given target = 3, return true.
+
+    // [[1,3,5,7],[10,11,16,20],[23,30,34,50]],3
 }
