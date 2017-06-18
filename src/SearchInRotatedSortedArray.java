@@ -65,4 +65,6 @@ public class SearchInRotatedSortedArray {
     // [4,5,6,7,0,1,2],2 => 6
     // [4,5,0,1,2],2 => 4
     // [4,5,0,1,2],-1 => -1
+
+    // beats 53.55%
 }
