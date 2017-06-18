@@ -45,4 +45,6 @@ public class SumRootToLeafNumbers {
     // [1,2] => 12
     // [1,2,3] => 25 (12 + 13)
     // [1,null,2,null,3] => 123
+
+    // beats 4.79%
 }
