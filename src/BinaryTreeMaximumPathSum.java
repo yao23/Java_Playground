@@ -2,12 +2,12 @@
  * Created by liyao on 6/14/17.
  */
 public class BinaryTreeMaximumPathSum {
-    private int helper(TreeNode root, int curSum, int[] result) {
+    private int helper(TreeNode root, int[] result) {
         if (root == null) {
             return 0;
         } else {
-            int left = helper(root.left, curSum + root.val, result);
-            int right = helper(root.right, curSum + root.val, result);
+            int left = helper(root.left, result);
+            int right = helper(root.right, result);
             int single = Math.max(root.val, root.val + Math.max(left,right));
             int max = Math.max(single, root.val + left + right);
             if (max > result[0]) {
@@ -18,10 +18,14 @@ public class BinaryTreeMaximumPathSum {
     }
 
     public int maxPathSum(TreeNode root) {
-        int[] result = new int[]{0};
-        helper(root, 0, result);
+        if (root == null) {
+            return Integer.MIN_VALUE;
+        }
+        int[] result = new int[]{Integer.MIN_VALUE};
+        helper(root, result);
         return result[0];
     }
+
     // [] => -2147483648
     // [-3] => -3
     // [1,2,3] => 6
