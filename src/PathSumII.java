@@ -23,16 +23,14 @@ public class PathSumII {
                 return;
             }
         } else {
+            tmpResult.add(root.val);
             if (root.left != null) {
-                tmpResult.add(root.val);
                 helper(root.left, sum - root.val, tmpResult, result);
-                tmpResult.remove(tmpResult.size() - 1);
             }
             if (root.right != null) {
-                tmpResult.add(root.val);
                 helper(root.right, sum - root.val, tmpResult, result);
-                tmpResult.remove(tmpResult.size() - 1);
             }
+            tmpResult.remove(tmpResult.size() - 1);
         }
     }
 
