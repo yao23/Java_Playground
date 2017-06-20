@@ -57,32 +57,33 @@ public class SerializeAndDeserializeBinaryTree { // class Codec in LeetCode
             return null;
         } else {
             String[] strs = data.split(",");
-            TreeNode[] nodes = new TreeNode[strs.length];
 
-            for (int i = strs.length - 1; i >= 0; i--) { // one pass, from begin to end with two passes
-                if (strs[i].equals("null")) {
-                    nodes[i] = null;
-                } else {
-                    nodes[i] = new TreeNode(Integer.valueOf(strs[i]));
-                    int left = 2 * i - 1, right = 2 * i; // parent (i), left (2*i -1), right (2*i)
-                    if (left < strs.length && left >= 0) {
-                        addChild(nodes[i], nodes[left], 0);
-                    }
-                    if (right < strs.length && right >= 0) {
-                        addChild(nodes[i], nodes[right], 1);
-                    }
-                }
-            }
-
-            return nodes[0];
+            return buildTree(0, strs);
         }
     }
 
-    private void addChild(TreeNode parent, TreeNode child, int mode) {
-        if (mode == 0) { // left
-            parent.left = child;
-        } else { // right
-            parent.right = child;
+    private TreeNode getNode(String data) {
+        if (data.equals("null")) {
+            return null;
+        } else {
+            return new TreeNode(Integer.valueOf(data));
+        }
+    }
+
+    private TreeNode buildTree(int index, String[] strs) {
+        if (index >= strs.length) {
+            return null;
+        } else {
+            TreeNode cur = getNode(strs[index]);
+            if (cur == null) {
+                return cur;
+            } else {
+                TreeNode left = buildTree(2 * index + 1, strs);
+                TreeNode right = buildTree(2 * index + 2, strs);
+                cur.left = left;
+                cur.right = right;
+                return cur;
+            }
         }
     }
 
