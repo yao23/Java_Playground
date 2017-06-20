@@ -56,7 +56,6 @@ public class SerializeAndDeserializeBinaryTree { // class Codec in LeetCode
         if (data.equals("")) {
             return null;
         } else {
-            // parent (i), left (2x -1), right (2x)
             String[] strs = data.split(",");
             TreeNode[] nodes = new TreeNode[strs.length];
 
@@ -65,11 +64,11 @@ public class SerializeAndDeserializeBinaryTree { // class Codec in LeetCode
                     nodes[i] = null;
                 } else {
                     nodes[i] = new TreeNode(Integer.valueOf(strs[i]));
-                    int left = 2 * i - 1, right = 2 * i;
-                    if (left < strs.length) {
+                    int left = 2 * i - 1, right = 2 * i; // parent (i), left (2*i -1), right (2*i)
+                    if (left < strs.length && left >= 0) {
                         addChild(nodes[i], nodes[left], 0);
                     }
-                    if (right < strs.length) {
+                    if (right < strs.length && right >= 0) {
                         addChild(nodes[i], nodes[right], 1);
                     }
                 }
@@ -77,17 +76,6 @@ public class SerializeAndDeserializeBinaryTree { // class Codec in LeetCode
 
             return nodes[0];
         }
-    }
-
-    private int power(int n) {
-        int result = 1, x = 0;
-
-        while (x < n) {
-            result *= 2;
-            x++;
-        }
-
-        return result;
     }
 
     private void addChild(TreeNode parent, TreeNode child, int mode) {
