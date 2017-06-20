@@ -44,4 +44,6 @@ public class FindPeakElement {
     // [1,2,3] => 2
     // [1,2,3,2,1] => 2
     // [1,2,3,4,2,1] => 3
+
+    // beats 3.11%
 }
