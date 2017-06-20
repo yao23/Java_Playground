@@ -46,4 +46,6 @@ public class FirstBadVersion {
             return index;
         }
     }
+
+    // beats 20.57%
 }
