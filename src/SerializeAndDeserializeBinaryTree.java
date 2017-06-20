@@ -90,4 +90,13 @@ public class SerializeAndDeserializeBinaryTree { // class Codec in LeetCode
     // Your Codec object will be instantiated and called as such:
     // Codec codec = new Codec();
     // codec.deserialize(codec.serialize(root));
+
+    // [] => []
+    // [1] => [1]
+    // [1,2,3,null,4,5,null] => [1,2,3,null,4,5,null]
+    // [1,2,3,null,null,4,5] => [1,2,3,null,null,4,5]
+    // [1,2,3,4,5,6,7] => [1,2,3,4,5,6,7]
+    // [5,2,3,null,null,2,4,3,1] => [5,2,3,null,null,2,4,3,1] ([5,2,3,null,null,2,4])
+
+
 }
