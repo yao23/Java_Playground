@@ -6,15 +6,10 @@ import java.util.ArrayList;
 
 public class PathSumIII {
     private void helper(TreeNode root, int targetSum, ArrayList<Integer> tmpRes, int[] result) {
-        for (int i = tmpRes.size() - 1; i >= 0; i--) {
-            System.out.print(tmpRes.get(i) + " ");
-        }
-        System.out.println("cur: " + root.val);
-
         int curSum = 0;
-        tmpRes.add(root.val); // assume upper levels are done
-        for (int i = tmpRes.size() - 1; i >= 0; i--) {
-            curSum += tmpRes.get(i);
+        tmpRes.add(root.val);
+        for (int i = tmpRes.size() - 1; i >= 0; i--) { // assume upper levels are done
+            curSum += tmpRes.get(i); // add from current to upper levels
             if (curSum == targetSum) { // find a path
                 result[0] += 1;
             }
@@ -38,4 +33,10 @@ public class PathSumIII {
             return result[0];
         }
     }
+
+    // [], 8 => 0
+    // [1], 8 => 0
+    // [8], 8 => 1
+    // [2,6], 8 => 1
+    // [10,5,-3,3,2,null,11,3,-2,null,1], sum = 8 => 3 (5 -> 3, 5 -> 2 -> 1, -3 -> 11)
 }
