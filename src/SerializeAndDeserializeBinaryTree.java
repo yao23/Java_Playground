@@ -9,58 +9,14 @@ import java.util.Map;
 
 public class SerializeAndDeserializeBinaryTree { // class Codec in LeetCode
     // Encodes a tree to a single string.
-    public String serializeV0(TreeNode root) {
-        if (root == null) {
-            return "";
-        } else {
-            StringBuilder data = new StringBuilder();
-            Deque<TreeNode> queue = new ArrayDeque<>();
-            queue.add(root);
-            int curLevel = 1;
-            StringBuilder curLevelStr = new StringBuilder(root.val + ",");
-
-            while (!queue.isEmpty()) {
-                data.append((curLevelStr.toString()));
-                curLevelStr = new StringBuilder();
-                int nextLevel = 0;
-
-                for (int i = 0; i < curLevel; i++) {
-                    TreeNode cur = queue.pop();
-
-                    if (cur.left == null) {
-                        curLevelStr.append("null,");
-                    } else {
-                        curLevelStr.append(cur.left.val);
-                        curLevelStr.append(",");
-                        queue.add(cur.left);
-                        nextLevel++;
-                    }
-
-                    if (cur.right == null) {
-                        curLevelStr.append("null,");
-                    } else {
-                        curLevelStr.append(cur.right.val);
-                        curLevelStr.append(",");
-                        queue.add(cur.right);
-                        nextLevel++;
-                    }
-                }
-
-                curLevel = nextLevel; // update for next level nodes iteration
-            }
-
-            return data.toString().substring(0, data.length() - 1); // remove last comma
-        }
-    }
-
     public String serialize(TreeNode root) {
         if (root == null) {
             return "";
         } else {
             StringBuilder data = new StringBuilder();
             Map<Integer,TreeNode> map = new HashMap<>();
-            int height = buildMap(root, 0, map); System.out.println("height: " + height);
-            int numNode = getNumNode(height); System.out.println("numNode: " + numNode);
+            int height = buildMap(root, 0, map);
+            int numNode = getNumNode(height);
 
             for (int i = 0; i < numNode; i++) {
                 if (map.containsKey(i)) {
@@ -133,6 +89,50 @@ public class SerializeAndDeserializeBinaryTree { // class Codec in LeetCode
             num += ((int)Math.pow(2, i));
         }
         return num;
+    }
+
+    public String serializeV0(TreeNode root) { // test case 6 not working, return [5,2,3,null,null,2,4]
+        if (root == null) {
+            return "";
+        } else {
+            StringBuilder data = new StringBuilder();
+            Deque<TreeNode> queue = new ArrayDeque<>();
+            queue.add(root);
+            int curLevel = 1;
+            StringBuilder curLevelStr = new StringBuilder(root.val + ",");
+
+            while (!queue.isEmpty()) {
+                data.append((curLevelStr.toString()));
+                curLevelStr = new StringBuilder();
+                int nextLevel = 0;
+
+                for (int i = 0; i < curLevel; i++) {
+                    TreeNode cur = queue.pop();
+
+                    if (cur.left == null) {
+                        curLevelStr.append("null,");
+                    } else {
+                        curLevelStr.append(cur.left.val);
+                        curLevelStr.append(",");
+                        queue.add(cur.left);
+                        nextLevel++;
+                    }
+
+                    if (cur.right == null) {
+                        curLevelStr.append("null,");
+                    } else {
+                        curLevelStr.append(cur.right.val);
+                        curLevelStr.append(",");
+                        queue.add(cur.right);
+                        nextLevel++;
+                    }
+                }
+
+                curLevel = nextLevel; // update for next level nodes iteration
+            }
+
+            return data.toString().substring(0, data.length() - 1); // remove last comma
+        }
     }
 
     // Your Codec object will be instantiated and called as such:
