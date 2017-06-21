@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class SerializeAndDeserializeBinaryTree { // class Codec in LeetCode
     // Encodes a tree to a single string.
-    public String serialize(TreeNode root) { // Memory Limit Exceeded, test case 7
+    public String serialize(TreeNode root) { // Memory Limit Exceeded, pass 46/47 test cases but test case 7 (47 in LC)
         if (root == null) {
             return "";
         } else {
@@ -58,13 +58,34 @@ public class SerializeAndDeserializeBinaryTree { // class Codec in LeetCode
             if (cur == null) {
                 return cur;
             } else {
-                TreeNode left = buildTree(2 * index + 1, strs);
-                TreeNode right = buildTree(2 * index + 2, strs);
-                cur.left = left;
-                cur.right = right;
+                if (index > 0) {
+                    int pre = index - 1;
+                    // System.out.println("pre idx: " + (pre) + ", pre str: " + strs[pre]);
+                    String preStr = strs[pre];
+                    if (preStr.equals("null")) {
+                        while (preStr.equals("null") && pre > 0) {
+                            // System.out.println("pre idx: " + (pre - 1) + ", pre str: " + strs[pre - 1]);
+                            preStr = strs[--pre];
+                        }
+                        pre++;
+                        addChildren(cur, pre, strs);
+                    } else {
+                        addChildren(cur, index, strs);
+                    }
+                } else {
+                    addChildren(cur, index, strs);
+                }
+
                 return cur;
             }
         }
+    }
+
+    private void addChildren(TreeNode root, int index, String[] strs) {
+        TreeNode left = buildTree(2 * index + 1, strs);
+        TreeNode right = buildTree(2 * index + 2, strs);
+        root.left = left;
+        root.right = right;
     }
 
     private int buildMap(TreeNode root, int index, Map<Integer, TreeNode> map) {
@@ -134,6 +155,23 @@ public class SerializeAndDeserializeBinaryTree { // class Codec in LeetCode
             }
 
             return data.toString().substring(0, data.length() - 1); // remove last comma
+        }
+    }
+
+    private TreeNode buildTreeV0(int index, String[] strs) { // test case 6 not working, return [5,2,3,null,null,2,4]
+        if (index >= strs.length) {
+            return null;
+        } else {
+            TreeNode cur = getNode(strs[index]);
+            if (cur == null) {
+                return cur;
+            } else {
+                TreeNode left = buildTree(2 * index + 1, strs);
+                TreeNode right = buildTree(2 * index + 2, strs);
+                cur.left = left;
+                cur.right = right;
+                return cur;
+            }
         }
     }
 
