@@ -84,11 +84,13 @@ public class SerializeAndDeserializeBinaryTree { // class Codec in LeetCode
     }
 
     private int getNumNode(int height) {
-        int num = 0;
-        for (int i = 0; i < height; i++) {
-            num += ((int)Math.pow(2, i));
-        }
-        return num;
+        return ((int)Math.pow(2, height) - 1); // Geometric progression, Sn = a1 * (1 - q ^ n) / (1 - q)
+
+//        int num = 0;
+//        for (int i = 0; i < height; i++) {
+//            num += ((int)Math.pow(2, i));
+//        }
+//        return num;
     }
 
     public String serializeV0(TreeNode root) { // test case 6 not working, return [5,2,3,null,null,2,4]
