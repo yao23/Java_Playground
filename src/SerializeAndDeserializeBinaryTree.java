@@ -4,10 +4,12 @@
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SerializeAndDeserializeBinaryTree { // class Codec in LeetCode
     // Encodes a tree to a single string.
-    public String serialize(TreeNode root) {
+    public String serializeV0(TreeNode root) {
         if (root == null) {
             return "";
         } else {
@@ -51,6 +53,28 @@ public class SerializeAndDeserializeBinaryTree { // class Codec in LeetCode
         }
     }
 
+    public String serialize(TreeNode root) {
+        if (root == null) {
+            return "";
+        } else {
+            StringBuilder data = new StringBuilder();
+            Map<Integer,TreeNode> map = new HashMap<>();
+            int height = buildMap(root, 0, map); System.out.println("height: " + height);
+            int numNode = getNumNode(height); System.out.println("numNode: " + numNode);
+
+            for (int i = 0; i < numNode; i++) {
+                if (map.containsKey(i)) {
+                    data.append(map.get(i).val);
+                } else {
+                    data.append("null");
+                }
+                data.append(",");
+            }
+
+            return data.toString().substring(0, data.length() - 1); // remove last comma
+        }
+    }
+
     // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
         if (data.equals("")) {
@@ -85,6 +109,30 @@ public class SerializeAndDeserializeBinaryTree { // class Codec in LeetCode
                 return cur;
             }
         }
+    }
+
+    private int buildMap(TreeNode root, int index, Map<Integer, TreeNode> map) {
+        int left, right;
+        map.put(index, root);
+        if (root.left != null) {
+            left = buildMap(root.left, 2 * index + 1, map);
+        } else {
+            left = 0;
+        }
+        if (root.right != null) {
+            right = buildMap(root.right, 2 * index + 2, map);
+        } else {
+            right = 0;
+        }
+        return 1 + Math.max(left, right);
+    }
+
+    private int getNumNode(int height) {
+        int num = 0;
+        for (int i = 0; i < height; i++) {
+            num += ((int)Math.pow(2, i));
+        }
+        return num;
     }
 
     // Your Codec object will be instantiated and called as such:
