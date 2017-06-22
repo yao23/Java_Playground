@@ -9,23 +9,11 @@ import java.util.Map;
 
 public class SerializeAndDeserializeBinaryTree { // class Codec in LeetCode
     // Encodes a tree to a single string.
-    public String serialize(TreeNode root) { // Memory Limit Exceeded, pass 46/47 test cases but test case 7 (47 in LC)
+    public String serialize(TreeNode root) {
         if (root == null) {
             return "";
         } else {
             StringBuilder data = new StringBuilder();
-            Map<Integer,TreeNode> map = new HashMap<>();
-            int height = buildMap(root, 0, map);
-            int numNode = getNumNode(height);
-
-            for (int i = 0; i < numNode; i++) {
-                if (map.containsKey(i)) {
-                    data.append(map.get(i).val);
-                } else {
-                    data.append("null");
-                }
-                data.append(",");
-            }
 
             return data.toString().substring(0, data.length() - 1); // remove last comma
         }
@@ -172,6 +160,28 @@ public class SerializeAndDeserializeBinaryTree { // class Codec in LeetCode
                 cur.right = right;
                 return cur;
             }
+        }
+    }
+
+    public String serializeV1(TreeNode root) { // Memory Limit Exceeded, pass 46/47 test cases but test case 7 (47 in LC)
+        if (root == null) {
+            return "";
+        } else {
+            StringBuilder data = new StringBuilder();
+            Map<Integer,TreeNode> map = new HashMap<>();
+            int height = buildMap(root, 0, map);
+            int numNode = getNumNode(height);
+
+            for (int i = 0; i < numNode; i++) {
+                if (map.containsKey(i)) {
+                    data.append(map.get(i).val);
+                } else {
+                    data.append("null");
+                }
+                data.append(",");
+            }
+
+            return data.toString().substring(0, data.length() - 1); // remove last comma
         }
     }
 
