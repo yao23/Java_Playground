@@ -2,10 +2,7 @@
  * Created by liyao on 6/20/17.
  */
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class SerializeAndDeserializeBinaryTree { // class Codec in LeetCode
     // Encodes a tree to a single string.
@@ -14,8 +11,24 @@ public class SerializeAndDeserializeBinaryTree { // class Codec in LeetCode
             return "";
         } else {
             StringBuilder data = new StringBuilder();
+            LinkedList<TreeNode> queue = new LinkedList<>();
+            queue.add(root);
 
-            return data.toString().substring(0, data.length() - 1); // remove last comma
+            while (!queue.isEmpty()) {
+                TreeNode cur = queue.poll();
+                if (cur != null) {
+                    data.append(root.val);
+                    data.append(",");
+                    queue.add(cur.left);
+                    queue.add(cur.right);
+                } else {
+                    data.append("#,");
+                }
+            }
+
+            data.deleteCharAt(data.length() - 1); // remove last comma
+
+            return data.toString();
         }
     }
 
@@ -26,7 +39,7 @@ public class SerializeAndDeserializeBinaryTree { // class Codec in LeetCode
         } else {
             String[] strs = data.split(",");
 
-            return buildTree(0, strs);
+            return buildTree(strs);
         }
     }
 
@@ -38,40 +51,33 @@ public class SerializeAndDeserializeBinaryTree { // class Codec in LeetCode
         }
     }
 
-    private TreeNode buildTree(int index, String[] strs) {
-        if (index >= strs.length) {
-            return null;
-        } else {
-            TreeNode cur = getNode(strs[index]);
-            if (cur == null) {
-                return cur;
-            } else {
-                if (index > 0) {
-                    int pre = index - 1;
-                    // System.out.println("pre idx: " + (pre) + ", pre str: " + strs[pre]);
-                    String preStr = strs[pre];
-                    if (preStr.equals("null")) {
-                        while (preStr.equals("null") && pre > 0) {
-                            // System.out.println("pre idx: " + (pre - 1) + ", pre str: " + strs[pre - 1]);
-                            preStr = strs[--pre];
-                        }
-                        pre++;
-                        addChildren(cur, pre, strs);
-                    } else {
-                        addChildren(cur, index, strs);
-                    }
-                } else {
-                    addChildren(cur, index, strs);
-                }
+    private TreeNode buildTree(String[] strs) {
+        TreeNode root = getNode(strs[0]);
+        LinkedList<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
 
-                return cur;
+        int i = 1;
+        while (!queue.isEmpty()) {
+            TreeNode t = queue.poll();
+            if (t == null) {
+                continue;
+            } else {
+                t.left = getNode(strs[i]);
+                queue.offer(t.left);
+                i++;
+
+                t.right = getNode(strs[i]);
+                queue.offer(t.right);
+                i++;
             }
         }
+
+        return root;
     }
 
     private void addChildren(TreeNode root, int index, String[] strs) {
-        TreeNode left = buildTree(2 * index + 1, strs);
-        TreeNode right = buildTree(2 * index + 2, strs);
+        TreeNode left = buildTreeV0(2 * index + 1, strs);
+        TreeNode right = buildTreeV0(2 * index + 2, strs);
         root.left = left;
         root.right = right;
     }
@@ -102,7 +108,46 @@ public class SerializeAndDeserializeBinaryTree { // class Codec in LeetCode
 //        return num;
     }
 
-    public String serializeV0(TreeNode root) { // test case 6 not working, return [5,2,3,null,null,2,4]
+    public String serializeV0(TreeNode root) { // Memory Limit Exceeded, pass 46/47 test cases but test case 7 (47 in LC)
+        if (root == null) {
+            return "";
+        } else {
+            StringBuilder data = new StringBuilder();
+            Map<Integer,TreeNode> map = new HashMap<>();
+            int height = buildMap(root, 0, map);
+            int numNode = getNumNode(height);
+
+            for (int i = 0; i < numNode; i++) {
+                if (map.containsKey(i)) {
+                    data.append(map.get(i).val);
+                } else {
+                    data.append("null");
+                }
+                data.append(",");
+            }
+
+            return data.toString().substring(0, data.length() - 1); // remove last comma
+        }
+    }
+
+    private TreeNode buildTreeV0(int index, String[] strs) { // test case 6 not working, return [5,2,3,null,null,2,4]
+        if (index >= strs.length) {
+            return null;
+        } else {
+            TreeNode cur = getNode(strs[index]);
+            if (cur == null) {
+                return cur;
+            } else {
+                TreeNode left = buildTreeV0(2 * index + 1, strs);
+                TreeNode right = buildTreeV0(2 * index + 2, strs);
+                cur.left = left;
+                cur.right = right;
+                return cur;
+            }
+        }
+    }
+
+    public String serializeV1(TreeNode root) { // test case 6 not working, return [5,2,3,null,null,2,4]
         if (root == null) {
             return "";
         } else {
@@ -146,7 +191,7 @@ public class SerializeAndDeserializeBinaryTree { // class Codec in LeetCode
         }
     }
 
-    private TreeNode buildTreeV0(int index, String[] strs) { // test case 6 not working, return [5,2,3,null,null,2,4]
+    private TreeNode buildTreeV1(int index, String[] strs) { // not working
         if (index >= strs.length) {
             return null;
         } else {
@@ -154,34 +199,26 @@ public class SerializeAndDeserializeBinaryTree { // class Codec in LeetCode
             if (cur == null) {
                 return cur;
             } else {
-                TreeNode left = buildTree(2 * index + 1, strs);
-                TreeNode right = buildTree(2 * index + 2, strs);
-                cur.left = left;
-                cur.right = right;
+                if (index > 0) {
+                    int pre = index - 1;
+                    // System.out.println("pre idx: " + (pre) + ", pre str: " + strs[pre]);
+                    String preStr = strs[pre];
+                    if (preStr.equals("null")) {
+                        while (preStr.equals("null") && pre > 0) {
+                            // System.out.println("pre idx: " + (pre - 1) + ", pre str: " + strs[pre - 1]);
+                            preStr = strs[--pre];
+                        }
+                        pre++;
+                        addChildren(cur, pre, strs);
+                    } else {
+                        addChildren(cur, index, strs);
+                    }
+                } else {
+                    addChildren(cur, index, strs);
+                }
+
                 return cur;
             }
-        }
-    }
-
-    public String serializeV1(TreeNode root) { // Memory Limit Exceeded, pass 46/47 test cases but test case 7 (47 in LC)
-        if (root == null) {
-            return "";
-        } else {
-            StringBuilder data = new StringBuilder();
-            Map<Integer,TreeNode> map = new HashMap<>();
-            int height = buildMap(root, 0, map);
-            int numNode = getNumNode(height);
-
-            for (int i = 0; i < numNode; i++) {
-                if (map.containsKey(i)) {
-                    data.append(map.get(i).val);
-                } else {
-                    data.append("null");
-                }
-                data.append(",");
-            }
-
-            return data.toString().substring(0, data.length() - 1); // remove last comma
         }
     }
 
