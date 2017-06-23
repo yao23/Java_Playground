@@ -41,7 +41,7 @@ public class CourseSchedule {
                 return;
             } else {
                 for (Integer neighbor : neighbors) {
-                    zeroDegreeNeighbors.add(neighbor);
+//                    zeroDegreeNeighbors.add(neighbor);
                     int inDegree = elementDegrees.get(neighbor);
                     elementDegrees.put(neighbor, inDegree - 1);
                 }
@@ -110,5 +110,6 @@ public class CourseSchedule {
     // 2, [[1,0]] => true
     // 2, [[0,1],[1,0]] => false
     // 3, [[1,0],[2,1]] => true
+    // 3, [[2,0],[2,1]] => true
     // 6, [[1,0],[2,0],[3,0],[4,1],[4,2],[4,3],[5,2],[5,3]] => true // Line 39: java.lang.NullPointerException, fixed by null check
 }
