@@ -44,6 +44,26 @@ public class CourseSchedule {
         }
     }
 
+    private void printDegrees(Map<Integer, Integer> elementDegrees) {
+        for (Map.Entry<Integer, Integer> elementDegree : elementDegrees.entrySet()) {
+            System.out.println("num, degree: " + elementDegree.getKey() + ", " + elementDegree.getValue());
+            System.out.println();
+        }
+        System.out.println();
+    }
+
+    private void printNeighbors(Map<Integer, Set<Integer>> elementNeighbors) {
+        for (Map.Entry<Integer, Set<Integer>> elementNeighbor : elementNeighbors.entrySet()) {
+            Set<Integer> set = elementNeighbor.getValue();
+            System.out.println("num - neighbors: " + elementNeighbor.getKey());
+            for (Integer n : set) {
+                System.out.print(n + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         int row = prerequisites.length;
         if (row <= 1) {
@@ -61,6 +81,9 @@ public class CourseSchedule {
                 addDegree(elementDegrees, second, 1); // 2nd num in-degree
             }
 
+            printNeighbors(elementNeighbors);
+            printDegrees(elementDegrees);
+
             for (Map.Entry<Integer, Integer> elementDegree : elementDegrees.entrySet()) {
                 if (elementDegree.getValue() == 0) { // in-degree is 0
                     zeroDegreeNeighbors.add(elementDegree.getKey());
@@ -73,4 +96,7 @@ public class CourseSchedule {
             return (numCourses >= zeroDegreeElement.size());
         }
     }
+
+    // 2, [[1,0]] => true
+    // 6, [[1,0],[2,0],[3,0],[4,1],[4,2],[4,3],[5,2],[5,3]] => true // Line 39: java.lang.NullPointerException
 }
