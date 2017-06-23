@@ -44,7 +44,7 @@ public class SerializeAndDeserializeBinaryTree { // class Codec in LeetCode
     }
 
     private TreeNode getNode(String data) {
-        if (data.equals("null")) {
+        if (data.equals("#")) {
             return null;
         } else {
             return new TreeNode(Integer.valueOf(data));

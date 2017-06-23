@@ -67,10 +67,12 @@ public class SerializeAndDeserializeBST {
     }
 
     private TreeNode getNode(String data) {
-        if (data.equals("null")) {
+        if (data.equals("#")) {
             return null;
         } else {
             return new TreeNode(Integer.valueOf(data));
         }
     }
+
+    // [2,1,3] => [2,1,3]
 }
