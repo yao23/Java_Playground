@@ -74,5 +74,9 @@ public class SerializeAndDeserializeBST {
         }
     }
 
+    // [] => []
+    // [1] => [1]
     // [2,1,3] => [2,1,3]
+
+    // beats 52.89%
 }
