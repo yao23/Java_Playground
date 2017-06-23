@@ -17,7 +17,7 @@ public class SerializeAndDeserializeBinaryTree { // class Codec in LeetCode
             while (!queue.isEmpty()) {
                 TreeNode cur = queue.poll();
                 if (cur != null) {
-                    data.append(root.val);
+                    data.append(cur.val);
                     data.append(",");
                     queue.add(cur.left);
                     queue.add(cur.right);
