@@ -36,10 +36,15 @@ public class CourseSchedule {
         while (!zeroDegreeNeighbors.isEmpty()) {
             int cur = zeroDegreeNeighbors.poll();
             Set<Integer> neighbors = elementNeighbors.get(cur);
-            for (Integer neighbor : neighbors) {
-                zeroDegreeNeighbors.add(neighbor);
-                int inDegree = elementDegrees.get(neighbor);
-                elementDegrees.put(neighbor, inDegree - 1);
+            System.out.println("num: " + cur + ", neighbors: " + String.valueOf(neighbors == null));
+            if (neighbors == null) {
+                return;
+            } else {
+                for (Integer neighbor : neighbors) {
+                    zeroDegreeNeighbors.add(neighbor);
+                    int inDegree = elementDegrees.get(neighbor);
+                    elementDegrees.put(neighbor, inDegree - 1);
+                }
             }
         }
     }
