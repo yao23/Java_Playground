@@ -33,7 +33,7 @@ public class CourseSchedule {
     }
 
     private void processNeighbors(Queue<Integer> zeroDegreeNeighbors, Map<Integer, Integer> elementDegrees, Map<Integer, Set<Integer>> elementNeighbors) {
-        while (!zeroDegreeNeighbors.isEmpty()) {
+        if (!zeroDegreeNeighbors.isEmpty()) {
             int cur = zeroDegreeNeighbors.poll();
             Set<Integer> neighbors = elementNeighbors.get(cur);
             System.out.println("num: " + cur + ", neighbors: " + String.valueOf(neighbors == null));
@@ -91,17 +91,24 @@ public class CourseSchedule {
 
             for (Map.Entry<Integer, Integer> elementDegree : elementDegrees.entrySet()) {
                 if (elementDegree.getValue() == 0) { // in-degree is 0
-                    zeroDegreeNeighbors.add(elementDegree.getKey());
+                    int element = elementDegree.getKey();
+                    zeroDegreeElement.add(element);
+                    zeroDegreeNeighbors.add(element);
                     processNeighbors(zeroDegreeNeighbors, elementDegrees, elementNeighbors);
                 } else { // in-degree is larger than 0
                     continue;
                 }
             }
-
-            return (numCourses >= zeroDegreeElement.size());
+            System.out.println(numCourses + ", " + zeroDegreeElement.size());
+            for (Integer n : zeroDegreeElement) {
+                System.out.print(n + " ");
+            }
+            return (numCourses == zeroDegreeElement.size());
         }
     }
 
     // 2, [[1,0]] => true
-    // 6, [[1,0],[2,0],[3,0],[4,1],[4,2],[4,3],[5,2],[5,3]] => true // Line 39: java.lang.NullPointerException
+    // 2, [[0,1],[1,0]] => false
+    // 3, [[1,0],[2,1]] => true
+    // 6, [[1,0],[2,0],[3,0],[4,1],[4,2],[4,3],[5,2],[5,3]] => true // Line 39: java.lang.NullPointerException, fixed by null check
 }
