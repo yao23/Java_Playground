@@ -26,9 +26,6 @@ public class CourseSchedule {
                 addDegree(elementDegrees, second, 1); // 2nd num in-degree
             }
 
-            // System.out.println("num - degree: " + elementDegrees);
-            // System.out.println("num - neighbors: " + elementNeighbors);
-
             for (Map.Entry<Integer, Integer> elementDegree : elementDegrees.entrySet()) {
                 if (elementDegree.getValue() == 0) { // in-degree is 0
                     int element = elementDegree.getKey();
@@ -40,8 +37,6 @@ public class CourseSchedule {
             }
 
             processNeighbors(zeroDegreeNeighbors, elementDegrees, elementNeighbors, zeroDegreeElement);
-
-            // System.out.println("zero degree element: " + zeroDegreeElement);
 
             return (numCourses == zeroDegreeElement.size());
         }
@@ -88,7 +83,7 @@ public class CourseSchedule {
                         continue;
                     } else { // next zero degree element
                         zeroDegreeElement.add(neighbor);
-                        zeroDegreeNeighbors.add(neighbor);
+                        zeroDegreeNeighbors.add(neighbor); // add to queue for next step processing
                     }
                 }
             }
@@ -213,4 +208,6 @@ public class CourseSchedule {
     // 4, [[1,0],[2,1],[3,2],[1,3]] => false
     // 4, [[0,1],[1,2],[0,3],[3,0]] => false
     // 6, [[1,0],[2,0],[3,0],[4,1],[4,2],[4,3],[5,2],[5,3]] => true // Line 39: java.lang.NullPointerException, fixed by null check
+
+    // beats 50.15%
 }
