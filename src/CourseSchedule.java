@@ -103,7 +103,8 @@ public class CourseSchedule {
             printNeighbors(elementNeighbors);
             printDegrees(elementDegrees);
 
-            sortedMap.putAll(elementDegrees);
+//            sortedMap.putAll(elementDegrees);
+            elementDegrees = sortByValue(elementDegrees);
 
             for (Map.Entry<Integer, Integer> elementDegree : sortedMap.entrySet()) {
                 if (elementDegree.getValue() == 0) { // in-degree is 0
@@ -120,7 +121,8 @@ public class CourseSchedule {
             for (Integer n : zeroDegreeElement) {
                 System.out.print(n + " ");
             }
-            return (numCourses == zeroDegreeElement.size());
+            int num = zeroDegreeElement.size();
+            return (num > 0 && numCourses >= num);
         }
     }
 
@@ -142,10 +144,29 @@ public class CourseSchedule {
         }
     }
 
+    private static <K, V extends Comparable<? super V>> Map<K, V> sortByValue( Map<K, V> map ) {
+        List<Map.Entry<K, V>> list =
+                new LinkedList<>( map.entrySet() );
+        Collections.sort( list, new Comparator<Map.Entry<K, V>>() {
+            @Override
+            public int compare( Map.Entry<K, V> o1, Map.Entry<K, V> o2 ) {
+                return ( o1.getValue() ).compareTo( o2.getValue() );
+            }
+        } );
+
+        Map<K, V> result = new LinkedHashMap<>();
+        for (Map.Entry<K, V> entry : list) {
+            result.put( entry.getKey(), entry.getValue() );
+        }
+        return result;
+    }
+
     // 2, [[1,0]] => true
     // 2, [[0,1],[1,0]] => false
     // 3, [[1,0],[2,1]] => true
     // 3, [[2,0],[2,1]] => true
-    // 3, [[0,1],[0,2],[1,2]] =>
+    // 3, [[0,1],[0,2],[1,2]] => true
+    // 4, [[3,0],[0,1]] => true
+    // 4, [[1,0],[2,1],[3,2],[1,3]] => false
     // 6, [[1,0],[2,0],[3,0],[4,1],[4,2],[4,3],[5,2],[5,3]] => true // Line 39: java.lang.NullPointerException, fixed by null check
 }
