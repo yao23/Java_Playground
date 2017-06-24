@@ -32,7 +32,7 @@ public class CourseSchedule {
         }
     }
 
-    private void processNeighbors(Queue<Integer> zeroDegreeNeighbors, Map<Integer, Integer> elementDegrees, Map<Integer, Set<Integer>> elementNeighbors) {
+    private void processNeighbors(Queue<Integer> zeroDegreeNeighbors, Map<Integer, Integer> elementDegrees, Map<Integer, Set<Integer>> elementNeighbors, Set<Integer> zeroDegreeElement) {
         while (!zeroDegreeNeighbors.isEmpty()) {
             int cur = zeroDegreeNeighbors.poll();
             System.out.println("cur num: " + cur);
@@ -44,11 +44,16 @@ public class CourseSchedule {
                 for (Integer neighbor : neighbors) {
                     System.out.println("neighbor: " + neighbor);
                     zeroDegreeNeighbors.add(neighbor);
+                    if (!elementDegrees.containsKey(neighbor)) {
+                        System.out.println("map has no key: " + neighbor);
+                        continue;
+                    }
                     int inDegree = elementDegrees.get(neighbor);
-                    if (inDegree > 0) {
-                        elementDegrees.put(neighbor, inDegree - 1);
+                    elementDegrees.put(neighbor, inDegree - 1);
+                    if (inDegree > 1) {
+                        continue;
                     } else {
-                        continue; // TODO: change result list to set and add neighbor
+                        zeroDegreeElement.add(neighbor);
                     }
                     System.out.println("neighbor-degree: " + neighbor + ", " + elementDegrees.get(neighbor));
                 }
@@ -84,6 +89,8 @@ public class CourseSchedule {
             Set<Integer> zeroDegreeElement = new HashSet<>();
             Queue<Integer> zeroDegreeNeighbors = new ArrayDeque<>();
             Map<Integer, Integer> elementDegrees = new HashMap<>();
+            ValueComparator vc = new ValueComparator(elementDegrees);
+            TreeMap<Integer, Integer> sortedMap = new TreeMap<>(vc);
             Map<Integer, Set<Integer>> elementNeighbors = new HashMap<>();
 
             for (int i = 0; i < row; i++) {
@@ -96,13 +103,15 @@ public class CourseSchedule {
             printNeighbors(elementNeighbors);
             printDegrees(elementDegrees);
 
-            for (Map.Entry<Integer, Integer> elementDegree : elementDegrees.entrySet()) {
+            sortedMap.putAll(elementDegrees);
+
+            for (Map.Entry<Integer, Integer> elementDegree : sortedMap.entrySet()) {
                 if (elementDegree.getValue() == 0) { // in-degree is 0
                     int element = elementDegree.getKey();
                     System.out.println("zero degree num: " + element);
                     zeroDegreeElement.add(element);
                     zeroDegreeNeighbors.add(element);
-                    processNeighbors(zeroDegreeNeighbors, elementDegrees, elementNeighbors);
+                    processNeighbors(zeroDegreeNeighbors, elementDegrees, elementNeighbors, zeroDegreeElement);
                 } else { // in-degree is larger than 0
                     continue;
                 }
@@ -112,6 +121,24 @@ public class CourseSchedule {
                 System.out.print(n + " ");
             }
             return (numCourses == zeroDegreeElement.size());
+        }
+    }
+
+    class ValueComparator implements Comparator<Integer> {
+        Map<Integer, Integer> base;
+
+        public ValueComparator(Map<Integer, Integer> base) {
+            this.base = base;
+        }
+
+        // Note: this comparator imposes orderings that are inconsistent with
+        // equals.
+        public int compare(Integer a, Integer b) {
+            if (base.get(a) <= base.get(b)) {
+                return -1;
+            } else {
+                return 1;
+            } // returning 0 would merge keys
         }
     }
 
