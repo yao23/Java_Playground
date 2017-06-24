@@ -33,17 +33,24 @@ public class CourseSchedule {
     }
 
     private void processNeighbors(Queue<Integer> zeroDegreeNeighbors, Map<Integer, Integer> elementDegrees, Map<Integer, Set<Integer>> elementNeighbors) {
-        if (!zeroDegreeNeighbors.isEmpty()) {
+        while (!zeroDegreeNeighbors.isEmpty()) {
             int cur = zeroDegreeNeighbors.poll();
+            System.out.println("cur num: " + cur);
             Set<Integer> neighbors = elementNeighbors.get(cur);
             System.out.println("num: " + cur + ", neighbors: " + String.valueOf(neighbors == null));
             if (neighbors == null) {
                 return;
             } else {
                 for (Integer neighbor : neighbors) {
-//                    zeroDegreeNeighbors.add(neighbor);
+                    System.out.println("neighbor: " + neighbor);
+                    zeroDegreeNeighbors.add(neighbor);
                     int inDegree = elementDegrees.get(neighbor);
-                    elementDegrees.put(neighbor, inDegree - 1);
+                    if (inDegree > 0) {
+                        elementDegrees.put(neighbor, inDegree - 1);
+                    } else {
+                        continue; // TODO: change result list to set and add neighbor
+                    }
+                    System.out.println("neighbor-degree: " + neighbor + ", " + elementDegrees.get(neighbor));
                 }
             }
         }
@@ -74,7 +81,7 @@ public class CourseSchedule {
         if (row <= 1) {
             return true;
         } else {
-            List<Integer> zeroDegreeElement = new ArrayList<>();
+            Set<Integer> zeroDegreeElement = new HashSet<>();
             Queue<Integer> zeroDegreeNeighbors = new ArrayDeque<>();
             Map<Integer, Integer> elementDegrees = new HashMap<>();
             Map<Integer, Set<Integer>> elementNeighbors = new HashMap<>();
@@ -92,6 +99,7 @@ public class CourseSchedule {
             for (Map.Entry<Integer, Integer> elementDegree : elementDegrees.entrySet()) {
                 if (elementDegree.getValue() == 0) { // in-degree is 0
                     int element = elementDegree.getKey();
+                    System.out.println("zero degree num: " + element);
                     zeroDegreeElement.add(element);
                     zeroDegreeNeighbors.add(element);
                     processNeighbors(zeroDegreeNeighbors, elementDegrees, elementNeighbors);
@@ -111,5 +119,6 @@ public class CourseSchedule {
     // 2, [[0,1],[1,0]] => false
     // 3, [[1,0],[2,1]] => true
     // 3, [[2,0],[2,1]] => true
+    // 3, [[0,1],[0,2],[1,2]] =>
     // 6, [[1,0],[2,0],[3,0],[4,1],[4,2],[4,3],[5,2],[5,3]] => true // Line 39: java.lang.NullPointerException, fixed by null check
 }
