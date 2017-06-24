@@ -5,6 +5,48 @@
 import java.util.*;
 
 public class CourseSchedule {
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        int row = prerequisites.length;
+        if (row <= 1) {
+            return true;
+        } else {
+            Set<Integer> zeroDegreeElement = new HashSet<>();
+            Queue<Integer> zeroDegreeNeighbors = new ArrayDeque<>();
+            Map<Integer, Integer> elementDegrees = new HashMap<>();
+            Map<Integer, Set<Integer>> elementNeighbors = new HashMap<>();
+
+            for (int i = 0; i < numCourses; i++) { // some course info has not been provided (default in-degree as 0) as 2 in test case 6
+                elementDegrees.put(i, 0);
+            }
+
+            for (int i = 0; i < row; i++) {
+                int first = prerequisites[i][1], second = prerequisites[i][0];
+                addNeighbor(elementNeighbors, first, second);
+                addDegree(elementDegrees, first, 0); // 1st num in-degree
+                addDegree(elementDegrees, second, 1); // 2nd num in-degree
+            }
+
+            // System.out.println("num - degree: " + elementDegrees);
+            // System.out.println("num - neighbors: " + elementNeighbors);
+
+            for (Map.Entry<Integer, Integer> elementDegree : elementDegrees.entrySet()) {
+                if (elementDegree.getValue() == 0) { // in-degree is 0
+                    int element = elementDegree.getKey();
+                    zeroDegreeElement.add(element);
+                    zeroDegreeNeighbors.add(element);
+                } else { // in-degree is larger than 0
+                    continue;
+                }
+            }
+
+            processNeighbors(zeroDegreeNeighbors, elementDegrees, elementNeighbors, zeroDegreeElement);
+
+            // System.out.println("zero degree element: " + zeroDegreeElement);
+
+            return (numCourses == zeroDegreeElement.size());
+        }
+    }
+
     private void addDegree(Map<Integer, Integer> elementDegrees, int element, int mode) {
         if (mode == 0) { // add degree for 1st num
             if (elementDegrees.containsKey(element)) { // added before
@@ -33,6 +75,27 @@ public class CourseSchedule {
     }
 
     private void processNeighbors(Queue<Integer> zeroDegreeNeighbors, Map<Integer, Integer> elementDegrees, Map<Integer, Set<Integer>> elementNeighbors, Set<Integer> zeroDegreeElement) {
+        while (!zeroDegreeNeighbors.isEmpty()) {
+            int cur = zeroDegreeNeighbors.poll();
+            Set<Integer> neighbors = elementNeighbors.get(cur);
+            if (neighbors == null) {
+                continue;
+            } else {
+                for (Integer neighbor : neighbors) {
+                    int inDegree = elementDegrees.get(neighbor);
+                    elementDegrees.put(neighbor, inDegree - 1);
+                    if (inDegree > 1) {
+                        continue;
+                    } else { // next zero degree element
+                        zeroDegreeElement.add(neighbor);
+                        zeroDegreeNeighbors.add(neighbor);
+                    }
+                }
+            }
+        }
+    }
+
+    private void processNeighborsV0(Queue<Integer> zeroDegreeNeighbors, Map<Integer, Integer> elementDegrees, Map<Integer, Set<Integer>> elementNeighbors, Set<Integer> zeroDegreeElement) {
         while (!zeroDegreeNeighbors.isEmpty()) {
             int cur = zeroDegreeNeighbors.poll();
             System.out.println("cur num: " + cur);
@@ -81,7 +144,7 @@ public class CourseSchedule {
         System.out.println();
     }
 
-    public boolean canFinish(int numCourses, int[][] prerequisites) {
+    public boolean canFinishV0(int numCourses, int[][] prerequisites) {
         int row = prerequisites.length;
         if (row <= 1) {
             return true;
