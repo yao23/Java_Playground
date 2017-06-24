@@ -1,7 +1,105 @@
-package PACKAGE_NAME;
-
 /**
  * Created by liyao on 6/24/17.
  */
+import java.util.*;
+
 public class CourseScheduleII {
+    public int[] findOrder(int numCourses, int[][] prerequisites) {
+        int row = prerequisites.length;
+        if (row <= 1) {
+            if (row == 0) {
+                return (new int[]{});
+            } else {
+                return (new int[]{prerequisites[0][1], prerequisites[0][0]});
+            }
+        } else {
+            Set<Integer> zeroDegreeElement = new HashSet<>();
+            Queue<Integer> zeroDegreeNeighbors = new ArrayDeque<>();
+            Map<Integer, Integer> elementDegrees = new HashMap<>();
+            Map<Integer, Set<Integer>> elementNeighbors = new HashMap<>();
+
+            for (int i = 0; i < numCourses; i++) { // some course info has not been provided (default in-degree as 0) as 2 in test case 6
+                elementDegrees.put(i, 0);
+            }
+
+            for (int i = 0; i < row; i++) {
+                int first = prerequisites[i][1], second = prerequisites[i][0];
+                addNeighbor(elementNeighbors, first, second);
+                addDegree(elementDegrees, first, 0); // 1st num in-degree
+                addDegree(elementDegrees, second, 1); // 2nd num in-degree
+            }
+
+            for (Map.Entry<Integer, Integer> elementDegree : elementDegrees.entrySet()) {
+                if (elementDegree.getValue() == 0) { // in-degree is 0
+                    int element = elementDegree.getKey();
+                    zeroDegreeElement.add(element);
+                    zeroDegreeNeighbors.add(element);
+                } else { // in-degree is larger than 0
+                    continue;
+                }
+            }
+
+            processNeighbors(zeroDegreeNeighbors, elementDegrees, elementNeighbors, zeroDegreeElement);
+
+            if (numCourses == zeroDegreeElement.size()) {
+                int[] result = new int[numCourses];
+                int i = 0;
+                for (Integer element : zeroDegreeElement) {
+                    result[i] = element;
+                    i++;
+                }
+                return result;
+            } else {
+                return (new int[]{});
+            }
+        }
+    }
+
+    private void addDegree(Map<Integer, Integer> elementDegrees, int element, int mode) {
+        if (mode == 0) { // add degree for 1st num
+            if (elementDegrees.containsKey(element)) { // added before
+                return;
+            } else {
+                elementDegrees.put(element, 0);
+            }
+        } else { // add degree for 2nd num
+            if (elementDegrees.containsKey(element)) {
+                int degree = elementDegrees.get(element);
+                elementDegrees.put(element, degree + 1);
+            } else {
+                elementDegrees.put(element, 1);
+            }
+        }
+    }
+
+    private void addNeighbor(Map<Integer, Set<Integer>> elementNeighbors, int element, int neighbor) {
+        if (elementNeighbors.containsKey(element)) {
+            elementNeighbors.get(element).add(neighbor);
+        } else {
+            Set<Integer> set = new HashSet<>();
+            set.add(neighbor);
+            elementNeighbors.put(element, set);
+        }
+    }
+
+    private void processNeighbors(Queue<Integer> zeroDegreeNeighbors, Map<Integer, Integer> elementDegrees, Map<Integer, Set<Integer>> elementNeighbors, Set<Integer> zeroDegreeElement) {
+        while (!zeroDegreeNeighbors.isEmpty()) {
+            int cur = zeroDegreeNeighbors.poll();
+            Set<Integer> neighbors = elementNeighbors.get(cur);
+            if (neighbors == null) {
+                continue;
+            } else {
+                for (Integer neighbor : neighbors) {
+                    int inDegree = elementDegrees.get(neighbor);
+                    elementDegrees.put(neighbor, inDegree - 1);
+                    if (inDegree > 1) {
+                        continue;
+                    } else { // next zero degree element
+                        zeroDegreeElement.add(neighbor);
+                        zeroDegreeNeighbors.add(neighbor); // add to queue for next step processing
+                    }
+                }
+            }
+        }
+    }
 }
