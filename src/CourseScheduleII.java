@@ -27,12 +27,12 @@ public class CourseScheduleII {
                     result[numCourses - 1] = prerequisites[0][0];
                     result[numCourses - 2] = prerequisites[0][1];
 
-                    int idx = 0;
+                    int idx = 0; // index for courses not in prerequisites array
                     for (int i = 0; i < numCourses - 2; i++) {
                         while (idx == prerequisites[0][0] || idx == prerequisites[0][1]) {
                             idx++;
                         }
-                        result[i] = idx;
+                        result[i] = idx++;
                     }
                     return result;
                 }
