@@ -73,4 +73,11 @@ public class SurroundedRegions {
             }
         }
     }
+
+    // [] => []
+    // ["XXXX"] => ["XXXX"]
+    // ["XOOX"] => ["XOOX"]
+    // ["XXOX"] => ["XXOX"]
+    // ["XXOX","XOXX"] => ["XXOX","XOXX"]
+    // ["XXXX","XOOX","XXOX","XOXX"] => ["XXXX","XXXX","XXXX","XOXX"]
 }
