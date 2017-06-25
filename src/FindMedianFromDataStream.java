@@ -26,7 +26,7 @@ public class FindMedianFromDataStream {
                 if (num >= maxQueue.peek()) {
                     minQueue.offer(num);
                 } else {
-                    minQueue.offer(maxQueue.peek());
+                    minQueue.offer(maxQueue.poll());
                     maxQueue.offer(num);
                 }
             } else if (maxLen == 0) { // minQueue has 1 num
@@ -79,6 +79,14 @@ public class FindMedianFromDataStream {
             }
         }
     }
+
+    // ["MedianFinder","addNum","addNum","findMedian","addNum","findMedian"]
+    // [[],[1],[2],[],[3],[]]
+    // [null,null,null,1.50000,null,2.00000]
+
+    // ["MedianFinder","addNum","findMedian","addNum","findMedian","addNum","findMedian","addNum","findMedian","addNum","findMedian"]
+    // [[],[-1],[],[-2],[],[-3],[],[-4],[],[-5],[]]
+    // [null,null,-1.00000,null,-1.50000,null,-2.00000,null,-2.50000,null,-3.00000]
 }
 
 /**
