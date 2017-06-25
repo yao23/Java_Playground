@@ -2,16 +2,16 @@
  * Created by liyao on 6/24/17.
  */
 public class NumberOfIslands {
-    private void dfs(int x, int y, int[] num, char[][] grid) {
+    private void dfs(int x, int y, char[][] grid) {
         int row = grid.length, col = grid[0].length;
         if (x < 0 || x >= row || y < 0 || y >= col || grid[x][y] == '0') { // out of bounds or invalid point (water)
             return;
         } else { // inside valid point (land)
             grid[x][y] = '0'; // update as visited
-            dfs(x - 1, y, num, grid); // up row
-            dfs(x + 1, y, num, grid); // bottom row
-            dfs(x, y - 1, num, grid); // left col
-            dfs(x, y + 1, num, grid); // right col
+            dfs(x - 1, y, grid); // up row
+            dfs(x + 1, y, grid); // bottom row
+            dfs(x, y - 1, grid); // left col
+            dfs(x, y + 1, grid); // right col
         }
     }
 
@@ -30,7 +30,7 @@ public class NumberOfIslands {
             for (int j = 0; j < col; j++) {
                 if (grid[i][j] == '1') { // land
                     num[0]++;
-                    dfs(i, j, num, grid); // update neighbors
+                    dfs(i, j, grid); // update neighbors
                 } else { // water
                     continue;
                 }
