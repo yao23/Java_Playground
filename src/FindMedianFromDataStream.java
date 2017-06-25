@@ -1,18 +1,65 @@
+import java.util.ArrayDeque;
+
 /**
  * Created by liyao on 6/25/17.
  */
-public class FindMedianFromDataStream { // class MedianFinder in LC
-    /** initialize your data structure here. */
-    public MedianFinder() {
+import java.util.Deque;
+import java.util.ArrayDeque;
 
-    }
+public class FindMedianFromDataStream {
+    public class MedianFinder { // class MedianFinder in LC
+        private Deque<Integer> minStack; // right half
+        private Deque<Integer> maxStack; // left half
 
-    public void addNum(int num) {
+        /** initialize your data structure here. */
+        public MedianFinder() {
+            minStack = new ArrayDeque<>();
+            maxStack = new ArrayDeque<>();
+        }
 
-    }
+        public void addNum(int num) {
+            int minLen = minStack.size();
+            int maxLen = maxStack.size();
 
-    public double findMedian() {
+            if (minLen == maxLen) { // min and max stack sizes are same
+                if (num > maxStack.peek()) {
+                    minStack.push(num);
+                } else {
+                    maxStack.push(num);
+                }
+            } else { // min and max stack sizes are different
+                if (minLen < maxLen) { // maxStack has more
+                    if (num > maxStack.peek()) {
+                        minStack.push(num);
+                    } else {
+                        maxStack.push(num);
+                        minStack.push(maxStack.pop()); // update to make "balance" (diff as 0 or 1) for 2 stacks
+                    }
+                } else { // minStack has more
+                    if (num > maxStack.peek()) {
+                        minStack.push(num);
+                        maxStack.push(minStack.pop()); // update to make "balance" (diff as 0 or 1) for 2 stacks
+                    } else {
+                        maxStack.push(num);
+                    }
+                }
+            }
+        }
 
+        public double findMedian() {
+            int minLen = minStack.size();
+            int maxLen = maxStack.size();
+
+            if (minLen == maxLen) {
+                return (minStack.peek() + maxStack.peek()) >>> 1;
+            } else {
+                if (minLen < maxLen) {
+                    return maxStack.peek();
+                } else {
+                    return minStack.peek();
+                }
+            }
+        }
     }
 }
 
