@@ -1,8 +1,36 @@
 /**
  * Created by liyao on 6/24/17.
  */
+import java.util.Queue;
+import java.util.ArrayDeque;
+
 public class SurroundedRegions {
-    private void dfs(int x, int y, char[][] board) {
+    private void processNeighbor(int x, int y, char[][] board, Queue<Integer> q) {
+        int row = board.length, col = board[0].length;
+        if (x < 0 || x >= row || y < 0 || y >= col || board[x][y] != 'O') { // out of bounds or invalid point
+            return;
+        } else { // inside valid point
+            board[x][y] = 'V'; // update as visited
+            q.offer(x * col + y);
+        }
+    }
+
+    private void bfs(int x, int y, char[][] board) {
+        int col = board[0].length;
+        Queue<Integer> q = new ArrayDeque<>();
+        q.add(x * col + y);
+
+        while (!q.isEmpty()) {
+            int index = q.poll();
+            int r = index / col, c = index % col;
+            processNeighbor(r - 1, c, board, q); // up row, (r and c, not x and y)
+            processNeighbor(r + 1, c, board, q); // bottom row
+            processNeighbor(r, c - 1, board, q); // left col
+            processNeighbor(r, c + 1, board, q); // right col
+        }
+    }
+
+    private void dfs(int x, int y, char[][] board) { // stack overflow for test case 6
         int row = board.length, col = board[0].length;
         if (x < 0 || x >= row || y < 0 || y >= col || board[x][y] == 'X'|| board[x][y] == 'V') { // out of bounds or invalid point
             return;
@@ -28,7 +56,7 @@ public class SurroundedRegions {
         // each col in top row
         for (int i = 0; i < col; i++) {
             if (board[0][i] == 'O') {
-                dfs(0, i, board);
+                bfs(0, i, board);
             } else {
                 continue;
             }
@@ -37,7 +65,7 @@ public class SurroundedRegions {
         // each col in bottom row
         for (int i = 0; i < col; i++) {
             if (board[row - 1][i] == 'O') {
-                dfs(row - 1, i, board);
+                bfs(row - 1, i, board);
             } else {
                 continue;
             }
@@ -46,7 +74,7 @@ public class SurroundedRegions {
         // left col in each row
         for (int i = 0; i < row; i++) {
             if (board[i][0] == 'O') {
-                dfs(i, 0, board);
+                bfs(i, 0, board);
             } else {
                 continue;
             }
@@ -55,7 +83,7 @@ public class SurroundedRegions {
         // right col in each row
         for (int i = 0; i < row; i++) {
             if (board[i][col - 1] == 'O') {
-                dfs(i, col - 1, board);
+                bfs(i, col - 1, board);
             } else {
                 continue;
             }
