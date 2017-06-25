@@ -13,7 +13,7 @@ public class FindMedianFromDataStream {
 
         /** initialize your data structure here. */
         public MedianFinder() {
-            maxQueue = new PriorityQueue<>(Collections.reverseOrder()); // descending order
+            maxQueue = new PriorityQueue<>(1, Collections.reverseOrder()); // descending order
             minQueue = new PriorityQueue<>(); // ascending order (default)
         }
 
