@@ -27,7 +27,7 @@ public class CourseScheduleII {
                     result[numCourses - 1] = prerequisites[0][0];
                     result[numCourses - 2] = prerequisites[0][1];
 
-                    int idx = 0; // index for courses not in prerequisites array
+                    int idx = 0;
                     for (int i = 0; i < numCourses - 2; i++) {
                         while (idx == prerequisites[0][0] || idx == prerequisites[0][1]) {
                             idx++;
@@ -43,15 +43,14 @@ public class CourseScheduleII {
             Map<Integer, Integer> elementDegrees = new HashMap<>();
             Map<Integer, Set<Integer>> elementNeighbors = new HashMap<>();
 
-            for (int i = 0; i < numCourses; i++) { // some course info has not been provided (default in-degree as 0) as 2 in test case 6
+            for (int i = 0; i < numCourses; i++) {
                 elementDegrees.put(i, 0);
             }
 
             for (int i = 0; i < row; i++) {
                 int first = prerequisites[i][1], second = prerequisites[i][0];
                 addNeighbor(elementNeighbors, first, second);
-                addDegree(elementDegrees, first, 0); // 1st num in-degree
-                addDegree(elementDegrees, second, 1); // 2nd num in-degree
+                addDegree(elementDegrees, second); // 2nd num in-degree
             }
 
             for (Map.Entry<Integer, Integer> elementDegree : elementDegrees.entrySet()) {
@@ -65,7 +64,6 @@ public class CourseScheduleII {
             }
 
             processNeighbors(zeroDegreeNeighbors, elementDegrees, elementNeighbors, zeroDegreeElement);
-
             if (numCourses == zeroDegreeElement.size()) {
                 int[] result = new int[numCourses];
                 int i = 0;
@@ -80,20 +78,12 @@ public class CourseScheduleII {
         }
     }
 
-    private void addDegree(Map<Integer, Integer> elementDegrees, int element, int mode) {
-        if (mode == 0) { // add degree for 1st num
-            if (elementDegrees.containsKey(element)) { // added before
-                return;
-            } else {
-                elementDegrees.put(element, 0);
-            }
-        } else { // add degree for 2nd num
-            if (elementDegrees.containsKey(element)) {
-                int degree = elementDegrees.get(element);
-                elementDegrees.put(element, degree + 1);
-            } else {
-                elementDegrees.put(element, 1);
-            }
+    private void addDegree(Map<Integer, Integer> elementDegrees, int element) {
+        if (elementDegrees.containsKey(element)) {
+            int degree = elementDegrees.get(element);
+            elementDegrees.put(element, degree + 1);
+        } else {
+            elementDegrees.put(element, 1);
         }
     }
 
