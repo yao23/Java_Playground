@@ -46,7 +46,6 @@ public class FindMedianFromDataStream {
                     }
                 } else { // min and max stack sizes are different
                     if (minLen < maxLen) { // maxQueue has more
-                        System.out.println("(minLen < maxLen: " + num + ", " + maxQueue.peek());
                         if (num >= maxQueue.peek()) {
                             minQueue.offer(num);
                         } else {
@@ -54,8 +53,7 @@ public class FindMedianFromDataStream {
                             maxQueue.offer(num);
                         }
                     } else { // minQueue has more
-                        System.out.println("(minLen >= maxLen: " + num + ", " + maxQueue.peek());
-                        if (num >= maxQueue.peek()) {
+                        if (num >= minQueue.peek()) {
                             maxQueue.offer(minQueue.poll()); // update to make "balance" (diff as 0 or 1) for 2 stacks
                             minQueue.offer(num);
                         } else {
@@ -70,13 +68,8 @@ public class FindMedianFromDataStream {
             int minLen = minQueue.size();
             int maxLen = maxQueue.size();
 
-            System.out.println("find median");
-            System.out.println("max heap: " + maxQueue);
-            System.out.println("min heap: " + minQueue);
-
             if (minLen == maxLen) {
                 int minHead = minQueue.peek(), maxHead = maxQueue.peek();
-                System.out.println(maxHead + ", " + minHead);
                 return (maxHead + (minHead - maxHead) / 2.00);
             } else {
                 if (minLen < maxLen) {
@@ -95,6 +88,10 @@ public class FindMedianFromDataStream {
     // ["MedianFinder","addNum","findMedian","addNum","findMedian","addNum","findMedian","addNum","findMedian","addNum","findMedian"]
     // [[],[-1],[],[-2],[],[-3],[],[-4],[],[-5],[]]
     // [null,null,-1.00000,null,-1.50000,null,-2.00000,null,-2.50000,null,-3.00000]
+
+    // ["MedianFinder","addNum","findMedian","addNum","findMedian","addNum","findMedian","addNum","findMedian","addNum","findMedian","addNum","findMedian","addNum","findMedian","addNum","findMedian","addNum","findMedian","addNum","findMedian","addNum","findMedian","addNum","findMedian","addNum","findMedian","addNum","findMedian","addNum","findMedian","addNum","findMedian","addNum","findMedian","addNum","findMedian","addNum","findMedian","addNum","findMedian","addNum","findMedian"]
+    // [[],[12],[],[10],[],[13],[],[11],[],[5],[],[15],[],[1],[],[11],[],[6],[],[17],[],[14],[],[8],[],[17],[],[6],[],[4],[],[16],[],[8],[],[10],[],[2],[],[12],[],[0],[]]
+    // [null,null,12.00000,null,11.00000,null,12.00000,null,11.50000,null,11.00000,null,11.50000,null,11.00000,null,11.00000,null,11.00000,null,11.00000,null,11.00000,null,11.00000,null,11.00000,null,11.00000,null,11.00000,null,11.00000,null,11.00000,null,10.50000,null,10.00000,null,10.50000,null,10.00000]
 }
 
 /**
