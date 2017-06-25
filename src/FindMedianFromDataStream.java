@@ -3,6 +3,7 @@ import java.util.ArrayDeque;
 /**
  * Created by liyao on 6/25/17.
  */
+import java.util.Collections;
 import java.util.PriorityQueue;
 
 public class FindMedianFromDataStream {
@@ -12,8 +13,8 @@ public class FindMedianFromDataStream {
 
         /** initialize your data structure here. */
         public MedianFinder() {
-            minQueue = new PriorityQueue<>();
-            maxQueue = new PriorityQueue<>();
+            maxQueue = new PriorityQueue<>(Collections.reverseOrder()); // descending order
+            minQueue = new PriorityQueue<>(); // ascending order (default)
         }
 
         public void addNum(int num) {
@@ -45,16 +46,18 @@ public class FindMedianFromDataStream {
                     }
                 } else { // min and max stack sizes are different
                     if (minLen < maxLen) { // maxQueue has more
-                        if (num > maxQueue.peek()) {
+                        System.out.println("(minLen < maxLen: " + num + ", " + maxQueue.peek());
+                        if (num >= maxQueue.peek()) {
                             minQueue.offer(num);
                         } else {
-                            maxQueue.offer(num);
                             minQueue.offer(maxQueue.poll()); // update to make "balance" (diff as 0 or 1) for 2 stacks
+                            maxQueue.offer(num);
                         }
                     } else { // minQueue has more
-                        if (num > maxQueue.peek()) {
-                            minQueue.offer(num);
+                        System.out.println("(minLen >= maxLen: " + num + ", " + maxQueue.peek());
+                        if (num >= maxQueue.peek()) {
                             maxQueue.offer(minQueue.poll()); // update to make "balance" (diff as 0 or 1) for 2 stacks
+                            minQueue.offer(num);
                         } else {
                             maxQueue.offer(num);
                         }
@@ -67,9 +70,14 @@ public class FindMedianFromDataStream {
             int minLen = minQueue.size();
             int maxLen = maxQueue.size();
 
+            System.out.println("find median");
+            System.out.println("max heap: " + maxQueue);
+            System.out.println("min heap: " + minQueue);
+
             if (minLen == maxLen) {
                 int minHead = minQueue.peek(), maxHead = maxQueue.peek();
-                return (maxHead + (minHead - maxHead) / 2.00); // need double, cannot use >>>
+                System.out.println(maxHead + ", " + minHead);
+                return (maxHead + (minHead - maxHead) / 2.00);
             } else {
                 if (minLen < maxLen) {
                     return maxQueue.peek();
