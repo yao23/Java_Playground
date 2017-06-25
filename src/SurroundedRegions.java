@@ -18,7 +18,7 @@ public class SurroundedRegions {
     private void bfs(int x, int y, char[][] board) {
         int col = board[0].length;
         Queue<Integer> q = new ArrayDeque<>();
-        q.add(x * col + y);
+        processNeighbor(x, y, board, q); // cur element
 
         while (!q.isEmpty()) {
             int index = q.poll();
