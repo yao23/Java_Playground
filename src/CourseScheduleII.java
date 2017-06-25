@@ -8,12 +8,37 @@ public class CourseScheduleII {
         int row = prerequisites.length;
         if (row <= 1) {
             if (row == 0) {
-                return (new int[]{});
+                if (numCourses == 0) {
+                    return (new int[]{});
+                } else {
+                    int[] result = new int[numCourses];
+                    for (int i = 0; i < numCourses; i++) {
+                        result[i] = i;
+                    }
+                    return result;
+                }
             } else {
-                return (new int[]{prerequisites[0][1], prerequisites[0][0]});
+                if (numCourses == 0) {
+                    return (new int[]{});
+                } else if (numCourses == 1) {
+                    return (new int[]{prerequisites[0][1]});
+                } else {
+                    int[] result = new int[numCourses];
+                    result[numCourses - 1] = prerequisites[0][0];
+                    result[numCourses - 2] = prerequisites[0][1];
+
+                    int idx = 0;
+                    for (int i = 0; i < numCourses - 2; i++) {
+                        while (idx == prerequisites[0][0] || idx == prerequisites[0][1]) {
+                            idx++;
+                        }
+                        result[i] = idx;
+                    }
+                    return result;
+                }
             }
         } else {
-            Set<Integer> zeroDegreeElement = new HashSet<>();
+            Set<Integer> zeroDegreeElement = new LinkedHashSet<>();
             Queue<Integer> zeroDegreeNeighbors = new ArrayDeque<>();
             Map<Integer, Integer> elementDegrees = new HashMap<>();
             Map<Integer, Set<Integer>> elementNeighbors = new HashMap<>();
@@ -102,4 +127,17 @@ public class CourseScheduleII {
             }
         }
     }
+
+    // 1, [] => [0]
+    // 2, [] => [1,0]
+    // 2, [[1,0]] => [0,1]
+    // 2, [[0,1],[1,0]] => []
+    // 3, [[1,0],[2,1]] => [0,1,2]
+    // 3, [[2,0],[2,1]] => [0,1,2] / [1,0,2]
+    // 3, [[0,1],[0,2],[1,2]] => [2,1,0]
+    // 4, [[3,0],[0,1]] => [1,2,0,3] / [2,1,0,3]
+    // 4, [[1,0],[2,1],[3,2],[1,3]] => []
+    // 4, [[0,1],[1,2],[0,3],[3,0]] => []
+    // 4, [[1,0],[2,0],[3,1],[3,2]] => [0,1,2,3] / [0,2,1,3]
+    // 6, [[1,0],[2,0],[3,0],[4,1],[4,2],[4,3],[5,2],[5,3]] => [0,1,2,3,4,5] / [0,3,2,5,1,4]
 }
