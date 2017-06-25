@@ -21,26 +21,44 @@ public class FindMedianFromDataStream {
             int minLen = minStack.size();
             int maxLen = maxStack.size();
 
-            if (minLen == maxLen) { // min and max stack sizes are same
-                if (num > maxStack.peek()) {
+            if (minLen == 0 && maxLen == 0) { // maxStack and minStack have no num
+                maxStack.push(num);
+            } else if (minLen == 0) { // maxStack has 1 num
+                if (num >= maxStack.peek()) {
                     minStack.push(num);
                 } else {
+                    minStack.push(maxStack.peek());
                     maxStack.push(num);
                 }
-            } else { // min and max stack sizes are different
-                if (minLen < maxLen) { // maxStack has more
+            } else if (maxLen == 0) { // minStack has 1 num
+                if (num <= minStack.peek()) {
+                    maxStack.push(num);
+                } else {
+                    maxStack.push(minStack.pop());
+                    minStack.push(num);
+                }
+            } else { // maxStack and minStack have more than 1 num
+                if (minLen == maxLen) { // min and max stack sizes are same
                     if (num > maxStack.peek()) {
                         minStack.push(num);
                     } else {
                         maxStack.push(num);
-                        minStack.push(maxStack.pop()); // update to make "balance" (diff as 0 or 1) for 2 stacks
                     }
-                } else { // minStack has more
-                    if (num > maxStack.peek()) {
-                        minStack.push(num);
-                        maxStack.push(minStack.pop()); // update to make "balance" (diff as 0 or 1) for 2 stacks
-                    } else {
-                        maxStack.push(num);
+                } else { // min and max stack sizes are different
+                    if (minLen < maxLen) { // maxStack has more
+                        if (num > maxStack.peek()) {
+                            minStack.push(num);
+                        } else {
+                            maxStack.push(num);
+                            minStack.push(maxStack.pop()); // update to make "balance" (diff as 0 or 1) for 2 stacks
+                        }
+                    } else { // minStack has more
+                        if (num > maxStack.peek()) {
+                            minStack.push(num);
+                            maxStack.push(minStack.pop()); // update to make "balance" (diff as 0 or 1) for 2 stacks
+                        } else {
+                            maxStack.push(num);
+                        }
                     }
                 }
             }
