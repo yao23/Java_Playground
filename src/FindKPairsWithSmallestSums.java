@@ -15,13 +15,13 @@ public class FindKPairsWithSmallestSums {
             if (len1 < len2) {
                 for (int i = 0; i < Math.min(len1, k); i++) {
                     for (int j = 0; j < Math.min(len2, k); j++) {
-                        maxHeap.offer(new SumBundle(nums1[i] + nums2[j], nums1[i], nums2[j]));
+                        processNum(maxHeap, nums1[i], nums2[j], k);
                     }
                 }
             } else {
                 for (int j = 0; j < Math.min(len2, k); j++) {
                     for (int i = 0; i < Math.min(len1, k); i++) {
-                        maxHeap.offer(new SumBundle(nums1[i] + nums2[j], nums1[i], nums2[j]));
+                        processNum(maxHeap, nums1[i], nums2[j], k);
                     }
                 }
             }
@@ -34,6 +34,20 @@ public class FindKPairsWithSmallestSums {
             Collections.reverse(result);
 
             return result;
+        }
+    }
+
+    private void processNum(PriorityQueue<SumBundle> maxHeap, int num1, int num2, int k) {
+        int sum = num1 + num2;
+        if (maxHeap.size() < k) {
+            maxHeap.offer(new SumBundle(sum, num1, num2));
+        } else {
+            if (sum < maxHeap.peek().getSum()) {
+                maxHeap.poll();
+                maxHeap.offer(new SumBundle(sum, num1, num2));
+            } else {
+                return;
+            }
         }
     }
 
@@ -50,6 +64,10 @@ public class FindKPairsWithSmallestSums {
 
         public int[] getPair() {
             return (new int[]{val0, val1});
+        }
+
+        public int getSum() {
+            return sum;
         }
 
         @Override
