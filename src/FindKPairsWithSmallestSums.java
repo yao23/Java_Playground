@@ -11,7 +11,7 @@ public class FindKPairsWithSmallestSums {
         if (len1 == 0 || len2 == 0) {
             return result;
         } else {
-            PriorityQueue<SumBundle> maxHeap = new PriorityQueue<>();
+            PriorityQueue<SumBundle> maxHeap = new PriorityQueue<>(k);
             if (len1 < len2) {
                 for (int i = 0; i < Math.min(len1, k); i++) {
                     for (int j = 0; j < Math.min(len2, k); j++) {
