@@ -41,7 +41,7 @@ public class FindKPairsWithSmallestSums {
         int sum = num1 + num2;
         if (maxHeap.size() < k) {
             maxHeap.offer(new SumBundle(sum, num1, num2));
-        } else {
+        } else { // keep fixed size k
             if (sum < maxHeap.peek().getSum()) {
                 maxHeap.poll();
                 maxHeap.offer(new SumBundle(sum, num1, num2));
