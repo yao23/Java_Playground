@@ -37,7 +37,7 @@ public class FindKPairsWithSmallestSums {
         }
     }
 
-    class SumBundle {
+    class SumBundle implements Comparable<SumBundle> {
         private int sum;
         private int val0;
         private int val1;
@@ -50,6 +50,17 @@ public class FindKPairsWithSmallestSums {
 
         public int[] getPair() {
             return (new int[]{val0, val1});
+        }
+
+        @Override
+        public int compareTo(SumBundle sb) {
+            if (this.sum < sb.sum) {
+                return -1;
+            } else if (this.sum == sb.sum) {
+                return 0;
+            } else {
+                return 1;
+            }
         }
     }
 }
