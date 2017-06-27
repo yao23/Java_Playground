@@ -12,7 +12,7 @@ public class FindKPairsWithSmallestSums {
             return result;
         } else {
             PriorityQueue<SumBundle> maxHeap = new PriorityQueue<>(k);
-            if (len1 < len2) {
+            if (len1 <= len2) {
                 for (int i = 0; i < Math.min(len1, k); i++) {
                     for (int j = 0; j < Math.min(len2, k); j++) {
                         processNum(maxHeap, nums1[i], nums2[j], k);
@@ -72,7 +72,7 @@ public class FindKPairsWithSmallestSums {
 
         @Override
         public int compareTo(SumBundle sb) {
-            if (this.sum < sb.sum) {
+            if (this.sum > sb.sum) { // descending order for max heap
                 return -1;
             } else if (this.sum == sb.sum) {
                 return 0;
