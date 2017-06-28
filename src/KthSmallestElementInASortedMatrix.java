@@ -78,4 +78,6 @@ public class KthSmallestElementInASortedMatrix {
     // [[1,5],[10,11]],4 => 11
     // [[1,5,9],[10,11,13],[12,13,15]],8 => 13
     // [[1,2],[1,3]],2 => 1
+
+    // beats 71.88%
 }
