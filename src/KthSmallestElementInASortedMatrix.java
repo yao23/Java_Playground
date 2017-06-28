@@ -12,7 +12,27 @@ public class KthSmallestElementInASortedMatrix {
             return 0;
         }
         if (k <= row * col) {
-            return matrix[(k - 1) / col][(k - 1) % col]; // 1D index to 2D indices
+            int left = matrix[0][0], right = matrix[row - 1][col - 1];
+
+            while (left < right) {
+                int mid = left + (right - left) / 2;
+                int count = 0, j = col - 1;
+                for (int i = 0; i < row; i++) {
+                    // get number of elements smaller or equal to mid in current row
+                    while (j >= 0 && matrix[i][j] > mid) {
+                        j--;
+                    }
+
+                    count += (j + 1);
+                }
+                if (count < k) {
+                    left = mid + 1;
+                } else {
+                    right = mid;
+                }
+            }
+
+            return left;
         } else {
             return matrix[row - 1][col - 1];
         }
