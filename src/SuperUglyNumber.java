@@ -1,6 +1,8 @@
 /**
  * Created by liyao on 6/28/17.
  */
+import java.util.Arrays;
+
 public class SuperUglyNumber {
     public static int nthSuperUglyNumberI(int n, int[] primes) { // 39ms, beats 32.59%
         int[] ugly = new int[n];
@@ -19,6 +21,30 @@ public class SuperUglyNumber {
                 while (primes[j] * ugly[idx[j]] <= ugly[i]) {
                     idx[j]++;
                 }
+            }
+        }
+
+        return ugly[n - 1];
+    }
+
+    public int nthSuperUglyNumberV1(int n, int[] primes) {
+        int[] ugly = new int[n];
+        int[] idx = new int[primes.length];
+        int[] val = new int[primes.length];
+        Arrays.fill(val, 1);
+
+        int next = 1;
+        for (int i = 0; i < n; i++) {
+            ugly[i] = next;
+
+            next = Integer.MAX_VALUE;
+            for (int j = 0; j < primes.length; j++) {
+                //skip duplicate and avoid extra multiplication
+                if (val[j] == ugly[i]) {
+                    val[j] = ugly[idx[j]++] * primes[j];
+                }
+                //find next ugly number
+                next = Math.min(next, val[j]);
             }
         }
 
