@@ -6,36 +6,38 @@ public class InsertionSortList {
         if (head == null || head.next == null) {
             return head;
         } else {
-            ListNode dummy = new ListNode(0);
-            dummy.next = head;
-            ListNode pre = dummy, cur = head;
-            while (cur != null) {
-                insert(dummy, cur, pre);
-                pre = cur;
-                cur = cur.next;
-            }
-
-            return dummy.next;
+            return insertSort(head);
         }
     }
 
-    private void insert(ListNode head, ListNode cur, ListNode curPre) {
-        ListNode pre = head, ptr = head.next;
+    private ListNode insertSort(ListNode head) {
+        if (head.next == null) {
+            return head;
+        } else {
+            ListNode newHead = insertSort(head.next);
+            ListNode dummy = new ListNode(0);
+            dummy.next = newHead;
+            return insert(dummy, head);
+        }
+    }
 
-        while (ptr != null && ptr.val < cur.val) {
+    private ListNode insert(ListNode head, ListNode insertedNode) {
+        ListNode pre = head, cur = head.next;
+
+        while (cur != null && cur.val < insertedNode.val) {
             pre = cur;
             cur = cur.next;
         }
 
-        if (ptr == null) {
-            curPre.next = cur.next;
-            ptr.next = cur;
-            cur.next = null;
+        if (cur == null) {
+            pre.next = insertedNode;
+            insertedNode.next = null;
         } else {
-            curPre.next = cur.next;
-            cur.next = ptr;
-            pre.next = cur;
+            insertedNode.next = cur;
+            pre.next = insertedNode;
         }
+
+        return head.next;
     }
 
     // [] => []
