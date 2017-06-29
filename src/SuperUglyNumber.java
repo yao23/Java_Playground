@@ -1,0 +1,34 @@
+/**
+ * Created by liyao on 6/28/17.
+ */
+public class SuperUglyNumber {
+    public static int nthSuperUglyNumberI(int n, int[] primes) {
+        int[] ugly = new int[n];
+        int[] idx = new int[primes.length]; // next index for current prime number to get smallest product, finally [8,3,2,1] for test case 1
+
+        ugly[0] = 1;
+        for (int i = 1; i < n; i++) {
+            //find next smallest prime number
+            ugly[i] = Integer.MAX_VALUE;
+            for (int j = 0; j < primes.length; j++) {
+                ugly[i] = Math.min(ugly[i], primes[j] * ugly[idx[j]]);
+            }
+
+            //slip duplicate
+            for (int j = 0; j < primes.length; j++) {
+                while (primes[j] * ugly[idx[j]] <= ugly[i]) {
+                    idx[j]++;
+                }
+            }
+        }
+
+        return ugly[n - 1];
+    }
+
+    public static void main(String[] args) {
+        int[] primes = new int[] {2, 7, 13, 19};
+        int n = 12;
+
+        System.out.println(nthSuperUglyNumberI(n, primes));
+    }
+}
