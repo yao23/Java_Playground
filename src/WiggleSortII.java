@@ -108,4 +108,6 @@ public class WiggleSortII {
     }
 
     // brute force: sort, merge right half into left half
+
+    // [1,5,1,1,6,4] => [1,6,1,5,1,4] ([1,5,1,6,1,4])
 }
