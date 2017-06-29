@@ -2,7 +2,7 @@
  * Created by liyao on 6/28/17.
  */
 public class SuperUglyNumber {
-    public static int nthSuperUglyNumberI(int n, int[] primes) {
+    public static int nthSuperUglyNumberI(int n, int[] primes) { // 39ms, beats 32.59%
         int[] ugly = new int[n];
         int[] idx = new int[primes.length]; // next index for current prime number to get smallest product, finally [8,3,2,1] for test case 1
 
