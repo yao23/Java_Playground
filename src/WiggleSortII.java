@@ -21,6 +21,7 @@ public class WiggleSortII {
 
         }
     }
+
     public void wiggleSort(int[] nums) {
         int len = nums.length;
         int left = 0, right = len - 1;
@@ -29,4 +30,6 @@ public class WiggleSortII {
 
         }
     }
+
+    // brute force: sort, merge right half into left half
 }
