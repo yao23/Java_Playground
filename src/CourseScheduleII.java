@@ -132,4 +132,6 @@ public class CourseScheduleII {
     // 6, [[1,0],[2,0],[3,0],[4,1],[4,2],[4,3],[5,2],[5,3]] => [0,1,2,3,4,5] / [0,3,2,5,1,4]
 
     // beats 38.28%
+
+    // similar problem: http://www.meetqun.net/forum.php?mod=viewthread&tid=51291&extra=page%3D2%26filter%3Dtypeid%26typeid%3D49
 }
