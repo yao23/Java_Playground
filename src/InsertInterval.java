@@ -5,16 +5,6 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class InsertInterval {
-    /**
-     * Definition for an interval.
-     */
-    public class Interval {
-        int start;
-        int end;
-        Interval() { start = 0; end = 0; }
-        Interval(int s, int e) { start = s; end = e; }
-    }
-
     public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
         List<Interval> result = new ArrayList<>();
         if (intervals.size() == 0) { // test case 4
