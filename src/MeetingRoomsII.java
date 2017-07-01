@@ -34,6 +34,10 @@ public class MeetingRoomsII {
     }
 
     public int minMeetingRoomsV1(Interval[] intervals) {
+        if (intervals == null || intervals.length == 0) {
+            return 0;
+        }
+
         List<TimeElement> timeList = new ArrayList<>();
 
         for (Interval interval : intervals) {
