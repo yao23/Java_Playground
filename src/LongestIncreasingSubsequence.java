@@ -37,5 +37,7 @@ public class LongestIncreasingSubsequence {
     // [1,2] => 2
     // [2,1] => 1
     // [10,9,2,5,3,7,101,18] => 4 ([2,3,7,18])
+
+    // beats 65.09% (O(nlogn))
     // brute force: 2 for loops, 1st to iterate (n - 1) elements, 2nd to calculate larger nums after the current one
 }
