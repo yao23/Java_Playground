@@ -3,7 +3,6 @@
  */
 
 import java.util.ArrayDeque;
-import java.util.Arrays;
 import java.util.Deque;
 
 public class FindNextFirstLargerElement {
@@ -12,24 +11,40 @@ public class FindNextFirstLargerElement {
             return new int[]{};
         } else {
             int[] result = new int[nums.length];
-            Arrays.fill(result, -1);
-            Deque<Integer> stack = new ArrayDeque<>();
-            stack.push(nums[0]);
-            int i = 0;
-            while (i < nums.length) {
-                while (true) {
-                    if (stack.isEmpty() || nums[i] < stack.peek()) {
-                        break;
-                    } else {
-                        result[i] = stack.pop();
-                    }
-                }
+            Deque<NumClass> stack = new ArrayDeque<>();
+            stack.push(new NumClass(nums[0], 0));
 
-                stack.push(nums[i]);
-                i++;
+            for (int i = 1; i < nums.length; i++) {
+                if (stack.peek() != null) {
+                    while (true) {
+                        if (stack.isEmpty() || nums[i] < stack.peek().num) {
+                            break;
+                        } else { // stack is not empty and stack top num is less than cur num (nums[i])
+                            NumClass topNum = stack.pop();
+                            result[topNum.index] = nums[i];
+                        }
+                    }
+
+                    stack.push(new NumClass(nums[i], i));
+                }
+            }
+
+            while (!stack.isEmpty()) {
+                NumClass topNum = stack.pop();
+                result[topNum.index] = -1;
             }
 
             return result;
+        }
+    }
+
+
+    class NumClass {
+        int num;
+        int index;
+        NumClass(int num, int index) {
+            this.num = num;
+            this.index = index;
         }
     }
 }
