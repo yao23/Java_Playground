@@ -26,10 +26,48 @@ public class LongestIncreasingSubsequence {
         }
     }
 
+    private static int lengthOfLISV1(int[] nums) { // O(n^2)
+        if (nums == null) {
+            return 0;
+        } else if (nums.length <= 1) {
+            return nums.length;
+        } else {
+            int[] dp = new int[nums.length];
+            Arrays.fill(dp, 1); // min num is 1 (self)
+
+            for (int i = 1; i < nums.length; i++) {
+                for (int j = 0; j < i; j++) {
+                    if (nums[j] < nums[i]) { // contribute to increasing subsequence
+                        if (dp[j] + 1 > dp[i]) {
+                            dp[i] = dp[j] + 1;
+                        } else {
+                            continue;
+                        }
+                    } else {
+                        continue;
+                    }
+                }
+            }
+
+            int result = 1;
+            for (int num : dp) {
+                if (num > result) {
+                    result = num;
+                } else {
+                    continue;
+                }
+            }
+
+            return result;
+        }
+    }
+
     public static void main(String[] args) {
         int[] nums = {10, 9, 2, 5, 3, 7, 101, 18};
 
         System.out.println(lengthOfLIS(nums));
+
+        System.out.println(lengthOfLISV1(nums));
     }
 
     // [] => 0
