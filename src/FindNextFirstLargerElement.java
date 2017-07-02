@@ -47,4 +47,8 @@ public class FindNextFirstLargerElement {
             this.index = index;
         }
     }
+
+    // [] => []
+    // [1,3,2,4,1] => [3,4,4,-1,-1]
+    // [40,50,11,32,55,68,75] => [50,55,32,55,68,75]
 }
