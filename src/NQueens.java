@@ -9,6 +9,8 @@ public class NQueens {
     public List<List<String>> solveNQueens(int n) {
         List<List<String>> result = new ArrayList<>();
         if (n == 0) {
+            List<String> queens = new ArrayList<>();
+            result.add(queens);
             return result;
         } else {
             int preQueens[] = new int[n];
@@ -63,4 +65,11 @@ public class NQueens {
 
         return true;
     }
+
+    // 0 => [[]]
+    // 1 => [["Q"]]
+    // 2 => []
+    // 3 => []
+    // 4 => [[".Q..","...Q","Q...","..Q."],["..Q.","Q...","...Q",".Q.."]]
+    // 5 => [["Q....","..Q..","....Q",".Q...","...Q."],["Q....","...Q.",".Q...","....Q","..Q.."],[".Q...","...Q.","Q....","..Q..","....Q"],[".Q...","....Q","..Q..","Q....","...Q."],["..Q..","Q....","...Q.",".Q...","....Q"],["..Q..","....Q",".Q...","...Q.","Q...."],["...Q.","Q....","..Q..","....Q",".Q..."],["...Q.",".Q...","....Q","..Q..","Q...."],["....Q",".Q...","...Q.","Q....","..Q.."],["....Q","..Q..","Q....","...Q.",".Q..."]]
 }
