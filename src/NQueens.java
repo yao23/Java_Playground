@@ -48,6 +48,16 @@ public class NQueens {
     }
 
     private boolean check(int row, int col, int[] preQueens) {
+        for (int i = 0; i < row; i++) {
+            if (preQueens[i] == col || Math.abs(row - i) == Math.abs(col - preQueens[i])) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private boolean checkV0(int row, int col, int[] preQueens) { // Time Limited Exception for n = 9
         // check queens in same column
         for (int i = 0; i < row; i++) {
             if (preQueens[i] == col) {
