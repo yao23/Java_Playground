@@ -29,4 +29,10 @@ public class WordBreak {
             return false;
         }
     }
+
+    // "", ["leet", "code"] => true
+    // "leetcode", [] => false
+    // "leetcode",["leet", "code"] => true
+    // "aaaaaaaa", ["a", "aa"] => true
+    // "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab",["a","aa","aaa","aaaa","aaaaa","aaaaaa","aaaaaaa","aaaaaaaa","aaaaaaaaa","aaaaaaaaaa"] => true
 }
