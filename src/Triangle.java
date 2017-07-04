@@ -12,11 +12,14 @@ public class Triangle {
                 if (i == row - 1) { // last row
                     results[j] = triangle.get(i).get(j);
                 } else { // upper rows
-                    results[j] += (triangle.get(i).get(j) + Math.min(results[j], results[j + 1]));
+                    results[j] = (triangle.get(i).get(j) + Math.min(results[j], results[j + 1]));
                 }
             }
         }
 
         return results[0];
     }
+
+    // [[-10]] => -10
+    // [[2],[3,4],[6,5,7],[4,1,8,3]] => 11
 }
