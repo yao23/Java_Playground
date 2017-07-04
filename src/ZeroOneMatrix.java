@@ -28,11 +28,28 @@ public class ZeroOneMatrix {
             if (matrix[x][y] == 0) {
                 return 0;
             } else {
+                matrix[x][y] = 2;
                 int[] neighbors = new int[4];
                 neighbors[0] = search(x - 1, y, matrix); // up
+                if (neighbors[0] == 0) {
+                    matrix[x][y] = 1;
+                    return 1;
+                }
                 neighbors[1] = search(x + 1, y, matrix); // down
+                if (neighbors[1] == 0) {
+                    matrix[x][y] = 1;
+                    return 1;
+                }
                 neighbors[2] = search(x, y - 1, matrix); // left
+                if (neighbors[2] == 0) {
+                    matrix[x][y] = 1;
+                    return 1;
+                }
                 neighbors[3] = search(x, y + 1, matrix); // right
+                if (neighbors[3] == 0) {
+                    matrix[x][y] = 1;
+                    return 1;
+                }
 
                 int min = Integer.MAX_VALUE;
                 for (int i = 0; i < neighbors.length; i++) {
@@ -41,6 +58,7 @@ public class ZeroOneMatrix {
                     }
                 }
 
+                matrix[x][y] = 1;
                 return 1 + min;
             }
         }
@@ -50,4 +68,5 @@ public class ZeroOneMatrix {
     // [[0,0,0],[0,1,0],[1,1,1]] => [[0,0,0],[0,1,0],[1,2,1]]
     // [[1,1,1],[0,1,0],[1,1,1]] => [[1,2,1],[0,1,0],[1,2,1]]
     // [[1,1,1],[1,0,1],[1,1,1]] => [[2,1,1],[1,0,1],[2,1,2]]
+    // [[1,1,0,0,1,0,0,1,1,0],[1,0,0,1,0,1,1,1,1,1],[1,1,1,0,0,1,1,1,1,0],[0,1,1,1,0,1,1,1,1,1],[0,0,1,1,1,1,1,1,1,0],[1,1,1,1,1,1,0,1,1,1],[0,1,1,1,1,1,1,0,0,1],[1,1,1,1,1,0,0,1,1,1],[0,1,0,1,1,0,1,1,1,1],[1,1,1,0,1,0,1,1,1,1]] => [[2,1,0,0,1,0,0,1,1,0],[1,0,0,1,0,1,1,2,2,1],[1,1,1,0,0,1,2,2,1,0],[0,1,2,1,0,1,2,3,2,1],[0,0,1,2,1,2,1,2,1,0],[1,1,2,3,2,1,0,1,1,1],[0,1,2,3,2,1,1,0,0,1],[1,2,1,2,1,0,0,1,1,2],[0,1,0,1,1,0,1,2,2,3],[1,2,1,0,1,0,1,2,3,4]]
 }
