@@ -22,11 +22,17 @@ public class ClimbingStairs {
         }
     }
 
-    private int climb(int n) {
+    private int climb(int n) { // Time Limit Exceeded for n = 44
         if (n <= 2) {
             return n;
         } else {
             return climb(n - 1) + climb(n - 2);
         }
     }
+
+    // 1 => 1
+    // 2 => 2
+    // 3 => 3
+    // 4 => 5
+    // 5 => 8
 }
