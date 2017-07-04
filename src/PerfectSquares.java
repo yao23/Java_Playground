@@ -8,13 +8,13 @@ public class PerfectSquares {
         int[] dp = new int[n + 1];
         Arrays.fill(dp, Integer.MAX_VALUE);
         dp[0] = 0;
-        for (int i = 1; i <= n; ++i) {
+        for (int i = 1; i <= n; i++) {
             int min = Integer.MAX_VALUE;
             int j = 1;
 
             while (i - j * j >= 0) {
                 min = Math.min(min, dp[i - j * j] + 1);
-                ++j;
+                j++;
             }
 
             dp[i] = min;
@@ -41,4 +41,6 @@ public class PerfectSquares {
     //        = Min{ dp[12]+1, dp[9]+1, dp[4]+1 }
     //        = 2
     // dp[n] = Min{ dp[n - i*i] + 1 },  n - i*i >=0 && i >= 1
+
+    // beats 64.34%
 }
