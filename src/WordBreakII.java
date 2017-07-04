@@ -2,10 +2,40 @@
  * Created by liyao on 7/3/17.
  */
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
 public class WordBreakII {
     public List<String> wordBreak(String s, List<String> wordDict) {
+        return DFS(s, wordDict, new HashMap<String, LinkedList<String>>());
+    }
+
+    // DFS function returns an array including all substrings derived from s.
+    List<String> DFS(String s, List<String> wordDict, HashMap<String, LinkedList<String>> map) { // beats 63.33%
+        if (map.containsKey(s)) { // hit the cache
+            return map.get(s);
+        } else { // miss the cache
+            LinkedList<String>res = new LinkedList<>();
+            if (s.length() == 0) {
+                res.add("");
+                return res;
+            } else {
+                for (String word : wordDict) {
+                    if (s.startsWith(word)) {
+                        List<String>sublist = DFS(s.substring(word.length()), wordDict, map);
+                        for (String sub : sublist) {
+                            res.add(word + (sub.isEmpty() ? "" : " ") + sub);
+                        }
+                    }
+                }
+                map.put(s, res);
+                return res;
+            }
+        }
+    }
+
+    public List<String> wordBreakV0(String s, List<String> wordDict) { // beats 3.36%
         List<String> res = new ArrayList<>();
         if (s == null || wordDict.size() <= 0) {
             return res;
