@@ -1,8 +1,45 @@
 /**
  * Created by liyao on 7/3/17.
  */
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 public class ZeroOneMatrix {
-    public int[][] updateMatrix(int[][] matrix) {
+    public int[][] updateMatrix(int[][] matrix) { // beats 43.77%, O(n)
+        int row = matrix.length;
+        int col = matrix[0].length;
+
+        Deque<int[]> queue = new ArrayDeque<>();
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (matrix[i][j] == 0) {
+                    queue.offer(new int[] {i, j});
+                } else {
+                    matrix[i][j] = Integer.MAX_VALUE;
+                }
+            }
+        }
+
+        int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+
+        while (!queue.isEmpty()) { // all neighbors of 0s
+            int[] cell = queue.poll();
+            for (int[] d : dirs) {
+                int r = cell[0] + d[0];
+                int c = cell[1] + d[1];
+                if (r < 0 || r >= row || c < 0 || c >= col || matrix[r][c] <= matrix[cell[0]][cell[1]] + 1) {
+                    continue;
+                } else {
+                    queue.add(new int[] {r, c});
+                    matrix[r][c] = matrix[cell[0]][cell[1]] + 1;
+                }
+            }
+        }
+
+        return matrix;
+    }
+
+    public int[][] updateMatrixV0(int[][] matrix) { // TLE
         int row = matrix.length;
         if (row == 0) {
             return new int[][]{};
