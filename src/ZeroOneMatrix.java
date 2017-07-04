@@ -11,7 +11,7 @@ public class ZeroOneMatrix {
             int[][] results = new int[row][col];
             for (int i = 0; i < row; i++) {
                 for (int j = 0; j < col; j++) {
-                    results[i][j] = search(i, j, matrix, results);
+                    results[i][j] = search(i, j, matrix);
                 }
             }
 
@@ -19,7 +19,7 @@ public class ZeroOneMatrix {
         }
     }
 
-    private int search(int x, int y, int[][] matrix, int[][] results) {
+    private int search(int x, int y, int[][] matrix) {
         int row = matrix.length, col = matrix[0].length;
 
         if (x < 0 || x >= row || y < 0 || y >= col) { // invalid index
@@ -29,10 +29,10 @@ public class ZeroOneMatrix {
                 return 0;
             } else {
                 int[] neighbors = new int[4];
-                neighbors[0] = search(x - 1, y, matrix, results); // up
-                neighbors[1] = search(x + 1, y, matrix, results); // down
-                neighbors[2] = search(x, y - 1, matrix, results); // left
-                neighbors[3] = search(x, y + 1, matrix, results); // right
+                neighbors[0] = search(x - 1, y, matrix); // up
+                neighbors[1] = search(x + 1, y, matrix); // down
+                neighbors[2] = search(x, y - 1, matrix); // left
+                neighbors[3] = search(x, y + 1, matrix); // right
 
                 int min = Integer.MAX_VALUE;
                 for (int i = 0; i < neighbors.length; i++) {
