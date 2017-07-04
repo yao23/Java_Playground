@@ -10,6 +10,22 @@ public class ClimbingStairs {
         if (n <= 2) {
             return n;
         } else {
+            int res = 0, first = 1, second = 2;
+
+            for (int i = 2; i < n; i++) {
+                res = first + second;
+                first = second;
+                second = res;
+            }
+
+            return res;
+        }
+    }
+
+    private int climbV0(int n) {
+        if (n <= 2) {
+            return n;
+        } else {
             int res[] = new int[n];
             res[0] = 1;
             res[1] = 2;
