@@ -33,6 +33,24 @@ public class WordBreak {
         }
     }
 
+    private boolean checkV2(String s, List<String> dict) {
+        boolean[] f = new boolean[s.length() + 1];
+        f[0] = true;
+
+        for(int i = 1; i <= s.length(); i++){
+            for (String str: dict) {
+                if (str.length() <= i) {
+                    if (f[i - str.length()] && s.substring(i - str.length(), i).equals(str)) {
+                        f[i] = true;
+                        break;
+                    }
+                }
+            }
+        }
+
+        return f[s.length()];
+    }
+
     private boolean checkV1(String s, List<String> wordDict, Map<String, Boolean> map) { // Time Limit Exceeded for test case 5
         if (s.equals("")) {
             return true;
