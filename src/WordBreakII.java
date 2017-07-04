@@ -12,7 +12,7 @@ public class WordBreakII {
     }
 
     // DFS function returns an array including all substrings derived from s.
-    List<String> DFS(String s, List<String> wordDict, HashMap<String, LinkedList<String>> map) { // beats 63.33%
+    private List<String> DFS(String s, List<String> wordDict, HashMap<String, LinkedList<String>> map) { // beats 63.33%
         if (map.containsKey(s)) { // hit the cache
             return map.get(s);
         } else { // miss the cache
