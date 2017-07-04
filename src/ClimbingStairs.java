@@ -3,7 +3,7 @@
  */
 public class ClimbingStairs {
     public int climbStairs(int n) {
-        return climb(n);
+        return climbV1(n);
     }
 
     private int climbV1(int n) {
@@ -35,4 +35,7 @@ public class ClimbingStairs {
     // 3 => 3
     // 4 => 5
     // 5 => 8
+    // 44 => 1134903170
+
+    // beats 12.92%
 }
