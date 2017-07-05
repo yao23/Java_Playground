@@ -16,7 +16,7 @@ public class WordBreakII {
         if (map.containsKey(s)) { // hit the cache
             return map.get(s);
         } else { // miss the cache
-            LinkedList<String>res = new LinkedList<>();
+            LinkedList<String> res = new LinkedList<>();
             if (s.length() == 0) {
                 res.add("");
                 return res;
