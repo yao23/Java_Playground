@@ -71,7 +71,11 @@ public class MeetingRoomsII {
             if (this.time < that.time) {
                 return -1;
             } else if (this.time == that.time) {
-                return 0;
+                if (this.mode == 1) { // end time
+                    return -1;
+                } else { // start time
+                    return 1;
+                }
             } else {
                 return 1;
             }
