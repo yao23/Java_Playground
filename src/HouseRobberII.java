@@ -27,4 +27,6 @@ public class HouseRobberII {
     // [] => 0
     // [1] => 1
     // [1,3,5,2,4] => 9
+
+    // beats 60.24%
 }
