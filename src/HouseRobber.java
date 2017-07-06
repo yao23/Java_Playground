@@ -27,6 +27,17 @@ public class HouseRobber {
         }
     }
 
+    public int robV1(int[] nums) { // beats 40.29%
+        int preNo = 0, preYes = 0; // previous one rob no and yes
+        for (int n : nums) {
+            int tmp = preNo;
+            preNo = Math.max(preNo, preYes);
+            preYes = tmp + n;
+        }
+
+        return Math.max(preNo, preYes);
+    }
+
     // [] => 0
     // [1] => 1
     // [1,2] => 2
