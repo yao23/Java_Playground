@@ -12,8 +12,8 @@ public class HouseRobber {
             for (int i = 0; i < len; i++) {
                 int preMax = 0;
                 for (int j = 0; j < i - 1; j++) {
-                    if (nums[j] > preMax) {
-                        preMax = nums[j];
+                    if (results[j] > preMax) {
+                        preMax = results[j];
                     }
                 }
                 results[i] = (nums[i] + preMax);
@@ -32,4 +32,5 @@ public class HouseRobber {
     // [1,2] => 2
     // [1,2,3] => 4
     // [1,5,3] => 5
+    // [2,7,9,3,1] => 12
 }
