@@ -7,18 +7,23 @@ public class HouseRobber {
         if (len == 0) {
             return 0;
         } else {
-            int[] results = new int[len];
+            int[] results = new int[len]; // max in cur position
+            int max = 0;
             for (int i = 0; i < len; i++) {
-                int max = 0;
+                int preMax = 0;
                 for (int j = 0; j < i - 1; j++) {
-                    if (nums[j] > max) {
-                        max = nums[j];
+                    if (nums[j] > preMax) {
+                        preMax = nums[j];
                     }
                 }
-                results[i] = (nums[i] + max);
+                results[i] = (nums[i] + preMax);
+
+                if (results[i] > max) {
+                    max = results[i];
+                }
             }
 
-            return results[len - 1];
+            return max;
         }
     }
 
