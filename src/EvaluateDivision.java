@@ -49,7 +49,7 @@ public class EvaluateDivision {
             return 0.0;
         }
 
-        if (start.equals(end)) {
+        if (start.equals(end)) { // handle start == end, even like "d/d"
             return value;
         }
 
