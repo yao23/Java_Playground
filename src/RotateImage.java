@@ -5,7 +5,7 @@ public class RotateImage {
     public void rotate(int[][] matrix) {
         int row = matrix.length, col = matrix[0].length;
 
-        for (int i = 0; i < row / 2; i++) { // beats 64.54%
+        for (int i = 0; i < row / 2; i++) { // beats 64.54%, in-place and 1 pass to exchange 4 points in clockwise
             for (int j = i; j < col - 1; j++) {
                 int tmp = matrix[i][j];
                 matrix[i][j] = matrix[row - 1 - j][i];
@@ -16,7 +16,27 @@ public class RotateImage {
         }
     }
 
-    public void rotateV0(int[][] matrix) { // beats 18.94%
+    public void rotateV1(int[][] matrix) { // beats 18.94%, in-place and 2 passes (1st for diagonal top-right to bottom-left, 2nd for rows)
+        int row = matrix.length, col = matrix[0].length;
+
+        for (int i = 0; i < row - 1; i++) {
+            for (int j = 0; j < col - 1 - i; j++) {
+                int tmp = matrix[i][j];
+                matrix[i][j] = matrix[row - 1 - j][col - 1 - i];
+                matrix[row - 1 - j][col - 1 - i] = tmp;
+            }
+        }
+
+        for (int i = 0; i < row / 2; i++) {
+            for (int j = 0; j < col; j++) {
+                int tmp = matrix[i][j];
+                matrix[i][j] = matrix[row - 1 - i][j];
+                matrix[row - 1 - i][j] = tmp;
+            }
+        }
+    }
+
+    public void rotateV0(int[][] matrix) { // beats 18.94%, extra space O(n^2)
        int row = matrix.length, col = matrix[0].length;
 
        int[][] result = new int[row][col];
