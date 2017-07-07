@@ -5,13 +5,13 @@ public class RotateImage {
     public void rotate(int[][] matrix) {
         int row = matrix.length, col = matrix[0].length;
 
-        for (int i = 0; i < row / 2; i++) {
+        for (int i = 0; i < row / 2; i++) { // beats 64.54%
             for (int j = i; j < col - 1; j++) {
                 int tmp = matrix[i][j];
-                matrix[i][j] = matrix[row - 1 - i][j];
-                matrix[row - 1 - i][j] = matrix[row - 1 - i][col - 1 - j];
-                matrix[row - 1 - i][col - 1 - j] = matrix[i][col - 1 - j];
-                matrix[i][col - 1 - j] = tmp;
+                matrix[i][j] = matrix[row - 1 - j][i];
+                matrix[row - 1 - j][i] = matrix[row - 1 - i][col - 1 - j];
+                matrix[row - 1 - i][col - 1 - j] = matrix[j][col - 1 - i];
+                matrix[j][col - 1 - i] = tmp;
             }
         }
     }
