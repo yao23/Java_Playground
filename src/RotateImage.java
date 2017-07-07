@@ -16,7 +16,7 @@ public class RotateImage {
         }
     }
 
-    public void rotateV0(int[][] matrix) {
+    public void rotateV0(int[][] matrix) { // beats 18.94%
        int row = matrix.length, col = matrix[0].length;
 
        int[][] result = new int[row][col];
