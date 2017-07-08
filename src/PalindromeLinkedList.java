@@ -8,26 +8,26 @@ public class PalindromeLinkedList {
         } else {
             ListNode first = head, second = head;
             int len = 1;
-            while (second != null && second.next != null) {
+
+            while (second != null && second.next != null) { // find mid node in O(n)
                 first = first.next;
                 second = second.next.next;
                 len += 2;
             }
-            if (second == null) { // list lenght is even number
+
+            if (second == null) { // list length is even number
                 len -= 1;
             }
 
-            if (len % 2 == 0) {
-                System.out.println("second half head: " + first.val + ", len: " + len);
+            if (len % 2 == 0) { // go over 2 halves in O(n)
                 return check(new ListNode[]{head}, first); // first locates on head in second half
             } else {
-                System.out.println("second half head: " + first.next.val + ", len: " + len);
                 return check(new ListNode[]{head}, first.next); // first.next locates on head in second half
             }
         }
     }
 
-    private boolean check(ListNode[] first, ListNode second) {
+    private boolean check(ListNode[] first, ListNode second) { // first array holds 1 element, space O(1)
         if (second.next == null) {
             if (first[0].val == second.val) {
                 return true;
