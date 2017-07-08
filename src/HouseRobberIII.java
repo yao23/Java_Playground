@@ -5,6 +5,24 @@ import java.util.Map;
 
 public class HouseRobberIII {
     public int rob(TreeNode root) {
+        int[] result = robV2(root);
+        return Math.max(result[0], result[1]);
+    }
+
+    public int[] robV2(TreeNode root) {
+        if (root == null) {
+            return new int[2];
+        } else {
+            int[] left = robV2(root.left);
+            int[] right = robV2(root.right);
+            int[] result = new int[2];
+            result[0] = (Math.max(left[0], left[1]) + Math.max(right[0], right[1])); // root is not robbed
+            result[1] = (root.val + left[0] + right[0]); // root is robbed
+            return result;
+        }
+    }
+
+    public int robV0(TreeNode root) {
         if (root == null) {
             return 0;
         } else {
