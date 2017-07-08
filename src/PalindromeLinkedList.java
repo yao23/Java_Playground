@@ -99,4 +99,6 @@ public class PalindromeLinkedList {
     // [1,2,1] => true
     // [1,2,2,1] => true
     // [1,2,3,1] => false
+
+    // beats 36.60%
 }
