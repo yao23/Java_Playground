@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class ThreeSumSmaller {
     public static int threeSumSmaller(int[] nums, int target) {
         int len = nums.length;
-        if (len == 0) {
+        if (len < 3) {
             return 0;
         } else {
             Arrays.sort(nums);
@@ -18,7 +18,7 @@ public class ThreeSumSmaller {
                         right--;
                     } else {
                         result += (right - left); // [left + 1, right] as smaller range
-                        break;
+                        left++;
                     }
                 }
             }
