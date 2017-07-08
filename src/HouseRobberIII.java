@@ -66,4 +66,6 @@ public class HouseRobberIII {
     // [1] => 1
     // [3,2,3,null,3,null,1] => 7 (3 + 3 + 1)
     // [3,4,5,1,3,null,1] => 9 (4 + 5)
+
+    // beats 56.19%
 }
