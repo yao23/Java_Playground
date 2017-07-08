@@ -8,7 +8,7 @@ public class Subsets {
     public List<List<Integer>> subsets(int[] nums) {
         List<Integer> tmpRes = new ArrayList<Integer>();
         List<List<Integer>> result = new ArrayList<>();
-        helper(0, nums, tmpRes, result);
+        helper(0, nums, tmpRes, result); // O(2 ^ nums.length), each num could be or not in result (0/1)
         return result;
     }
 
