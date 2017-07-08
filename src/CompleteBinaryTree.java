@@ -5,7 +5,7 @@
 import java.util.LinkedList;
 
 public class CompleteBinaryTree {
-    public boolean isCompleteV1(TreeNode root) {
+    public boolean isComplete(TreeNode root) {
         if (root == null) {
             return true;
         } else {
@@ -41,6 +41,39 @@ public class CompleteBinaryTree {
                 return true;
             }
         }
+    }
+
+    public boolean isCompleteV1(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+
+        //first of all do the count
+        int count = countNumber(root);
+
+        int index = 0;
+
+        return helper(root, index, count); // use recursion to do it
+    }
+
+    private boolean helper(TreeNode root, int index, int count){
+        if (root == null) {
+            return true;
+        }
+
+        if (index >= count) {
+            return false;
+        } else {
+            return (helper(root.left, index * 2 + 1, count) && helper(root.right, index * 2 + 2, count));
+        }
+    }
+
+    private int countNumber(TreeNode root){
+        if (root == null) {
+            return 0;
+        }
+
+        return countNumber(root.left) + countNumber(root.right) + 1;
     }
 
     public boolean isCompleteV0(TreeNode root) {
