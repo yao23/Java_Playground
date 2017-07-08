@@ -5,7 +5,45 @@
 import java.util.LinkedList;
 
 public class CompleteBinaryTree {
-    public boolean isComplete(TreeNode root) {
+    public boolean isCompleteV1(TreeNode root) {
+        if (root == null) {
+            return true;
+        } else {
+            if (root.left == null && root.right == null) {
+                return true;
+            } else {
+                LinkedList<TreeNode> queue = new LinkedList<>();
+                queue.offer(root);
+                boolean hasNullBefore = false;
+
+                while (!queue.isEmpty()) {
+                    TreeNode curNode = queue.poll();
+                    if (curNode.left != null) {
+                        if (hasNullBefore) {
+                            return false;
+                        } else {
+                            queue.offer(curNode.left);
+                        }
+                    } else {
+                        hasNullBefore = true;
+                    }
+                    if (curNode.right != null) {
+                        if (hasNullBefore) {
+                            return false;
+                        } else {
+                            queue.offer(curNode.right);
+                        }
+                    } else {
+                        hasNullBefore = true;
+                    }
+                }
+
+                return true;
+            }
+        }
+    }
+
+    public boolean isCompleteV0(TreeNode root) {
         if (root == null) {
             return true;
         } else if (root.left == null && root.right == null) {
