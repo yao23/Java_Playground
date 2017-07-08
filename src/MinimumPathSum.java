@@ -26,4 +26,8 @@ public class MinimumPathSum {
 
         return result[0][0];
     }
+
+    // [[1]] => 1
+
+    // beats 38.38%
 }
