@@ -131,4 +131,6 @@ public class CompleteBinaryTree {
             return 1 + Math.max(height(root.left), height(root.right));
         }
     }
+
+    // https://ryancmu.gitbooks.io/lintcode/content/complete_binary_tree.html
 }
