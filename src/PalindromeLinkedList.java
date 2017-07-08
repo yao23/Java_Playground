@@ -7,12 +7,23 @@ public class PalindromeLinkedList {
             return true;
         } else {
             ListNode first = head, second = head;
+            int len = 1;
             while (second != null && second.next != null) {
                 first = first.next;
                 second = second.next.next;
+                len += 2;
+            }
+            if (second == null) { // list lenght is even number
+                len -= 1;
             }
 
-            return check(new ListNode[]{head}, first.next);
+            if (len % 2 == 0) {
+                System.out.println("second half head: " + first.val + ", len: " + len);
+                return check(new ListNode[]{head}, first); // first locates on head in second half
+            } else {
+                System.out.println("second half head: " + first.next.val + ", len: " + len);
+                return check(new ListNode[]{head}, first.next); // first.next locates on head in second half
+            }
         }
     }
 
