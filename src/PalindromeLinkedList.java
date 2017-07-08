@@ -33,4 +33,11 @@ public class PalindromeLinkedList {
             }
         }
     }
+
+    // [] => true
+    // [1] => true
+    // [1,2] => false
+    // [1,2,1] => true
+    // [1,2,2,1] => true
+    // [1,2,3,1] => false
 }
