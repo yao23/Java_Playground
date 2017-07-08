@@ -7,6 +7,54 @@ public class PalindromeLinkedList {
             return true;
         } else {
             ListNode first = head, second = head;
+
+            // find mid node in O(n)
+            while (second != null && second.next != null) {
+                first = first.next;
+                second = second.next.next;
+            }
+
+            // list length is odd number, first locates on mid node and first.next locates on head in 2nd half
+            if (second != null) {
+                first = first.next;
+            }
+
+            // reverse 2nd half
+            second = reverse(first);
+            first = head;
+
+            // compare 2 halves
+            while (second != null) {
+                if (first.val != second.val) {
+                    return false;
+                } else {
+                    first = first.next;
+                    second = second.next;
+                }
+            }
+
+            return true;
+        }
+    }
+
+    private ListNode reverse(ListNode head) {
+        ListNode pre = null, cur = head;
+
+        while (cur != null) {
+            ListNode next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+
+        return pre;
+    }
+
+    public boolean isPalindromeV0(ListNode head) { // Stack Overflow
+        if (head == null || head.next == null) {
+            return true;
+        } else {
+            ListNode first = head, second = head;
             int len = 1;
 
             while (second != null && second.next != null) { // find mid node in O(n)
