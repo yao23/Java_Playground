@@ -63,4 +63,11 @@ public class SortList {
     }
 
     // Sort a linked list in O(n log n) time using constant space complexity.
+
+    // [] => []
+    // [1] => [1]
+    // [2,1] => [1,2]
+    // [2,3,1] => [1,2,3]
+    // [2,4,3,1] => [1,2,3,4]
+    // [2,3,5,4,1] => [1,2,3,4,5]
 }
