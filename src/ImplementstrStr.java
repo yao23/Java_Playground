@@ -30,4 +30,6 @@ public class ImplementstrStr {
     // "abba","ba" => 2
     // "abba","b" => 1
     // "abba","bc" => -1
+
+    // beats 41.72%
 }
