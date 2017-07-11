@@ -43,4 +43,11 @@ public class LongestPalindrome {
         }
     }
 
+    // "" => 0
+    // "a" => 1
+    // "aa" => 2
+    // "ab" => 1
+    // "abbc" => 3
+    // "aaccccdd" => 8
+    // "abccccdd" => 7
 }
