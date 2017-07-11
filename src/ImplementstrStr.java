@@ -23,4 +23,11 @@ public class ImplementstrStr {
 
         return firstIdx;
     }
+
+    // "","" => 0
+    // "1","" => 0
+    // "","1" => -1
+    // "abba","ba" => 2
+    // "abba","b" => 1
+    // "abba","bc" => -1
 }
