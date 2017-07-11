@@ -47,4 +47,6 @@ public class LongestPalindrome {
     // "abccccdd" => 7
     // "ababababa" => 9
     // "zeusnilemacaronimaisanitratetartinasiaminoracamelinsuez" => 55
+
+    // beats 10.88%
 }
