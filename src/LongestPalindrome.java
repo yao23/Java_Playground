@@ -21,29 +21,53 @@ public class LongestPalindrome {
                 }
             }
 
-            int result = 0;
-            boolean flag = false; // flag indicates whether or not have a char only appears once
-            for (Map.Entry<Character, Integer> entry : map.entrySet()) {
-                int counter = entry.getValue();
-                if (counter % 2 == 0) {
-                    result += counter;
-                } else {
-                    if (counter == 1) {
-                        if (!flag) {
-                            flag = true;
-                            result += 1;
-                        }
+            int result = 0, mapSize = map.size();
+            if (mapSize == 1) {
+                for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+                    result = entry.getValue();
+                }
+                return result;
+            } else if (mapSize == 2) {
+                int i = 0, first = 0, second = 0;
+                for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+                    if (i == 0) {
+                        i++;
+                        first = entry.getValue();
                     } else {
-                        if (map.size() == 1) {
-                            result += counter;
+                        second = entry.getValue();
+                    }
+                }
+                int firstMod = first % 2, secondMod = second % 2;
+                if (firstMod == 1 && secondMod == 1) {
+                    result += (first + second - 1);
+                } else {
+                    result += (first + second);
+                }
+                return result;
+            } else { System.out.println(map);
+                boolean flag = false; // flag indicates whether or not have a char only appears once
+                for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+                    int counter = entry.getValue();
+                    if (counter % 2 == 0) {
+                        result += counter;
+                    } else {
+                        if (counter == 1) {
+                            if (!flag) {
+                                flag = true;
+                                result += 1;
+                            }
                         } else {
-                            result += (counter - 1);
+                            if (map.size() == 1) {
+                                result += counter;
+                            } else {
+                                result += (counter - 1);
+                            }
                         }
                     }
                 }
-            }
 
-            return result;
+                return result;
+            }
         }
     }
 
@@ -55,4 +79,5 @@ public class LongestPalindrome {
     // "abbc" => 3
     // "aaccccdd" => 8
     // "abccccdd" => 7
+    // "ababababa" => 9
 }
