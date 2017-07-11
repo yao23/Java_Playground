@@ -37,6 +37,21 @@ public class LongestPalindrome {
         }
     }
 
+    public int longestPalindromeV1(String s) {
+        boolean[] map = new boolean[128];
+        int len = 0;
+        for (char c : s.toCharArray()) {
+            map[c] = !map[c];         // flip on each occurrence, false when seen n*2 times
+            if (!map[c]) {
+                len += 2;
+            }
+        }
+        if (len < s.length()) { // if more than len, at least one single is present
+            len++;
+        }
+        return len;
+    }
+
     // "" => 0
     // "a" => 1
     // "aa" => 2
