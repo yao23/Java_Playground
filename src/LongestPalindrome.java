@@ -34,7 +34,11 @@ public class LongestPalindrome {
                             result += 1;
                         }
                     } else {
-                        result += (counter - 1);
+                        if (map.size() == 1) {
+                            result += counter;
+                        } else {
+                            result += (counter - 1);
+                        }
                     }
                 }
             }
@@ -47,6 +51,7 @@ public class LongestPalindrome {
     // "a" => 1
     // "aa" => 2
     // "ab" => 1
+    // "ccc" => 3
     // "abbc" => 3
     // "aaccccdd" => 8
     // "abccccdd" => 7
