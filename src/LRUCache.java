@@ -51,6 +51,9 @@ public class LRUCache {
     public void put(int key, int value) {
         if (map.containsKey(key)) { // if contains then remove and put in head
             Node node = removeFromList(key);
+            if (node.value != value) { // test case 2 to put duplicate key but different value
+                node.value = value;
+            }
             addToHead(node);
         } else { // otherwise remove last one if ove capacity and insert in head
             if (numNode >= capacity) {
@@ -84,6 +87,7 @@ public class LRUCache {
     }
 
     // ["LRUCache","put","put","get","put","get","put","get","get","get"], [[2],[1,1],[2,2],[1],[3,3],[2],[4,4],[1],[3],[4]] => [null,null,null,1,null,-1,null,-1,3,4]
+    // ["LRUCache","put","put","get","put","put","get"], [[2],[2,1],[2,2],[2],[1,1],[4,1],[2]] => [null,null,null,2,null,null,-1]
 }
 
 /**
