@@ -36,44 +36,27 @@ public class LRUCache {
     }
 
     public int get(int key) {
-        System.out.println("before get key " + key);
-        printList();
-        System.out.println(map);
-        if (map.keySet().contains(key)) {
-            System.out.println("found " + key);
-        } else {
-            System.out.println("not found " + key);
-        }
-        if (!map.containsKey(key)) { System.out.println("not found " + key); // map.get(key) == null
+        if (!map.containsKey(key)) {
             return -1;
         } else {
             // remove from doubly linked list
             Node node = removeFromList(key);
             // add to the head in doubly linked list
             addToHead(node);
-            System.out.println("after get key " + key);
-            printList();
+
             return node.value;
         }
     }
 
     public void put(int key, int value) {
         if (map.containsKey(key)) { // if contains then remove and put in head
-            System.out.println("before put (exist): " + key);
-            printList();
             Node node = removeFromList(key);
             addToHead(node);
-            System.out.println("after put (exist)");
-            printList();
         } else { // otherwise remove last one if ove capacity and insert in head
-            System.out.println("before put (not exist): " + key);
-            printList();
             if (numNode >= capacity) {
                 int lastKey = this.tail.prev.key;
                 removeFromList(lastKey);
                 map.remove(lastKey);
-                System.out.println("after remove (over capacity)");
-                printList();
             } else {
                 numNode++;
             }
@@ -81,9 +64,6 @@ public class LRUCache {
             Node node = new Node(key, value);
             addToHead(node);
             map.put(key, node);
-
-            System.out.println("after put (not exist)");
-            printList();
         }
     }
 
@@ -101,18 +81,6 @@ public class LRUCache {
         node.prev = this.head;
         this.head.next = node;
         node.next.prev = node;
-    }
-
-    private void printList() {
-        System.out.println();
-
-        Node node = this.head;
-        while (node != null) {
-            System.out.print(node.key + ", ");
-            node = node.next;
-        }
-
-        System.out.println();
     }
 }
 
