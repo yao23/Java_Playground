@@ -11,7 +11,7 @@ public class MinimumDepthOfBinaryTree {
             } else if (root.left != null && root.right != null) {
                 return 1 + Math.min(minDepth(root.left), minDepth(root.right));
             } else {
-                return 1 + ((root.left != null) ? minDepth(root.left) : minDepth(root.right));
+                return 1 + ((root.left != null) ? minDepth(root.left) : minDepth(root.right)); // test case 2
             }
         }
     }
