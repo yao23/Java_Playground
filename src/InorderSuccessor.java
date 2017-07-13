@@ -10,13 +10,30 @@ public class InorderSuccessor {
         TreeNode res = null;
         while (root != null) {
             if (p.val < root.val) {
-                res = root;
+                res = root; // it might be the successor (smallest larger value)
                 root = root.left;
             } else {
                 root = root.right;
             }
         }
         return res;
+    }
+
+    public TreeNode inorderSuccessorV1(TreeNode root, TreeNode p) {
+        if (p.right != null) {
+            p = p.right;
+            while (p.left != null) {
+                p = p.left;
+            }
+            return p;
+        }
+        
+        TreeNode candidate = null;
+        while (root != p) {
+            root = (p.val > root.val) ? root.right : (candidate = root).left;
+        }
+
+        return candidate;
     }
 
     public TreeNode inorderSuccessorV0(TreeNode root, TreeNode p) {
