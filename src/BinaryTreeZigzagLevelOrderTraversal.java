@@ -11,6 +11,51 @@ public class BinaryTreeZigzagLevelOrderTraversal {
             return result;
         }
 
+        List<TreeNode> curQueue = new ArrayList<>();
+        curQueue.add(root);
+        int order = 1;
+
+        while (!curQueue.isEmpty()) {
+            List<TreeNode> nextQueue = new ArrayList<>();
+            List<Integer> levelRes = new ArrayList<>();
+            for (TreeNode node : curQueue) {
+                levelRes.add(node.val);
+            }
+            result.add(levelRes);
+
+            for (int i = curQueue.size() - 1; i >= 0; i--) {
+                TreeNode curNode = curQueue.get(i);
+
+                if (order == 0) { // from left to right
+                    if (curNode.left != null) {
+                        nextQueue.add(curNode.left);
+                    }
+                    if (curNode.right != null) {
+                        nextQueue.add(curNode.right);
+                    }
+                } else { // from right to left
+                    if (curNode.right != null) {
+                        nextQueue.add(curNode.right);
+                    }
+                    if (curNode.left != null) {
+                        nextQueue.add(curNode.left);
+                    }
+                }
+            }
+
+            curQueue = new ArrayList<>(nextQueue);
+            order = (order == 0) ? 1 : 0;
+        }
+
+        return result;
+    }
+
+    public List<List<Integer>> zigzagLevelOrderV1(TreeNode root) { // beats 38.80%
+        List<List<Integer>> result = new ArrayList<>();
+        if (root == null) {
+            return result;
+        }
+
         Deque<TreeNode> q = new ArrayDeque<>();
         q.add(root);
         int curNum = 1, order = 0;
