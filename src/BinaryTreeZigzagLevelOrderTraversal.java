@@ -5,7 +5,7 @@
 import java.util.*;
 
 public class BinaryTreeZigzagLevelOrderTraversal {
-    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+    public List<List<Integer>> zigzagLevelOrder(TreeNode root) { // beats 38.80%
         List<List<Integer>> result = new ArrayList<>();
         if (root == null) {
             return result;
@@ -48,7 +48,7 @@ public class BinaryTreeZigzagLevelOrderTraversal {
         return result;
     }
 
-    public List<List<Integer>> zigzagLevelOrderV0(TreeNode root) {
+    public List<List<Integer>> zigzagLevelOrderV0(TreeNode root) { // not working
         List<List<Integer>> result = new ArrayList<>();
         if (root == null) {
             return result; // 不必把下面的大部分code放到 else 中
