@@ -3,7 +3,7 @@ import java.util.*;
 /**
  * Created by liyao on 7/12/17.
  */
-public class Solution {
+public class CountComponents {
     public int countComponents(int n, int[][] edges) {
         Map<Integer, List<Integer>> map = new HashMap<>();
         Set<Integer> nodes = new HashSet<>();
