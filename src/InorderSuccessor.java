@@ -27,7 +27,7 @@ public class InorderSuccessor {
             }
             return p;
         }
-        
+
         TreeNode candidate = null;
         while (root != p) {
             root = (p.val > root.val) ? root.right : (candidate = root).left;
