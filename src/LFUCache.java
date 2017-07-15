@@ -70,6 +70,10 @@ public class LFUCache {
             }
         }
     }
+
+    // ["LFUCache","put","put","get","put","get","get","put","get","get","get"], [[2],[1,1],[2,2],[1],[3,3],[2],[3],[4,4],[1],[3],[4]] => [null,null,null,1,null,-1,3,null,-1,3,4]
+    // ["LFUCache","put","get"], [[0],[0,0],[0]] => [null,null,-1]
+    // ["LFUCache","put","put","get","put","get","get","put","get","get","get"],[[2],[1,1],[2,2],[1],[3,3],[2],[3],[4,4],[1],[3],[4]] => [null,null,null,2,1,2,null,null,-1,2,1,4]
 }
 
 /**
