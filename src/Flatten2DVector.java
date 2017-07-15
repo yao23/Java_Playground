@@ -1,9 +1,48 @@
-import java.util.List;
-
 /**
  * Created by liyao on 7/13/17.
  */
+import java.util.List;
+import java.util.ArrayList;
+
 public class Flatten2DVector {
+    List<List<Integer>> arr;
+    List<Integer> cur;
+    int outerPtr;
+
+    public Flatten2DVector(List<List<Integer>> arr) {
+        this.arr = arr;
+        if (arr.size() > 0) {
+            cur = this.arr.get(0);
+        } else {
+            cur = new ArrayList<>();
+        }
+        outerPtr = 0;
+    }
+
+    public int next() {
+        if (hasNext()) {
+            if (cur.iterator().hasNext()) { // cur inner list has next element
+                return cur.iterator().next();
+            } else { // cur inner list has no next element
+                outerPtr++;
+                cur = arr.get(outerPtr);
+                return cur.iterator().next();
+            }
+        } else {
+            return Integer.MIN_VALUE; // no next value
+        }
+    }
+
+    public boolean hasNext() {
+        if (!cur.iterator().hasNext() && outerPtr == arr.size() - 1) { // last element in last list
+            return false;
+        } else {
+            return true;
+        }
+    }
+}
+
+class Flatten2DVectorV0 {
     private int outerPtr;
     private int innerPtr;
 
@@ -11,7 +50,7 @@ public class Flatten2DVector {
 
     private List<List<Integer>> arr;
 
-    public Flatten2DVector(List<List<Integer>> arr) {
+    public Flatten2DVectorV0(List<List<Integer>> arr) {
         this.outerPtr = 0;
         this.innerPtr = 0;
         this.outerPtrMax = arr.size();
