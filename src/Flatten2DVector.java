@@ -27,7 +27,7 @@ public class Flatten2DVector { // use 2 iterators to access outer and inner list
     }
 }
 
-public class Flatten2DVectorV2 { // use a 1D list to hold all elements
+class Flatten2DVectorV2 { // use a 1D list to hold all elements
     private List<Integer> list;
     private int index;
     private int size;
