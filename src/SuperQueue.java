@@ -42,3 +42,7 @@ public class SuperQueue {
 
     // [0,2,4,5], [1,3], [6,7,8] => [0,1,2,3,4,5,6,7,8]
 }
+
+/**
+ *  Set of priority queues, design a data structure to implement peek(), poll() for SuperQueue.
+ **/
