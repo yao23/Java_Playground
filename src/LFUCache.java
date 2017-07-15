@@ -2,6 +2,7 @@
  * Created by liyao on 7/15/17.
  */
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
@@ -24,7 +25,6 @@ public class LFUCache {
             minHeap.remove(data);
             minHeap.offer(newData);
             data.frequency += 1;
-            map.put(key, data);
             return data.value;
         } else {
             return -1;
@@ -49,7 +49,7 @@ public class LFUCache {
         }
     }
 
-    class Data {
+    class Data implements Comparable<Data> {
         private int key;
         private int value;
         private int frequency;
@@ -58,6 +58,16 @@ public class LFUCache {
             this.key = key;
             this.value = value;
             frequency = 0;
+        }
+
+        public int compareTo(Data that) {
+            if (this.frequency < that.frequency) {
+                return -1;
+            } else if (this.frequency == that.frequency) {
+                return 0;
+            } else {
+                return 1;
+            }
         }
     }
 }
