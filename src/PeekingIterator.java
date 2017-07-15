@@ -107,4 +107,6 @@ public class PeekingIterator implements Iterator<Integer> {
 
     // [1, 2, 3], [2, 1, 2, 2] => ["1","2","2","3"]
     // [1,2,3,4], [0,1,1,2,2,1,1,2,0,1,0,2,0] => ["true","1","1","1","2","3","3","3","true","4","true","4","false"]
+
+    // beats 17.20%
 }
