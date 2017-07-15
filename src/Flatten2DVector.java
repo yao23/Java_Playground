@@ -7,7 +7,6 @@ import java.util.ArrayList;
 public class Flatten2DVector {
     List<List<Integer>> arr;
     List<Integer> cur;
-    int outerPtr;
 
     public Flatten2DVector(List<List<Integer>> arr) {
         this.arr = arr;
@@ -16,7 +15,6 @@ public class Flatten2DVector {
         } else {
             cur = new ArrayList<>();
         }
-        outerPtr = 0;
     }
 
     public int next() {
@@ -24,8 +22,7 @@ public class Flatten2DVector {
             if (cur.iterator().hasNext()) { // cur inner list has next element
                 return cur.iterator().next();
             } else { // cur inner list has no next element
-                outerPtr++;
-                cur = arr.get(outerPtr);
+                cur = arr.iterator().next();
                 return cur.iterator().next();
             }
         } else {
@@ -34,7 +31,7 @@ public class Flatten2DVector {
     }
 
     public boolean hasNext() {
-        if (!cur.iterator().hasNext() && outerPtr == arr.size() - 1) { // last element in last list
+        if (!cur.iterator().hasNext() && !arr.iterator().hasNext()) { // last element in last list
             return false;
         } else {
             return true;
