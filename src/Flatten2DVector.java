@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Flatten2DVector {
+public class Flatten2DVector { // use 2 iterators to access outer and inner list
     Iterator<List<Integer>> outer;
     Iterator<Integer> inner;
 
@@ -24,6 +24,35 @@ public class Flatten2DVector {
         }
 
         return (inner != null && inner.hasNext());
+    }
+}
+
+public class Flatten2DVectorV2 { // use a 1D list to hold all elements
+    private List<Integer> list;
+    private int index;
+    private int size;
+
+    public Flatten2DVectorV2(List<List<Integer>> arr) {
+        index = 0;
+        size = 0;
+        for (List<Integer> l : arr) {
+            list.addAll(l);
+            size += l.size();
+        }
+    }
+
+    public int next() {
+        if (hasNext()) {
+            int result = list.get(index);
+            index++;
+            return result;
+        } else {
+            return Integer.MIN_VALUE;
+        }
+    }
+
+    public boolean hasNext() {
+        return (index < size - 1);
     }
 }
 
