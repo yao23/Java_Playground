@@ -1,14 +1,37 @@
 /**
  * Created by liyao on 7/13/17.
  */
+import java.util.Iterator;
 import java.util.List;
 import java.util.ArrayList;
 
 public class Flatten2DVector {
+    Iterator<List<Integer>> outer;
+    Iterator<Integer> inner;
+
+    public Flatten2DVector(List<List<Integer>> arr) {
+        outer = arr.iterator();
+    }
+
+    public int next() {
+        hasNext();
+        return inner.next();
+    }
+
+    public boolean hasNext() {
+        while ((inner == null || !inner.hasNext()) && outer.hasNext()) { // has next in list
+            inner = outer.next().iterator();
+        }
+
+        return (inner != null && inner.hasNext());
+    }
+}
+
+class Flatten2DVectorV1 {
     List<List<Integer>> arr;
     List<Integer> cur;
 
-    public Flatten2DVector(List<List<Integer>> arr) {
+    public Flatten2DVectorV1(List<List<Integer>> arr) {
         this.arr = arr;
         if (arr.size() > 0) {
             cur = this.arr.get(0);
