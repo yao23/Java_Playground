@@ -16,6 +16,8 @@ public class Flatten2DVector {
         this.innerPtr = 0;
         this.outerPtrMax = arr.size();
         this.arr = arr;
+
+        getOuterList();
     }
 
     public int next() {
@@ -27,6 +29,7 @@ public class Flatten2DVector {
             } else {
                 if (outerPtr < outerPtrMax - 1) {
                     outerPtr++;
+                    getOuterList();
                     innerPtr = 0;
                 }
             }
@@ -49,6 +52,12 @@ public class Flatten2DVector {
             }
         } else {
             return false;
+        }
+    }
+
+    private void getOuterList() {
+        while (arr.get(outerPtr).size() == 0 && outerPtr < outerPtrMax - 1) {
+            outerPtr++;
         }
     }
 }
