@@ -17,24 +17,19 @@ public class LFUCache {
         if (capacity == 0) {
             return;
         } else {
-            map = new HashMap<>(); // System.out.println("finish init map");
-            minHeap = new PriorityQueue<>(capacity); // System.out.println("finish init minHeap");
-            this.capacity = capacity; // System.out.println("finish init");
+            map = new HashMap<>();
+            minHeap = new PriorityQueue<>(capacity);
+            this.capacity = capacity;
             this.index = 0;
         }
     }
 
-    public int get(int key) { // System.out.println("get " + key);
+    public int get(int key) {
         if (capacity == 0) {
             return -1;
         }
 
-        // printMap();
-        // printHeap();
-
-        // System.out.print("map: ");
-        // System.out.println(map);
-        if (map.containsKey(key)) { // System.out.println("[GET] key existed " + key);
+        if (map.containsKey(key)) {
             index++;
             Data data = map.get(key);
             Data newData = new Data(key, data.value, data.frequency + 1, index);
@@ -43,25 +38,19 @@ public class LFUCache {
             data.frequency += 1;
             data.index = index;
 
-            // System.out.println("after get " + key + ", value: " + data.value);
-            // printMap();
-            // printHeap();
             return data.value;
-        } else { // System.out.println("[GET] key not existed");
+        } else {
             return -1;
         }
     }
 
-    public void put(int key, int value) { //System.out.println("put " + key + ", " + value);
+    public void put(int key, int value) {
         if (capacity == 0) {
             return;
         }
 
-        // printMap();
-        // printHeap();
-
         index++;
-        if (map.containsKey(key)) { // System.out.println("[PUT] key existed");
+        if (map.containsKey(key)) {
             Data data = map.get(key);
             minHeap.remove(data); // remove old data from heap first (test case 4)
 
@@ -74,7 +63,7 @@ public class LFUCache {
 
             Data newData = new Data(key, data.value, data.frequency, index);
             minHeap.add(newData);
-        } else { // System.out.println("[PUT] key not existed");
+        } else {
             if (map.size() == capacity) {
                 Data lfuData = minHeap.poll();
                 map.remove(lfuData.key);
@@ -83,27 +72,6 @@ public class LFUCache {
             map.put(key, data);
             minHeap.offer(data);
         }
-        // System.out.println("after put " + key + ", " + value);
-        // printMap();
-        // printHeap();
-    }
-
-    private void printMap() {
-        System.out.println("start print map: ");
-        for (Map.Entry<Integer, Data> entry : map.entrySet()) {
-            int key = entry.getKey();
-            Data data = entry.getValue();
-            System.out.println(key + ": " + data.value + ", " + data.frequency + ", " + data.index);
-        }
-        System.out.println("print map is done");
-    }
-
-    private void printHeap() {
-        System.out.println("start print heap: ");
-        for (Data data: minHeap.toArray(new Data[minHeap.size()])) {
-            System.out.println(data.key + ": " + data.value + ", " + data.frequency + ", " + data.index);
-        }
-        System.out.println("print heap is done");
     }
 
     class Data implements Comparable<Data> {
