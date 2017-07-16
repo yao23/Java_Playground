@@ -3,17 +3,145 @@
  */
 
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.PriorityQueue;
 
-public class LFUCache { // HashMap + Heap (Priority Queue)
+public class LFUCache { // HashMap + Doubly Linked List + LinkedHashSet
+    private int capacity;
+    private Node head; // frequency (double linked) list
+    private Map<Integer, Integer> valueMap;
+    private Map<Integer, Node> nodeMap;
+
+    public LFUCache(int capacity) {
+        this.capacity = capacity;
+        this.head = null;
+        this.valueMap = new HashMap<>();
+        this.nodeMap = new HashMap<>();
+    }
+
+    public int get(int key) {
+        if (valueMap.containsKey(key)) {
+            increaseFrequency(key);
+            return valueMap.get(key);
+        } else {
+            return -1;
+        }
+    }
+
+    public void put(int key, int value) {
+        if (capacity == 0) {
+            return;
+        } else {
+            if (valueMap.containsKey(key)) {
+                increaseFrequency(key);
+                valueMap.remove(key);
+                valueMap.put(key, value);
+            } else {
+                if (valueMap.size() == capacity) {
+                    remove(head);
+                }
+                valueMap.put(key, value);
+                nodeMap.put(key, new Node(0));
+                addToHead(key);
+            }
+        }
+    }
+
+    private void increaseFrequency(int key) {
+        if (head == null) {
+            head = new Node(0);
+            head.keys.add(key);
+        } else {
+            removeOld(key);
+
+            Node node = nodeMap.get(key);
+            if (node.next == null) {
+                Node nextNode = new Node(node.frequency + 1);
+                nextNode.keys.add(key);
+            } else if (node.frequency + 1 == node.next.frequency) { // next node has (frequency + 1)
+                node.next.keys.add(key);
+            } else { // next node frequency is larger than current (frequency + 1)
+                Node tmp = new Node(node.frequency + 1);
+                tmp.next = node.next;
+                node.next.prev = tmp;
+                node.next = tmp;
+                tmp.prev = node;
+            }
+
+            addToHead(key);
+        }
+    }
+
+    private void addToHead(int key) {
+        if (head == null) {
+            head = new Node(0);
+            LinkedHashSet<Integer> keys = new LinkedHashSet<>();
+            keys.add(key);
+        } else {
+            Node node = nodeMap.get(key);
+            if (head.next == null) {
+                node.next = head;
+                head.prev = node;
+                head = node;
+            } else {
+                node.next = head.next;
+                head.next.prev = node;
+                head = node;
+            }
+        }
+    }
+
+    private void removeOld(int key) { // remove lease frequently used element (key)
+//        if (head == null) {
+//            return;
+//        } else {
+//            int key = head.keys.rem
+//            Node node = nodeMap.get(key);
+//            node.keys.remove(key);
+//            remove(node);
+//        }
+        Node node = nodeMap.get(key);
+        node.keys.remove(key);
+        nodeMap.remove(key);
+    }
+
+    private void remove(Node node) {
+        if (node.prev == null) { // head
+            head = node.next;
+            node.next = null;
+        } else { // non-head
+            node.prev.next = node.next;
+            node.next.prev = node.prev;
+            node.prev = null;
+            node.next = null;
+        }
+    }
+
+    class Node {
+        private int frequency;
+        LinkedHashSet<Integer> keys;
+        Node prev;
+        Node next;
+
+        public Node(int frequency) {
+            this.frequency = frequency;
+            keys = new LinkedHashSet<>();
+            prev = null;
+            next = null;
+        }
+    }
+}
+
+
+class LFUCacheV0 { // HashMap + Heap (Priority Queue), O(logn)
 
     private int index;
     private int capacity;
     private Map<Integer, Data> map;
     private PriorityQueue<Data> minHeap;
 
-    public LFUCache(int capacity) {
+    public LFUCacheV0(int capacity) {
         if (capacity == 0) {
             return;
         } else {
