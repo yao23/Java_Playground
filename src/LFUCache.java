@@ -7,13 +7,71 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.PriorityQueue;
 
-public class LFUCache { // HashMap + Doubly Linked List + LinkedHashSet, O(1), beats 46.07%
+public class LFUCache { // HashMap + LinkedHashSet, O(1), beats 61.93%
+    HashMap<Integer, Integer> vals; // key -> value
+    HashMap<Integer, Integer> counts; // key -> frequency
+    HashMap<Integer, LinkedHashSet<Integer>> lists; // frequency -> keys list
+    int cap;
+    int min = -1;
+
+    public LFUCache(int capacity) {
+        cap = capacity;
+        vals = new HashMap<>();
+        counts = new HashMap<>();
+        lists = new HashMap<>();
+        lists.put(1, new LinkedHashSet<Integer>());
+    }
+
+    public int get(int key) {
+        if (vals.containsKey(key)) {
+            int count = counts.get(key);
+            counts.put(key, count + 1);
+            lists.get(count).remove(key);
+            if (count == min && lists.get(count).size() == 0) {
+                min++;
+            }
+
+            if (!lists.containsKey(count + 1)) {
+                lists.put(count + 1, new LinkedHashSet<Integer>());
+            }
+
+            lists.get(count + 1).add(key);
+            return vals.get(key);
+        } else {
+            return -1;
+        }
+    }
+
+    public void put(int key, int value) {
+        if (cap <= 0) {
+            return;
+        }
+
+        if (vals.containsKey(key)) {
+            vals.put(key, value);
+            get(key);
+            return;
+        }
+        if (vals.size() >= cap) {
+            int evict = lists.get(min).iterator().next();
+            lists.get(min).remove(evict);
+            vals.remove(evict);
+            counts.remove(evict);
+        }
+        vals.put(key, value);
+        counts.put(key, 1);
+        min = 1;
+        lists.get(1).add(key);
+    }
+}
+
+class LFUCacheV1 { // HashMap + Doubly Linked List + LinkedHashSet, O(1), beats 46.07%
     private int capacity;
     private Node head; // frequency (double linked) list which has keys list (linked hash set)
     private Map<Integer, Integer> valueMap;
     private Map<Integer, Node> nodeMap;
 
-    public LFUCache(int capacity) {
+    public LFUCacheV1(int capacity) {
         this.capacity = capacity;
         this.head = null;
         this.valueMap = new HashMap<>();
