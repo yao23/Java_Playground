@@ -7,9 +7,9 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.PriorityQueue;
 
-public class LFUCache { // HashMap + Doubly Linked List + LinkedHashSet
+public class LFUCache { // HashMap + Doubly Linked List + LinkedHashSet, O(1)
     private int capacity;
-    private Node head; // frequency (double linked) list
+    private Node head; // frequency (double linked) list which has keys list (linked hash set)
     private Map<Integer, Integer> valueMap;
     private Map<Integer, Node> nodeMap;
 
