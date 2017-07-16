@@ -34,88 +34,92 @@ public class LFUCache { // HashMap + Doubly Linked List + LinkedHashSet
             return;
         } else {
             if (valueMap.containsKey(key)) {
-                increaseFrequency(key);
-                valueMap.remove(key);
                 valueMap.put(key, value);
             } else {
                 if (valueMap.size() == capacity) {
-                    remove(head);
+                    removeOld();
                 }
                 valueMap.put(key, value);
-                nodeMap.put(key, new Node(0));
                 addToHead(key);
             }
+
+            increaseFrequency(key);
         }
     }
 
     private void increaseFrequency(int key) {
-        if (head == null) {
-            head = new Node(0);
-            head.keys.add(key);
-        } else {
-            removeOld(key);
+        Node node = nodeMap.get(key);
+        node.keys.remove(key);
 
-            Node node = nodeMap.get(key);
-            if (node.next == null) {
-                Node nextNode = new Node(node.frequency + 1);
-                nextNode.keys.add(key);
-            } else if (node.frequency + 1 == node.next.frequency) { // next node has (frequency + 1)
-                node.next.keys.add(key);
-            } else { // next node frequency is larger than current (frequency + 1)
-                Node tmp = new Node(node.frequency + 1);
-                tmp.next = node.next;
-                node.next.prev = tmp;
-                node.next = tmp;
-                tmp.prev = node;
-            }
+        if (node.next == null) {
+            Node nextNode = new Node(node.frequency + 1);
+            nextNode.keys.add(key);
+            nextNode.prev = node;
+            node.next = nextNode;
+        } else if (node.frequency + 1 == node.next.frequency) { // next node has (frequency + 1)
+            node.next.keys.add(key);
+        } else { // next node frequency is larger than current (frequency + 1)
+            Node tmp = new Node(node.frequency + 1);
+            tmp.keys.add(key);
+            tmp.next = node.next;
+            tmp.prev = node;
+            node.next.prev = tmp;
+            node.next = tmp;
+        }
 
-            addToHead(key);
+        nodeMap.put(key, node.next);
+        if (node.keys.size() == 0) {
+            remove(node);
         }
     }
 
     private void addToHead(int key) {
         if (head == null) {
             head = new Node(0);
-            LinkedHashSet<Integer> keys = new LinkedHashSet<>();
-            keys.add(key);
+            head.keys.add(key);
+        } else if (head.frequency > 0) {
+            Node node = new Node(0);
+            node.keys.add(key);
+            // update node as head
+            node.next = head;
+            head.prev = node;
+            head = node;
         } else {
-            Node node = nodeMap.get(key);
-            if (head.next == null) {
-                node.next = head;
-                head.prev = node;
-                head = node;
-            } else {
-                node.next = head.next;
-                head.next.prev = node;
-                head = node;
-            }
+            head.keys.add(key);
         }
+
+        nodeMap.put(key, head);
     }
 
-    private void removeOld(int key) { // remove lease frequently used element (key)
-//        if (head == null) {
-//            return;
-//        } else {
-//            int key = head.keys.rem
-//            Node node = nodeMap.get(key);
-//            node.keys.remove(key);
-//            remove(node);
-//        }
-        Node node = nodeMap.get(key);
-        node.keys.remove(key);
-        nodeMap.remove(key);
+    private void removeOld() { // remove lease frequently used element (key)
+        if (head == null) {
+            return;
+        } else {
+            int old = 0;
+            for (int key : head.keys) {
+                old = key; // find first (old) key
+                break;
+            }
+            head.keys.remove(old);
+            if (head.keys.size() == 0) {
+                remove(head);
+            }
+            valueMap.remove(old);
+            nodeMap.remove(old);
+        }
     }
 
     private void remove(Node node) {
         if (node.prev == null) { // head
             head = node.next;
-            node.next = null;
         } else { // non-head
             node.prev.next = node.next;
-            node.next.prev = node.prev;
-            node.prev = null;
-            node.next = null;
         }
+        if (node.next != null) {
+            node.next.prev = node.prev;
+        }
+        node.prev = null;
+        node.next = null;
     }
 
     class Node {
