@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 
-public class LFUCache {
+public class LFUCache { // HashMap + Heap (Priority Queue)
 
     private int index;
     private int capacity;
