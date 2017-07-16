@@ -7,7 +7,7 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.PriorityQueue;
 
-public class LFUCache { // HashMap + Doubly Linked List + LinkedHashSet, O(1)
+public class LFUCache { // HashMap + Doubly Linked List + LinkedHashSet, O(1), beats 46.07%
     private int capacity;
     private Node head; // frequency (double linked) list which has keys list (linked hash set)
     private Map<Integer, Integer> valueMap;
@@ -138,7 +138,7 @@ public class LFUCache { // HashMap + Doubly Linked List + LinkedHashSet, O(1)
 }
 
 
-class LFUCacheV0 { // HashMap + Heap (Priority Queue), O(logn)
+class LFUCacheV0 { // HashMap + Heap (Priority Queue), O(logn), beats 1.11%
 
     private int index;
     private int capacity;
