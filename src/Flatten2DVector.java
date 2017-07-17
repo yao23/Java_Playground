@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Flatten2DVector { // use 2 iterators to access outer and inner list
+public class Flatten2DVector { // use 2 iterators to access outer and inner list, beats 17.97
     Iterator<List<Integer>> outer;
     Iterator<Integer> inner;
 
