@@ -6,7 +6,7 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class InorderSuccessor {
-    public TreeNode inorderSuccessor(TreeNode root, TreeNode p) { // from CLRS
+    public TreeNode inorderSuccessor(TreeNode root, TreeNode p) { // from CLRS, beats 44.98%
         TreeNode res = null;
         while (root != null) {
             if (p.val < root.val) {
@@ -19,7 +19,7 @@ public class InorderSuccessor {
         return res;
     }
 
-    public TreeNode inorderSuccessorV1(TreeNode root, TreeNode p) {
+    public TreeNode inorderSuccessorV1(TreeNode root, TreeNode p) { // beats 44.98%
         if (p.right != null) {
             p = p.right;
             while (p.left != null) {
