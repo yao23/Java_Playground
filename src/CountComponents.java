@@ -14,7 +14,12 @@ public class CountComponents {
                 List<Integer> list = new ArrayList<>();
                 map.put(first, list);
             }
+            if (!map.containsKey(second)) { // fix bug for test case 3
+                List<Integer> list = new ArrayList<>();
+                map.put(second, list);
+            }
             map.get(first).add(second);
+            map.get(second).add(first);
         }
 
         int result = 0;
@@ -26,7 +31,7 @@ public class CountComponents {
             }
         }
 
-        return result;
+        return result + (n - nodes.size()); // fix bug for test case 2
     }
 
     private void dfs(Set<Integer> nodes, List<Integer> list, Map<Integer, List<Integer>> map) {
@@ -40,4 +45,10 @@ public class CountComponents {
     }
 
     // 5, [[0,1],[1,2],[3,4]] => 2
+    // 4, [[2,3],[1,2],[1,3]] => 2
+    // 3, [[1,0],[2,0]] => 1
 }
+
+/**
+ * Number of Connected Components in an Undirected Graph
+ */
