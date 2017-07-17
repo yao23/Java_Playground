@@ -5,7 +5,7 @@
 import java.util.*;
 
 public class MeetingRoomsII {
-    public int minMeetingRooms(Interval[] intervals) {
+    public int minMeetingRooms(Interval[] intervals) { // beats 44.57%
         if (intervals == null || intervals.length == 0) {
             return 0;
         }
