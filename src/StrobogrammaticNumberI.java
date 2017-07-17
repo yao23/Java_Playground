@@ -44,4 +44,6 @@ public class StrobogrammaticNumberI {
     // "69" => true
     // "88" => true
     // "818" => true
+
+    // beats 52.19%
 }
