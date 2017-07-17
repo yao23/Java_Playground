@@ -3,10 +3,10 @@
  */
 public class TicTacToe {
     private int n;
-    private int[] rows;
-    private int[] cols;
-    private int diagonal;
-    private int antiDiagonal;
+    private int[] rows; // row number occupied by players
+    private int[] cols; // col number occupied by players
+    private int diagonal; // diagonal number occupied by players
+    private int antiDiagonal; // anti-diagonal number occupied by players
 
     /**
      * Initialize your data structure here.
