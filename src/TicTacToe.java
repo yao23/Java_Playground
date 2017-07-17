@@ -32,13 +32,13 @@ public class TicTacToe {
      */
     public int move(int row, int col, int player) {
         if (player == 1) {
+            rows[row]++;
+            cols[col]++;
             if (row == col) {
                 diagonal++;
-            } else if (row + col == n - 1) {
+            }
+            if (row + col == n - 1) {
                 antiDiagonal++;
-            } else {
-                rows[row]++;
-                cols[col]++;
             }
             if (rows[row] == n || cols[col] == n || diagonal == n || antiDiagonal == n) {
                 return 1;
@@ -46,13 +46,13 @@ public class TicTacToe {
                 return 0;
             }
         } else {
+            rows[row]--;
+            cols[col]--;
             if (row == col) {
                 diagonal--;
-            } else if (row + col == n - 1) {
+            }
+            if (row + col == n - 1) {
                 antiDiagonal--;
-            } else {
-                rows[row]--;
-                cols[col]--;
             }
             if (rows[row] == -n || cols[col] == -n || diagonal == -n || antiDiagonal == -n) {
                 return 2;
