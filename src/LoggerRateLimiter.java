@@ -32,6 +32,8 @@ public class LoggerRateLimiter {
                 return true;
             }
         }
+
+        // beats 60.37%
     }
 
     class LoggerV0 { // only 1 hashmap
