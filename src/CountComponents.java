@@ -30,10 +30,14 @@ public class CountComponents {
     }
 
     private void dfs(Set<Integer> nodes, List<Integer> list, Map<Integer, List<Integer>> map) {
-        for (int node : list) {
-            if (nodes.add(node)) {
-                dfs(nodes, map.get(node), map);
+        if (list != null) {
+            for (int node : list) {
+                if (nodes.add(node)) {
+                    dfs(nodes, map.get(node), map);
+                }
             }
         }
     }
+
+    // 5, [[0,1],[1,2],[3,4]] => 2
 }
