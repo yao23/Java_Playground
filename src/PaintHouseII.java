@@ -2,7 +2,7 @@
  * Created by liyao on 7/3/17.
  */
 public class PaintHouseII {
-    public int minCostII(int[][] costs) {
+    public int minCostII(int[][] costs) { // beats 30.42%
         if(costs.length == 0) {
             return 0;
         } else {
