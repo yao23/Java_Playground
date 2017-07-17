@@ -27,7 +27,7 @@ public class Flatten2DVector { // use 2 iterators to access outer and inner list
     }
 }
 
-class Flatten2DVectorV2 { // use a 1D list to hold all elements
+class Flatten2DVectorV2 { // use a 1D list to hold all elements, beats 8.47%
     private List<Integer> list;
     private int index;
     private int size;
@@ -35,6 +35,7 @@ class Flatten2DVectorV2 { // use a 1D list to hold all elements
     public Flatten2DVectorV2(List<List<Integer>> arr) {
         index = 0;
         size = 0;
+        list = new ArrayList<>();
         for (List<Integer> l : arr) {
             list.addAll(l);
             size += l.size();
@@ -52,7 +53,7 @@ class Flatten2DVectorV2 { // use a 1D list to hold all elements
     }
 
     public boolean hasNext() {
-        return (index < size - 1);
+        return (index < size);
     }
 }
 
@@ -149,3 +150,5 @@ class Flatten2DVectorV0 {
         }
     }
 }
+
+// [[1,2],[3],[4,5,6]] => [1,2,3,4,5,6]
