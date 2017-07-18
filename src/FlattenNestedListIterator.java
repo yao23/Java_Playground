@@ -22,10 +22,49 @@ public class FlattenNestedListIterator {
      * }
      */
     class NestedIterator implements Iterator<Integer> {
+        private Deque<NestedInteger> stack;
+
+        public NestedIterator(List<NestedInteger> nestedList) {
+            stack = new ArrayDeque<>();
+            for (int i = nestedList.size() - 1; i >= 0; i--) {
+                stack.push(nestedList.get(i));
+            }
+        }
+
+        @Override
+        public Integer next() {
+            return stack.pop().getInteger();
+        }
+
+        @Override
+        public boolean hasNext() {
+            while (!stack.isEmpty()) {
+                NestedInteger top = stack.peek();
+                if (top.isInteger()) {
+                    return true;
+                } else {
+                    top = stack.pop();
+                    List<NestedInteger> list = top.getList();
+                    for (int i = list.size() - 1; i >= 0; i--) {
+                        stack.push(list.get(i));
+                    }
+                }
+            }
+
+            return false;
+        }
+        
+        @Override
+        public void remove() {
+
+        }
+    }
+
+    class NestedIteratorV0 implements Iterator<Integer> {
         private Iterator<NestedInteger> iterator;
         private Deque<Iterator<NestedInteger>> parentIterators;
 
-        public NestedIterator(List<NestedInteger> nestedList) {
+        public NestedIteratorV0(List<NestedInteger> nestedList) {
             iterator = nestedList.iterator();
             parentIterators = new ArrayDeque<>();
         }
