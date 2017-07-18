@@ -21,7 +21,7 @@ public class FlattenNestedListIterator {
      *     public List<NestedInteger> getList();
      * }
      */
-    class NestedIterator implements Iterator<Integer> {
+    class NestedIterator implements Iterator<Integer> { // beats 50.76%
         private Deque<NestedInteger> stack;
 
         public NestedIterator(List<NestedInteger> nestedList) {
@@ -53,7 +53,7 @@ public class FlattenNestedListIterator {
 
             return false;
         }
-        
+
         @Override
         public void remove() {
 
