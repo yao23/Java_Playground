@@ -135,6 +135,11 @@ public class FlattenNestedListIterator {
 
     }
 
+    // [[1,1],2,[1,1]] => [1,1,2,1,1]
+    // [1,[4,[6]]] => [1,4,6]
+    // [1,[4,[6],5]] => [1,4,6,5]
+    // [1,[4,[6,7],5]] => [1,4,6,7,5]
+
     /**
      * Your NestedIterator object will be instantiated and called as such:
      * NestedIterator i = new NestedIterator(nestedList);
