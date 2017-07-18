@@ -62,6 +62,8 @@ public class ZigzagIterator {
         return iterator1.hasNext() || iterator2.hasNext();
     }
 
+    // [],[] => []
+    // [],[3,4,5,6] => [3,4,5,6]
     // [1,2],[3,4,5,6] => [1,3,2,4,5,6]
 
 }
