@@ -48,6 +48,8 @@ public class AddAndSearchWord {
             }
             return false;
         }
+
+        // ["WordDictionary","addWord","addWord","addWord","search","search","search","search"],[[],["bad"],["dad"],["mad"],["pad"],["bad"],[".ad"],["b.."]] => [null,null,null,null,false,true,true,true]
     }
 
     /**
