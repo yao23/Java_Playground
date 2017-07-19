@@ -50,6 +50,8 @@ public class AddAndSearchWord {
         }
 
         // ["WordDictionary","addWord","addWord","addWord","search","search","search","search"],[[],["bad"],["dad"],["mad"],["pad"],["bad"],[".ad"],["b.."]] => [null,null,null,null,false,true,true,true]
+
+        // beats 87.36%
     }
 
     /**
