@@ -4,47 +4,49 @@
 
 public class AddAndSearchWord {
     class WordDictionary {
-        
+        class TrieNode {
+            public TrieNode[] children = new TrieNode[26];
+            public String item = "";
+        }
 
-        private ImplementTriePrefixTree.Trie trieTree;
+        private TrieNode root;
 
         /** Initialize your data structure here. */
         public WordDictionary() {
-            trieTree = new ImplementTriePrefixTree.Trie(' ');
+            root = new TrieNode();
         }
 
         /** Adds a word into the data structure. */
         public void addWord(String word) {
-            trieTree.add(word);
+            TrieNode node = root;
+            for (char c : word.toCharArray()) {
+                if (node.children[c - 'a'] == null) {
+                    node.children[c - 'a'] = new TrieNode();
+                }
+                node = node.children[c - 'a'];
+            }
+            node.item = word;
         }
 
         /** Returns if the word is in the data structure. A word could contain the dot character '.' to represent any one letter. */
         public boolean search(String word) {
-            for (int i = 0; i < word.length(); i++) {
-                if (!searchInTrieTree(word.substring(0, i + 1))) {
-                    return false;
-                }
-            }
-
-            return true;
+            return match(word.toCharArray(), 0, root);
         }
 
-        private searchInTrieTree(String str) {
-            int len = str.length();
-            if (str.charAt(len - 1) == '.') {
-                for (char c = 'a'; c <= 'z'; c++) {
-                    char[] tmp = str.toCharArray();
-                    tmp[len - 1] = c;
-                    if (trieTree.startWith(new String(tmp))) {
-                        return true;
-                    } else {
-                        continue;
+        private boolean match(char[] chs, int k, TrieNode node) {
+            if (k == chs.length) return !node.item.equals("");
+            if (chs[k] != '.') {
+                return node.children[chs[k] - 'a'] != null && match(chs, k + 1, node.children[chs[k] - 'a']);
+            } else {
+                for (int i = 0; i < node.children.length; i++) {
+                    if (node.children[i] != null) {
+                        if (match(chs, k + 1, node.children[i])) {
+                            return true;
+                        }
                     }
                 }
-                return false;
-            } else {
-                return trieTree.startWith(str);
             }
+            return false;
         }
     }
 
