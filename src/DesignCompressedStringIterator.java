@@ -4,31 +4,33 @@
 public class DesignCompressedStringIterator {
     class StringIterator {
         private int curIdx;
-        private Character curLetter;
+        private char curLetter;
         private int curLetterIdx;
         private int curLetterNum;
         private String compressedStr;
 
         public StringIterator(String compressedString) {
             compressedStr = compressedString;
+            curIdx = 0;
 
             if (curIdx < compressedStr.length()) {
                 getNextLetter();
             } else {
                 curLetter = ' ';
                 curLetterNum = 0;
-                curIdx = 0;
+                curLetterIdx = 0;
             }
-            curLetterIdx = 0;
         }
 
         public char next() {
             if (hasNext()) {
+                // System.out.println("next: " + compressedStr + ", " + curIdx + ", " + curLetter + ", " + curLetterIdx + ", " + curLetterNum);
                 if (curLetterIdx < curLetterNum) {
                     curLetterIdx++;
                     return curLetter;
                 } else { // use up cur letter
                     getNextLetter();
+                    curLetterIdx++;
                     return curLetter;
                 }
             } else {
@@ -37,33 +39,44 @@ public class DesignCompressedStringIterator {
         }
 
         public boolean hasNext() {
-            return curIdx < compressedStr.length();
+            return compressedStr.length() > 0 || curLetterIdx < curLetterNum;
         }
 
         private int findNextLetterIdx() {
-            for (int i = 1; i < compressedStr.length(); i++) {
-                Character c = compressedStr.charAt(i);
-                if (i >= '0' && i <= '9') {
+            int i = 0;
+            for (i = 1; i < compressedStr.length(); i++) {
+                char c = compressedStr.charAt(i);
+                if (Character.isDigit(c)) { //System.out.println("digit: " + c + ", " + i); // i >= '0' && i <= '9'
                     continue;
-                } else {
+                } else { //System.out.println("letter: " + c + ", " + i);
                     return i;
                 }
             }
 
-            return 0;
+            return i;
         }
 
         private int getLetterNum(int nextLetterIdx) {
-            return Integer.valueOf(compressedStr.substring(1, nextLetterIdx));
+            if (nextLetterIdx < compressedStr.length()) {
+                return Integer.valueOf(compressedStr.substring(1, nextLetterIdx));
+            } else {
+                return Integer.valueOf(compressedStr.substring(1));
+            }
         }
 
         private void getNextLetter() {
-            curLetter = compressedStr.charAt(0);
-            int nextLetterIdx = findNextLetterIdx();
-            curLetterNum = getLetterNum(nextLetterIdx);
+            curLetter = compressedStr.charAt(0); //System.out.println("curLetter: " + curLetter);
+            int nextLetterIdx = findNextLetterIdx(); //System.out.println("nextLetterIdx: " + nextLetterIdx);
+            curLetterNum = getLetterNum(nextLetterIdx); //System.out.println("curLetterNum: " + curLetterNum);
             curLetterIdx = 0;
-            compressedStr = compressedStr.substring(nextLetterIdx); // update for next letter
-            curIdx += nextLetterIdx;
+            if (nextLetterIdx < compressedStr.length()) {
+                compressedStr = compressedStr.substring(nextLetterIdx); //System.out.println("compressedStr: " + compressedStr);// update for next letter
+            } else {
+                compressedStr = "";
+            }
+            curIdx += nextLetterIdx; //System.out.println("curIdx: " + curIdx);
+
+            // System.out.println(compressedStr + ", " + curIdx + ", " + curLetter + ", " + curLetterIdx + ", " + curLetterNum);
         }
 
         // ["StringIterator","next","next","next","next","next","next","hasNext","next","hasNext"]
