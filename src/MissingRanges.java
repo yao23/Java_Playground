@@ -80,6 +80,13 @@ public class MissingRanges {
                         continue;
                     } else { // in the target range
                         if (newStart == newEnd) {
+                            if (start < pre) {
+                                if (start + 1 == pre) {
+                                    result.add(Integer.toString(start));
+                                } else {
+                                    result.add(start + "->" + (pre - 1));
+                                }
+                            }
                             result.add(Integer.toString(newStart));
                         } else {
                             result.add(newStart + "->" + newEnd);
@@ -107,4 +114,5 @@ public class MissingRanges {
     // [1],0,99 => ["0","2->99"]
     // [0, 1, 3, 50, 75],0,99 => [“2”, “4->49”, “51->74”, “76->99”]
     // [1,2],0,9 => ["0","3->9"]
+    // [1,3],0,9 => ["0","2","4->9"]
 }
