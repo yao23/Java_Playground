@@ -24,7 +24,6 @@ public class DesignCompressedStringIterator {
 
         public char next() {
             if (hasNext()) {
-                // System.out.println("next: " + compressedStr + ", " + curIdx + ", " + curLetter + ", " + curLetterIdx + ", " + curLetterNum);
                 if (curLetterIdx < curLetterNum) {
                     curLetterIdx++;
                     return curLetter;
@@ -46,9 +45,9 @@ public class DesignCompressedStringIterator {
             int i = 0;
             for (i = 1; i < compressedStr.length(); i++) {
                 char c = compressedStr.charAt(i);
-                if (Character.isDigit(c)) { //System.out.println("digit: " + c + ", " + i); // i >= '0' && i <= '9'
+                if (Character.isDigit(c)) { // i >= '0' && i <= '9'
                     continue;
-                } else { //System.out.println("letter: " + c + ", " + i);
+                } else {
                     return i;
                 }
             }
@@ -65,18 +64,16 @@ public class DesignCompressedStringIterator {
         }
 
         private void getNextLetter() {
-            curLetter = compressedStr.charAt(0); //System.out.println("curLetter: " + curLetter);
-            int nextLetterIdx = findNextLetterIdx(); //System.out.println("nextLetterIdx: " + nextLetterIdx);
-            curLetterNum = getLetterNum(nextLetterIdx); //System.out.println("curLetterNum: " + curLetterNum);
+            curLetter = compressedStr.charAt(0);
+            int nextLetterIdx = findNextLetterIdx();
+            curLetterNum = getLetterNum(nextLetterIdx);
             curLetterIdx = 0;
             if (nextLetterIdx < compressedStr.length()) {
-                compressedStr = compressedStr.substring(nextLetterIdx); //System.out.println("compressedStr: " + compressedStr);// update for next letter
+                compressedStr = compressedStr.substring(nextLetterIdx); // update for next letter
             } else {
                 compressedStr = "";
             }
-            curIdx += nextLetterIdx; //System.out.println("curIdx: " + curIdx);
-
-            // System.out.println(compressedStr + ", " + curIdx + ", " + curLetter + ", " + curLetterIdx + ", " + curLetterNum);
+            curIdx += nextLetterIdx;
         }
 
         // ["StringIterator","next","next","next","next","next","next","hasNext","next","hasNext"]
