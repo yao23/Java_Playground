@@ -45,7 +45,7 @@ public class DesignCompressedStringIterator {
             int i = 0;
             for (i = 1; i < compressedStr.length(); i++) {
                 char c = compressedStr.charAt(i);
-                if (Character.isDigit(c)) { // i >= '0' && i <= '9'
+                if (Character.isDigit(c)) { // i >= '0' && i <= '9' not working for internationalized purpose
                     continue;
                 } else {
                     return i;
