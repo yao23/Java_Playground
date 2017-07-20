@@ -65,6 +65,14 @@ public class DesignCompressedStringIterator {
             compressedStr = compressedStr.substring(nextLetterIdx); // update for next letter
             curIdx += nextLetterIdx;
         }
+
+        // ["StringIterator","next","next","next","next","next","next","hasNext","next","hasNext"]
+        // [["L1e2t1C1o1d1e1"],[],[],[],[],[],[],[],[],[]]
+        // => [null,'L','e','e','t','C','o',true,'d',true]
+
+        // ["StringIterator","next","next","next","hasNext","next","next","next","next","next","next","next","hasNext","next","next","next","next","next","hasNext","next","next","next","next","next","hasNext","next","next","next","next","hasNext","next","next","next","next","next","next","next","next","next","next","next","next","next","next","next","next","next","next","next","hasNext","next","hasNext","next","next","next","next","next","next","hasNext","next","next","next","next","next","next","next","next","next","next","next","next","next","next","hasNext","next","next","next","hasNext","next","next","hasNext","next","next","next","next","next"]
+        // [["x6"],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]]
+        // => [null,'x','x','x',true,'x','x','x',' ',' ',' ',' ',false,' ',' ',' ',' ',' ',false,' ',' ',' ',' ',' ',false,' ',' ',' ',' ',false,' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',false,' ',false,' ',' ',' ',' ',' ',' ',false,' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',false,' ',' ',' ',false,' ',' ',false,' ',' ',' ',' ',' ']
     }
 
     /**
