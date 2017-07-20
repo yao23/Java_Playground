@@ -65,7 +65,15 @@ public class MissingRanges {
             for (int i = 1; i < len; i++) {
                 int pre = nums[i-1], cur = nums[i];
                 if (pre + 1 == cur) { // consecutive
-                    continue;
+                    if (start >= pre) {
+                        continue;
+                    } else {
+                        if (start + 1 == pre) { // test case 6
+                            result.add(Integer.toString(start));
+                        } else {
+                            result.add(start + "->" + (pre - 1));
+                        }
+                    }
                 } else { // not consecutive
                     int newStart = pre + 1, newEnd = cur -1;
                     if (newEnd < start || newStart > end) {
@@ -98,4 +106,5 @@ public class MissingRanges {
     // [-1],-1,-1 => []
     // [1],0,99 => ["0","2->99"]
     // [0, 1, 3, 50, 75],0,99 => [“2”, “4->49”, “51->74”, “76->99”]
+    // [1,2],0,9 => ["0","3->9"]
 }
