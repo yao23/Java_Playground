@@ -14,29 +14,49 @@ public class MissingRanges {
         List<String> result = new ArrayList<>();
         int len = nums.length;
         if (len == 0) {
-            result.add("0->99");
+            if (start == end) {
+                result.add(Integer.toString(end)); // test case 2
+            } else {
+                result.add(start + "->" + end);
+            }
             return result;
         } else if (len == 1) {
             int elem = nums[0];
-            if (start <= elem && elem <= end) {
-                if (start == elem) {
-                    result.add((start+1) + "->" + end);
-                } else if (end == elem) {
-                    result.add(start + "->" + (end-1));
-                } else {
-                    if (start+1 == elem) {
+            if (start == elem && end == elem) { // test case 3
+                return result;
+            } else if (start != elem && elem != end) {
+                if (start < elem && elem < end) {
+                    if (start + 1 == elem) {
                         result.add(Integer.toString(start));
                     } else {
-                        result.add(start + "->" + (elem-1));
+                        result.add(start + "->" + (elem - 1));
                     }
-                    if (elem+1 == end) {
+                    if (elem + 1 == end) {
                         result.add(Integer.toString(end));
                     } else {
-                        result.add((elem+1) + "->" + end);
+                        result.add((elem + 1) + "->" + end);
+                    }
+                } else { // elem < start || elem > end
+                    if (start == end) {
+                        result.add(Integer.toString(end));
+                    } else {
+                        result.add(start + "->" + end);
                     }
                 }
-            } else {
-                result.add(start + "->" + end);
+            } else { // start == elem || end == elem
+                if (start == elem) {
+                    if (start + 1 == end) {
+                        result.add(Integer.toString(end));
+                    } else {
+                        result.add((start + 1) + "->" + end);
+                    }
+                } else { // end == elem
+                    if (start + 1 == end) {
+                        result.add(Integer.toString(start));
+                    } else {
+                        result.add(start + "->" + (end - 1));
+                    }
+                }
             }
             return result;
         } else {
@@ -61,7 +81,7 @@ public class MissingRanges {
             }
 
             if (nums[len-1] < end) {
-                int newStart = nums[len-1] + 1, newEnd = end -1;
+                int newStart = nums[len-1] + 1, newEnd = end;
                 if (newStart == newEnd) {
                     result.add(Integer.toString(newStart));
                 } else {
@@ -74,6 +94,8 @@ public class MissingRanges {
     }
 
     // [],0,99 => ["0->99"]
+    // [],1,1 => ["1"]
+    // [-1],-1,-1 => []
     // [1],0,99 => ["0","2->99"]
     // [0, 1, 3, 50, 75],0,99 => [“2”, “4->49”, “51->74”, “76->99”]
 }
