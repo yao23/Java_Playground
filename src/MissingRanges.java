@@ -81,10 +81,14 @@ public class MissingRanges {
                     } else { // in the target range
                         if (newStart == newEnd) {
                             if (start < pre) {
-                                if (start + 1 == pre) {
-                                    result.add(Integer.toString(start));
+                                if (i > 1 && start == nums[i - 2]) {
+
                                 } else {
-                                    result.add(start + "->" + (pre - 1));
+                                    if (start + 1 == pre) {
+                                        result.add(Integer.toString(start));
+                                    } else {
+                                        result.add(start + "->" + (pre - 1));
+                                    }
                                 }
                             }
                             result.add(Integer.toString(newStart));
