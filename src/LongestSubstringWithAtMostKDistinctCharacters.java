@@ -2,10 +2,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LongestSubstringWithAtMostKDistinctCharacters {
-    private Map<Character, Integer> map = new HashMap<>();
-    private int counter = 0;
+    private static Map<Character, Integer> map = new HashMap<>();
+    private static int counter = 0;
 
-    public int lengthOfLongestSubstringKDistinct(String s, int k) {
+    public static int lengthOfLongestSubstringKDistinct(String s, int k) {
         int len = s.length();
         if (len == 0 || k == 0) {
             return 0;
@@ -45,7 +45,7 @@ public class LongestSubstringWithAtMostKDistinctCharacters {
         }
     }
 
-    private int moveLeftPointer(int left, int right, int k, String s) {
+    private static int moveLeftPointer(int left, int right, int k, String s) {
         while (left <= right && counter == k) {
             char leftChar = s.charAt(left);
             int leftCharCounter = map.get(leftChar);
@@ -59,7 +59,7 @@ public class LongestSubstringWithAtMostKDistinctCharacters {
         return left;
     }
 
-    private int updateMaxLen(int maxLen) {
+    private static int updateMaxLen(int maxLen) {
         int tmpLen = getLen();
         if (tmpLen > maxLen) {
             maxLen = tmpLen;
@@ -67,7 +67,7 @@ public class LongestSubstringWithAtMostKDistinctCharacters {
         return maxLen;
     }
 
-    private int getLen() {
+    private static int getLen() {
         int len = 0;
         for (Map.Entry<Character, Integer> entry : map.entrySet()) {
             int val = entry.getValue();
@@ -79,6 +79,9 @@ public class LongestSubstringWithAtMostKDistinctCharacters {
         return len;
     }
 
+    public static void main(String[] args) {
+        System.out.println(lengthOfLongestSubstringKDistinct("aba", 1));
+    }
     // "aba",1 => 1 ("a")
     // "eceba",2 => 3 ("ece")
     // "eceeeecba",2 => 7 ("eceeeec")
