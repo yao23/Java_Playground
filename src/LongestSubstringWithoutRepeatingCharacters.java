@@ -9,7 +9,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
                 count[curChar] = 1;
             } else { // repeated
                 count[s.charAt(left)] = 0;
-                while (s.charAt(left) != curChar) {
+                while (s.charAt(left) != curChar) { // find repeated character
                     left++;
                     count[s.charAt(left)] = 0;
                 }
@@ -25,4 +25,8 @@ public class LongestSubstringWithoutRepeatingCharacters {
 
         return res;
     }
+
+    // "" => 0
+    // "a" => 1
+    // "abcabcbb" => 3 ("abc")
 }
