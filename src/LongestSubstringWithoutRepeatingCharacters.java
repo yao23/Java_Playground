@@ -29,4 +29,8 @@ public class LongestSubstringWithoutRepeatingCharacters {
     // "" => 0
     // "a" => 1
     // "abcabcbb" => 3 ("abc")
+    // "bbbbb" => 1 ("b")
+    // "pwwkew" => 3 ("wke")
+
+    // beats 92.44%
 }
