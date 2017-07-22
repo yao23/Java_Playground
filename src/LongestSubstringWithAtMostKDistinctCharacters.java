@@ -88,4 +88,6 @@ public class LongestSubstringWithAtMostKDistinctCharacters {
     // "eceba",2 => 3 ("ece")
     // "eceeeecba",2 => 7 ("eceeeec")
     // "abacd",3 => 4 ("abac")
+
+    // beats 1.73%
 }
