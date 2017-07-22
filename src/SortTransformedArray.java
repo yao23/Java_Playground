@@ -47,4 +47,6 @@ public class SortTransformedArray {
     // [-4, -2, 2, 4], a = -1, b = 3, c = 5 => [-23, -5, 1, 7]
 
     // beats 34.38%
+
+    // idea is similar like Merge Sorted Array (LC 88)
 }
