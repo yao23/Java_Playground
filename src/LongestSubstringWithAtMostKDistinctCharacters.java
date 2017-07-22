@@ -5,7 +5,29 @@ public class LongestSubstringWithAtMostKDistinctCharacters {
     private static Map<Character, Integer> map = new HashMap<>();
     private static int counter = 0;
 
-    public static int lengthOfLongestSubstringKDistinct(String s, int k) {
+    public static int lengthOfLongestSubstringKDistinct(String s, int k) { // beats 55.80%
+        int[] count = new int[256];
+        int num = 0, i = 0, res = 0;
+        for (int j = 0; j < s.length(); j++) {
+            if (count[s.charAt(j)] == 0) {
+                num++;
+            }
+            count[s.charAt(j)] += 1;
+            if (num > k) {
+                count[s.charAt(i)] -= 1;
+                while (count[s.charAt(i)] > 0) {
+                    i++;
+                    count[s.charAt(i)] -= 1;
+                }
+                i++;
+                num--;
+            }
+            res = Math.max(res, j - i + 1);
+        }
+        return res;
+    }
+
+    public static int lengthOfLongestSubstringKDistinctV0(String s, int k) {
         int len = s.length();
         if (len == 0 || k == 0) {
             return 0;
@@ -80,7 +102,8 @@ public class LongestSubstringWithAtMostKDistinctCharacters {
     }
 
     public static void main(String[] args) {
-        System.out.println(lengthOfLongestSubstringKDistinct("aba", 1));
+//        System.out.println(lengthOfLongestSubstringKDistinctV0("aba", 1));
+        System.out.println(lengthOfLongestSubstringKDistinct("eceba", 2));
     }
     // "aba",1 => 1 ("a")
     // "eceba",2 => 3 ("ece")
