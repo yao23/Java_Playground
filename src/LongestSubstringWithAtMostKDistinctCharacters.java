@@ -21,7 +21,7 @@ public class LongestSubstringWithAtMostKDistinctCharacters {
                         map.put(c, 1);
                         counter++;
                     } else {
-                        while (left <= right && counter == k) {
+                        while (left <= right && counter == k) { // move left pointers until pass a character (frequency is 0)
                             char leftChar = s.charAt(left);
                             int leftCharCounter = map.get(leftChar);
                             map.put(leftChar, leftCharCounter - 1);
