@@ -64,4 +64,7 @@ public class LongestSubstringWithAtMostKDistinctCharacters {
 
         return len;
     }
+
+    // "eceba",2 => 3 ("ece")
+    // "eceeeecba" => 7 ("eceeeec")
 }
