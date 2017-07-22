@@ -11,9 +11,9 @@ public class LongestSubstringWithAtMostKDistinctCharacters {
             return 0;
         } else {
             int left = 0, right = 0, maxLen = 0;
-            while (right < len) { System.out.println("right: " + right);
+            while (right < len) {
                 char c = s.charAt(right);
-                if (map.containsKey(c)) { System.out.println("map contains");
+                if (map.containsKey(c)) {
                     if (counter < k) {
                         map.put(c, map.get(c) + 1);
                     } else {
@@ -28,17 +28,17 @@ public class LongestSubstringWithAtMostKDistinctCharacters {
                                 left++;
                             }
 
-                            map.put(c, 1); System.out.println("map after: "); System.out.println(map);
-                            counter++; System.out.println("counter after: " + counter);
+                            map.put(c, 1);
+                            counter++;
                         } else {
                             map.put(c, map.get(c) + 1);
                         }
                     }
                 } else { // map doesn't contain c
-                    if (counter < k) { System.out.println("[without] counter & k: " + counter + ", " + k);
+                    if (counter < k) {
                         map.put(c, 1);
                         counter++;
-                    } else { System.out.println("[without] map before: "); System.out.println(map);
+                    } else {
                         while (left <= right && counter == k) {
                             char leftChar = s.charAt(left);
                             int leftCharCounter = map.get(leftChar);
@@ -49,8 +49,8 @@ public class LongestSubstringWithAtMostKDistinctCharacters {
                             left++;
                         }
 
-                        map.put(c, 1); System.out.println("map after: "); System.out.println(map);
-                        counter++; //System.out.println("counter after: " + counter);
+                        map.put(c, 1);
+                        counter++;
                     }
                 }
 
