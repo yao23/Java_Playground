@@ -18,15 +18,7 @@ public class LongestSubstringWithAtMostKDistinctCharacters {
                         map.put(c, map.get(c) + 1);
                     } else {
                         if (map.get(c) == 0) {
-                            while (left <= right && counter == k) {
-                                char leftChar = s.charAt(left);
-                                int leftCharCounter = map.get(leftChar);
-                                map.put(leftChar, leftCharCounter - 1);
-                                if (leftCharCounter == 1) { // pass all left char
-                                    counter--;
-                                }
-                                left++;
-                            }
+                            left = moveLeftPointer(left, right, k, s);
 
                             map.put(c, 1);
                             counter++;
@@ -39,15 +31,7 @@ public class LongestSubstringWithAtMostKDistinctCharacters {
                         map.put(c, 1);
                         counter++;
                     } else {
-                        while (left <= right && counter == k) {
-                            char leftChar = s.charAt(left);
-                            int leftCharCounter = map.get(leftChar);
-                            map.put(leftChar, leftCharCounter - 1);
-                            if (leftCharCounter == 1) { // pass all left char
-                                counter--;
-                            }
-                            left++;
-                        }
+                        left = moveLeftPointer(left, right, k, s);
 
                         map.put(c, 1);
                         counter++;
@@ -62,6 +46,20 @@ public class LongestSubstringWithAtMostKDistinctCharacters {
 
             return maxLen;
         }
+    }
+
+    private int moveLeftPointer(int left, int right, int k, String s) {
+        while (left <= right && counter == k) {
+            char leftChar = s.charAt(left);
+            int leftCharCounter = map.get(leftChar);
+            map.put(leftChar, leftCharCounter - 1);
+            if (leftCharCounter == 1) { // pass all left char
+                counter--;
+            }
+            left++;
+        }
+
+        return left;
     }
 
     private int updateMaxLen(int maxLen) {
