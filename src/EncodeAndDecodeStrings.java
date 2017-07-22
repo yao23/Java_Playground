@@ -60,4 +60,10 @@ public class EncodeAndDecodeStrings {
 
         System.out.println("Encode and decode works: " + (isCorrect ? "true" : "false"));
     }
+
+    // beats 34.39%
 }
+
+// Your Codec object will be instantiated and called as such:
+// Codec codec = new Codec();
+// codec.decode(codec.encode(strs));
