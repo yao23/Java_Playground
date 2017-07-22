@@ -29,4 +29,6 @@ public class FirstMissingPositive {
     // [1,2,0] => 3
     // [3,4,-1,1] => 2
     // [1] => 2
+
+    // beats 92.63%
 }
