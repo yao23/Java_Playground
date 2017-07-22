@@ -27,15 +27,12 @@ public class LongestSubstringWithAtMostKDistinctCharacters {
                         }
                     }
                 } else { // map doesn't contain c
-                    if (counter < k) {
-                        map.put(c, 1);
-                        counter++;
-                    } else {
+                    if (counter == k) {
                         left = moveLeftPointer(left, right, k, s);
-
-                        map.put(c, 1);
-                        counter++;
                     }
+
+                    map.put(c, 1);
+                    counter++;
                 }
 
                 maxLen = updateMaxLen(maxLen);
