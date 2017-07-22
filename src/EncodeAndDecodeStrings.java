@@ -5,7 +5,7 @@ public class EncodeAndDecodeStrings {
 
     // Encodes a list of strings to a single string.
     public static String encode(List<String> strs) {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder(); // StringBuilder
         for (String str : strs) {
             sb.append(str.length() + "#" + str);
         }
