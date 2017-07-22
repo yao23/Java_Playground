@@ -33,4 +33,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
     // "pwwkew" => 3 ("wke")
 
     // beats 92.44%
+
+    // similar problem: LC 340 (Longest Substring with At Most K Distinct Characters)
+    // similar problem: LC 159 (Longest Substring with At Most Two Distinct Characters)
 }
