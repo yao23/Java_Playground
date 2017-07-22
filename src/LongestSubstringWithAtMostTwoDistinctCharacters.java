@@ -33,4 +33,6 @@ public class LongestSubstringWithAtMostTwoDistinctCharacters {
     // "eceba", 2 => 3 ("ece")
 
     // beats 79.44%
+
+    // similar problem: LC 340 (Longest Substring with At Most K Distinct Characters)
 }
