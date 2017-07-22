@@ -11,17 +11,35 @@ public class LongestSubstringWithAtMostKDistinctCharacters {
             return 0;
         } else {
             int left = 0, right = 0, maxLen = 0;
-            while (right < len) {
+            while (right < len) { System.out.println("right: " + right);
                 char c = s.charAt(right);
-                if (map.containsKey(c)) {
-                    map.put(c, map.get(c) + 1);
-                    maxLen = updateMaxLen(maxLen);
-                } else { // map doesn't contain c
+                if (map.containsKey(c)) { System.out.println("map contains");
                     if (counter < k) {
+                        map.put(c, map.get(c) + 1);
+                    } else {
+                        if (map.get(c) == 0) {
+                            while (left <= right && counter == k) {
+                                char leftChar = s.charAt(left);
+                                int leftCharCounter = map.get(leftChar);
+                                map.put(leftChar, leftCharCounter - 1);
+                                if (leftCharCounter == 1) { // pass all left char
+                                    counter--;
+                                }
+                                left++;
+                            }
+
+                            map.put(c, 1); System.out.println("map after: "); System.out.println(map);
+                            counter++; System.out.println("counter after: " + counter);
+                        } else {
+                            map.put(c, map.get(c) + 1);
+                        }
+                    }
+                } else { // map doesn't contain c
+                    if (counter < k) { System.out.println("[without] counter & k: " + counter + ", " + k);
                         map.put(c, 1);
                         counter++;
-                    } else {
-                        while (left <= right && counter == k) { // move left pointers until pass a character (frequency is 0)
+                    } else { System.out.println("[without] map before: "); System.out.println(map);
+                        while (left <= right && counter == k) {
                             char leftChar = s.charAt(left);
                             int leftCharCounter = map.get(leftChar);
                             map.put(leftChar, leftCharCounter - 1);
@@ -31,11 +49,12 @@ public class LongestSubstringWithAtMostKDistinctCharacters {
                             left++;
                         }
 
-                        map.put(c, 1);
-                        counter++;
+                        map.put(c, 1); System.out.println("map after: "); System.out.println(map);
+                        counter++; //System.out.println("counter after: " + counter);
                     }
                 }
 
+                maxLen = updateMaxLen(maxLen);
                 right++;
             }
 
@@ -65,6 +84,8 @@ public class LongestSubstringWithAtMostKDistinctCharacters {
         return len;
     }
 
+    // "aba",1 => 1 ("a")
     // "eceba",2 => 3 ("ece")
-    // "eceeeecba" => 7 ("eceeeec")
+    // "eceeeecba",2 => 7 ("eceeeec")
+    // "abacd",3 => 4 ("abac")
 }
