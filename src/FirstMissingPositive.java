@@ -16,7 +16,7 @@ public class FirstMissingPositive {
             }
         }
 
-        return -1;
+        return nums.length + 1; // test case 4
     }
 
     private void swap(int[] nums, int left, int right) {
@@ -28,4 +28,5 @@ public class FirstMissingPositive {
     // [] => 1
     // [1,2,0] => 3
     // [3,4,-1,1] => 2
+    // [1] => 2
 }
