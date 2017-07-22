@@ -9,7 +9,6 @@ public class EncodeAndDecodeStrings {
         for (String str : strs) {
             sb.append(str.length() + "#" + str);
         }
-        System.out.println("encoded str: " + sb.toString());
         return sb.toString();
     }
 
@@ -29,8 +28,6 @@ public class EncodeAndDecodeStrings {
                 num += s.charAt(i);
             }
         }
-        System.out.println("decoded list: ");
-        System.out.println(result);
         return result;
     }
 
