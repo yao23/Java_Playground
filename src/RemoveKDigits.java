@@ -11,32 +11,26 @@ public class RemoveKDigits {
         } else if (len == k) {
             return "0";
         } else {
-            int curIdx = 0, counter = 0, numEqualNum = 0;
+            int curIdx = 0, counter = 0;
             List<Integer> removedIndices = new ArrayList<>();
 
             while (curIdx < len && counter < k) {
-                // System.out.println("curIdx before: " + curIdx);
                 char curChar = num.charAt(curIdx);
                 if (curChar > '0') {
                     // find a digit larger than the latter one, remove then create a smaller number
                     while (curIdx < len - 1 && num.charAt(curIdx) <= num.charAt(curIdx + 1)) {
-                        if (num.charAt(curIdx) == num.charAt(curIdx + 1)) {
-                            numEqualNum++;
-                        }
                         curIdx++;
                     }
 
                     counter++;
                     removedIndices.add(curIdx);
-                    // System.out.println("curIdx after: " + curIdx + ", counter: " + counter);
-                    // System.out.println(removedIndices);
                 }
 
                 curIdx++;
             }
 
             if (counter < k) {
-                String tmpRes = getUpdatedString(removedIndices, num); //System.out.println("tmpRes [before]: " + tmpRes);
+                String tmpRes = getUpdatedString(removedIndices, num);
                 removedIndices.clear();
 
                 for (int i = tmpRes.length() - 1; i > 0 && counter < k; i--) {
@@ -46,20 +40,15 @@ public class RemoveKDigits {
                     }
                 }
 
-                // System.out.println("counter [before]: " + counter);
-                // System.out.println(removedIndices);
-
                 if (counter < k) {
                     tmpRes = getUpdatedString(removedIndices, tmpRes);
                     removedIndices.clear();
-                    // System.out.println("tmpRes [after]: " + tmpRes);
                     for (int i = tmpRes.length() - 1; i >= 0 && counter < k; i--) {
                         if (tmpRes.charAt(i) > '0') {
                             removedIndices.add(i);
                             counter++;
                         }
                     }
-                    // System.out.println(removedIndices);
 
                     return getResult(removedIndices, tmpRes);
                 } else {
