@@ -4,6 +4,28 @@ import java.util.Deque;
 import java.util.List;
 
 public class RemoveKDigits {
+    public String removeKdigits(String num, int k) {
+        int len = num.length();
+        int resLen = len - k;
+        char[] stack = new char[resLen];
+        int ptr = 0;
+        for (int i = 0; i < len; i++) {
+            while (k > 0 && ptr > 0 && stack[ptr - 1] > num.charAt(i)) {
+                ptr--;
+                k--;
+            }
+            stack[ptr] = num.charAt(i);
+            ptr++;
+        }
+
+        int idx = 0;
+        while (idx < resLen && stack[idx] == '0') {
+            idx++;
+        }
+
+        return (idx == resLen) ? "0" : new String(stack, idx, resLen - idx);
+    }
+
     public String removeKdigitsV1(String num, int k) {
         int len = num.length();
         //corner case
