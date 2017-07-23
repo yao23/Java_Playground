@@ -15,7 +15,6 @@ public class RemoveKDigits {
             List<Integer> removedIndices = new ArrayList<>();
 
             while (curIdx < len && counter < k) {
-                System.out.println("curIdx before: " + curIdx);
                 char curChar = num.charAt(curIdx);
                 if (curChar > '0') {
                     // find a digit larger than the latter one, remove then create a smaller number
@@ -25,8 +24,6 @@ public class RemoveKDigits {
 
                     counter++;
                     removedIndices.add(curIdx);
-                    System.out.println("curIdx after: " + curIdx + ", counter: " + counter);
-                    System.out.println(removedIndices);
                     curIdx++;
                 }
             }
@@ -41,8 +38,25 @@ public class RemoveKDigits {
                     }
                 }
 
-                return res;
+                return trimHeadZeros(res);
             }
         }
     }
+
+    private String trimHeadZeros(String str) {
+        int idx = 0, len = str.length();
+
+        while (idx < len && str.charAt(idx) == '0') {
+            idx++;
+        }
+
+        String res = str.substring(idx);
+
+        return (res.equals("")) ? "0" : res;
+    }
+
+    // "1432219", 3 => "1219"
+    // "10200", 1 => "200"
+    // "10", 2 => "0"
+    // "10", 1 => "0"
 }
