@@ -1,5 +1,5 @@
 public class LargestRectangleInHistogram {
-    public int largestRectangleArea(int[] heights) {
+    public int largestRectangleAreaV0(int[] heights) { // TLE for test case 2, too many duplicate calculations
         int res = 0;
         for (int i = 0; i < heights.length; i++) {
             int area = getArea(heights, i);
@@ -32,4 +32,7 @@ public class LargestRectangleInHistogram {
         }
         return idx - 1;
     }
+
+    // [2,1,5,6,2,3] => 10 (5,6 => 5 + 5)
+    // [111..1111] (n = 3000) => 3000
 }
