@@ -2,7 +2,7 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class LargestRectangleInHistogram {
-    public int largestRectangleArea(int[] heights) {
+    public int largestRectangleArea(int[] heights) { // beats 79.53%
         int max = 0;
         Deque<Integer> stack = new ArrayDeque<>();
         for (int i = 0; i < heights.length; i++) {
