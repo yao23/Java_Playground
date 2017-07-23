@@ -4,7 +4,7 @@ import java.util.Deque;
 import java.util.List;
 
 public class RemoveKDigits {
-    public String removeKdigits(String num, int k) {
+    public String removeKdigits(String num, int k) { // beats 83.82%
         int len = num.length();
         int resLen = len - k;
         char[] stack = new char[len]; // len hold all elements, test case num "10" and k = 2
