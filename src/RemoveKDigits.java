@@ -43,7 +43,7 @@ public class RemoveKDigits {
         }
     }
 
-    private String trimHeadZeros(String str) {
+    private String trimHeadZeros(String str) { // test cases 3, 4
         int idx = 0, len = str.length();
 
         while (idx < len && str.charAt(idx) == '0') {
