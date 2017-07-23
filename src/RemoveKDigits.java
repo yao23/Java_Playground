@@ -34,7 +34,7 @@ public class RemoveKDigits {
                 removedIndices.clear();
 
                 for (int i = tmpRes.length() - 1; i > 0 && counter < k; i--) {
-                    if (i > 0 && tmpRes.charAt(i) >= tmpRes.charAt(i - 1)) {
+                    if (tmpRes.charAt(i) >= tmpRes.charAt(i - 1)) {
                         removedIndices.add(i);
                         counter++;
                     }
