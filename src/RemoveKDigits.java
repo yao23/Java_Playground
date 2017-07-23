@@ -11,39 +11,84 @@ public class RemoveKDigits {
         } else if (len == k) {
             return "0";
         } else {
-            int curIdx = 0, counter = 0;
+            int curIdx = 0, counter = 0, numEqualNum = 0;
             List<Integer> removedIndices = new ArrayList<>();
 
             while (curIdx < len && counter < k) {
+                // System.out.println("curIdx before: " + curIdx);
                 char curChar = num.charAt(curIdx);
                 if (curChar > '0') {
                     // find a digit larger than the latter one, remove then create a smaller number
-                    while (curIdx < len - 1 && num.charAt(curIdx) < num.charAt(curIdx + 1)) {
+                    while (curIdx < len - 1 && num.charAt(curIdx) <= num.charAt(curIdx + 1)) {
+                        if (num.charAt(curIdx) == num.charAt(curIdx + 1)) {
+                            numEqualNum++;
+                        }
                         curIdx++;
                     }
 
                     counter++;
                     removedIndices.add(curIdx);
-                    curIdx++;
+                    // System.out.println("curIdx after: " + curIdx + ", counter: " + counter);
+                    // System.out.println(removedIndices);
                 }
+
+                curIdx++;
             }
 
             if (counter < k) {
-                return "0";
-            } else {
-                String res = "";
-                for (int i = 0; i < len; i++) {
-                    if (!removedIndices.contains(i)) {
-                        res += num.charAt(i);
+                String tmpRes = getUpdatedString(removedIndices, num); //System.out.println("tmpRes [before]: " + tmpRes);
+                removedIndices.clear();
+
+                for (int i = tmpRes.length() - 1; i > 0 && counter < k; i--) {
+                    if (i > 0 && tmpRes.charAt(i) >= tmpRes.charAt(i - 1)) {
+                        removedIndices.add(i);
+                        counter++;
                     }
                 }
 
-                return trimHeadZeros(res);
+                // System.out.println("counter [before]: " + counter);
+                // System.out.println(removedIndices);
+
+                if (counter < k) {
+                    tmpRes = getUpdatedString(removedIndices, tmpRes);
+                    removedIndices.clear();
+                    // System.out.println("tmpRes [after]: " + tmpRes);
+                    for (int i = tmpRes.length() - 1; i >= 0 && counter < k; i--) {
+                        if (tmpRes.charAt(i) > '0') {
+                            removedIndices.add(i);
+                            counter++;
+                        }
+                    }
+                    // System.out.println(removedIndices);
+
+                    return getResult(removedIndices, tmpRes);
+                } else {
+                    return getResult(removedIndices, tmpRes);
+                }
+            } else {
+                return getResult(removedIndices, num);
             }
         }
     }
 
-    private String trimHeadZeros(String str) { // test cases 3, 4
+    private String getResult(List<Integer> removedIndices, String num) {
+        String tmpRes = getUpdatedString(removedIndices, num);
+
+        return trimHeadZeros(tmpRes);
+    }
+
+    private String getUpdatedString(List<Integer> removedIndices, String num) {
+        int len = num.length();
+        String res = "";
+        for (int i = 0; i < len; i++) {
+            if (!removedIndices.contains(i)) {
+                res += num.charAt(i);
+            }
+        }
+        return res;
+    }
+
+    private String trimHeadZeros(String str) {
         int idx = 0, len = str.length();
 
         while (idx < len && str.charAt(idx) == '0') {
@@ -59,4 +104,7 @@ public class RemoveKDigits {
     // "10200", 1 => "200"
     // "10", 2 => "0"
     // "10", 1 => "0"
+    // "112", 1 => "11"
+    // "112", 2 => "1"
+    // "1234567890", 9 => "0"
 }
