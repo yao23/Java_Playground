@@ -13,25 +13,21 @@ public class SlidingWindowMaximum {
         Deque<Integer> queue = new ArrayDeque<>(); // index queue (descending order)
 
         for (int cur = 0; cur < results.length; cur++) {
-            System.out.println("queue before: ");
-            System.out.println(queue);
 
             removePassedNums(queue, cur);
 
             for (int offset = 0; offset < k && cur + offset < len; offset++) {
                 int idx = cur + offset, curNum = nums[idx];
-                System.out.println(idx + ", " + curNum);
-                if (queue.isEmpty() || curNum < nums[queue.getLast()]) { System.out.println("[without remove] add last: " + idx);
+                if (queue.isEmpty() || curNum < nums[queue.getLast()]) {
                     queue.addLast(idx);
                 } else {
                     while (!queue.isEmpty() && curNum >= nums[queue.getLast()]) {
                         queue.removeLast();
                     }
-                    queue.addLast(idx); System.out.println("[after remove] add last: " + idx);
+                    queue.addLast(idx);
                 }
             }
-            System.out.println("queue after: ");
-            System.out.println(queue);
+
             if (!queue.isEmpty()) {
                 results[cur] = nums[queue.getFirst()];
             }
@@ -49,4 +45,6 @@ public class SlidingWindowMaximum {
     // [],0 => []
     // [1,3,-1,-3,5,3,6,7],3 => [3,3,5,5,6,7]
     // [5,3,4],1 => [5,3,4]
+
+    // beats 0.20%
 }
