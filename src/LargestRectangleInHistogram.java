@@ -77,5 +77,5 @@ public class LargestRectangleInHistogram {
     // [2,1,5,6,2,3] => 10 (5,6 => 5 + 5)
     // [111..1111] (n = 3000) => 3000
 
-    // beats
+    // beats 79.53%
 }
