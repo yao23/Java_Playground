@@ -16,7 +16,11 @@ public class SlidingWindowMaximum {
 
             removePassedNums(queue, cur);
 
-            for (int offset = 0; offset < k && cur + offset < len; offset++) {
+            // 1st window need to process all k elements
+            // only need to process last element from 2nd window (prev k-1 elements have been processed)
+            int start = (cur == 0) ? 0 : k - 1;
+
+            for (int offset = start; offset < k && cur + offset < len; offset++) {
                 int idx = cur + offset, curNum = nums[idx];
                 if (queue.isEmpty() || curNum < nums[queue.getLast()]) {
                     queue.addLast(idx);
@@ -46,5 +50,6 @@ public class SlidingWindowMaximum {
     // [1,3,-1,-3,5,3,6,7],3 => [3,3,5,5,6,7]
     // [5,3,4],1 => [5,3,4]
 
-    // beats 0.20%
+    // beats 0.20% (start offset from 0 and process k elements every time, offset = 0)
+    // beats 87.55% (start offset from 0 only for 1st window and process k elements, then start offset from k-1 and only process 1 element from 2nd window
 }
