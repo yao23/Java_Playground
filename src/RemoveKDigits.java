@@ -82,29 +82,6 @@ public class RemoveKDigits {
                 if (curChar > '0') {
                     // find a digit larger than the latter one, remove then create a smaller number
                     while (curIdx < len - 1 && num.charAt(curIdx) <= num.charAt(curIdx + 1)) {
-                        int start = curIdx;
-                        while (curIdx < len - 1 && num.charAt(curIdx) == num.charAt(curIdx + 1)) {
-                            curIdx++;
-                        }
-
-                        if (curIdx == len - 1) { // all latter ones are equal
-                            for (int i = start; i < start + (k - counter); i++) {
-                                removedIndices.add(i);
-                            }
-                            counter = k;
-                            break;
-                        } else { // meet smaller or larger one
-                            if (num.charAt(curIdx) > num.charAt(curIdx + 1)) { // latter ons is smaller
-                                for (int i = start; i <= curIdx; i++) {
-                                    removedIndices.add(i);
-                                    counter++;
-                                }
-                                continue;
-                            } else { // latter one is larger
-                                // do nothing
-                            }
-                        }
-
                         curIdx++;
                     }
 
@@ -119,16 +96,20 @@ public class RemoveKDigits {
                 String tmpRes = getUpdatedString(removedIndices, num);
                 removedIndices.clear();
 
-                for (int i = tmpRes.length() - 1; i > 0 && counter < k; i--) {
-                    if (tmpRes.charAt(i) >= tmpRes.charAt(i - 1)) {
+                // trim zeros in the beginning
+                for (int i = 0; i < tmpRes.length() && counter < k; i++) {
+                    if (tmpRes.charAt(i) == '0') {
                         removedIndices.add(i);
                         counter++;
+                    } else {
+                        break;
                     }
                 }
 
                 if (counter < k) {
                     tmpRes = getUpdatedString(removedIndices, tmpRes);
                     removedIndices.clear();
+                    // remove non-zero digit from tail
                     for (int i = tmpRes.length() - 1; i >= 0 && counter < k; i--) {
                         if (tmpRes.charAt(i) > '0') {
                             removedIndices.add(i);
