@@ -39,3 +39,27 @@ public class ValidWordSquare {
         return true;
     }
 }
+
+// [
+//  "abcd",
+//  "bnrt",
+//  "crmy",
+//  "dtye"
+// ]
+// true
+
+// [
+//  "abcd",
+//  "bnrt",
+//  "crm",
+//  "dt"
+// ]
+// true
+
+// [
+//  "ball",
+//  "area",
+//  "read",
+//  "lady"
+// ]
+// false
