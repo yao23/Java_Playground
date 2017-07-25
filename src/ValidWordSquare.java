@@ -15,7 +15,13 @@ public class ValidWordSquare {
                     }
                 }
 
-                return true;
+                // last word length is larger than words length
+                // test case 7
+                if (words.get(len - 1).length() > len) {
+                    return false;
+                } else {
+                    return true;
+                }
             } else {
                 return false;
             }
@@ -30,13 +36,21 @@ public class ValidWordSquare {
                 char horizontalChar =  str.charAt(i);
                 char verticalChar = tmp.charAt(curIdx);
                 if (horizontalChar != verticalChar) {
-                    System.out.println("[hv char diff] curIdx: " + curIdx + ", " + str + ", " + i + ", " + horizontalChar + ", " + verticalChar);
                     return false;
                 }
             } else if (i >= strLen && curIdx >= tmpLen) {
+                // middle word is shorter than words below
+                // test case 8
+                int vIdx = i;
+                while (vIdx < len) {
+                    tmp = words.get(vIdx);
+                    if (tmp.length() > curIdx) {
+                        return false;
+                    }
+                    vIdx++;
+                }
                 return true;
             } else {
-                System.out.println("[hv len diff] curIdx: " + i + ", " + str.length() + ", "+ curIdx  + ", "  + tmpLen);
                 return false;
             }
         }
@@ -68,3 +82,9 @@ public class ValidWordSquare {
 //  "lady"
 // ]
 // false
+
+// [] => true
+// ["a","b","c"] => false
+// ["abc"] => false
+// ["abc","bde","cefg"] => false
+// ["abcd","befd","cf","dda"] => false
