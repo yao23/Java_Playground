@@ -88,3 +88,5 @@ public class ValidWordSquare {
 // ["abc"] => false
 // ["abc","bde","cefg"] => false
 // ["abcd","befd","cf","dda"] => false
+
+// beats 97.94%
