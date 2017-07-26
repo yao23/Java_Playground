@@ -3,7 +3,7 @@ import java.util.Arrays;
 public class RemoveDuplicateLetters {
     private String res = "";
 
-    public String removeDuplicateLetters(String s) {
+    public String removeDuplicateLettersV0(String s) { // not working (test case 2)
         int len = s.length();
         if (len <= 1) {
             return s;
@@ -17,7 +17,7 @@ public class RemoveDuplicateLetters {
                     res += c;
                     map[c - 'a'] = res.length();
                 } else { // duplicate letter
-                    curIdx += processDuplicates(curIdx, oldIdx, s);
+                    curIdx += processDuplicates(curIdx, oldIdx - 1, s);
                 }
             }
 
@@ -28,17 +28,20 @@ public class RemoveDuplicateLetters {
     private int processDuplicates(int curIdx, int oldIdx, String s) {
         int leftLen = res.length() - 1 - oldIdx;
         int rightLen = s.length() - curIdx;
+        System.out.println("processing: " + res + ", " + s + ", " + leftLen + ", " + rightLen);
         if (leftLen <= rightLen) {
             int leftStart = oldIdx;
             int leftEnd = res.length() - 2; // last char as middle ("a" in "fbdabf")
             int rightStart = curIdx;
             int rightEnd = curIdx + leftLen - 1;
+            System.out.println("left longer: " + leftStart + ", " + leftEnd + ", " + rightStart + ", " + rightEnd);
             return findLongestSimilarStr(leftStart, leftEnd, rightStart, rightEnd, res, s);
         } else {
             int leftStart = oldIdx;
             int leftEnd = oldIdx + rightLen - 1;
             int rightStart = curIdx;
             int rightEnd = s.length() - 1;
+            System.out.println("right longer: " + leftStart + ", " + leftEnd + ", " + rightStart + ", " + rightEnd);
             return findLongestSimilarStr(leftStart, leftEnd, rightStart, rightEnd, res, s);
         }
     }
@@ -48,24 +51,35 @@ public class RemoveDuplicateLetters {
         String leftRes = "";
         String rightRes = "";
         int offset = findLongestSimilarStrOffset(left.substring(leftStart, leftEnd + 1), right.substring(rightStart, rightEnd + 1));
-        for (int i = 0; i < offset; i++) {
+        System.out.println("offset: " + offset + ", " + leftStart + ", " + leftEnd + ", " + rightStart + ", " + rightEnd);
+        int rightOffset = 0;
+        for (int i = 0; i <= offset; i++) {
             char cur = left.charAt(leftStart + i);
             if (cur > c) {
                 rightRes += cur; // remove from left side
             } else {
                 leftRes += cur; // remove from right side
+                rightOffset++;
             }
         }
+        for (int i = offset + 1; i <= leftEnd; i++) {
+            leftRes += left.charAt(leftStart + i);
+            rightRes += right.charAt(rightStart + i);
+            rightOffset++;
+        }
+
+        System.out.println("leftRes: " + leftRes + ", cur: " + c + ", rightRes: " + rightRes);
 
         res = (leftRes + c + rightRes);
 
-        return offset;
+        return rightOffset;
     }
 
     private int findLongestSimilarStrOffset(String left, String right) {
-        for (int i = left.length() - 1; i >= 0; i++) {
-            String sortedLeft = sortString(left);
-            String sortedRight = sortString(right);
+        for (int i = left.length() - 1; i >= 0; i--) {
+            String sortedLeft = sortString(left.substring(0, i + 1));
+            String sortedRight = sortString(right.substring(0, i + 1));
+            System.out.println("sorted left - right: " + i + ", " + sortedLeft + ", " + sortedRight);
             if (sortedLeft.equals(sortedRight)) {
                 return i;
             }
