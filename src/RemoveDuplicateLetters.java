@@ -81,3 +81,6 @@ public class RemoveDuplicateLetters {
         return sorted;
     }
 }
+
+// "bcabc" => "abc"
+// "cbacdcbc" => "acdb"
