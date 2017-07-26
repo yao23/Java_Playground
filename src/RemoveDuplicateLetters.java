@@ -1,11 +1,15 @@
+import java.util.Arrays;
+
 public class RemoveDuplicateLetters {
+    private String res = "";
+
     public String removeDuplicateLetters(String s) {
         int len = s.length();
         if (len <= 1) {
             return s;
         } else {
             int[] map = new int[26];
-            String res = "";
+
             for (int curIdx = 0; curIdx < len; curIdx++) {
                 char c = s.charAt(curIdx);
                 int oldIdx = map[c - 'a'];
@@ -13,7 +17,7 @@ public class RemoveDuplicateLetters {
                     res += c;
                     map[c - 'a'] = res.length();
                 } else { // duplicate letter
-                    res = removeDuplicate(curIdx, oldIdx, map, c, res);
+                    curIdx += processDuplicates(curIdx, oldIdx, s);
                 }
             }
 
@@ -21,27 +25,7 @@ public class RemoveDuplicateLetters {
         }
     }
 
-    private String removeDuplicate(int curIdx, int oldIdx, int[] map, char c, String res) {
-        int len = res.length();
-        String tmp = "";
-        if (oldIdx < len - 1 && res.charAt(oldIdx) > res.charAt(oldIdx + 1)) { // duplicate larger than its latter element
-            if (oldIdx == 0) { // duplicate at first index
-                if (len == 1) {
-                    return res;
-                } else {
-                    map[c - 'a'] = len + 1; // update map to use cur char
-                    return (res.substring(1) + c);
-                }
-            } else { // dupicate at later index
-                map[c - 'a'] = len + 1;
-                return (res.substring(0, oldIdx) + res.substring(oldIdx + 1, len) + c);
-            }
-        } else {
-            return res;
-        }
-    }
-
-    private String processDuplicates(int curIdx, int oldIdx, String res, String s) {
+    private int processDuplicates(int curIdx, int oldIdx, String s) {
         int leftLen = res.length() - 1 - oldIdx;
         int rightLen = s.length() - curIdx;
         if (leftLen <= rightLen) {
@@ -59,7 +43,7 @@ public class RemoveDuplicateLetters {
         }
     }
 
-    private String findLongestSimilarStr(int leftStart, int leftEnd, int rightStart, int rightEnd, String left, String right) {
+    private int findLongestSimilarStr(int leftStart, int leftEnd, int rightStart, int rightEnd, String left, String right) {
         char c = left.charAt(leftEnd + 1);
         String leftRes = "";
         String rightRes = "";
@@ -73,18 +57,27 @@ public class RemoveDuplicateLetters {
             }
         }
 
-        return (leftRes + c + rightRes);
+        res = (leftRes + c + rightRes);
+
+        return offset;
     }
 
     private int findLongestSimilarStrOffset(String left, String right) {
         for (int i = left.length() - 1; i >= 0; i++) {
-            String sortedLeft = "";
-            String sortedRight = "";
+            String sortedLeft = sortString(left);
+            String sortedRight = sortString(right);
             if (sortedLeft.equals(sortedRight)) {
                 return i;
             }
         }
 
         return 0;
+    }
+
+    private String sortString(String str) {
+        char[] arr = str.toCharArray();
+        Arrays.sort(arr);
+        String sorted = String.valueOf(arr);
+        return sorted;
     }
 }
