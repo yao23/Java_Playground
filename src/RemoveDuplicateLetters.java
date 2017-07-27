@@ -21,7 +21,7 @@ public class RemoveDuplicateLetters {
     }
 
     // better explanation: https://discuss.leetcode.com/topic/31413/easy-to-understand-iterative-java-solution
-    public String removeDuplicateLettersV1(String s) {
+    public String removeDuplicateLettersV1(String s) { // beats 38.90%
         if (s == null || s.length() <= 1) return s;
 
         Map<Character, Integer> lastPosMap = new HashMap<>();
