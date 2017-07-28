@@ -5,7 +5,7 @@ public class BinaryIndexTree {
 
         public NumArray(int[] nums) {
             this.nums = nums;
-            this.bit = new int[nums.length + 1];
+            this.bit = new int[nums.length + 1]; // 1 based to use the bottom rule for moving length
             for (int i = 0; i < nums.length; i++) {
                 init(i, nums[i]);
             }
