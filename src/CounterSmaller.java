@@ -45,3 +45,6 @@ public class CounterSmaller {
         return resList;
     }
 }
+
+// [5,2,6,1] => [2, 1, 1, 0]
+// [] => []
