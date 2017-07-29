@@ -1,5 +1,32 @@
 public class SearchA2DMatrixII {
-    public boolean searchMatrix(int[][] matrix, int target) { // beats 19.30%
+    public boolean searchMatrix(int[][] matrix, int target) { // beats 54.10%
+        int row = matrix.length;
+        if (row == 0) {
+            return false;
+        }
+        int col = matrix[0].length;
+        if (col == 0) {
+            return false;
+        }
+
+        // start from top right corner
+        int curRow = 0;
+        int curCol = col - 1;
+
+        while (curRow < row && curCol >= 0) {
+            if (matrix[curRow][curCol] == target) {
+                return true;
+            } else if (matrix[curRow][curCol] < target) { // less than target, go down
+                curRow++;
+            } else { // larger than target, go left
+                curCol--;
+            }
+        }
+
+        return false;
+    }
+
+    public boolean searchMatrixV0(int[][] matrix, int target) { // beats 19.30%
         int m = matrix.length;
         if (m == 0) {
             return false;
