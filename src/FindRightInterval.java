@@ -25,3 +25,11 @@ public class FindRightInterval {
 // [[1,4], [2,3], [3,4]] => [-1, 2, -1]
 
 // beats 29.48%
+
+// TreeMap is a Red-Black tree
+// Red-Black tree is self-balancing binary search tree
+// The longest track is shorter than twice of the shortest
+// The tree will be re-organized when one track is too long after insertion
+// fixAfterInsertion(e) => O(logn) in R-B Tree
+
+// higherEntry(K key), higherKey(K key), lowerEntry(K key), lowerKey(K key)
