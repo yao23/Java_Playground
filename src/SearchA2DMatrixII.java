@@ -1,7 +1,15 @@
 public class SearchA2DMatrixII {
     public boolean searchMatrix(int[][] matrix, int target) {
         int m = matrix.length;
+        if (m == 0) {
+            return false;
+        }
         int n = matrix[0].length;
+        if (n == 0) {
+            return false;
+        }
+
+        return binarySearch(matrix, target, 0, 0, m - 1, n - 1);
     }
 
     private boolean binarySearch(int[][] matrix, int target, int startX, int startY, int endX, int endY) {
