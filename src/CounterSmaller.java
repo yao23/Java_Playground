@@ -3,7 +3,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CounterSmaller {
-    public List<Integer> countSmaller(int[] nums) {
+    public List<Integer> countSmaller(int[] nums) { // beats 77.50%
         Integer[] res = new Integer[nums.length];
         if (nums == null || nums.length == 0) {
             return Arrays.asList(res);
@@ -18,7 +18,7 @@ public class CounterSmaller {
         return Arrays.asList(res);
     }
 
-    public SmallerTreeNode insert(SmallerTreeNode root, int val, Integer[] res, int index, int curLeftSum) {
+    private SmallerTreeNode insert(SmallerTreeNode root, int val, Integer[] res, int index, int curLeftSum) {
         if (root == null) {
             res[index] = curLeftSum;
             return new SmallerTreeNode(val, 0);
@@ -28,7 +28,7 @@ public class CounterSmaller {
             root.leftCount++;
             root.left = insert(root.left, val, res, index, curLeftSum);
         } else { // insert in right (right turn), pass curLeftSum + root.leftCount down + 0/1
-            root.right = insert(root.right, val, res, index, root.leftCount + curLeftSum + (root.val == val ? 1 : 0));
+            root.right = insert(root.right, val, res, index, root.leftCount + curLeftSum + (root.val == val ? 0 : 1));
         }
 
         return root;
