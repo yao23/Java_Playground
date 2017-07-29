@@ -47,16 +47,20 @@ public class MeetingRoomsII {
 
         Collections.sort(timeList);
 
-        int result = 0;
+        int counter = 0;
+        int max = 0;
         for (TimeElement timeElement : timeList) {
             if (timeElement.mode == 0) { // start
-                result++;
+                counter++;
             } else { // end
-                result--;
+                counter--;
+            }
+            if (counter > max) {
+                max = counter;
             }
         }
 
-        return result;
+        return max;
     }
 
     class TimeElement implements Comparable<TimeElement> {
