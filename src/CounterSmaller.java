@@ -6,7 +6,7 @@ public class CounterSmaller {
     public List<Integer> countSmaller(int[] nums) {
         Integer[] res = new Integer[nums.length];
         if (nums == null || nums.length == 0) {
-            return new ArrayList();
+            return Arrays.asList(res);
         }
 
         List<Elem> resList = mergeSort(0, nums.length - 1, nums);
