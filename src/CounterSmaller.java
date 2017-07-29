@@ -9,6 +9,49 @@ public class CounterSmaller {
             return Arrays.asList(res);
         }
 
+        SmallerTreeNode root = null;
+
+        for (int i = nums.length - 1; i >= 0; i--) {
+            root = insert(root, nums[i], res, i, 0);
+        }
+
+        return Arrays.asList(res);
+    }
+
+    public SmallerTreeNode insert(SmallerTreeNode root, int val, Integer[] res, int index, int curLeftSum) {
+        if (root == null) {
+            res[index] = curLeftSum;
+            return new SmallerTreeNode(val, 0);
+        }
+
+        if (root.val > val) { // insert in left (left turn), root.leftCount++, pass curLeftSum down
+            root.leftCount++;
+            root.left = insert(root.left, val, res, index, curLeftSum);
+        } else { // insert in right (right turn), pass curLeftSum + root.leftCount down + 0/1
+            root.right = insert(root.right, val, res, index, root.leftCount + curLeftSum + (root.val == val ? 1 : 0));
+        }
+
+        return root;
+    }
+
+    class SmallerTreeNode {
+        int val;
+        int leftCount;
+        SmallerTreeNode left;
+        SmallerTreeNode right;
+
+        public SmallerTreeNode(int val, int leftCount) {
+            this.val = val;
+            this.leftCount = leftCount;
+        }
+    }
+
+    public List<Integer> countSmallerV0(int[] nums) {
+        Integer[] res = new Integer[nums.length];
+        if (nums == null || nums.length == 0) {
+            return Arrays.asList(res);
+        }
+
         List<Elem> resList = mergeSort(0, nums.length - 1, nums);
         for (int i = 0; i < resList.size(); i++) {
             Elem elem = resList.get(i);
