@@ -28,7 +28,7 @@ public class CounterSmaller {
         if (root.val > val) { // insert in left (left turn), root.leftCount++, pass curLeftSum down
             root.leftCount++;
             root.left = insert(root.left, val, res, index, curLeftSum);
-        } else { // insert in right (right turn), pass curLeftSum + root.leftCount down + 0/1
+        } else { // insert in right (right turn), pass curLeftSum + root.leftCount down + 0/1 (test case 3, 2 == 2)
             root.right = insert(root.right, val, res, index, root.leftCount + curLeftSum + (root.val == val ? 0 : 1));
         }
 
@@ -118,5 +118,6 @@ public class CounterSmaller {
 
 // [5,2,6,1] => [2, 1, 1, 0]
 // [] => []
+// [5,7,2,2,6,1] => [3,4,1,1,1,0]
 
 // beats 30.43%
