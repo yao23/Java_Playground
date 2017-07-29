@@ -1,5 +1,5 @@
 public class SearchA2DMatrixII {
-    public boolean searchMatrix(int[][] matrix, int target) {
+    public boolean searchMatrix(int[][] matrix, int target) { // beats 19.30%
         int m = matrix.length;
         if (m == 0) {
             return false;
