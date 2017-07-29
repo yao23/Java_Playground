@@ -48,3 +48,5 @@ public class CounterSmaller {
 
 // [5,2,6,1] => [2, 1, 1, 0]
 // [] => []
+
+// beats 30.43%
