@@ -5,44 +5,70 @@ import java.util.List;
 public class CounterSmaller {
     public List<Integer> countSmaller(int[] nums) {
         Integer[] res = new Integer[nums.length];
+        if (nums == null || nums.length == 0) {
+            return new ArrayList();
+        }
 
-        mergeSort(0, nums.length - 1, nums, res);
+        List<Elem> resList = mergeSort(0, nums.length - 1, nums);
+        for (int i = 0; i < resList.size(); i++) {
+            Elem elem = resList.get(i);
+            res[elem.index] = elem.counter;
+        }
 
         return Arrays.asList(res);
     }
 
-    private List<Integer> mergeSort(int start, int end, int[] nums, Integer[] res) {
-        List<Integer> resList = new ArrayList<>();
+    private List<Elem> mergeSort(int start, int end, int[] nums) {
+        List<Elem> resList = new ArrayList<>();
         if (start == end) {
-            resList.add(nums[start]);
+            Elem cur = new Elem(start, nums[start], 0);
+            resList.add(cur);
             return resList;
         } else {
             int mid = start + (end - start) / 2;
-            List<Integer> left = mergeSort(start, mid, nums, res);
-            List<Integer> right = mergeSort(mid + 1, end, nums, res);
-            return merge(left, right, start, mid + 1, res);
+            List<Elem> left = mergeSort(start, mid, nums);
+            List<Elem> right = mergeSort(mid + 1, end, nums);
+            return merge(left, right);
         }
     }
 
-    private List<Integer> merge(List<Integer> left, List<Integer> right, int leftStart, int rightStart, Integer[] res) {
-        List<Integer> resList = new ArrayList<>();
+    private List<Elem> merge(List<Elem> left, List<Elem> right) {
+        int leftCur = 0;
+        int rightCur = 0;
+        int rightSmallerCounter = 0; // accumulate num of smaller ones in right part
+
+        List<Elem> resList = new ArrayList<>();
         for (int i = 0; i < left.size() + right.size(); i++) {
-            if (leftStart >= left.size()) {
-                resList.add(right.get(rightStart));
-                rightStart++;
-            } else if (rightStart >= right.size()) {
-                resList.add(left.get(leftStart));
-                leftStart++;
-            } else if (left.get(leftStart) <= right.get(rightStart)) {
-                resList.add(left.get(leftStart));
-                leftStart++;
+            if (leftCur >= left.size()) {
+                resList.add(right.get(rightCur));
+                rightCur++;
+            } else if (rightCur >= right.size()) {
+                left.get(leftCur).counter += rightSmallerCounter;
+                resList.add(left.get(leftCur));
+                leftCur++;
+            } else if (left.get(leftCur).val <= right.get(rightCur).val) {
+                left.get(leftCur).counter += rightSmallerCounter;
+                resList.add(left.get(leftCur));
+                leftCur++;
             } else {
-                res[leftStart] += 1;
-                resList.add(right.get(rightStart));
-                rightStart++;
+                rightSmallerCounter++;
+                resList.add(right.get(rightCur));
+                rightCur++;
             }
         }
         return resList;
+    }
+
+    class Elem {
+        int index;
+        int val;
+        int counter;
+
+        public Elem(int index, int val, int counter) {
+            this.index = index;
+            this.val = val;
+            this.counter = counter; // num of smaller ones after self
+        }
     }
 }
 
