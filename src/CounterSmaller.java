@@ -11,7 +11,7 @@ public class CounterSmaller {
 
         SmallerTreeNode root = null;
 
-        // guarantee right nodes are in the tree (decide root)
+        // guarantee right nodes are in the tree (decide root, traverse right elements right to check smaller or not)
         for (int i = nums.length - 1; i >= 0; i--) {
             root = insert(root, nums[i], res, i, 0);
         }
