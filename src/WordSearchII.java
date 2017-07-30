@@ -27,6 +27,7 @@ public class WordSearchII {
     }
 
     private void dfs(char[][] board, List<String> res, String oneRes, int row, int col, TrieNode root) {
+        // find an input string
         if (root != null && root.isWord) {
             if (!res.contains(oneRes)) {
                 res.add(oneRes);
@@ -42,6 +43,7 @@ public class WordSearchII {
         // 2. this "if" matters. Otherwise TLE. It avoids unnecessary one step try.
         TrieNode[] childList = root.children;
         char c = board[row][col];
+        // c is not visited and exists in Trie
         if (c != '#' &&  childList[c - 'a'] != null) {
             int dx[] = new int[]{-1, 1, 0, 0};
             int dy[] = new int[]{0, 0, -1, 1};
