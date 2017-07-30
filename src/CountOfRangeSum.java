@@ -13,24 +13,26 @@ public class CountOfRangeSum {
             return 0;
         }
         int mid = start + (end - start) / 2;
+        // find matched range sum in left and right halves
         int count = countWhileMergeSort(sums, start, mid, lower, upper)
                 + countWhileMergeSort(sums, mid, end, lower, upper); // [mid, end] for right half
         int j = mid, k = mid, t = mid;
         long[] cache = new long[end - start];
+        // find matched range sum cross left and right halves
         for (int i = start, r = 0; i < mid; i++, r++) {
-            while (k < end && sums[k] - sums[i] < lower) {
+            while (k < end && sums[k] - sums[i] < lower) { // 1st index for lower in right
                 k++;
             }
-            while (j < end && sums[j] - sums[i] <= upper) {
+            while (j < end && sums[j] - sums[i] <= upper) { // 1st index for upper in right
                 j++;
             }
-            while (t < end && sums[t] < sums[i]) {
+            while (t < end && sums[t] < sums[i]) { // find all smaller sum in right half for merge later
                 cache[r++] = sums[t++];
             }
             cache[r] = sums[i];
             count += j - k;
         }
-        System.arraycopy(cache, 0, sums, start, t - start);
+        System.arraycopy(cache, 0, sums, start, t - start); // merge
         return count;
     }
 
