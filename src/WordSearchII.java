@@ -26,7 +26,6 @@ public class WordSearchII {
         return res;
     }
 
-
     private void dfs(char[][] board, List<String> res, String oneRes, int row, int col, TrieNode root) {
         if (root != null && root.isWord) {
             if (!res.contains(oneRes)) {
@@ -42,17 +41,18 @@ public class WordSearchII {
 
         // 2. this "if" matters. Otherwise TLE. It avoids unnecessary one step try.
         TrieNode[] childList = root.children;
-        if (childList[board[row][col] - 'a'] != null) {
+        char c = board[row][col];
+        if (c != '#' &&  childList[c - 'a'] != null) {
             int dx[] = new int[]{-1, 1, 0, 0};
             int dy[] = new int[]{0, 0, -1, 1};
-            char origVal = board[row][col];
+
             board[row][col] = '#';
 
             for (int i = 0; i < 4; i++) {
-                dfs(board, res, oneRes + origVal, row + dx[i], col + dy[i], childList[origVal - 'a']);
+                dfs(board, res, oneRes + c, row + dx[i], col + dy[i],  childList[c - 'a']);
             }
 
-            board[row][col] = origVal;
+            board[row][col] = c;
         }
     }
 
