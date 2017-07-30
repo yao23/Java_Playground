@@ -19,6 +19,25 @@ public class BinaryTreeUpsideDown {
             }
         }
     }
+
+    public TreeNode upsideDownBinaryTreeV1(TreeNode root) { // beats 48.04%
+        if (root == null) {
+            return root;
+        } else {
+            TreeNode node = root, parent = null, right = null;
+
+            while (node != null) {
+                TreeNode left = node.left;
+                node.left = right;
+                right = node.right;
+                node.right = parent;
+                parent = node;
+                node = left;
+            }
+            
+            return parent;
+        }
+    }
 }
 
 // [] => []
