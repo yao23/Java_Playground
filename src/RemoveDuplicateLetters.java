@@ -1,6 +1,4 @@
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class RemoveDuplicateLetters {
     public String removeDuplicateLetters(String s) { // beats 11.38%
@@ -18,6 +16,49 @@ public class RemoveDuplicateLetters {
             }
         }
         return s.length() == 0 ? "" : s.charAt(pos) + removeDuplicateLetters(s.substring(pos + 1).replaceAll("" + s.charAt(pos), ""));
+    }
+
+    public String removeDuplicateLettersV2(String s) { // beats 73.06%
+        if (s == null || s.length() <= 1) {
+            return s;
+        }
+
+        // stack record chars in input order and ascending order as much as possible
+        int[] q = new int[26]; // char counter
+        boolean[] visited = new boolean[26]; // char in stack or not
+        int l = s.length();
+        char[] crs = s.toCharArray();
+
+        // appear time counter
+        for (char cr : crs) {
+            q[cr - 'a']++;
+        }
+
+        Deque<Character> res = new ArrayDeque<>();
+        int idx;
+        for (char ss : crs) {
+            idx = ss - 'a';
+            q[idx]--;
+            if (visited[idx]) { // processed and in stack
+                continue;
+            }
+            while (!res.isEmpty() && res.peek() > ss && q[res.peek() - 'a'] != 0 ){
+                visited[res.pop() - 'a'] = false;
+            }
+            res.push(ss);
+            visited[ss - 'a'] = true;
+
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        while (!res.isEmpty()) {
+            sb.append(res.pop());
+        }
+
+        sb.reverse();
+
+        return sb.toString();
     }
 
     // better explanation: https://discuss.leetcode.com/topic/31413/easy-to-understand-iterative-java-solution
@@ -59,8 +100,6 @@ public class RemoveDuplicateLetters {
         }
         return minLastPos;
     }
-
-
 
     private String res = "";
 
