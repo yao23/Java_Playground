@@ -1,7 +1,7 @@
 public class CountOfRangeSum {
     public static int countRangeSum(int[] nums, int lower, int upper) {
         int n = nums.length;
-        long[] sums = new long[n + 1]; // pre-processed sums
+        long[] sums = new long[n + 1]; // pre-processed sums (hidden condition: sum element has index range info, don't worry about index messed after sorted
         for (int i = 0; i < n; i++) {
             sums[i + 1] = sums[i] + nums[i];
         }
