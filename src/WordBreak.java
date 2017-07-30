@@ -21,7 +21,7 @@ public class WordBreak {
             // result means segmentation from 0 and length is i can be segmented into dictionary words
             for (int len = 1; len <= s.length(); len++) {
                 for (int i = 0; i < len; i++) {
-                    String rightStr = s.substring(i, len);
+                    String rightStr = s.substring(i, len); // (i - 1) and (len - 1) map to index in String s
                     if (result[i] && wordDict.contains(rightStr)) {
                         result[len] = true;
                         break;
