@@ -18,7 +18,7 @@ public class ExpressionAddOperators {
         return res;
     }
 
-    public void helper(List<String> rst, String path, String num, int target, int pos, long eval, long multed){
+    public void helper(List<String> rst, String path, String num, int target, int pos, long eval, long multed) { // long to avoid overflow
         if (pos == num.length()) {
             if (target == eval) {
                 rst.add(path);
@@ -26,18 +26,18 @@ public class ExpressionAddOperators {
             return;
         }
         for (int i = pos; i < num.length(); i++) {
-            if (i != pos && num.charAt(pos) == '0') {
+            if (i != pos && num.charAt(pos) == '0') { // i passed pos and pos is '0' (start with '0')
                 break;
             }
             long cur = Long.parseLong(num.substring(pos, i + 1));
             if (pos == 0) {
-                helper(rst, path + cur, num, target, i + 1, cur, cur);
+                helper(rst, path + cur, num, target, i + 1, cur, cur); // no operator in path to avoid case like "+1"
             } else {
                 helper(rst, path + "+" + cur, num, target, i + 1, eval + cur , cur);
 
                 helper(rst, path + "-" + cur, num, target, i + 1, eval - cur, -cur);
 
-                helper(rst, path + "*" + cur, num, target, i + 1, eval - multed + multed * cur, multed * cur );
+                helper(rst, path + "*" + cur, num, target, i + 1, eval - multed + multed * cur, multed * cur ); // 1 + 2 * 3 = 1 + 2 - 2 + 2 * 3
             }
         }
 
