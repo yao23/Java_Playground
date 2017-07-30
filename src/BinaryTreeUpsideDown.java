@@ -1,4 +1,5 @@
 public class BinaryTreeUpsideDown {
+    // recursively to process left subtree
     public TreeNode upsideDownBinaryTree(TreeNode root) { // beats 48.04%
         if (root == null) {
             return root;
@@ -20,6 +21,7 @@ public class BinaryTreeUpsideDown {
         }
     }
 
+    // iterative solution, easier to understand
     public TreeNode upsideDownBinaryTreeV1(TreeNode root) { // beats 48.04%
         if (root == null) {
             return root;
@@ -34,11 +36,45 @@ public class BinaryTreeUpsideDown {
                 parent = node;
                 node = left;
             }
-            
+
             return parent;
+        }
+    }
+
+    // post order to level order traversal
+    private TreeNode out = null;
+    public TreeNode UpsideDownBinaryTreeV2(TreeNode root) { // not working, failed at test case 3
+        TreeNode dummy = new TreeNode(0);
+        dummy.left = new TreeNode(0);
+        out = dummy;
+
+        postorder(root);
+        return dummy.right;
+    }
+
+    private void postorder(TreeNode root) {
+        if (root == null)
+            return;
+
+        postorder(root.left);
+        postorder(root.right);
+
+        if (out.left == null) {
+            out.left = root;
+            out.left.left = null;
+            out.left.right = null;
+        } else if (out.right == null) {
+            out.right = root;
+            out.right.left = null;
+            out.right.right = null;
+        }
+
+        if (out.right != null) {
+            out = out.right;
         }
     }
 }
 
 // [] => []
 // [1,2,3,4,5] => [4,5,2,#,#,3,1]
+// [1,2] => [2,null,1]
