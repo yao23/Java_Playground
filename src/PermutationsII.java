@@ -1,31 +1,32 @@
 import java.util.*;
 
 public class PermutationsII {
-    public List<List<Integer>> permuteUnique(int[] nums) { // beats 1.46%
+    public List<List<Integer>> permuteUnique(int[] nums) { // beats 21.01%
         List<List<Integer>> res = new ArrayList<>();
         if (nums == null || nums.length == 0) {
             return res;
         }
-        List<Integer> list = new ArrayList<>();
+
         Arrays.sort(nums);
-        helper(nums, res, list, 0);
+        helper(nums, res, 0);
         return res;
     }
 
-    private void helper(int[] nums, List<List<Integer>> res, List<Integer> list, int pos) {
+    private void helper(int[] nums, List<List<Integer>> res, int pos) {
         if (pos == nums.length) {
-            List<Integer> tmpRes = new ArrayList<>(list);
-            res.add(tmpRes);
+            List<Integer> list = new ArrayList<>();
+            for (int num : nums) {
+                list.add(num);
+            }
+            res.add(list);
             return;
         }
         Set<Integer> set = new HashSet<>();
         for (int i = pos; i < nums.length; i++) {
             if (set.add(nums[i])) {
-                list.add(nums[i]);
                 swap(nums, pos, i);
-                helper(nums, res, list, pos + 1); // pos + 1 (pos: cur level)
+                helper(nums, res, pos + 1); // pos + 1 (pos: cur level)
                 swap(nums, pos, i);
-                list.remove(list.size() - 1);
             }
         }
     }
