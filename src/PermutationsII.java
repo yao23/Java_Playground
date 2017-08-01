@@ -1,38 +1,32 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class PermutationsII {
-    public List<List<Integer>> permuteUnique(int[] nums) {
+    public List<List<Integer>> permuteUnique(int[] nums) { // beats 1.46%
         List<List<Integer>> res = new ArrayList<>();
+        Set<List<Integer>> set = new HashSet<>();
         if (nums == null || nums.length == 0) {
             return res;
         }
         List<Integer> list = new ArrayList<>();
         Arrays.sort(nums);
-        helper(nums, res, list, 0);
+        helper(nums, res, list, 0, set);
         return res;
     }
 
-    private void helper(int[] nums, List<List<Integer>> res, List<Integer> list, int pos) {
+    private void helper(int[] nums, List<List<Integer>> res, List<Integer> list, int pos, Set<List<Integer>> set) {
         if (pos == nums.length) {
-            res.add(new ArrayList<>(list));
+            List<Integer> tmpRes = new ArrayList<>(list);
+            if (set.add(tmpRes)) {
+                res.add(tmpRes);
+            }
             return;
         }
         for (int i = pos; i < nums.length; i++) {
-            if (i > pos && nums[i] == nums[i - 1]) {
-                continue;
-            }
-
             list.add(nums[i]);
             swap(nums, pos, i);
-            helper(nums, res, list, pos + 1); // pos + 1 (pos: cur level)
+            helper(nums, res, list, pos + 1, set); // pos + 1 (pos: cur level)
             swap(nums, pos, i);
             list.remove(list.size() - 1);
-
-            while (i + 1 < nums.length && nums[i] == nums[i + 1]) {
-                i++;
-            }
         }
     }
 
@@ -74,3 +68,5 @@ public class PermutationsII {
         }
     }
 }
+
+// [1,1,2] => [[1,1,2],[1,2,1],[2,1,1]]
