@@ -3,17 +3,46 @@ import java.util.*;
 public class PermutationsII {
     public List<List<Integer>> permuteUnique(int[] nums) { // beats 1.46%
         List<List<Integer>> res = new ArrayList<>();
+        if (nums == null || nums.length == 0) {
+            return res;
+        }
+        List<Integer> list = new ArrayList<>();
+        Arrays.sort(nums);
+        helper(nums, res, list, 0);
+        return res;
+    }
+
+    private void helper(int[] nums, List<List<Integer>> res, List<Integer> list, int pos) {
+        if (pos == nums.length) {
+            List<Integer> tmpRes = new ArrayList<>(list);
+            res.add(tmpRes);
+            return;
+        }
+        Set<Integer> set = new HashSet<>();
+        for (int i = pos; i < nums.length; i++) {
+            if (set.add(nums[i])) {
+                list.add(nums[i]);
+                swap(nums, pos, i);
+                helper(nums, res, list, pos + 1); // pos + 1 (pos: cur level)
+                swap(nums, pos, i);
+                list.remove(list.size() - 1);
+            }
+        }
+    }
+
+    public List<List<Integer>> permuteUniqueV1(int[] nums) { // beats 1.46%
+        List<List<Integer>> res = new ArrayList<>();
         Set<List<Integer>> set = new HashSet<>();
         if (nums == null || nums.length == 0) {
             return res;
         }
         List<Integer> list = new ArrayList<>();
         Arrays.sort(nums);
-        helper(nums, res, list, 0, set);
+        helperV1(nums, res, list, 0, set);
         return res;
     }
 
-    private void helper(int[] nums, List<List<Integer>> res, List<Integer> list, int pos, Set<List<Integer>> set) {
+    private void helperV1(int[] nums, List<List<Integer>> res, List<Integer> list, int pos, Set<List<Integer>> set) {
         if (pos == nums.length) {
             List<Integer> tmpRes = new ArrayList<>(list);
             if (set.add(tmpRes)) {
@@ -24,7 +53,7 @@ public class PermutationsII {
         for (int i = pos; i < nums.length; i++) {
             list.add(nums[i]);
             swap(nums, pos, i);
-            helper(nums, res, list, pos + 1, set); // pos + 1 (pos: cur level)
+            helperV1(nums, res, list, pos + 1, set); // pos + 1 (pos: cur level)
             swap(nums, pos, i);
             list.remove(list.size() - 1);
         }
