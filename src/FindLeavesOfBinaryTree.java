@@ -15,7 +15,7 @@ public class FindLeavesOfBinaryTree { // LC 366
             return -1;
         }
         int level = 1 + Math.max(height(node.left, res), height(node.right, res));
-        if (res.size() < level + 1) {
+        if (res.size() < level + 1) { // res.size() == level, level 0 for leaves
             res.add(new ArrayList<>());
         }
         res.get(level).add(node.val);
