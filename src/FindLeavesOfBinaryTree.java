@@ -22,6 +22,44 @@ public class FindLeavesOfBinaryTree { // LC 366
         return level;
     }
 
+    public List<List<Integer>> findLeavesV1(TreeNode root) { // beats 18.98%
+
+        List<List<Integer>> leavesList = new ArrayList<>();
+        List<Integer> leaves = new ArrayList<>();
+
+        while(root != null) {
+            if(isLeave(root, leaves)) {
+                root = null;
+            }
+            leavesList.add(leaves);
+            leaves = new ArrayList<>();
+        }
+
+        return leavesList;
+    }
+
+    public boolean isLeave(TreeNode node, List<Integer> leaves) {
+
+        if (node.left == null && node.right == null) {
+            leaves.add(node.val);
+            return true;
+        }
+
+        if (node.left != null) {
+            if (isLeave(node.left, leaves)) {
+                node.left = null; // update for next round processing
+            }
+        }
+
+        if (node.right != null) {
+            if (isLeave(node.right, leaves)) {
+                node.right = null; // update for next round processing
+            }
+        }
+
+        return false;
+    }
+
     public List<List<Integer>> findLeavesV0(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
         if (root == null) {
