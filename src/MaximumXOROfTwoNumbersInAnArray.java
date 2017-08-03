@@ -5,14 +5,14 @@ public class MaximumXOROfTwoNumbersInAnArray { // LC 421
     public int findMaximumXOR(int[] nums) { // beats 81.20%
         int max = 0, mask = 0;
         for (int i = 31; i >= 0; i--) {
-            mask = mask | (1 << i);
+            mask = mask | (1 << i); // prefix mask
             Set<Integer> set = new HashSet<>();
             for (int num : nums) {
                 set.add(num & mask);
             }
             int tmp = max | (1 << i);
             for (int prefix : set) {
-                if (set.contains(tmp ^ prefix)) {
+                if (set.contains(tmp ^ prefix)) { // prefix contribute to max XOR
                     max = tmp;
                     break;
                 }
