@@ -58,7 +58,7 @@ public class LargestBSTSubtree { // LC 333
 
     int max = 0;
 
-    public int largestBSTSubtreeV1(TreeNode root) {
+    public int largestBSTSubtreeV1(TreeNode root) { // beats 62.76%
         if (root == null) { return 0; }
         traverse(root);
         return max;
