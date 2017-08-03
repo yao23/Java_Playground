@@ -20,6 +20,40 @@ public class MaximumXOROfTwoNumbersInAnArray { // LC 421
         }
         return max;
     }
+
+    public int findMaximumXORV1(int[] nums) { // beats 89.33%
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        // Init Trie.
+        Object[] root = {null, null};
+        for (int num: nums) {
+            Object[] curNode = root;
+            for (int i = 31; i >= 0; i --) {
+                int curBit = (num >>> i) & 1;
+                if (curNode[curBit] == null) {
+                    curNode[curBit] = new Object[]{null, null};
+                }
+                curNode = (Object[]) curNode[curBit];
+            }
+        }
+        int max = Integer.MIN_VALUE;
+        for (int num: nums) {
+            Object[] curNode = root;
+            int curSum = 0;
+            for (int i = 31; i >= 0; i --) {
+                int curBit = (num >>> i) & 1;
+                if (curNode[curBit ^ 1] != null) {
+                    curSum += (1 << i);
+                    curNode = (Object[]) curNode[curBit ^ 1];
+                } else {
+                    curNode = (Object[]) curNode[curBit];
+                }
+            }
+            max = Math.max(curSum, max);
+        }
+        return max;
+    }
 }
 
 // [3, 10, 5, 25, 2, 8] => 28 (5 ^ 25)
