@@ -1,5 +1,8 @@
 public class LargestBSTSubtree { // LC 333
-    public int largestBSTSubtree(TreeNode root) {
+    public int largestBSTSubtree(TreeNode root) { // beats 24.48%
+        if (root == null) {
+            return 0;
+        }
         ResNode resNode = helper(root);
         return resNode.count;
     }
@@ -13,8 +16,8 @@ public class LargestBSTSubtree { // LC 333
         if (left.max < root.val && root.val < right.min) {
             if (left.node == root.left && right.node == root.right) {
                 ResNode resNode = new ResNode();
-                resNode.min = left.min;
-                resNode.max = right.max;
+                resNode.min = Math.min(left.min, root.val);
+                resNode.max = Math.max(right.max, root.val);
                 resNode.count = left.count + 1 + right.count;
                 resNode.node = root;
                 return resNode;
