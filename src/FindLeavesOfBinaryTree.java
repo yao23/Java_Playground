@@ -4,7 +4,25 @@ import java.util.Deque;
 import java.util.List;
 
 public class FindLeavesOfBinaryTree { // LC 366
-    public List<List<Integer>> findLeaves(TreeNode root) {
+    public List<List<Integer>> findLeaves(TreeNode root) { // beats 18.98%
+        List<List<Integer>> res = new ArrayList<>();
+        height(root, res);
+        return res;
+    }
+
+    private int height(TreeNode node, List<List<Integer>> res){
+        if (null == node) {
+            return -1;
+        }
+        int level = 1 + Math.max(height(node.left, res), height(node.right, res));
+        if (res.size() < level + 1) {
+            res.add(new ArrayList<>());
+        }
+        res.get(level).add(node.val);
+        return level;
+    }
+
+    public List<List<Integer>> findLeavesV0(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
         if (root == null) {
             return res;
