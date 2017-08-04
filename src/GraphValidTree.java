@@ -36,7 +36,11 @@ public class GraphValidTree {
         int firstParent = compressedFind(first);
         int secondParent = compressedFind(second);
         if (firstParent != secondParent) {
-            arr[second] = firstParent;
+            if (first < second) {
+                arr[second] = firstParent;
+            } else {
+                arr[first] = secondParent;
+            }
         }
     }
 
@@ -60,3 +64,7 @@ public class GraphValidTree {
         return parent;
     }
 }
+
+// 5, [[0,1],[0,2],[2,3],[2,4]] => true
+// 5, [[0,1],[1,2],[2,3],[1,3],[1,4]] => false
+// 5, [[0,1],[2,1],[2,0],[2,4]] => false
