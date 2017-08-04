@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class AlienDictionary {
+public class AlienDictionary { // LC 269
     public String alienOrder(String[] words) {
         int len = words.length;
         if (len == 0) {

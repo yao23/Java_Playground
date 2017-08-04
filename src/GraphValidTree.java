@@ -1,4 +1,4 @@
-public class GraphValidTree {
+public class GraphValidTree { // LC 261
     private int[] arr;
     public boolean validTree(int n, int[][] edges) {
         if (edges.length == n - 1) {
