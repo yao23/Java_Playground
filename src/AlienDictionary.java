@@ -18,7 +18,7 @@ public class AlienDictionary {
                 if (p < s1.length() && p < s2.length()) {
                     char c1 = s1.charAt(p), c2 = s2.charAt(p);
                     if (!map.containsKey(c1)) {
-                        map.put(c1, new ArrayList<Character>());
+                        map.put(c1, new ArrayList<>());
                     }
                     map.get(c1).add(c2);
                 }
