@@ -41,7 +41,7 @@ public class MaximumXOROfTwoNumbersInAnArray { // LC 421
         for (int num: nums) {
             Object[] curNode = root;
             int curSum = 0;
-            for (int i = 31; i >= 0; i --) {
+            for (int i = 31; i >= 0; i--) {
                 int curBit = (num >>> i) & 1;
                 if (curNode[curBit ^ 1] != null) { // opposite bit (curBit ^ 1)
                     curSum += (1 << i);
