@@ -29,9 +29,11 @@ public class AlienDictionary { // LC 269
                 map.get(c1).add(c2);
             }
 
-            if (map.size() == 1) { // test case 4
+            if (map.size() == 1) { // test case 2,4
                 Character firstKey = map.keySet().iterator().next();
-                return (""+firstKey);
+                if (map.get(firstKey).get(0) == firstKey) { // test case 4
+                    return (""+firstKey);
+                }
             }
 
             int[] graph = new int[26];
