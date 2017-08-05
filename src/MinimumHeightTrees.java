@@ -13,31 +13,40 @@ public class MinimumHeightTrees { // LC 310
             return res;
         }
 
-        // add nodes in graph and init degree with 0
         // add neighbor list for each node
         for (int i = 0; i < row; i++) {
             int first = edges[i][0], second = edges[i][1];
-            updateGraphStart(graph, first);
-            updateGraphEnd(graph, second);
-
-            if (!map.containsKey(first)) {
-                map.put(first, new HashSet<>());
-            }
-            map.get(first).add(second);
+            updateMap(map, first, second);
+            updateMap(map, second, first);
         }
 
-        Set<Integer> visited = new  HashSet<>();
+        // for (int i = 0; i < row; i++) {
+        //     int first = edges[i][0], second = edges[i][1];
+        //     updateGraphStart(graph, first);
+        //     updateGraphEnd(graph, second);
+        // }
+
+        // add nodes in graph and init degree with 1
+        for (Map.Entry<Integer, Set<Integer>> entry : map.entrySet()) {
+            for (Integer elem : entry.getValue()) {
+                updateGraphEnd(graph, elem);
+            }
+        }
+
+        // Set<Integer> visited = new  HashSet<>();
         Deque<Integer> q = new ArrayDeque<>();
         // start from each node with in-dgree 0 to neighbors, stop when queue has less than 2 nodes
         for (Map.Entry<Integer, Integer> entry : graph.entrySet()) {
-            if (entry.getValue() == 0) {
+            if (entry.getValue() == 1) {
                 q.offer(entry.getKey());
             }
         }
 
-        while (q.size() > 2) {
+        int counter = graph.size();
+        while (counter > 2) {
             int cur = q.remove();
-            visited.add(cur);
+            // visited.add(cur);
+            counter--;
             Set<Integer> neighbors = map.get(cur);
             if (neighbors != null) {
                 for (Integer neighbor : neighbors) {
@@ -54,6 +63,13 @@ public class MinimumHeightTrees { // LC 310
         }
 
         return res;
+    }
+
+    private void updateMap(Map<Integer, Set<Integer>> map, int first, int second) {
+        if (!map.containsKey(first)) {
+            map.put(first, new HashSet<>());
+        }
+        map.get(first).add(second);
     }
 
     private void updateGraphStart(Map<Integer, Integer> graph, int elem) {
