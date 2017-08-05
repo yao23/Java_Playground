@@ -68,4 +68,6 @@ public class AlienDictionary { // LC 269
 }
 
 // ["wrt","wrf","er","ett","rftt"] => "wertf"
+// ["z","x"] => "zx"
+// ["z","x","z"] => ""
 
