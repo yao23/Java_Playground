@@ -72,10 +72,11 @@ public class AlienDictionary { // LC 269
             Arrays.fill(graph, -1); // easy for graph not full (test case 1)
             for (int i = 0; i < len - 1; i++) {
                 String s1 = words[i], s2 = words[i + 1];
+                initGraph(graph, s1); // update for topological sort
+                initGraph(graph, s2);
+
                 int p = 0;
                 while (p < s1.length() && p < s2.length() && s1.charAt(p) == s2.charAt(p)) {
-                    initGraph(graph, s1.charAt(p)); // update for topological sort
-                    initGraph(graph, s2.charAt(p));
                     p++;
                 }
                 char c1, c2;
@@ -136,9 +137,12 @@ public class AlienDictionary { // LC 269
         }
     }
 
-    private void initGraph(int[] graph, char c) {
-        if (graph[c - 'a'] == -1) {
-            graph[c - 'a'] = 0;
+    private void initGraph(int[] graph, String s) {
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (graph[c - 'a'] == -1) {
+                graph[c - 'a'] = 0;
+            }
         }
     }
 }
