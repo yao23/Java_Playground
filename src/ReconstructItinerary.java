@@ -17,12 +17,26 @@ public class ReconstructItinerary { // LC 332
             if (!map.containsKey(start)) {
                 map.put(start, new PriorityQueue<>());
             }
-            map.get(start).add(end);
+            map.get(start).offer(end);
         }
+        for (Map.Entry<String, PriorityQueue<String>> entry : map.entrySet()) {
+            System.out.println("key: " + entry.getKey());
+            System.out.println(entry.getValue());
+        }
+
         String start = "JFK";
+        res.add(start);
         while (res.size() < len + 1) {
             PriorityQueue<String> pq = map.get(start);
-            String end = pq.remove();
+            if (pq == null) {
+                System.out.println("pq is null");
+                // return res;
+            } else {
+                System.out.println("pq is not null: " + pq.peek());
+                // return res;
+            }
+            String end = pq.peek();
+            pq.poll();
             res.add(end);
             start = end;
         }
