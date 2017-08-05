@@ -68,10 +68,14 @@ public class AlienDictionary { // LC 269
             return words[0];
         } else { // topological sort
             Map<Character, List<Character>> map = new HashMap<>();
+            int[] graph = new int[26];
+            Arrays.fill(graph, -1); // easy for graph not full (test case 1)
             for (int i = 0; i < len - 1; i++) {
                 String s1 = words[i], s2 = words[i + 1];
                 int p = 0;
                 while (p < s1.length() && p < s2.length() && s1.charAt(p) == s2.charAt(p)) {
+                    initGraph(graph, s1.charAt(p)); // update for topological sort
+                    initGraph(graph, s2.charAt(p));
                     p++;
                 }
                 char c1, c2;
@@ -95,28 +99,23 @@ public class AlienDictionary { // LC 269
                 }
             }
 
-            int[] graph = new int[26];
-            Arrays.fill(graph, -1); // easy for graph not full (test case 1)
             for (Map.Entry<Character, List<Character>> entry : map.entrySet()) {
-                char k = entry.getKey();
-                if (graph[k - 'a'] == -1) { // update for topological sort
-                    graph[k - 'a'] = 0;
-                }
                 List<Character> list = entry.getValue();
                 for (Character c : list) {
-                    if (graph[c - 'a'] == -1) {
-                        graph[c - 'a'] = 0;
-                    }
                     graph[c - 'a']++;
                 }
             }
 
             Deque<Character> q = new ArrayDeque<>();
             String res = "";
+            int numNode = 0;
             for (int i = 0; i < 26; i++) {
                 if (graph[i] == 0) { // in-degree is zero
                     q.offer((char)('a' + i));
                     res += ((char)('a' + i));
+                }
+                if (graph[i] > -1) {
+                    numNode++;
                 }
             }
             while (!q.isEmpty()) {
@@ -133,7 +132,13 @@ public class AlienDictionary { // LC 269
                 }
             }
 
-            return res;
+            return res.length() == numNode ? res : "";
+        }
+    }
+
+    private void initGraph(int[] graph, char c) {
+        if (graph[c - 'a'] == -1) {
+            graph[c - 'a'] = 0;
         }
     }
 }
