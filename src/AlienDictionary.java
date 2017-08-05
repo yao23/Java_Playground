@@ -7,7 +7,7 @@ public class AlienDictionary { // LC 269
             return "";
         } else if (len == 1) {
             return words[0];
-        } else {
+        } else { // topological sort
             Map<Character, List<Character>> map = new HashMap<>();
             for (int i = 0; i < len - 1; i++) {
                 String s1 = words[i], s2 = words[i + 1];
@@ -25,9 +25,17 @@ public class AlienDictionary { // LC 269
             }
 
             int[] graph = new int[26];
+            Arrays.fill(graph, -1); // easy for graph not full (test case 1)
             for (Map.Entry<Character, List<Character>> entry : map.entrySet()) {
+                char k = entry.getKey();
+                if (graph[k - 'a'] == -1) { // update for topological sort
+                    graph[k - 'a'] = 0;
+                }
                 List<Character> list = entry.getValue();
                 for (Character c : list) {
+                    if (graph[c - 'a'] == -1) {
+                        graph[c - 'a'] = 0;
+                    }
                     graph[c - 'a']++;
                 }
             }
@@ -35,7 +43,7 @@ public class AlienDictionary { // LC 269
             Deque<Character> q = new ArrayDeque<>();
             String res = "";
             for (int i = 0; i < 26; i++) {
-                if (graph[i] == 0) {
+                if (graph[i] == 0) { // in-degree is zero
                     q.offer((char)('a' + i));
                     res += ((char)('a' + i));
                 }
@@ -43,11 +51,13 @@ public class AlienDictionary { // LC 269
             while (!q.isEmpty()) {
                 char cur = q.remove();
                 List<Character> neighbors = map.get(cur);
-                for (Character c : neighbors) {
-                    graph[c - 'a']--;
-                    if (graph[c - 'a'] == 0) {
-                        q.offer(c);
-                        res += c;
+                if (neighbors != null) {
+                    for (Character c : neighbors) {
+                        graph[c - 'a']--;
+                        if (graph[c - 'a'] == 0) {
+                            q.offer(c);
+                            res += c;
+                        }
                     }
                 }
             }
@@ -56,3 +66,6 @@ public class AlienDictionary { // LC 269
         }
     }
 }
+
+// ["wrt","wrf","er","ett","rftt"] => "wertf"
+
