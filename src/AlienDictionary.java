@@ -15,13 +15,23 @@ public class AlienDictionary { // LC 269
                 while (p < s1.length() && p < s2.length() && s1.charAt(p) == s2.charAt(p)) {
                     p++;
                 }
+                char c1, c2;
                 if (p < s1.length() && p < s2.length()) {
-                    char c1 = s1.charAt(p), c2 = s2.charAt(p);
-                    if (!map.containsKey(c1)) {
-                        map.put(c1, new ArrayList<>());
-                    }
-                    map.get(c1).add(c2);
+                    c1 = s1.charAt(p);
+                    c2 = s2.charAt(p);
+                } else {
+                    c1 = s1.charAt(0);
+                    c2 = s2.charAt(0);
                 }
+                if (!map.containsKey(c1)) {
+                    map.put(c1, new ArrayList<>());
+                }
+                map.get(c1).add(c2);
+            }
+
+            if (map.size() == 1) { // test case 4
+                Character firstKey = map.keySet().iterator().next();
+                return (""+firstKey);
             }
 
             int[] graph = new int[26];
@@ -70,4 +80,5 @@ public class AlienDictionary { // LC 269
 // ["wrt","wrf","er","ett","rftt"] => "wertf"
 // ["z","x"] => "zx"
 // ["z","x","z"] => ""
+// ["z","z"] => "z"
 
