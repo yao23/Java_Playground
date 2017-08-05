@@ -1,7 +1,24 @@
 import java.util.*;
 
 public class ReconstructItinerary { // LC 332
-    public List<String> findItinerary(String[][] tickets) { // not working for test case 3
+    public List<String> findItinerary(String[][] tickets) { // beats 15.60%
+        Map<String, PriorityQueue<String>> targets = new HashMap<>();
+        for (String[] ticket : tickets) {
+            targets.computeIfAbsent(ticket[0], k -> new PriorityQueue<>()).add(ticket[1]);
+        }
+        List<String> route = new LinkedList<>();
+        Deque<String> stack = new ArrayDeque<>();
+        stack.push("JFK");
+        while (!stack.isEmpty()) {
+            while (targets.containsKey(stack.peek()) && !targets.get(stack.peek()).isEmpty()) {
+                stack.push(targets.get(stack.peek()).poll());
+            }
+            route.add(0, stack.pop());
+        }
+        return route;
+    }
+
+    public List<String> findItineraryV0(String[][] tickets) { // not working for test case 3
         // Priority Queue to store neighbors in lexical order
         // DFS
         // Eulerian Path
