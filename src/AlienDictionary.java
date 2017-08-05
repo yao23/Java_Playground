@@ -60,7 +60,7 @@ public class AlienDictionary { // LC 269
         }
     }
 
-    public String alienOrderV0(String[] words) {
+    public String alienOrderV0(String[] words) { // beats 54.90%
         int len = words.length;
         if (len == 0) {
             return "";
@@ -79,24 +79,14 @@ public class AlienDictionary { // LC 269
                 while (p < s1.length() && p < s2.length() && s1.charAt(p) == s2.charAt(p)) {
                     p++;
                 }
-                char c1, c2;
-                if (p < s1.length() && p < s2.length()) {
-                    c1 = s1.charAt(p);
-                    c2 = s2.charAt(p);
-                } else {
-                    c1 = s1.charAt(0);
-                    c2 = s2.charAt(0);
-                }
-                if (!map.containsKey(c1)) {
-                    map.put(c1, new ArrayList<>());
-                }
-                map.get(c1).add(c2);
-            }
 
-            if (map.size() == 1) { // test case 2,4
-                Character firstKey = map.keySet().iterator().next();
-                if (map.get(firstKey).get(0) == firstKey) { // test case 4
-                    return (""+firstKey);
+                if (p < s1.length() && p < s2.length()) {
+                    char c1 = s1.charAt(p);
+                    char c2 = s2.charAt(p);
+                    if (!map.containsKey(c1)) {
+                        map.put(c1, new ArrayList<>());
+                    }
+                    map.get(c1).add(c2);
                 }
             }
 
@@ -151,5 +141,6 @@ public class AlienDictionary { // LC 269
 // ["z","x"] => "zx"
 // ["z","x","z"] => ""
 // ["z","z"] => "z"
-// ["zy","zx"] => "yxz"
+// ["zy","zx"] => "yxz" ("yzx" accepted)
+// ["wrt","wrtkj"] => "jkrtw"
 
