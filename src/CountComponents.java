@@ -4,7 +4,34 @@ import java.util.*;
  * Created by liyao on 7/12/17.
  */
 public class CountComponents {
-    public int countComponents(int n, int[][] edges) {
+    public int countComponents(int n, int[][] edges) { // beats 71.43%
+        int[] root = new int[n];
+        for (int i = 0; i < n; i++) {
+            root[i] = i;
+        }
+        for (int[] edge: edges) {
+            int parent = findRoot(root, edge[0]);
+            int child = findRoot(root, edge[1]);
+            root[child] = parent;
+        }
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            if (root[i] == i) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private int findRoot(int[] root, int cur) {
+        while (cur != root[cur]) {
+            root[cur] = root[root[cur]];
+            cur = root[cur];
+        }
+        return cur;
+    }
+
+    public int countComponentsV0(int n, int[][] edges) {
         Map<Integer, List<Integer>> map = new HashMap<>();
         Set<Integer> nodes = new HashSet<>();
 
