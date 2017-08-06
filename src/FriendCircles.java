@@ -9,21 +9,39 @@ public class FriendCircles {
         }
         int col = M[0].length;
         matrix = new UFElement[row][col];
+        initMatrix(M, row, col);
+
 
         return numCircles;
+    }
+
+    private void updateMatrix(int[][] M, int row, int col) {
+        for (int r = 0; r < row; r++) {
+            for (int c = 0; c < col; c++) {
+                matrix[r][c] = new UFElement(r, c);
+            }
+        }
+    }
+
+    private void initMatrix(int[][] M, int row, int col) {
+        for (int r = 0; r < row; r++) {
+            for (int c = 0; c < col; c++) {
+                matrix[r][c] = new UFElement(r, c);
+            }
+        }
     }
 
     private UFElement compressedFind(int r, int c) {
         UFElement parent = matrix[r][c];
 
-        while (UFElement.isEqual(parent, matrix[parent.row][parent.col]) {
-            parent = matrix[parent.row][parent.col];
+        while (UFElement.isEqual(parent, matrix[parent.getRow()][parent.getCol()])) {
+            parent = matrix[parent.getRow()][parent.getCol()];
         }
 
         UFElement curParent = matrix[r][c];
-        while (UFElement.isEqual(curParent, matrix[curParent.row][curParent.col]) {
-            UFElement tmp = matrix[curParent.row][curParent.col];
-            matrix[curParent.row][curParent.col] = parent; // update to top parent
+        while (UFElement.isEqual(curParent, matrix[curParent.getRow()][curParent.getCol()])) {
+            UFElement tmp = matrix[curParent.getRow()][curParent.getCol()];
+            matrix[curParent.getRow()][curParent.getCol()] = parent; // update to top parent
             curParent = tmp;
         }
 
@@ -33,8 +51,8 @@ public class FriendCircles {
     private UFElement find(int r, int c) {
         UFElement parent = matrix[r][c];
 
-        while (UFElement.isEqual(parent, matrix[parent.row][parent.col]) {
-            parent = matrix[parent.row][parent.col];
+        while (UFElement.isEqual(parent, matrix[parent.getRow()][parent.getCol()])) {
+            parent = matrix[parent.getRow()][parent.getCol()];
         }
 
         return parent;
@@ -44,10 +62,10 @@ public class FriendCircles {
         UFElement parent1 = compressedFind(r1, c1);
         UFElement parent2 = compressedFind(r2, c2);
         if (!UFElement.isEqual(parent1, parent2)) {
-            if (parent1.row < parent2.row) {
+            if (parent1.getRow() < parent2.getRow()) {
                 matrix[r2][c2] = parent1;
-            } else if (parent1.row == parent2.row) {
-                if (parent1.col < parent2.col) {
+            } else if (parent1.getRow() == parent2.getRow()) {
+                if (parent1.getCol() < parent2.getCol()) {
                     matrix[r2][c2] = parent1;
                 } else {
                     matrix[r1][c1] = parent2;
