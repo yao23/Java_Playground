@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class WordLadderII {
+public class WordLadderII { // LC 126
     public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
         List<List<String>> res = new ArrayList<>();
         Set<String> dict = new HashSet<>(wordList);
@@ -30,7 +30,7 @@ public class WordLadderII {
         return res;
     }
 
-    boolean helper(Set<String> dict, Set<String> beginSet, Set<String> endSet, Map<String, List<String>> map, boolean flip) {
+    private boolean helper(Set<String> dict, Set<String> beginSet, Set<String> endSet, Map<String, List<String>> map, boolean flip) {
         if (beginSet.isEmpty()) {
             return false;
         }
@@ -50,7 +50,7 @@ public class WordLadderII {
         // set for the next level
         Set<String> set = new HashSet<>();
 
-        // for each string in end 1
+        // for each string in beginSet
         for (String str : beginSet) {
             for (int i = 0; i < str.length(); i++) {
                 char[] chars = str.toCharArray();
@@ -65,11 +65,10 @@ public class WordLadderII {
                     String key = flip ? word : str;
                     String val = flip ? str : word;
 
-                    List<String> list = map.containsKey(key) ? map.get(key) : new ArrayList<>();
-
                     if (endSet.contains(word)) {
                         done = true;
 
+                        List<String> list = map.containsKey(key) ? map.get(key) : new ArrayList<>();
                         list.add(val);
                         map.put(key, list);
                     }
@@ -77,6 +76,7 @@ public class WordLadderII {
                     if (!done && dict.contains(word)) {
                         set.add(word);
 
+                        List<String> list = map.containsKey(key) ? map.get(key) : new ArrayList<>();
                         list.add(val);
                         map.put(key, list);
                     }
@@ -117,4 +117,4 @@ public class WordLadderII {
 //  ["hit","hot","lot","log","cog"]
 // ]
 
-// beats 94.75%
+// beats 97.62%
