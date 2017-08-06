@@ -5,7 +5,7 @@ public class FriendCircles {
     private int[] parents;
     private Set<Integer> circles;
 
-    public int findCircleNum(int[][] M) {
+    public int findCircleNum(int[][] M) { // Union Find solution
         circles = new HashSet<>();
         int N = M.length;
         if (N == 0) {
@@ -88,7 +88,7 @@ public class FriendCircles {
         }
     }
 
-    // test case 4
+    // test case 4 (watch this condition, LC test samples in problem description are trap)
     private void updateOldParents(int N, int oldParent, int newParent) {
         for (int i = N - 1; i >= oldParent; i--) {
             if (parents[i] == oldParent) {
