@@ -1,5 +1,5 @@
 public class JumpGameII {
-    public int jump(int[] nums) {
+    public int jump(int[] nums) { // LC 45
         if (nums == null || nums.length == 0) {
             return -1;
         }

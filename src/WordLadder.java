@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class WordLadder {
+public class WordLadder { // 127
     public int ladderLength(String beginWord, String endWord, List<String> wordList) { // beats 84.35%
         Set<String> dict = new HashSet<>(wordList); // much faster for contains() check than List
         if (!dict.contains(endWord)) { // test case 2
