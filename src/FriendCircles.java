@@ -20,6 +20,9 @@ public class FriendCircles {
 
     private void updateCircles(int N) {
         for (int i = 0; i < N; i++) {
+            compressedFind(i);
+        }
+        for (int i = 0; i < N; i++) {
             circles.add(parents[i]);
         }
     }
@@ -33,6 +36,11 @@ public class FriendCircles {
                     }
                 }
             }
+            // System.out.println("pos: " + r + ", " + N);
+            // for (int i = 0; i < N; i++) {
+            //     System.out.print(parents[i] + ", ");
+            // }
+            // System.out.println();
         }
     }
 
@@ -56,6 +64,7 @@ public class FriendCircles {
             parents[curParent] = parent; // update to top parent
             curParent = tmp;
         }
+        parents[curParent] = parent;
 
         return parent;
     }
@@ -76,8 +85,16 @@ public class FriendCircles {
         if (parent1 != parent2) {
             if (parent1 < parent2) {
                 parents[idx2] = parent1;
+                // update top parent for parent2
+                if (parents[parent2] != parent1) {
+                    parents[parent2] = parent1;
+                }
             } else {
                 parents[idx1] = parent2;
+                // update top parent for parent1 (test case 3)
+                if (parents[parent1] != parent2) {
+                    parents[parent1] = parent2;
+                }
             }
         }
     }
@@ -85,3 +102,4 @@ public class FriendCircles {
 
 // [[1,1,0],[1,1,0],[0,0,1]] => 2
 // [[1,1,0],[1,1,1],[0,1,1]] => 1
+// [[1,0,0,1],[0,1,1,0],[0,1,1,1],[1,0,1,1]] => 1
