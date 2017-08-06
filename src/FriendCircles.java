@@ -1,113 +1,84 @@
+import java.util.HashSet;
+import java.util.Set;
+
 public class FriendCircles {
-    private UFElement[][] matrix;
-    private int numCircles;
+    private int[] parents;
+    private Set<Integer> circles;
+
     public int findCircleNum(int[][] M) {
-        numCircles = 0;
-        int row = M.length;
-        if (row == 0) {
-            return numCircles;
+        circles = new HashSet<>();
+        int N = M.length;
+        if (N == 0) {
+            return circles.size();
         }
-        int col = M[0].length;
-        matrix = new UFElement[row][col];
-        initMatrix(M, row, col);
+        initParents(N);
+        updateParents(N, M);
+        updateCircles(N);
 
-
-        return numCircles;
+        return circles.size();
     }
 
-    private void updateMatrix(int[][] M, int row, int col) {
-        for (int r = 0; r < row; r++) {
-            for (int c = 0; c < col; c++) {
-                matrix[r][c] = new UFElement(r, c);
+    private void updateCircles(int N) {
+        for (int i = 0; i < N; i++) {
+            circles.add(parents[i]);
+        }
+    }
+
+    private void updateParents(int N, int[][] M) {
+        for (int r = 0; r < N; r++) {
+            for (int c = r; c < N; c++) {
+                if (M[r][c] == 1) {
+                    if (find(r) != find(c)) {
+                        union(r, c);
+                    }
+                }
             }
         }
     }
 
-    private void initMatrix(int[][] M, int row, int col) {
-        for (int r = 0; r < row; r++) {
-            for (int c = 0; c < col; c++) {
-                matrix[r][c] = new UFElement(r, c);
-            }
+    private void initParents(int N) {
+        parents = new int[N];
+        for (int i = 0; i < N; i++) {
+            parents[i] = i;
         }
     }
 
-    private UFElement compressedFind(int r, int c) {
-        UFElement parent = matrix[r][c];
+    private int compressedFind(int idx) {
+        int parent = parents[idx];
 
-        while (UFElement.isEqual(parent, matrix[parent.getRow()][parent.getCol()])) {
-            parent = matrix[parent.getRow()][parent.getCol()];
+        while (parent != parents[parent]) {
+            parent = parents[parent];
         }
 
-        UFElement curParent = matrix[r][c];
-        while (UFElement.isEqual(curParent, matrix[curParent.getRow()][curParent.getCol()])) {
-            UFElement tmp = matrix[curParent.getRow()][curParent.getCol()];
-            matrix[curParent.getRow()][curParent.getCol()] = parent; // update to top parent
+        int curParent = parents[idx];
+        while (curParent != parents[curParent]) {
+            int tmp = parents[curParent];
+            parents[curParent] = parent; // update to top parent
             curParent = tmp;
         }
 
         return parent;
     }
 
-    private UFElement find(int r, int c) {
-        UFElement parent = matrix[r][c];
+    private int find(int idx) {
+        int parent = parents[idx];
 
-        while (UFElement.isEqual(parent, matrix[parent.getRow()][parent.getCol()])) {
-            parent = matrix[parent.getRow()][parent.getCol()];
+        while (parent != parents[parent]) {
+            parent = parents[parent];
         }
 
         return parent;
     }
 
-    private void union(int r1, int c1, int r2, int c2) {
-        UFElement parent1 = compressedFind(r1, c1);
-        UFElement parent2 = compressedFind(r2, c2);
-        if (!UFElement.isEqual(parent1, parent2)) {
-            if (parent1.getRow() < parent2.getRow()) {
-                matrix[r2][c2] = parent1;
-            } else if (parent1.getRow() == parent2.getRow()) {
-                if (parent1.getCol() < parent2.getCol()) {
-                    matrix[r2][c2] = parent1;
-                } else {
-                    matrix[r1][c1] = parent2;
-                }
+    private void union(int idx1, int idx2) {
+        int parent1 = compressedFind(idx1);
+        int parent2 = compressedFind(idx2);
+        if (parent1 != parent2) {
+            if (parent1 < parent2) {
+                parents[idx2] = parent1;
             } else {
-                matrix[r1][c1] = parent2;
+                parents[idx1] = parent2;
             }
-
-            numCircles++;
         }
-    }
-
-}
-
-
-// Union Find Element
-class UFElement {
-    private int row;
-    private int col;
-
-    public UFElement(int row, int col) {
-        this.row = row;
-        this.col = col;
-    }
-
-    public static boolean isEqual(UFElement one, UFElement two) {
-        return (one.row == two.row && one.col == two.col);
-    }
-
-    public int getRow() {
-        return row;
-    }
-
-    public void setRow(int row) {
-        this.row = row;
-    }
-
-    public int getCol() {
-        return col;
-    }
-
-    public void setCol(int col) {
-        this.col = col;
     }
 }
