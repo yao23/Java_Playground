@@ -7,7 +7,7 @@ import java.util.Deque;
  * INF - Infinity means an empty room. We use the value 231 - 1 = 2147483647 to represent INF as you may assume that the distance to a gate is less than 2147483647.
  */
 
-public class WallsAndGates {
+public class WallsAndGates { // LC 286
 
     public void wallsAndGates(int[][] rooms) { // beats 19.89%
         if (checkCornerCase(rooms)) {
