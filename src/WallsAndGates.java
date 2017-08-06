@@ -1,10 +1,20 @@
 import java.util.ArrayDeque;
 import java.util.Deque;
 
+/**
+ * -1 - A wall or an obstacle.
+ * 0 - A gate.
+ * INF - Infinity means an empty room. We use the value 231 - 1 = 2147483647 to represent INF as you may assume that the distance to a gate is less than 2147483647.
+ */
+
 public class WallsAndGates {
     private int INF = Integer.MAX_VALUE; // (2^31 - 1) = 2147483647
 
     public void wallsAndGates(int[][] rooms) { // beats 58.29%
+
+    }
+
+    public void wallsAndGatesV0(int[][] rooms) { // beats 58.29%, O(k*mn) and k as # of rooms (INF)
         if (rooms == null || rooms.length == 0 || rooms[0] == null || rooms[0].length == 0) {
             return;
         }
