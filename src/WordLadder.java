@@ -10,13 +10,14 @@ public class WordLadder {
         beginSet.add(beginWord);
         endSet.add(endWord);
         while (!beginSet.isEmpty() && !endSet.isEmpty()) {
+            // always start from smaller set
             if (beginSet.size() > endSet.size()) {
                 Set<String> set = beginSet;
                 beginSet = endSet;
                 endSet = set;
             }
 
-            Set<String> temp = new HashSet<>();
+            Set<String> nextLevel = new HashSet<>();
             for (String word : beginSet) {
                 char[] chs = word.toCharArray();
 
@@ -31,7 +32,7 @@ public class WordLadder {
                         }
 
                         if (!visited.contains(target) && wordList.contains(target)) {
-                            temp.add(target);
+                            nextLevel.add(target);
                             visited.add(target);
                         }
                         chs[i] = old;
@@ -39,7 +40,7 @@ public class WordLadder {
                 }
             }
 
-            beginSet = temp;
+            beginSet = nextLevel; // update for next level
             len++;
         }
 
