@@ -15,9 +15,11 @@ public class SequenceReconstruction {
             for (List<Integer> list : seqs) {
                 for (int i = 0; i < list.size() - 1; i++) {
                     int start = list.get(i), end = list.get(i + 1);
-                    updateDegreeForStart(degrees, start);
-                    updateDegreeForEnd(degrees, end);
-                    updateGraph(graph, start, end);
+
+                    if (updateGraph(graph, start, end)) { // edge from start to end is not existing (test case 4)
+                        updateDegreeForStart(degrees, start);
+                        updateDegreeForEnd(degrees, end);
+                    }
                 }
             }
             Deque<Integer> q = new ArrayDeque<>();
@@ -34,11 +36,13 @@ public class SequenceReconstruction {
                     return false;
                 } else {
                     int k = q.remove();
-                    for (Integer elem : graph.get(k)) {
-                        degrees.put(elem, degrees.get(elem) - 1);
-                        if (degrees.get(elem) == 0) {
-                            q.add(elem);
-                            res.add(elem);
+                    if (graph.get(k) != null) {
+                        for (Integer elem : graph.get(k)) {
+                            degrees.put(elem, degrees.get(elem) - 1);
+                            if (degrees.get(elem) == 0) {
+                                q.add(elem);
+                                res.add(elem);
+                            }
                         }
                     }
                 }
@@ -60,11 +64,11 @@ public class SequenceReconstruction {
         degrees.put(end, degrees.get(end) + 1);
     }
 
-    private void updateGraph(Map<Integer, Set<Integer>> graph, int start, int end) {
+    private boolean updateGraph(Map<Integer, Set<Integer>> graph, int start, int end) {
         if (!graph.containsKey(start)) {
             graph.put(start, new HashSet<>());
         }
-        graph.get(start).add(end);
+        return graph.get(start).add(end);
     }
 
     private boolean validate(int[] org, List<Integer> list) {
