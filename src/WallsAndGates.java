@@ -4,7 +4,7 @@ import java.util.Deque;
 public class WallsAndGates {
     private int INF = Integer.MAX_VALUE; // (2^31 - 1) = 2147483647
 
-    public void wallsAndGates(int[][] rooms) {
+    public void wallsAndGates(int[][] rooms) { // beats 58.29%
         if (rooms == null || rooms.length == 0 || rooms[0] == null || rooms[0].length == 0) {
             return;
         }
