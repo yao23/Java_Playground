@@ -44,3 +44,5 @@ public class WordLadder {
         return new String(chs);
     }
 }
+
+// "hit","cog",["hot","dot","dog","lot","log"] => 5 ("hit" -> "hot" -> "dot" -> "dog" -> "cog")
