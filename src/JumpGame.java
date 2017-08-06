@@ -1,5 +1,16 @@
 public class JumpGame {
-    public boolean canJump(int[] nums) { // beats 70.23%, time O(n), space O(1)
+    public boolean canJump(int[] nums) { // beats 12.68%, time O(n), space O(1)
+        int max = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (i > max) {
+                return false;
+            }
+            max = Math.max(nums[i] + i, max);
+        }
+        return true;
+    }
+
+    public boolean canJumpV1(int[] nums) { // beats 70.23%, time O(n), space O(1)
         int n = nums.length;
         int last = n - 1;
         for (int i = n - 2; i >= 0; i--) {
