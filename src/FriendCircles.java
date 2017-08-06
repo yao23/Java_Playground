@@ -36,11 +36,6 @@ public class FriendCircles {
                     }
                 }
             }
-            // System.out.println("pos: " + r + ", " + N);
-            // for (int i = 0; i < N; i++) {
-            //     System.out.print(parents[i] + ", ");
-            // }
-            // System.out.println();
         }
     }
 
