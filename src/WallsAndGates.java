@@ -10,7 +10,7 @@ import java.util.Deque;
 public class WallsAndGates {
     private int INF = Integer.MAX_VALUE; // (2^31 - 1) = 2147483647
 
-    public void wallsAndGates(int[][] rooms) { // beats 58.29%
+    public void wallsAndGates(int[][] rooms) { // beats 19.89%
         if (checkCornerCase(rooms)) {
             return;
         }
