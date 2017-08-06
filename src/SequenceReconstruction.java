@@ -100,3 +100,5 @@ public class SequenceReconstruction {
 // orig: [4,1,5,2,6,3], seqs: [[5,2,6,3],[4,1,5,2]] => true
 // orig: [1], seqs: [[1],[1],[1]] => true
 // orig: [1], seqs: [[1],[2,3],[3,2]] => false
+
+// beats 44.64%
