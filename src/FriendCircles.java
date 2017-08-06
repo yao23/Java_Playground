@@ -32,7 +32,7 @@ public class FriendCircles {
             for (int c = r; c < N; c++) {
                 if (M[r][c] == 1) {
                     if (find(r) != find(c)) {
-                        union(r, c);
+                        union(r, c, N);
                     }
                 }
             }
@@ -74,22 +74,25 @@ public class FriendCircles {
         return parent;
     }
 
-    private void union(int idx1, int idx2) {
+    private void union(int idx1, int idx2, int N) {
         int parent1 = compressedFind(idx1);
         int parent2 = compressedFind(idx2);
         if (parent1 != parent2) {
             if (parent1 < parent2) {
-                parents[idx2] = parent1;
-                // update top parent for parent2
-                if (parents[parent2] != parent1) {
-                    parents[parent2] = parent1;
-                }
+                // update top parent for all elements having parent2
+                updateOldParents(N, parent2, parent1);
             } else {
-                parents[idx1] = parent2;
-                // update top parent for parent1 (test case 3)
-                if (parents[parent1] != parent2) {
-                    parents[parent1] = parent2;
-                }
+                // update top parent for all elements having parent1
+                updateOldParents(N, parent1, parent2);
+            }
+        }
+    }
+
+    // test case 4
+    private void updateOldParents(int N, int oldParent, int newParent) {
+        for (int i = N - 1; i >= oldParent; i--) {
+            if (parents[i] == oldParent) {
+                parents[i] = newParent;
             }
         }
     }
@@ -98,3 +101,9 @@ public class FriendCircles {
 // [[1,1,0],[1,1,0],[0,0,1]] => 2
 // [[1,1,0],[1,1,1],[0,1,1]] => 1
 // [[1,0,0,1],[0,1,1,0],[0,1,1,1],[1,0,1,1]] => 1
+
+// [[1,1,0,0,0,0,0,1,0,0,0,0,0,0,0],[1,1,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,1,0,0,0,0,0,0,0,0,0,0,0,0],
+//  [0,0,0,1,0,1,1,0,0,0,0,0,0,0,0],[0,0,0,0,1,0,0,0,0,1,1,0,0,0,0],[0,0,0,1,0,1,0,0,0,0,1,0,0,0,0],
+//  [0,0,0,1,0,0,1,0,1,0,0,0,0,1,0],[1,0,0,0,0,0,0,1,1,0,0,0,0,0,0],[0,0,0,0,0,0,1,1,1,0,0,0,0,1,0],
+//  [0,0,0,0,1,0,0,0,0,1,0,1,0,0,1],[0,0,0,0,1,1,0,0,0,0,1,1,0,0,0],[0,0,0,0,0,0,0,0,0,1,1,1,0,0,0],
+//  [0,0,0,0,0,0,0,0,0,0,0,0,1,0,0],[0,0,0,0,0,0,1,0,1,0,0,0,0,1,0],[0,0,0,0,0,0,0,0,0,1,0,0,0,0,1]] => 3
