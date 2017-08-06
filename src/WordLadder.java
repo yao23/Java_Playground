@@ -1,7 +1,11 @@
 import java.util.*;
 
 public class WordLadder {
-    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+    public int ladderLength(String beginWord, String endWord, List<String> wordList) { // beats 84.35%
+        Set<String> dict = new HashSet<>(wordList); // much faster for contains() check than List
+        if (!dict.contains(endWord)) { // test case 2
+            return 0;
+        }
         Set<String> beginSet = new HashSet<>(), endSet = new HashSet<>();
 
         int len = 1;
@@ -31,7 +35,7 @@ public class WordLadder {
                             return len + 1;
                         }
 
-                        if (!visited.contains(target) && wordList.contains(target)) {
+                        if (!visited.contains(target) && dict.contains(target)) {
                             nextLevel.add(target);
                             visited.add(target);
                         }
@@ -92,3 +96,4 @@ public class WordLadder {
 }
 
 // "hit","cog",["hot","dot","dog","lot","log"] => 5 ("hit" -> "hot" -> "dot" -> "dog" -> "cog")
+// "hit","cog",["hot","dot","dog","lot","log"] => 0 (no "cog" in wordList)
