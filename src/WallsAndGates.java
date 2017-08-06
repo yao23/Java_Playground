@@ -8,7 +8,6 @@ import java.util.Deque;
  */
 
 public class WallsAndGates {
-    private int INF = Integer.MAX_VALUE; // (2^31 - 1) = 2147483647
 
     public void wallsAndGates(int[][] rooms) { // beats 19.89%
         if (checkCornerCase(rooms)) {
@@ -74,6 +73,7 @@ public class WallsAndGates {
 
     // only update for rooms, INF + 1 = Integer.MIN_VALUE (overflow)
     private boolean isValid(int x, int y, int newX, int newY, int row, int col, int[][] rooms) {
+        int INF = Integer.MAX_VALUE; // (2^31 - 1) = 2147483647
         return newX >= 0 && newY >= 0 && newX < row && newY < col && rooms[newX][newY] > 0 && rooms[x][y] != INF;
     }
 
