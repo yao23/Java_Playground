@@ -29,22 +29,7 @@ public class WallsAndGates {
         int row = rooms.length;
         int col = rooms[0].length;
 
-        while (!queue.isEmpty()) {
-            int[] cur = queue.pollFirst();
-            int x = cur[0];
-            int y = cur[1];
-            int[] dx = new int[]{-1, 1, 0, 0};
-            int[] dy = new int[]{0, 0, -1, 1};
-            for (int k = 0; k < 4; k++) {
-                int newX = x + dx[k];
-                int newY = y + dy[k];
-
-                if (isValid(x, y, newX, newY, row, col, rooms) && rooms[newX][newY] > rooms[x][y] + 1) {
-                    rooms[newX][newY] = rooms[x][y] + 1;
-                    queue.offer(new int[]{newX, newY});
-                }
-            }
-        }
+        process(queue, row, col, rooms);
     }
 
     public void wallsAndGatesV0(int[][] rooms) { // beats 58.29%, O(k*mn) and k as # of rooms (INF)
@@ -65,6 +50,10 @@ public class WallsAndGates {
         int col = rooms[0].length;
         Deque<int[]> queue = new ArrayDeque<>();
         queue.offer(new int[]{i,j});
+        process(queue, row, col, rooms);
+    }
+
+    private void process(Deque<int[]> queue, int row, int col, int[][] rooms) {
         while (!queue.isEmpty()) {
             int[] cur = queue.pollFirst();
             int x = cur[0];
