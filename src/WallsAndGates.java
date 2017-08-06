@@ -11,7 +11,9 @@ public class WallsAndGates {
     private int INF = Integer.MAX_VALUE; // (2^31 - 1) = 2147483647
 
     public void wallsAndGates(int[][] rooms) { // beats 58.29%
-        checkCornerCase(rooms);
+        if (checkCornerCase(rooms)) {
+            return;
+        }
         Deque<int[]> queue = new ArrayDeque<>();
         for (int i = 0; i < rooms.length; i++) {
             for (int j = 0; j < rooms[0].length; j++) {
@@ -46,7 +48,9 @@ public class WallsAndGates {
     }
 
     public void wallsAndGatesV0(int[][] rooms) { // beats 58.29%, O(k*mn) and k as # of rooms (INF)
-        checkCornerCase(rooms);
+        if (checkCornerCase(rooms)) {
+            return;
+        }
         for (int i = 0; i < rooms.length; i++) {
             for (int j = 0; j < rooms[0].length; j++) {
                 if (rooms[i][j] >= 0) { // gate or room
@@ -84,10 +88,8 @@ public class WallsAndGates {
         return newX >= 0 && newY >= 0 && newX < row && newY < col && rooms[newX][newY] > 0 && rooms[x][y] != INF;
     }
 
-    private void checkCornerCase(int[][] rooms) {
-        if (rooms == null || rooms.length == 0 || rooms[0] == null || rooms[0].length == 0) {
-            return;
-        }
+    private boolean checkCornerCase(int[][] rooms) {
+        return (rooms == null || rooms.length == 0 || rooms[0] == null || rooms[0].length == 0);
     }
 }
 
