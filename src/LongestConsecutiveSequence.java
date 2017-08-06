@@ -36,3 +36,5 @@ public class LongestConsecutiveSequence {
 }
 
 // [100, 4, 200, 1, 3, 2] => 4 (1,2,3,4)
+
+// beats 36.60%
