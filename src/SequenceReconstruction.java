@@ -80,3 +80,8 @@ public class SequenceReconstruction {
         }
     }
 }
+
+// orig: [1,2,3], seqs: [[1,2],[1,3]] => false ([1,3,2])
+// orig: [1,2,3], seqs: [[1,2]] => false ([1,2])
+// orig: [1,2,3], seqs: [[1,2],[1,3],[2,3]] => true
+// orig: [4,1,5,2,6,3], seqs: [[5,2,6,3],[4,1,5,2]] => true
