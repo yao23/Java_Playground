@@ -33,10 +33,6 @@ public class WallsAndGates {
                 int newY = y + dy[k];
 
                 if (isValid(x, y, newX, newY, row, col, rooms) && rooms[newX][newY] > rooms[x][y] + 1) {
-                    // System.out.println(x + ", " + y + ", " + rooms[x][y]);
-                    // System.out.println(newX + ", " + newY + ", " + rooms[newX][newY]);
-                    // System.out.println();
-
                     rooms[newX][newY] = rooms[x][y] + 1;
                     queue.offer(new int[]{newX, newY});
                 }
@@ -44,6 +40,7 @@ public class WallsAndGates {
         }
     }
 
+    // only update for rooms, INF + 1 = Integer.MIN_VALUE (overflow)
     private boolean isValid(int x, int y, int newX, int newY, int row, int col, int[][] rooms) {
         return newX >= 0 && newY >= 0 && newX < row && newY < col && rooms[newX][newY] > 0 && rooms[x][y] != INF;
     }
