@@ -1,5 +1,16 @@
 public class JumpGame {
-    public boolean canJump(int[] nums) { // beats 35.25%
+    public boolean canJump(int[] nums) { // beats 70.23%
+        int n = nums.length;
+        int last = n - 1;
+        for (int i = n - 2; i >= 0; i--) {
+            if (i + nums[i] >= last) {
+                last = i;
+            }
+        }
+        return last <= 0;
+    }
+
+    public boolean canJumpV0(int[] nums) { // beats 35.25%
         if (nums == null || nums.length <= 1) {
             return true;
         }
