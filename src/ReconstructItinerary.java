@@ -18,6 +18,24 @@ public class ReconstructItinerary { // LC 332
         return route;
     }
 
+    public List<String> findItineraryV1(String[][] tickets) { // recursion
+        for (String[] ticket : tickets) {
+            targets.computeIfAbsent(ticket[0], k -> new PriorityQueue<>()).add(ticket[1]);
+        }
+        visit("JFK");
+        return route;
+    }
+
+    private Map<String, PriorityQueue<String>> targets = new HashMap<>();
+    private List<String> route = new LinkedList<>();
+
+    private void visit(String airport) {
+        while(targets.containsKey(airport) && !targets.get(airport).isEmpty()) {
+            visit(targets.get(airport).poll());
+        }
+        route.add(0, airport);
+    }
+
     public List<String> findItineraryV0(String[][] tickets) { // not working for test case 3
         // Priority Queue to store neighbors in lexical order
         // DFS
