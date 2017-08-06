@@ -3,7 +3,7 @@ import java.util.List;
 
 public class NumberOfIslandsII {
     private int[][] direction = new int[][]{{1,0},{0,1},{-1,0},{0,-1}};
-    
+
     public List<Integer> numIslands2(int m, int n, int[][] positions) {
         List<Integer> res = new ArrayList<>();
         int[] id = new int[m * n];
@@ -74,3 +74,5 @@ public class NumberOfIslandsII {
         }
     }
 }
+
+// 3, 3, [[0,0],[0,1],[1,2],[2,1]] => [1,1,2,3]
