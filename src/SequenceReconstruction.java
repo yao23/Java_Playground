@@ -51,7 +51,12 @@ public class SequenceReconstruction {
                     }
                 }
             }
-            return validate(org, res);
+
+            if (res.size() == degrees.size()) {
+                return validate(org, res);
+            } else {
+                return false; // test case 6
+            }
         }
     }
 
@@ -94,3 +99,4 @@ public class SequenceReconstruction {
 // orig: [1,2,3], seqs: [[1,2],[1,3],[2,3]] => true
 // orig: [4,1,5,2,6,3], seqs: [[5,2,6,3],[4,1,5,2]] => true
 // orig: [1], seqs: [[1],[1],[1]] => true
+// orig: [1], seqs: [[1],[2,3],[3,2]] => false
