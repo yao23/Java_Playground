@@ -80,4 +80,16 @@ public class MyBlockingQueue {
             }
         }
     }
+
+    public static void main(String[] args) {
+        MyBlockingQueue myBlockingQueue = new MyBlockingQueue(5);
+
+        Producer producer = new Producer(myBlockingQueue);
+        Consumer consumer = new Consumer(myBlockingQueue);
+
+        new Thread(consumer).start();
+        new Thread(consumer).start();
+        new Thread(producer).start();
+        new Thread(producer).start();
+    }
 }
