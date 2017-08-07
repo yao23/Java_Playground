@@ -42,4 +42,37 @@ public class ProducerAndConsumer {
             }
         }
     }
+
+    class PutExecuter implements Runnable {
+        private Bucket bucket;
+        public PutExecuter(Bucket bucket) {
+            this.bucket = bucket;
+        }
+        @Override
+        public void run() {
+            int counter = 0;
+            while (counter < 10) {
+                bucket.putToken(new Token(counter, Thread.currentThread().getName()));
+                System.out.println("PUT: " + Thread.currentThread().getName() + " " + counter);
+                counter++;
+            }
+        }
+    }
+
+    class GetExecuter implements Runnable {
+        private Bucket bucket;
+        private int num;
+        public GetExecuter(Bucket bucket, int num) {
+            this.bucket = bucket;
+            this.num = num;
+        }
+        @Override
+        public void run() {
+            int counter = 0;
+            while (counter < 10) {
+                System.out.println("GET: " + Thread.currentThread().getName() + " From " + bucket.getToken());
+                counter++;
+            }
+        }
+    }
 }
