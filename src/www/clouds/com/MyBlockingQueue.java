@@ -54,4 +54,30 @@ public class MyBlockingQueue {
             lock.unlock();
         }
     }
+
+    static class Producer implements Runnable {
+        MyBlockingQueue que;
+        Producer(MyBlockingQueue que) {
+            this.que = que;
+        }
+        @Override
+        public void run() {
+            for (int i = 0; i < 10; i++) {
+                this.que.put("Token " + i);
+            }
+        }
+    }
+
+    static class Consumer implements Runnable {
+        MyBlockingQueue que;
+        Consumer(MyBlockingQueue que) {
+            this.que = que;
+        }
+        @Override
+        public void run() {
+            for (int i = 0; i < 10; i++) {
+                this.que.take();
+            }
+        }
+    }
 }
