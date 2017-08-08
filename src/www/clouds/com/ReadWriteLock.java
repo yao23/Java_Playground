@@ -1,5 +1,8 @@
+package www.clouds.com;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
@@ -37,6 +40,30 @@ public class ReadWriteLock {
             e.printStackTrace();
         } finally {
             readLock.unlock();
+        }
+    }
+
+    class Adder implements Runnable {
+        ReadWriteLock readWriteLock;
+        public Adder(ReadWriteLock readWriteLock) {
+            this.readWriteLock = readWriteLock;
+        }
+        @Override
+        public void run() {
+            readWriteLock.addElement(new Random().nextInt(10));
+        }
+    }
+
+    class Setter implements Runnable {
+        ReadWriteLock readWriteLock;
+        int size;
+        public Setter(ReadWriteLock readWriteLock) {
+            this.readWriteLock = readWriteLock;
+            this.size = readWriteLock.list.size();
+        }
+        @Override
+        public void run() {
+            readWriteLock.getElement(0);
         }
     }
 }
