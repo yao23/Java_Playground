@@ -16,7 +16,7 @@ public class CombinationSumIII { // LC 216
             return;
         }
         for (int i = start; i <= 9; i++) {
-            if (remain < 2 * i && remain != i) { // skip duplicate
+            if (remain < 2 * i && remain != i) { // skip smaller and impossible one
                 continue;
             }
             list.add(i);
