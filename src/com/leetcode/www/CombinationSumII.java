@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CombinationSum {
-    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+public class CombinationSumII {
+    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         List<List<Integer>> res = new ArrayList<>();
         Arrays.sort(candidates);
         helper(res, new ArrayList<>(), candidates, 0, target);
@@ -18,15 +18,18 @@ public class CombinationSum {
             return;
         }
         for (int i = start; i < nums.length; i++) {
+            if (i > start && nums[i] == nums[i - 1]) { // skip duplicate
+                continue;
+            }
             list.add(nums[i]);
             if (remain >= nums[i]) {
-                helper(res, list, nums, i, remain - nums[i]);
+                helper(res, list, nums, i + 1, remain - nums[i]); // go to next level
             }
             list.remove(list.size() - 1);
         }
     }
 }
 
-// [2, 3, 6, 7], 7 => [[7],[2, 2, 3]]
+// [10, 1, 2, 7, 6, 1, 5], 8 => [[1, 7],[1, 2, 5],[2, 6],[1, 1, 6]]
 
-// beats 58.30%
+// beats 66.82%
