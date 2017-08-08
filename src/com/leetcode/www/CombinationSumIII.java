@@ -3,7 +3,7 @@ package com.leetcode.www;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CombinationSumIII {
+public class CombinationSumIII { // LC 216
     public List<List<Integer>> combinationSum3(int k, int n) {
         List<List<Integer>> res = new ArrayList<>();
         helper(res, new ArrayList<>(), 1, n, k);
