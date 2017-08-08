@@ -66,4 +66,31 @@ public class ReadWriteLock {
             readWriteLock.getElement(0);
         }
     }
+
+    public static void main(String[] args) throws InterruptedException {
+        ReadWriteLock readWriteLock = new ReadWriteLock();
+
+        Adder adder = readWriteLock.new Adder(readWriteLock);
+        Setter setter = readWriteLock.new Setter(readWriteLock);
+
+        List<Thread> writeThread = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            writeThread.add(new Thread(adder));
+        }
+
+        List<Thread> readThread = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            readThread.add(new Thread(setter));
+        }
+
+        for (int i = 0; i < 3; i++) {
+            writeThread.get(i).start();
+        }
+
+        Thread.sleep(100);
+
+        for (int i = 0; i < 3; i++) {
+            readThread.get(i).start();
+        }
+    }
 }
