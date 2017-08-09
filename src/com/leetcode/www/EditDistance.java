@@ -1,7 +1,37 @@
 package com.leetcode.www;
 
 public class EditDistance { // LC 72
-    public int minDistance(String word1, String word2) {
+    public int minDistance(String word1, String word2) { // beats 92.86% (DP)
+        if (word1 == null || word2 == null) {
+            return 0;
+        }
+        int len1 = word1.length();
+        int len2 = word2.length();
+        if (len1 == 0 || len2 == 0) {
+            return (len1 == 0) ? len2 : len1;
+        }
+
+        int[][] count = new int[len1 + 1][len2 + 1];
+        for (int i = 0; i <= len1; i++) {
+            count[i][0] = i;
+        }
+        for (int j = 0; j <= len2; j++) {
+            count[0][j] = j;
+        }
+        for (int i = 0; i < len1; i++) {
+            for (int j = 0; j < len2; j++) {
+                if (word1.charAt(i) == word2.charAt(j)) {
+                    count[i + 1][j + 1] = count[i][j];
+                } else {
+                    count[i + 1][j + 1] = Math.min(Math.min(count[i][j], count[i][j + 1]), count[i + 1][j]) + 1;
+                }
+            }
+        }
+
+        return count[len1][len2];
+    }
+
+    public int minDistanceV0(String word1, String word2) { // memorized search
         int[][] count = new int[word1.length()][word2.length()];
         return match(word1, word2, 0, 0, count);
     }
