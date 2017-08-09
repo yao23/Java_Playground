@@ -4,7 +4,8 @@ public class EditDistance {
     public int minDistance(String word1, String word2) {
         return match(word1, word2, 0, 0);
     }
-    public int match(String word1, String word2, int i, int j) {
+
+    private int match(String word1, String word2, int i, int j) { // TLE (test case 2)
         if (i == word1.length()) {
             return word2.length() - j;
         }
@@ -25,3 +26,6 @@ public class EditDistance {
         return res;
     }
 }
+
+// "head", "sad" => 2 (delete, replace)
+// "dinitrophenylhydrazine", "acetylphenylhydrazine" =>
