@@ -1,10 +1,24 @@
 package com.leetcode.www;
 
 public class MaximumSubarray {
-    public int maxSubArray(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return Integer.MIN_VALUE;
+    public int maxSubArray(int[] nums) { // beats 24.96%
+        int tmp = checkConerCase(nums);
+        if (tmp < 0) {
+            return tmp;
         }
+        int lastSum = nums[0];
+        int maxSum = nums[0];
+
+        for (int i = 1; i < nums.length; i++) {
+            lastSum = Math.max(nums[i], nums[i] + lastSum);
+            maxSum = Math.max(maxSum, lastSum);
+        }
+
+        return maxSum;
+    }
+
+    public int maxSubArrayV0(int[] nums) {
+
         int[] localMax = new int[nums.length];
         localMax[0] = nums[0];
         int max = nums[0];
@@ -15,6 +29,14 @@ public class MaximumSubarray {
         }
 
         return max;
+    }
+
+    private int checkConerCase(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return Integer.MIN_VALUE;
+        } else {
+            return 0;
+        }
     }
 }
 
