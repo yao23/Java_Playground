@@ -3,7 +3,7 @@ package com.leetcode.www;
 import java.util.Arrays;
 
 public class CombinationSumIV { // LC 377
-    public int combinationSum4(int[] nums, int target) {
+    public int combinationSum4(int[] nums, int target) { // recursion
         int[] count = new int[target + 1];
         Arrays.fill(count, -1);
         count[0] = 1;
@@ -22,6 +22,20 @@ public class CombinationSumIV { // LC 377
         }
         count[remain] = res;
         return res;
+    }
+
+    public int combinationSum4V1(int[] nums, int target) { // iterative, beats 32.91%
+        int[] count = new int[target + 1];
+        count[0] = 1;
+        for (int i = 1; i < count.length; i++) {
+            for (int j = 0; j < nums.length; j++) {
+                if (i - nums[j] >= 0) {
+                    count[i] += count[i - nums[j]];
+                }
+            }
+        }
+
+        return count[target];
     }
 }
 
