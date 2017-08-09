@@ -1,12 +1,12 @@
 package com.leetcode.www;
 
-public class EditDistance {
+public class EditDistance { // LC 72
     public int minDistance(String word1, String word2) {
         int[][] count = new int[word1.length()][word2.length()];
         return match(word1, word2, 0, 0, count);
     }
 
-    private int match(String word1, String word2, int i, int j, int[][] count) { // TLE (test case 2)
+    private int match(String word1, String word2, int i, int j, int[][] count) { // beats 92.86%
         if (i == word1.length()) {
             return word2.length() - j;
         }
@@ -55,4 +55,4 @@ public class EditDistance {
 }
 
 // "head", "sad" => 2 (delete, replace)
-// "dinitrophenylhydrazine", "acetylphenylhydrazine" =>
+// "dinitrophenylhydrazine", "acetylphenylhydrazine" => 6
