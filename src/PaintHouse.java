@@ -1,7 +1,7 @@
 /**
  * Created by liyao on 7/3/17.
  */
-public class PaintHouse {
+public class PaintHouse { // LC 256
     public int minCost(int[][] costs) {
         if (costs == null || costs.length == 0) {
             return 0;
@@ -20,3 +20,7 @@ public class PaintHouse {
 
     // beats 51.97%
 }
+
+/**
+ * cost[i][k]: min cost till house i, when paint with color k for i
+ */
