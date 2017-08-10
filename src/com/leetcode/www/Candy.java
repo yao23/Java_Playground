@@ -1,7 +1,7 @@
 package com.leetcode.www;
 
 public class Candy { // LC 135
-    public int candy(int[] ratings) { // beats 26.73% (1 pass, greedy), time: O(n), space: O(1)
+    public int candy(int[] ratings) { // beats 67.13% (1 pass, greedy), time: O(n), space: O(1)
         if (ratings == null || ratings.length == 0) {
             return -1;
         }
@@ -11,7 +11,7 @@ public class Candy { // LC 135
         int down = 0;
 
         for (int i = 1; i < ratings.length; i++) {
-            if (ratings[i] > ratings[i - 1]) {
+            if (ratings[i] < ratings[i - 1]) {
                 down++;
             } else {
                 // check descending sequence before
@@ -82,3 +82,4 @@ public class Candy { // LC 135
 
 // [0] => 1
 // [0,4,5,5,2,1,0,0] => 17
+// [2,3,2] => 4
