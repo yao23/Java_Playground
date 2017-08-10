@@ -1,10 +1,10 @@
-/**
+package com.leetcode.www; /**
  * Created by liyao on 7/1/17.
  */
 import java.util.Arrays;
 
-public class LongestIncreasingSubsequence {
-    public static int lengthOfLIS(int[] nums) {
+public class LongestIncreasingSubsequence { // LC 300
+    public static int lengthOfLIS(int[] nums) { // DP + Binary Search
         if (nums == null || nums.length == 0) {
             return 0;
         } else {
