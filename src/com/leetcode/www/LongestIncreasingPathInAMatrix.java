@@ -22,7 +22,7 @@ public class LongestIncreasingPathInAMatrix { // LC 329
         return max;
     }
 
-    private int[][] dir = new int[][]{{-1, 0}, {0, 1}, {1, 0}, {-1, 0}};
+    private int[][] dir = new int[][]{{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
 
     private int helper(int x, int y, int[][] maxP, int[][] m, int row, int col) {
         if (maxP[x][y] != 0) {
