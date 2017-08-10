@@ -1,7 +1,28 @@
 package com.leetcode.www;
 
-public class InterleavingString {
-    public boolean isInterleave(String s1, String s2, String s3) { // beats 92.88%
+public class InterleavingString { // LC 97
+    public boolean isInterleave(String s1, String s2, String s3) { // beats 68.05% (DP)
+        int len1 = s1.length(), len2 = s2.length();
+        boolean[][] matrix = new boolean[len1 + 1][len2 + 1];
+        matrix[0][0] = true;
+        for (int i = 1; i < matrix.length; i++) {
+            matrix[i][0] = matrix[i - 1][0] && (s1.charAt(i - 1) == s3.charAt(i - 1));
+        }
+        for (int i = 1; i < matrix[0].length; i++) {
+            matrix[0][i] = matrix[0][i - 1] && (s2.charAt(i  - 1) == s3.charAt(i - 1));
+        }
+
+        for (int i = 1; i < matrix.length; i++) {
+            for (int j = 1; j < matrix[0].length; j++) {
+                matrix[i][j] = (matrix[i - 1][j] && (s1.charAt(i - 1) == s3.charAt(i + j - 1))) ||
+                        (matrix[i][j - 1] && (s2.charAt(j - 1) == s3.charAt(i + j - 1)));
+            }
+        }
+
+        return matrix[len1][len2];
+    }
+
+    public boolean isInterleaveV0(String s1, String s2, String s3) { // beats 92.88% (DFS)
         if (s1.length() == 0 && s2.length() == 0 && s3.length() == 0) {
             return true;
         }
