@@ -59,3 +59,5 @@ public class LongestIncreasingPathInAMatrix { // LC 329
 //  [2,2,1]
 // ]
 // => 4 ([3, 4, 5, 6])
+
+// beats 58.54%
