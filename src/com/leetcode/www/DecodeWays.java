@@ -3,7 +3,7 @@ package com.leetcode.www;
 import java.util.Arrays;
 
 public class DecodeWays {
-    public int numDecodings(String s) {
+    public int numDecodings(String s) { // beats 6.01%
         if (s == null || s.length() == 0) {
             return 0;
         }
@@ -21,7 +21,7 @@ public class DecodeWays {
                 dp[i] += dp[i-2];
             }
         }
-        
+
         return dp[n];
     }
 }
