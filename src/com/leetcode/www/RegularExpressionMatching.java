@@ -1,7 +1,7 @@
 package com.leetcode.www;
 
 public class RegularExpressionMatching { // LC 10
-    public boolean isMatch(String s, String p) {
+    public boolean isMatch(String s, String p) { // beats 69.23%
         if (s == null || p == null) {
             return false;
         }
