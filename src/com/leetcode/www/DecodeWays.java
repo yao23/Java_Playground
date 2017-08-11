@@ -8,7 +8,10 @@ public class DecodeWays {
             return 0;
         }
         int[] dp = new int[s.length()];
-        Arrays.fill(dp, 1);
+        for (int i = 0; i < s.length(); i++) {
+            dp[i] = (s.charAt(i) == '0') ? 0 : 1;
+        }
+
         for (int i = 1; i < s.length(); i++) {
             char pre = s.charAt(i - 1);
             char cur = s.charAt(i);
@@ -43,5 +46,6 @@ public class DecodeWays {
 }
 
 // "" => 0
+// "0" => 0
 // "1" => 1 ('A')
 // "12" => 2 ('AB' or 'L')
