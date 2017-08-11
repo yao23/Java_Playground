@@ -37,6 +37,15 @@ public class RegularExpressionMatching { // LC 10
     }
 }
 
+// isMatch("aa","a") ? false
+// isMatch("aa","aa") ? true
+// isMatch("aaa","aa") ? false
+// isMatch("aa", "a*") ? true
+// isMatch("aa", ".*") ? true
+// isMatch("ab", ".*") ? true
+// isMatch("aab", "c*a*b") ? true
+
+
 /**
  *
  1, If p.charAt(j) == s.charAt(i) :  dp[i][j] = dp[i-1][j-1];
