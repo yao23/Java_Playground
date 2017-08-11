@@ -26,7 +26,11 @@ public class DecodeWays {
                     String sub = s.substring(i - 1, i + 1);
                     int num = Integer.valueOf(sub);
                     if (10 <= num && num <= 26) {
-                        dp[i] = dp[i - 1] + dp[i - 2];
+                        if (i < 2) {
+                            dp[i] = dp[i - 1] + 1;
+                        } else {
+                            dp[i] = dp[i - 1] + dp[i - 2];
+                        }
                     } else {
                         dp[i] = dp[i - 1];
                     }
@@ -37,3 +41,7 @@ public class DecodeWays {
         return dp[s.length() - 1];
     }
 }
+
+// "" => 0
+// "1" => 1 ('A')
+// "12" => 2 ('AB' or 'L')
