@@ -22,7 +22,7 @@ public class RussianDollEnvelopes { // LC 354
             for (int j = 0; j < i; j++) {
                 Envelope cur = list.get(i);
                 Envelope pre = list.get(j);
-                if (cur.w > pre.w && cur.h > pre.h) {
+                if (cur.w > pre.w && cur.h > pre.h) { // test case 2, same w
                     dp[i] = Math.max(dp[i], dp[j] + 1);
                 }
             }
@@ -57,3 +57,5 @@ public class RussianDollEnvelopes { // LC 354
 
 // [[5,4],[6,4],[6,7],[2,3]] => 3 (([2,3] => [5,4] => [6,7]))
 // [[4,5],[4,6],[6,7],[2,3],[1,1]] => 4
+
+// beats 43.59%
