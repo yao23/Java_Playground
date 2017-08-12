@@ -20,7 +20,9 @@ public class RussianDollEnvelopes { // LC 354
         Arrays.fill(dp, 1);
         for (int i = 0; i < list.size(); i++) {
             for (int j = 0; j < i; j++) {
-                if (list.get(i).h > list.get(j).h) {
+                Envelope cur = list.get(i);
+                Envelope pre = list.get(j);
+                if (cur.w > pre.w && cur.h > pre.h) {
                     dp[i] = Math.max(dp[i], dp[j] + 1);
                 }
             }
