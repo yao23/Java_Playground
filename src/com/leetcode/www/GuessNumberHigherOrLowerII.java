@@ -1,44 +1,34 @@
 package com.leetcode.www;
 
 public class GuessNumberHigherOrLowerII { // LC 375
-    private static int myNum = 8;
-
-    public int getMoneyAmount(int n) {
-        int sum = 0;
-        int left = 1, right = n;
-        while (left + 1 < right) {
-            int mid = left + (right - left) / 2;
-            int res = guess(mid);
-            if (res == 0) {
-                return sum;
-            } else if (res < 0) {
-                sum += mid;
-                right = mid;
-            } else {
-                sum += mid;
-                left = mid + 1;
-            }
-        }
-        if (guess(left) == 0) {
-            sum += left;
-        }
-
-        return sum;
+    public int getMoneyAmount(int n) { // beats 54.44%
+        int[][] table = new int[n + 1][n + 1];
+        return dp(table, 1, n);
     }
 
-    /* The guess API is defined in the parent class GuessGame.
-       @param num, your guess
-       @return -1 if my number is lower, 1 if my number is higher, otherwise return 0
-          int guess(int num); */
-    private int guess(int n) {
-        if (myNum < n) {
-            return -1;
-        } else if (myNum == n) {
+    private int dp(int[][] t, int start, int end){
+        if (start >= end) {
             return 0;
-        } else {
-            return 1;
         }
+        if (t[start][end] != 0) {
+            return t[start][end];
+        }
+        int res = Integer.MAX_VALUE;
+        for (int x = start; x <= end; x++) {
+            int tmp = x + Math.max(dp(t, start, x-1), dp(t, x+1, end));
+            res = Math.min(res, tmp);
+        }
+        t[start][end] = res;
+        return res;
     }
 }
 
 // n = 10, I pick 8. => 21 (5 + 7 + 9)
+
+/**
+ * For each number x in range[i~j]
+ * we do: result_when_pick_x = x + max{DP([i~x-1]), DP([x+1, j])}
+ * --> // the max means whenever you choose a number, the feedback is always bad and therefore leads you to a worse branch.
+ * then we get DP([i~j]) = min{xi, ... ,xj}
+ * --> // this min makes sure that you are minimizing your cost.
+ */
