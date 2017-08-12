@@ -34,9 +34,9 @@ public class ScrambleString { // LC 87
             return true;
         } else {
             for (int i = 0; i < s1.length(); i++) {
-                if (s1.charAt(i) == s2.charAt(i) && isMatch(s1.substring(i), s2.substring(i))) {
+                if (s1.charAt(i) == s2.charAt(i) && isMatch(s1.substring(i + 1), s2.substring(i + 1))) {
                     continue;
-                } else if (isMatch(s1.substring(0, i + 1), s2.substring(0, i + 1)) && isMatch(s1.substring(i),  s2.substring(i))) {
+                } else if (isMatch(s1.substring(0, i + 1), s2.substring(0, i + 1)) && isMatch(s1.substring(i + 1),  s2.substring(i + 1))) {
                     continue;
                 } else {
                     return false;
@@ -86,3 +86,4 @@ public class ScrambleString { // LC 87
 // s1 = "great", s2 = "rgtae" => true
 
 // "a", "a" => true
+// "aa", "ab" => false
