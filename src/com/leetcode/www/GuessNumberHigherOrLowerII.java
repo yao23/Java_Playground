@@ -1,22 +1,29 @@
-/**
- * Created by liyao on 7/8/17.
- */
-public class GuessNumberHigherOrLower {
-    private static int myNum = 6;
+package com.leetcode.www;
 
-    public int guessNumber(int n) {
+public class GuessNumberHigherOrLowerII { // LC 375
+    private static int myNum = 8;
+
+    public int getMoneyAmount(int n) {
+        int sum = 0;
         int left = 1, right = n;
-        while (true) {
+        while (left + 1 < right) {
             int mid = left + (right - left) / 2;
-            int result = guess(mid);
-            if (result == 0) { // find target
-                return mid;
-            } else if (result == -1) { // target is lower, go to left half
+            int res = guess(mid);
+            if (res == 0) {
+                return sum;
+            } else if (res < 0) {
+                sum += mid;
                 right = mid;
-            } else { // target is higher, go to right half
+            } else {
+                sum += mid;
                 left = mid + 1;
             }
         }
+        if (guess(left) == 0) {
+            sum += left;
+        }
+
+        return sum;
     }
 
     /* The guess API is defined in the parent class GuessGame.
@@ -32,8 +39,6 @@ public class GuessNumberHigherOrLower {
             return 1;
         }
     }
-
-    // n = 10, return 6
-
-    // beats 16.85%
 }
+
+// n = 10, I pick 8. => 21 (5 + 7 + 9)
