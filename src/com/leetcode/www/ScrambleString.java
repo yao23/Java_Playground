@@ -80,3 +80,5 @@ public class ScrambleString { // LC 87
 //           t   a
 //
 // s1 = "great", s2 = "rgtae" => true
+
+// "a", "a" => true
