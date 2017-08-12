@@ -1,7 +1,33 @@
 package com.leetcode.www;
 
 public class WildcardMatching { // LC 44
-    public boolean isMatch(String s, String p) {
+    public boolean isMatch(String s, String p) { // beats 58.79%
+        int lenS = s.length();
+        int lenP = p.length();
+        boolean[][] match = new boolean[lenS + 1][lenP + 1];
+        match[lenS][lenP] = true;
+        for (int i = p.length() - 1; i >= 0; i--) {
+            if (p.charAt(i) != '*') {
+                break;
+            } else {
+                match[lenS][i] = true;
+            }
+        }
+        for (int i = lenS - 1; i >= 0; i--) {
+            for (int j = lenP - 1; j >= 0; j--) {
+                if (s.charAt(i) == p.charAt(j) || p.charAt(j) == '?') {
+                    match[i][j] = match[i + 1][j + 1];
+                } else if(p.charAt(j) == '*') {
+                    match[i][j] = match[i + 1][j] || match[i][j + 1]; // * match multiple or empty
+                } else {
+                    match[i][j] = false;
+                }
+            }
+        }
+        return match[0][0];
+    }
+
+    public boolean isMatchV0(String s, String p) { // not working
         if (s == null || p == null) {
             return false;
         }
