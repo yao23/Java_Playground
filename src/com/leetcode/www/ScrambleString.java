@@ -24,6 +24,10 @@ public class ScrambleString { // LC 87
     }
 
     private boolean isMatch(String s1, String s2) {
+        // base case when length is 1, otherwise infinite loop to stack overflow
+        if (s1.length() == 1) {
+            return s1.equals(s2);
+        }
         if (s1.equals(s2)) {
             return true;
         } else if (s1.equals(reverseStr(s2))) {
