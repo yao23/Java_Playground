@@ -1,7 +1,7 @@
 package com.leetcode.www;
 
 public class ScrambleString { // LC 87
-    public boolean isScramble(String s1, String s2) {
+    public boolean isScrambleV0(String s1, String s2) { // not working for test case 5 ("abc", "bca")
         int len1 = s1.length();
         int len2 = s2.length();
         if (len1 != len2) {
@@ -87,3 +87,8 @@ public class ScrambleString { // LC 87
 
 // "a", "a" => true
 // "aa", "ab" => false
+// "abc", "bca" => true
+
+/**
+ * root is non-leaf node, swap("a, "bc"), then it's "bca"
+ */
