@@ -167,3 +167,13 @@ public class WildcardMatching { // LC 44
         }
     }
 }
+
+// isMatch("aa", "a") ? false
+// isMatch("aa", "aa") ? true
+// isMatch("aaa", "aa") ? false
+// isMatch("aa", "*") ? true
+// isMatch("aa", "a*") ? true
+// isMatch("ab", "?*") ? true
+// isMatch("aab", "c*a*b") ? false
+
+// similar problem: Regular Expression Matching (LC 10)
