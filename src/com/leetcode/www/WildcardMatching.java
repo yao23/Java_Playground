@@ -25,7 +25,7 @@ public class WildcardMatching { // LC 44
        d=d, go on, meet the end.
        check the rest element in p, if all are *, true, else false;
      */
-    public boolean isMatch(String str, String pattern) { // beats 95.12%
+    public boolean isMatch(String str, String pattern) { // beats 95.12% (linear runtime and constant space)
         int s = 0, p = 0, match = 0, starIdx = -1;
         while (s < str.length()) {
             // advancing both pointers
