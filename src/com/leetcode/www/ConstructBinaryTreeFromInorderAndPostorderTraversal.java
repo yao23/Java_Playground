@@ -4,7 +4,37 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ConstructBinaryTreeFromInorderAndPostorderTraversal { // LC 106
-    public TreeNode buildTree(int[] inorder, int[] postorder) {
+    public TreeNode buildTree(int[] inorder, int[] postorder) { // beats 96.19%
+        if (postorder == null || inorder == null || postorder.length != inorder.length) {
+            return null;
+        }
+        return build(inorder,inorder.length - 1,0, postorder,postorder.length - 1);
+    }
+
+    private TreeNode build(int[] inorder, int inStart, int inEnd, int[] postorder, int postStart) {
+        if (inEnd > inStart) {
+            return null;
+        }
+        TreeNode root = new TreeNode(postorder[postStart]);
+        if (inEnd == inStart) {
+            return root;
+        }
+        int index = 0;
+        // find the index in inorder:
+        for (int i = inStart; i >= inEnd; i--){
+            if (inorder[i] == root.val) {
+                index = i;
+                break;
+            }
+        }
+
+        root.right = build(inorder, inStart,index + 1, postorder,postStart - 1);
+        root.left = build(inorder,index - 1, inEnd, postorder,postStart - (inStart - index) -1);
+
+        return root;
+    }
+
+    public TreeNode buildTreeV0(int[] inorder, int[] postorder) { // beats 69.25%
         if (postorder == null || inorder == null || postorder.length != inorder.length) {
             return null;
         }
@@ -29,5 +59,3 @@ public class ConstructBinaryTreeFromInorderAndPostorderTraversal { // LC 106
         return root;
     }
 }
-
-// beats 69.25%
