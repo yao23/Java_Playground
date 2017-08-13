@@ -10,38 +10,51 @@ public class ReverseWordsInAString {
             }
         }
 
-        // reverse the whole sentence
-        String str = reverse(s.toCharArray(), 0, s.length() - 1);
-
-        char[] strArr = str.toCharArray();
-        int left = 0;
-        int right = 0;
-
-        while (right < strArr.length) {
-            if (strArr[right] != ' ') {
-                right++;
-            } else {
-                reverse(strArr, left, right - 1);
-                right++;
-                left = right;
-            }
+        int start = 0;
+        int end = s.length() - 1;
+        char[] strArr = s.toCharArray();
+        // trim start of string
+        while (start <= end && strArr[start] == ' ') {
+            start++;
         }
 
-        // reverse the last word
-        reverse(strArr, left, right - 1);
+        // trim end of string
+        while (end >= 0 && strArr[end] == ' ') {
+            end--;
+        }
 
-        if (strArr[0] == ' ') {
-            int headZeroIdx = 0;
-            while (headZeroIdx < strArr.length && strArr[headZeroIdx] == ' ') {
-                headZeroIdx++;
-            }
-
-            if (headZeroIdx == strArr.length) {
-                return "";
-            } else {
-                return new String(strArr).substring(headZeroIdx);
-            }
+        if (start > end) {
+            return "";
+        } else if (start == end) {
+            return "" + strArr[start];
         } else {
+            s = "";
+            for (int i = start; i <= end; i++) {
+                if (strArr[i] != ' ' || strArr[i - 1] != ' ') {
+                    s += strArr[i];
+                }
+            }
+            // s = new String(strArr).substring(start, end + 1);
+            // reverse the whole sentence
+            String str = reverse(s.toCharArray(), 0, s.length() - 1);
+
+            strArr = str.toCharArray();
+            int left = 0;
+            int right = 0;
+
+            while (right < strArr.length) {
+                if (strArr[right] != ' ') {
+                    right++;
+                } else {
+                    reverse(strArr, left, right - 1);
+                    right++;
+                    left = right;
+                }
+            }
+
+            // reverse the last word
+            reverse(strArr, left, right - 1);
+
             return new String(strArr);
         }
     }
@@ -58,3 +71,5 @@ public class ReverseWordsInAString {
         return new String(ch);
     }
 }
+
+// "b    a" => "a b"
