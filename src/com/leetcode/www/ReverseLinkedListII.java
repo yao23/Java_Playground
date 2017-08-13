@@ -13,14 +13,15 @@ public class ReverseLinkedListII { // LC 92
             lastTail = lastTail.next;
         }
 
-        ListNode tail = lastTail.next;
-        ListNode cur = tail.next;
+        ListNode tail = lastTail.next; // lastTail: 1, tail: 2
+        ListNode cur = tail.next; // cur: 3
 
+        // nodes m ~ n
         for (int i = 0; i < n - m; i++) {
-            tail.next = cur.next;
-            cur.next = lastTail.next;
-            lastTail.next = cur;
-            cur = tail.next;
+            tail.next = cur.next; // 2.next -> 4 (2.next -> 5 in 2nd round)
+            cur.next = lastTail.next; // 3.next -> 2 (4.next -> 3 in 2nd round)
+            lastTail.next = cur; // 1.next -> 3 (1.next -> 4 in 2nd round)
+            cur = tail.next; // cur: 4 (cur: 5 in 2nd round)
         }
 
         return dummy.next;
