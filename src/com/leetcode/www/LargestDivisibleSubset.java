@@ -10,6 +10,8 @@ public class LargestDivisibleSubset { // LC 368
         }
         Arrays.sort(nums);
         Map<Integer, List<Integer>> map = new HashMap<>();
+        map.put(nums[0], new ArrayList<>());
+        map.get(nums[0]).add(nums[0]);
         int[] dp = new int[nums.length];
         for (int i = 1; i < nums.length; i++) {
             int maxIdx = -1;
@@ -19,13 +21,13 @@ public class LargestDivisibleSubset { // LC 368
                     maxIdx = j;
                 }
             }
-            if (!map.containsKey(i)) {
+            if (!map.containsKey(nums[i])) {
                 map.put(nums[i], new ArrayList<>());
             }
             if (maxIdx >= 0) {
                 map.get(nums[i]).addAll(map.get(nums[maxIdx]));
-                map.get(nums[i]).add(nums[maxIdx]);
             }
+            map.get(nums[i]).add(nums[i]);
         }
         int maxKey = -1;
         int maxSize = 0;
