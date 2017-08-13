@@ -50,3 +50,8 @@ public class BasicCalculator { // LC 224
         return (toPeek == '+' || toPeek == '-') && (cur == '*' || cur == '/');
     }
 }
+
+// "0" => 0
+// "1 + 1" => 2
+// " 2-1 + 2 " => 3
+// "(1+(4+5+2)-3)+(6+8)" => 23
