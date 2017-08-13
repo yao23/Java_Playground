@@ -1,10 +1,45 @@
 package com.leetcode.www;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
+public class BurstBalloons { // LC 312
+    public int maxCoins(int[] nums) { // beats 94.12% (Memorized Search)
+        int len = nums.length;
+        if (len == 0) {
+            return 0;
+        } else if (len == 1) {
+            return nums[0];
+        } else {
+            int[] numbers = new int[len + 2];
+            int n = 1;
+            for (int x : nums) {
+                if (x > 0) {
+                    numbers[n] = x;
+                    n++;
+                }
+            }
+            numbers[0] = numbers[n++] = 1;
 
-public class BurstBalloons {
-    public int maxCoins(int[] nums) { // beats 53.06% (DP)
+            int[][] memo = new int[n][n];
+            return burst(memo, numbers, 0, n - 1);
+        }
+    }
+
+    private int burst(int[][] memo, int[] nums, int left, int right) {
+        if (left + 1 == right) {
+            return 0;
+        }
+        if (memo[left][right] > 0) {
+            return memo[left][right];
+        }
+        int ans = 0;
+        for (int i = left + 1; i < right; ++i) {
+            ans = Math.max(ans, nums[left] * nums[i] * nums[right]
+                    + burst(memo, nums, left, i) + burst(memo, nums, i, right));
+        }
+        memo[left][right] = ans;
+        return ans;
+    }
+
+    public int maxCoinsV0(int[] nums) { // beats 53.06% (DP)
         int len = nums.length;
         if (len == 0) {
             return 0;
