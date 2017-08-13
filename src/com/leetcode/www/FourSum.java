@@ -1,9 +1,9 @@
-/**
+package com.leetcode.www; /**
  * Created by liyao on 6/10/17.
  */
 import java.util.*;
 
-public class FourSum {
+public class FourSum { // LC 18
     public List<List<Integer>> fourSum(int[] nums, int target) {
         List<List<Integer>> result = new ArrayList<>();
         int len = nums.length;
