@@ -28,35 +28,49 @@ public class ReverseWordsInAString {
         } else if (start == end) {
             return "" + strArr[start];
         } else {
-            s = "";
-            for (int i = start; i <= end; i++) {
-                if (strArr[i] != ' ' || strArr[i - 1] != ' ') {
-                    s += strArr[i];
-                }
-            }
-            // s = new String(strArr).substring(start, end + 1);
+            // s = "";
+            // for (int i = start; i <= end; i++) {
+            //     if (strArr[i] != ' ' || strArr[i - 1] != ' ') {
+            //         s += strArr[i];
+            //     }
+            // }
+            String str = new String(strArr).substring(start, end + 1);
+
             // reverse the whole sentence
-            String str = reverse(s.toCharArray(), 0, s.length() - 1);
+            // String str = reverse(s.toCharArray(), 0, s.length() - 1);
 
             strArr = str.toCharArray();
             int left = 0;
             int right = 0;
+            String res = "";
 
             while (right < strArr.length) {
                 if (strArr[right] != ' ') {
                     right++;
                 } else {
-                    reverse(strArr, left, right - 1);
+                    String tmp = reverse(strArr, left, right - 1);
+                    res = assembleStr(tmp, res);
                     right++;
                     left = right;
                 }
             }
 
             // reverse the last word
-            reverse(strArr, left, right - 1);
+            String tmp = reverse(strArr, left, right - 1);
+            res = assembleStr(tmp, res);
 
-            return new String(strArr);
+            return res;
         }
+    }
+
+    private String assembleStr(String tmp, String res) {
+        if (res.equals("")) {
+            res = tmp;
+        } else {
+            res = tmp + " " + res;
+        }
+
+        return res;
     }
 
     private String reverse(char[] ch, int start, int end) {
