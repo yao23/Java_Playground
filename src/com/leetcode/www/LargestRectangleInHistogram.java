@@ -1,7 +1,9 @@
+package com.leetcode.www;
+
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class LargestRectangleInHistogram {
+public class LargestRectangleInHistogram { // LC 84
     public int largestRectangleArea(int[] heights) { // beats 79.53%
         int max = 0;
         Deque<Integer> stack = new ArrayDeque<>();
