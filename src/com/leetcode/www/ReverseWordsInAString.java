@@ -1,17 +1,7 @@
 package com.leetcode.www;
 
 public class ReverseWordsInAString {
-    public char[] reverse(char[] arr, int start, int end) { // beats 80.56%
-        while (start < end) {
-            char tmp = arr[start];
-            arr[start] = arr[end];
-            arr[end] = tmp;
-            start++;
-            end--;
-        }
-        return arr;
-    }
-
+    // https://discuss.leetcode.com/topic/7610/in-place-java-solution-with-comments-just-for-fun/2
     public String reverseWords(String s) {
         // reverse the whole string and convert to char array
         char[] str = reverse(s.toCharArray(), 0, s.length()-1);
@@ -35,6 +25,17 @@ public class ReverseWordsInAString {
         // also as there could be spaces at the end of original string
         // we need to consider redundant space we have put there before
         return new String(str, 0, end > 0 && str[end - 1] == ' ' ? (end - 1) : end);
+    }
+
+    private char[] reverse(char[] arr, int start, int end) { // beats 80.56%
+        while (start < end) {
+            char tmp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = tmp;
+            start++;
+            end--;
+        }
+        return arr;
     }
 
     public String reverseWordsV0(String s) { // not working
