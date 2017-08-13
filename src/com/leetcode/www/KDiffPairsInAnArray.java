@@ -30,13 +30,17 @@ public class KDiffPairsInAnArray { // LC 532
         return count;
     }
 
-    public int findPairsV1(int[] nums, int k) {
+    public int findPairsV1(int[] nums, int k) { // beats 83.78%
         int ans = 0;
         Arrays.sort(nums);
         for (int i = 0, j = 0; i < nums.length; i++) {
             for (j = Math.max(j, i + 1); j < nums.length && (long) nums[j] - nums[i] < k; j++) ;
-            if (j < nums.length && (long) nums[j] - nums[i] == k) ans++;
-            while (i + 1 < nums.length && nums[i] == nums[i + 1]) i++;
+            if (j < nums.length && (long) nums[j] - nums[i] == k) {
+                ans++;
+            }
+            while (i + 1 < nums.length && nums[i] == nums[i + 1]) {
+                i++;
+            }
         }
         return ans;
     }
