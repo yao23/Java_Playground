@@ -3,8 +3,8 @@ package com.leetcode.www; /**
  */
 import java.util.*;
 
-public class ThreeSum {
-    public List<List<Integer>> threeSum(int[] nums) { // Brute Force: Time Limit Exceeded
+public class ThreeSum { // LC 15
+    public List<List<Integer>> threeSum(int[] nums) { // beats 37.58%
         List<List<Integer>> result = new ArrayList<>();
         if (nums.length < 3) {
             return result;
