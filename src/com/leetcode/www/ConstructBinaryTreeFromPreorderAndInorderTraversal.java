@@ -4,7 +4,28 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ConstructBinaryTreeFromPreorderAndInorderTraversal { // LC 105
-    public TreeNode buildTree(int[] preorder, int[] inorder) {
+    public TreeNode buildTree(int[] preorder, int[] inorder) { // beats 97.86%
+        // Preorder: Traverse and construct the tree
+        // Inorder: Check leftmost boundary
+        int[] curIn = {0};
+        int[] curPre = {0};
+
+        return construct(inorder, preorder, curIn, curPre, Integer.MAX_VALUE);
+    }
+
+    private TreeNode construct(int[] in, int[] pre, int[] curIn, int[] curPre, int toCheck) {
+        if (curPre[0] == pre.length || in[curIn[0]] == toCheck) {
+            curIn[0]++;
+            return null;
+        }
+        TreeNode root = new TreeNode(pre[curPre[0]]);
+        curPre[0]++;
+        root.left = construct(in, pre, curIn, curPre, root.val);
+        root.right = construct(in, pre, curIn, curPre, toCheck);
+        return root;
+    }
+
+    public TreeNode buildTreeV0(int[] preorder, int[] inorder) { // beats 82.18%
         if (preorder == null || inorder == null || preorder.length != inorder.length) {
             return null;
         }
@@ -31,5 +52,3 @@ public class ConstructBinaryTreeFromPreorderAndInorderTraversal { // LC 105
 }
 
 // [],[] => []
-
-// beats 82.18%
