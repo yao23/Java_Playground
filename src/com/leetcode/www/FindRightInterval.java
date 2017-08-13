@@ -1,3 +1,5 @@
+package com.leetcode.www;
+
 import java.util.TreeMap;
 
 public class FindRightInterval {

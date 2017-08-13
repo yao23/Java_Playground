@@ -1,4 +1,4 @@
-/**
+package com.leetcode.www; /**
  * Created by liyao on 6/26/17.
  */
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Collections;
 
-public class MergeIntervals {
+public class MergeIntervals { // LC 56
     public List<Interval> merge(List<Interval> intervals) {
         int size = intervals.size();
         if (size < 2) {
@@ -14,7 +14,7 @@ public class MergeIntervals {
         } else {
             List<Interval> result = new ArrayList<>();
 
-            // Interval Comparator
+            // com.leetcode.www.Interval Comparator
             class IntervalComparator implements Comparator<Interval> {
                 @Override
                 public int compare(Interval i1, Interval i2) {
