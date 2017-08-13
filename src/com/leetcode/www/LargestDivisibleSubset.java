@@ -3,7 +3,37 @@ package com.leetcode.www;
 import java.util.*;
 
 public class LargestDivisibleSubset { // LC 368
-    public List<Integer> largestDivisibleSubset(int[] nums) { // beats 6.88%
+    public List<Integer> largestDivisibleSubset(int[] nums) { // beats 83.85%
+        int n = nums.length;
+        int[] count = new int[n]; // max divisible number for current number
+        int[] pre = new int[n]; // previous divisible number for each
+        Arrays.sort(nums);
+        int max = 0, index = -1;
+        for (int i = 0; i < n; i++) {
+            count[i] = 1;
+            pre[i] = -1;
+            for (int j = i - 1; j >= 0; j--) { // from end to start, reduce computation num
+                if (nums[i] % nums[j] == 0) {
+                    if (1 + count[j] > count[i]) {
+                        count[i] = count[j] + 1;
+                        pre[i] = j;
+                    }
+                }
+            }
+            if (count[i] > max) {
+                max = count[i];
+                index = i;
+            }
+        }
+        List<Integer> res = new ArrayList<>();
+        while (index != -1) {
+            res.add(nums[index]);
+            index = pre[index];
+        }
+        return res;
+    }
+
+    public List<Integer> largestDivisibleSubsetV0(int[] nums) { // beats 6.88%
         List<Integer> res = new ArrayList<>();
         if (nums.length == 0) {
             return res;
