@@ -1,6 +1,6 @@
 package com.leetcode.www;
 
-public class ReorderList { // 143
+public class ReorderList { // LC 143
     public void reorderList(ListNode head) {
         if (head == null || head.next == null || head.next.next == null) {
             return;
