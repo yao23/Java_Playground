@@ -1,14 +1,11 @@
 package com.leetcode.www;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class CloneGraph { // LC 133
 
     // time: O(V + 2E), space: O(V)
-    public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) { // beats 71.08% (DFS)
+    public UndirectedGraphNode cloneGraphV0(UndirectedGraphNode node) { // beats 71.08% (DFS)
         if (node == null) {
             return node;
         }
@@ -27,6 +24,39 @@ public class CloneGraph { // LC 133
                 newNeighbor = dfsHelper(neighbor, map);
             }
             map.get(node).neighbors.add(newNeighbor);
+        }
+
+        return map.get(node);
+    }
+
+    public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) { // beats 42.27% (BFS)
+        if (node == null) {
+            return node;
+        }
+
+        return bfsHelper(node);
+    }
+
+    private UndirectedGraphNode bfsHelper(UndirectedGraphNode node) {
+        Map<UndirectedGraphNode, UndirectedGraphNode> map = new HashMap<>();
+        Deque<UndirectedGraphNode> queue = new ArrayDeque<>();
+
+        queue.offerLast(node);
+        map.put(node, new UndirectedGraphNode(node.label));
+
+        while (!queue.isEmpty()) {
+            UndirectedGraphNode cur = queue.pollFirst();
+            UndirectedGraphNode copy = map.get(cur);
+            for (UndirectedGraphNode neighbor : cur.neighbors) {
+                UndirectedGraphNode newNeighbor = map.get(neighbor);
+                if (newNeighbor == null) {
+                    // 1. create node, put into map & queue
+                    queue.offerLast(neighbor);
+                    map.put(neighbor, new UndirectedGraphNode(neighbor.label));
+                }
+                // 2. create edge starting from current copied
+                copy.neighbors.add(map.get(neighbor));
+            }
         }
 
         return map.get(node);
