@@ -1,7 +1,7 @@
 package com.clouds.www;
 
 public class InorderMorrisTraversal {
-    public void inorderMorrisTraversal(TreeNode root) { // time: O(logn) space: O(1)
+    public void inorderMorrisTraversal(TreeNode root) { // time: O(n), space: O(1), each leaf is accessed twice at most
         TreeNode cur = root;
         TreeNode pre = null;
 
