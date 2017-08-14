@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CounterSmaller {
+public class CountOfSmallerNumbersAfterSelf { // LC 315
     public List<Integer> countSmaller(int[] nums) { // beats 77.50%
         Integer[] res = new Integer[nums.length];
         if (nums == null || nums.length == 0) {
