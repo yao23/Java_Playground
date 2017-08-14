@@ -1,4 +1,4 @@
-package www.clouds.com.multi_thread;
+package com.clouds.www.multi_thread;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package www.clouds.com.multi_thread;
+package com.clouds.www.multi_thread;
 
 public class ThreadPractice {
     public static void main(String[] args) {
