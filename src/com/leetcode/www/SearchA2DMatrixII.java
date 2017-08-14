@@ -1,4 +1,6 @@
-public class SearchA2DMatrixII {
+package com.leetcode.www;
+
+public class SearchA2DMatrixII { // LC 240
     public boolean searchMatrix(int[][] matrix, int target) { // beats 54.10%
         int row = matrix.length;
         if (row == 0) {

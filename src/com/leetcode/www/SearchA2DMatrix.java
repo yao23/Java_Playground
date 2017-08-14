@@ -1,7 +1,9 @@
+package com.leetcode.www;
+
 /**
  * Created by liyao on 6/16/17.
  */
-public class SearchA2DMatrix {
+public class SearchA2DMatrix { // LC 74
     public boolean searchMatrix(int[][] matrix, int target) {
         int row = matrix.length;
         if (row == 0) { // []
