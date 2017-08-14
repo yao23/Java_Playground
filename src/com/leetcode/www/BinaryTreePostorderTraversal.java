@@ -9,16 +9,16 @@ public class BinaryTreePostorderTraversal { // LC 145
             return res;
         }
         Deque<TreeNode> stack = new ArrayDeque<>();
-        TreeNode p = root;
+        TreeNode cur = root;
 
-        while (!stack.isEmpty() || p != null) {
-            if (p != null) {
-                stack.push(p);
-                res.addFirst(p.val); // reverse the process of preorder
-                p = p.right; // reverse the process of preorder
+        while (!stack.isEmpty() || cur != null) {
+            if (cur != null) {
+                stack.push(cur);
+                res.addFirst(cur.val); // reverse the process of preorder
+                cur = cur.right; // reverse the process of preorder
             } else {
                 TreeNode node = stack.pop();
-                p = node.left; // reverse the process of preorder
+                cur = node.left; // reverse the process of preorder
             }
         }
 
