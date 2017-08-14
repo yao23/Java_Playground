@@ -2,7 +2,7 @@ package com.leetcode.www;
 
 import java.util.TreeMap;
 
-public class FindRightInterval {
+public class FindRightInterval { // LC 436
     public int[] findRightInterval(Interval[] intervals) {
         if (intervals == null || intervals.length == 0) {
             return new int[0];
