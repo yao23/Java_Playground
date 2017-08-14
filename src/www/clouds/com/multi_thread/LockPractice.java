@@ -1,4 +1,4 @@
-package www.clouds.com;
+package www.clouds.com.multi_thread;
 
 public class LockPractice {
     public static synchronized void getClassValue() {

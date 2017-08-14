@@ -1,4 +1,4 @@
-package www.clouds.com;
+package www.clouds.com.multi_thread;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
