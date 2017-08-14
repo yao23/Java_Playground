@@ -1,4 +1,6 @@
-public class DivideTwoIntegers {
+package com.leetcode.www;
+
+public class DivideTwoIntegers { // LC 29
     public int divide(int dividend, int divisor) {
         if (divisor == 0) {
             return Integer.MAX_VALUE;
