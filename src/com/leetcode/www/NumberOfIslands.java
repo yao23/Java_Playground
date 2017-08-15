@@ -1,7 +1,9 @@
+package com.leetcode.www;
+
 /**
  * Created by liyao on 6/24/17.
  */
-public class NumberOfIslands {
+public class NumberOfIslands { // LC 200
     private void dfs(int x, int y, char[][] grid) {
         int row = grid.length, col = grid[0].length;
         if (x < 0 || x >= row || y < 0 || y >= col || grid[x][y] == '0') { // out of bounds or invalid point (water)

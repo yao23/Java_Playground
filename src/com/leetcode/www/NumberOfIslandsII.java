@@ -1,7 +1,9 @@
+package com.leetcode.www;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class NumberOfIslandsII {
+public class NumberOfIslandsII { // LC 305
     private int[][] direction = new int[][]{{1,0},{0,1},{-1,0},{0,-1}};
 
     public List<Integer> numIslands2(int m, int n, int[][] positions) {
