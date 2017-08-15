@@ -1,4 +1,6 @@
-public class JumpGame {
+package com.leetcode.www;
+
+public class JumpGame { // LC 55
     public boolean canJump(int[] nums) { // beats 90.30%
         if (nums.length < 2) {
             return true;

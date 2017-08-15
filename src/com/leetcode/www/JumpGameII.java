@@ -1,3 +1,5 @@
+package com.leetcode.www;
+
 public class JumpGameII {
     public int jump(int[] nums) { // LC 45
         if (nums == null || nums.length == 0) {
