@@ -1,7 +1,9 @@
+package com.leetcode.www;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Permutations {
+public class Permutations { // LC 46
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         if (nums == null || nums.length == 0) {

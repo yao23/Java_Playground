@@ -1,6 +1,8 @@
+package com.leetcode.www;
+
 import java.util.*;
 
-public class PermutationsII {
+public class PermutationsII { // LC 47
     public List<List<Integer>> permuteUnique(int[] nums) { // beats 21.01%
         List<List<Integer>> res = new ArrayList<>();
         if (nums == null || nums.length == 0) {
