@@ -1,8 +1,10 @@
+package com.leetcode.www;
+
 /**
  * Created by liyao on 7/18/17.
  */
 
-public class AddAndSearchWord {
+public class AddAndSearchWord { // LC 211
     class WordDictionary {
         class TrieNode {
             public TrieNode[] children = new TrieNode[26];
