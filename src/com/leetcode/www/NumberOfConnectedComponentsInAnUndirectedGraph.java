@@ -1,9 +1,11 @@
+package com.leetcode.www;
+
 import java.util.*;
 
 /**
  * Created by liyao on 7/12/17.
  */
-public class CountComponents {
+public class NumberOfConnectedComponentsInAnUndirectedGraph { // LC 323
     public int countComponents(int n, int[][] edges) { // beats 71.43%
         int[] root = new int[n];
         for (int i = 0; i < n; i++) {
