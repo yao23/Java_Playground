@@ -22,10 +22,10 @@ public class RegularExpressionMatching { // LC 10
                 } else if (p.charAt(j) == s.charAt(i)) {
                     dp[i + 1][j + 1] = dp[i][j];
                 } else if (p.charAt(j) == '*') {
-                    if (p.charAt(j - 1) != s.charAt(i) && p.charAt(j - 1) != '.') {
-                        dp[i + 1][j + 1] = dp[i + 1][j - 1];
-                    } else {
-                        dp[i + 1][j + 1] = (dp[i + 1][j] || dp[i][j + 1] || dp[i + 1][j - 1]);
+                    if (p.charAt(j - 1) != s.charAt(i) && p.charAt(j - 1) != '.') { // last one not match
+                        dp[i + 1][j + 1] = dp[i + 1][j - 1]; // last 2nd
+                    } else { // last one match
+                        dp[i + 1][j + 1] = (dp[i + 1][j] || dp[i][j + 1] || dp[i + 1][j - 1]); // last 2nd, last one or next one
                     }
                 }
             }
