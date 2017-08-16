@@ -66,7 +66,14 @@ public class RegularExpressionMatching { // LC 10
 // isMatch("aa", ".*") ? true
 // isMatch("ab", ".*") ? true (* is used for 1 dot . and ".." matches with "ab")
 // isMatch("aab", "c*a*b") ? true
+// isMatch("aaab", "a*b") ? true
 
+//   0 a * b
+// 0 v x x x
+// a x v v x
+// a x x v x
+// a x x v x
+// b x x x v
 
 /**
  *
