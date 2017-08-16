@@ -1,3 +1,5 @@
+package com.leetcode.www;
+
 import java.util.*;
 
 public class AlienDictionary { // LC 269
