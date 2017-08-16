@@ -33,6 +33,30 @@ public class RegularExpressionMatching { // LC 10
 
         return dp[lenS][lenP];
     }
+
+    public boolean isMatchV0(String s, String p) { // beats 4.13 (recursion)
+        if (p.isEmpty()) {
+            return s.isEmpty();
+        }
+
+        if (p.length() == 1 || p.charAt(1) != '*') {
+            if (s.isEmpty() || (p.charAt(0) != '.' && p.charAt(0) != s.charAt(0))) {
+                return false;
+            } else {
+                return isMatchV0(s.substring(1), p.substring(1));
+            }
+        }
+
+        //P.length() >=2
+        while (!s.isEmpty() && (s.charAt(0) == p.charAt(0) || p.charAt(0) == '.')) {
+            if (isMatchV0(s, p.substring(2))) {
+                return true;
+            }
+            s = s.substring(1);
+        }
+
+        return isMatchV0(s, p.substring(2));
+    }
 }
 
 // isMatch("aa","a") ? false
