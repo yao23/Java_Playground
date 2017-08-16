@@ -1,5 +1,6 @@
+package com.leetcode.www;
 
-public class BestTimetoBuyandSellStock3 {
+public class BestTimetoBuyandSellStock3 { // LC 123
 	public static int maxProfit(int[] prices) {
 		if (prices.length == 0) {
 			return 0;
