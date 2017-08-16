@@ -40,7 +40,7 @@ public class RegularExpressionMatching { // LC 10
 // isMatch("aaa","aa") ? false
 // isMatch("aa", "a*") ? true
 // isMatch("aa", ".*") ? true
-// isMatch("ab", ".*") ? true
+// isMatch("ab", ".*") ? true (* is used for 1 dot . and ".." matches with "ab")
 // isMatch("aab", "c*a*b") ? true
 
 
@@ -52,8 +52,8 @@ public class RegularExpressionMatching { // LC 10
  here are two sub conditions:
  1   if p.charAt(j-1) != s.charAt(i) : dp[i][j] = dp[i][j-2]  //in this case, a* only counts as empty
  2   if p.charAt(i-1) == s.charAt(i) or p.charAt(i-1) == '.':
- dp[i][j] = dp[i-1][j]    //in this case, a* counts as multiple a
- or dp[i][j] = dp[i][j-1]   // in this case, a* counts as single a
- or dp[i][j] = dp[i][j-2]   // in this case, a* counts as empty
+ dp[i][j] = dp[i-1][j]    //in this case, "a*" counts as multiple "a" ("aaa...")
+ or dp[i][j] = dp[i][j-1]   // in this case, "a*" counts as single "a"
+ or dp[i][j] = dp[i][j-2]   // in this case, a* counts as empty (no "a", namely "")
 
  */
