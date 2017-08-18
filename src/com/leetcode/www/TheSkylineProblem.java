@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.PriorityQueue;
 
 public class TheSkylineProblem { // LC 218
-    public List<int[]> getSkyline(int[][] buildings) {
+    public List<int[]> getSkyline(int[][] buildings) { // beats 53.35%
         List<int[]> res = new ArrayList<>();
         if (buildings.length == 0 || buildings[0].length == 0) {
             return res;
@@ -54,9 +54,9 @@ public class TheSkylineProblem { // LC 218
             } else {
                 if (this.isStart && that.isStart) {
                     if (this.height < that.height) {
-                        return -1;
-                    } else if (this.height > that.height) {
                         return 1;
+                    } else if (this.height > that.height) {
+                        return -1;
                     } else {
                         return 0;
                     }
@@ -66,9 +66,9 @@ public class TheSkylineProblem { // LC 218
                     return 1;
                 } else {
                     if (this.height < that.height) {
-                        return 1;
-                    } else if (this.height > that.height) {
                         return -1;
+                    } else if (this.height > that.height) {
+                        return 1;
                     } else {
                         return 0;
                     }
@@ -78,5 +78,5 @@ public class TheSkylineProblem { // LC 218
     }
 }
 
-// [[2 9 10],[3 7 15],[5 12 12],[15 20 10],[19 24 8]]  => [[2 10],[3 15],[7 12],[12 0],[15 10],[20 8],[24, 0]]
+// [[2,9,10],[3,7,15],[5,12,12],[15,20,10],[19,24,8]]  => [[2 10],[3 15],[7 12],[12 0],[15 10],[20 8],[24, 0]]
 // [[1,2,1],[1,2,2],[1,2,3]] => [[1,3],[2,0]]
