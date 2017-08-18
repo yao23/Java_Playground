@@ -52,7 +52,7 @@ public class TheSkylineProblem { // LC 218
             } else if (this.index > that.index) {
                 return 1;
             } else {
-                if (this.isStart && that.isStart) {
+                if (this.isStart && that.isStart) { // [1,3], [1,2], [1,1] in test case 2
                     if (this.height < that.height) {
                         return 1;
                     } else if (this.height > that.height) {
@@ -65,7 +65,7 @@ public class TheSkylineProblem { // LC 218
                 } else if (!this.isStart && that.isStart) {
                     return 1;
                 } else {
-                    if (this.height < that.height) {
+                    if (this.height < that.height) { // [2,1], [2,2], [2,3] in test case 2
                         return -1;
                     } else if (this.height > that.height) {
                         return 1;
