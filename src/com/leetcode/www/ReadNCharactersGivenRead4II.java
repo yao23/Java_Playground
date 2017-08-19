@@ -1,6 +1,6 @@
 package com.leetcode.www;
 
-public class ReadNCharactersGivenRead4II {
+public class ReadNCharactersGivenRead4II { // LC 158
     /**
      * @param buf Destination buffer
      * @param n   Maximum number of characters to read
@@ -20,8 +20,9 @@ public class ReadNCharactersGivenRead4II {
             if (tmpSize == 0) {
                 len = read4(tmp);
                 tmpSize = len;
+                tmpIndex = 0;
+                eof = (len < 4);
             }
-            eof = (len < 4);
             len = Math.min(tmpSize, n - total);
 
             for (int i = tmpIndex; i < tmpIndex + len; i++) {
@@ -30,14 +31,11 @@ public class ReadNCharactersGivenRead4II {
                 tmpIndex++;
                 tmpSize--;
             }
-            if (tmpSize == 0) {
-                tmpIndex = 0;
-            }
         }
 
         return total;
     }
-    
+
     private char[] chars = new char[100];
     private int offset = 0;
     private int read4(char[] buf) {
