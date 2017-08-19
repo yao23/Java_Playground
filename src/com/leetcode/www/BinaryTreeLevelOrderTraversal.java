@@ -1,11 +1,14 @@
-/**
+package com.leetcode.www; /**
  * Created by liyao on 7/12/17.
  */
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.List;
 
-public class BinaryTreeLevelOrderTraversalII {
-    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+public class BinaryTreeLevelOrderTraversal {
+    public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> result = new ArrayList<>();
         if (root == null) {
             return result;
@@ -35,11 +38,10 @@ public class BinaryTreeLevelOrderTraversalII {
             result.add(levelRes);
         }
 
-        Collections.reverse(result);
         return result;
     }
 
-    // [3,9,20,null,null,15,7] => [[15,7],[9,20],[3]]
+    // [3,9,20,null,null,15,7] => [[3],[9,20],[15,7]]
 
-    // beats 23.97%
+    // beats 11.00%
 }
