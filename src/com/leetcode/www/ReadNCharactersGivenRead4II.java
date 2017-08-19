@@ -48,7 +48,7 @@ public class ReadNCharactersGivenRead4II { // LC 158
         if (chars.length - offset < 4) {
             len = chars.length - offset;
         }
-        for (int i = 0; i < len; i++) { System.out.println("inside index: " + i + ", " + offset + ", " + len);
+        for (int i = 0; i < len; i++) {
             buf[i] = chars[offset + i];
         }
         offset += len;
