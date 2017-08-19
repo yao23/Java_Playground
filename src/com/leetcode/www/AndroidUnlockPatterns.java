@@ -29,6 +29,9 @@ public class AndroidUnlockPatterns { // LC 351
 
         if (num >= m && num <= n) {
             res = 1;
+            if (num == n) {
+                return res;
+            }
         } else {
             return 0;
         }
