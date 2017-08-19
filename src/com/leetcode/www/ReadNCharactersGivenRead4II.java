@@ -25,22 +25,17 @@ public class ReadNCharactersGivenRead4II { // LC 158
                 eof = (len < 4);
             }
             len = Math.min(tmpSize, n - total);
-            // System.out.println("before: " + len + ", " + tmpSize + ", " + tmpIndex);
-            // print(tmp);
+
             if (len == 0) {
                 break;
             }
             len = tmpIndex + len;
-            for (int i = tmpIndex; i < len; i++) { //System.out.println("index: " + i + ", " + len + ", " + tmpSize + ", " + tmpIndex);
+            for (int i = tmpIndex; i < len; i++) {
                 buf[total] = tmp[i];
                 total++;
                 tmpIndex++;
                 tmpSize--;
             }
-
-            // if (eof) {
-            //     break;
-            // }
         }
 
         return total;
