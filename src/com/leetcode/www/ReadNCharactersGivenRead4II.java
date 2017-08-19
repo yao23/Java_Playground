@@ -23,9 +23,9 @@ public class ReadNCharactersGivenRead4II { // LC 158
                 tmpIndex = 0;
                 eof = (len < 4);
             }
-            len = Math.min(tmpSize, n - total);
+            len = Math.min(tmpSize, n - total) + tmpIndex;
 
-            for (int i = tmpIndex; i < tmpIndex + len; i++) {
+            for (int i = tmpIndex; i < len; i++) {
                 buf[total] = tmp[i];
                 total++;
                 tmpIndex++;
