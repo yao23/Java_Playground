@@ -71,3 +71,4 @@ public class AndroidUnlockPatterns { // LC 351
 }
 
 // m = 1, n = 1 => 9 (1 ~ 9)
+// m = 1, n = 2 => 65
