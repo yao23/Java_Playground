@@ -9,7 +9,7 @@ public class ReadNCharactersGivenRead4 { // LC 157
      * @param n   Maximum number of characters to read
      * @return    The number of characters read
      */
-    public int read(char[] buf, int n) {
+    public int read(char[] buf, int n) { // beats 21.61%
         int res = 0;
         char[] tmp = new char[4];
 
