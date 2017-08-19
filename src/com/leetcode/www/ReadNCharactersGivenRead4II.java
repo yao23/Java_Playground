@@ -74,5 +74,6 @@ public class ReadNCharactersGivenRead4II { // LC 158
     }
 }
 
+// "a", [read(1)] => 1 (['a'])
 // ['a','b'], read(buf, 1), read(buf, 2) => 2 (['a','b'])
 // ['a'], read(buf, 0), read(buf, 1), read(buf, 2) => 1 (['','a',''])
