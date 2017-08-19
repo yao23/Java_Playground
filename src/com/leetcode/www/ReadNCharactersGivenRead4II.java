@@ -8,33 +8,39 @@ public class ReadNCharactersGivenRead4II { // LC 158
      *
      * The read function may be called multiple times.
      */
-    private static int tmpSize = 0;
-    private static int tmpIndex = 0;
-    private static char[] tmp = new char[4];
-    private static int total = 0;
-    private static boolean eof = false;
+    private int tmpSize = 0;
+    private int tmpIndex = 0;
+    private char[] tmp = new char[4];
+    private boolean eof = false;
 
-    public static int read(char[] buf, int n) {
+    public int read(char[] buf, int n) {
         int len = 0;
+        int total = 0;
 
-        while (total < n) {
-            if (tmpSize == 0 && !eof) {
+        while (total < n && (!eof || tmpSize > 0)) {
+            if (!eof && tmpSize == 0) {
                 len = read4(tmp);
                 tmpSize = len;
                 tmpIndex = 0;
                 eof = (len < 4);
             }
-            len = Math.min(tmpSize, n - total) + tmpIndex;
-            System.out.println("before: " + len + ", " + tmpSize + ", " + tmpIndex);
-            print(tmp);
-            for (int i = tmpIndex; i < len; i++) {
-                System.out.println("index: " + i + ", " + len + ", " + tmpSize + ", " + tmpIndex);
+            len = Math.min(tmpSize, n - total);
+            // System.out.println("before: " + len + ", " + tmpSize + ", " + tmpIndex);
+            // print(tmp);
+            if (len == 0) {
+                break;
+            }
+            len = tmpIndex + len;
+            for (int i = tmpIndex; i < len; i++) { //System.out.println("index: " + i + ", " + len + ", " + tmpSize + ", " + tmpIndex);
                 buf[total] = tmp[i];
                 total++;
                 tmpIndex++;
                 tmpSize--;
             }
-            System.out.println("after: " + len + ", " + tmpSize + ", " + tmpIndex);
+
+            // if (eof) {
+            //     break;
+            // }
         }
 
         return total;
@@ -66,8 +72,8 @@ public class ReadNCharactersGivenRead4II { // LC 158
 
     public static void main(String[] args) {
         char[] buf = new char[2];
-        read(buf, 1);
-        read(buf, 2);
+//        read(buf, 1);
+//        read(buf, 2);
         System.out.println("final");
         print(buf);
     }
