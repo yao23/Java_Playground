@@ -13,7 +13,7 @@ public class ReadNCharactersGivenRead4II { // LC 158
     private char[] tmp = new char[4];
     private boolean eof = false;
 
-    public int read(char[] buf, int n) {
+    public int read(char[] buf, int n) { // beats 24.87%
         int len = 0;
         int total = 0;
 
