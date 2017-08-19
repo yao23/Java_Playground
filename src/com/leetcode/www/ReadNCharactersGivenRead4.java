@@ -19,7 +19,7 @@ public class ReadNCharactersGivenRead4 { // LC 157
             for (int i = 0; i < len; i++) {
                 buf[res + i] = tmp[i];
             }
-            res += len;
+            res += len; // len, not count
             if (count < 4) { // no more to read
                 break;
             }
