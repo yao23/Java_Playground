@@ -3,7 +3,7 @@ package com.leetcode.www;
 /**
  * Created by liyao on 6/14/17.
  */
-public class BinaryTreeMaximumPathSum {
+public class BinaryTreeMaximumPathSum { // LC 124
     private int helper(TreeNode root, int[] result) {
         if (root == null) {
             return 0;

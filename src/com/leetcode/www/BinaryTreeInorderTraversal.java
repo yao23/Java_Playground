@@ -3,7 +3,7 @@ package com.leetcode.www; /**
  */
 import java.util.*;
 
-public class BinaryTreeInorderTraversal {
+public class BinaryTreeInorderTraversal { // LC 94
     public static List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> result = new ArrayList<>();
         if (root == null) {

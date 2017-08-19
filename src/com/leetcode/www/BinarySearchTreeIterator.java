@@ -5,7 +5,7 @@ package com.leetcode.www; /**
 import java.util.Deque;
 import java.util.ArrayDeque;
 
-public class BinarySearchTreeIterator {
+public class BinarySearchTreeIterator { // LC 173
     private Deque<TreeNode> stack;
 
     public BinarySearchTreeIterator(TreeNode root) {
