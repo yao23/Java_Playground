@@ -8,12 +8,34 @@ public class ReadNCharactersGivenRead4II { // LC 158
      *
      * The read function may be called multiple times.
      */
+    private int tmpBufIdx = 0;
+    private int tmpBufCnt = 0;
+    private char[] tmpBuf = new char[4];
+    public int read(char[] buf, int n) { // beats 24.87%
+        int idx = 0;
+        while (idx < n) {
+            if (tmpBufIdx == 0) {
+                tmpBufCnt = read4(tmpBuf);
+            }
+            if (tmpBufCnt == 0) {
+                break;
+            }
+            while (idx < n && tmpBufIdx < tmpBufCnt) {
+                buf[idx++] = tmpBuf[tmpBufIdx++];
+            }
+            if (tmpBufIdx >= tmpBufCnt) {
+                tmpBufIdx = 0;
+            }
+        }
+        return idx;
+    }
+
     private int tmpSize = 0;
     private int tmpIndex = 0;
     private char[] tmp = new char[4];
     private boolean eof = false;
 
-    public int read(char[] buf, int n) { // beats 24.87%
+    public int readV0(char[] buf, int n) { // beats 24.87%
         int len = 0;
         int total = 0;
 
