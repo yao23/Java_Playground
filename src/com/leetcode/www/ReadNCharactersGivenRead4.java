@@ -1,6 +1,6 @@
 package com.leetcode.www;
 
-public class ReadNCharactersGivenRead4 {
+public class ReadNCharactersGivenRead4 { // LC 157
     /* The read4 API is defined in the parent class Reader4.
       int read4(char[] buf); */
 
@@ -19,7 +19,7 @@ public class ReadNCharactersGivenRead4 {
             for (int i = 0; i < len; i++) {
                 buf[res + i] = tmp[i];
             }
-            res += count;
+            res += len;
             if (count < 4) { // no more to read
                 break;
             }
