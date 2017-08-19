@@ -40,7 +40,7 @@ public class AndroidUnlockPatterns { // LC 351
         }
     }
 
-    public int numberOfPatternsV0(int m, int n) {
+    public int numberOfPatternsV0(int m, int n) { // not working for test case 3 (res: 2017, expected: 2009), passed 3/24
         initSkipTable();
 
         int res = 0;
@@ -108,3 +108,4 @@ public class AndroidUnlockPatterns { // LC 351
 
 // m = 1, n = 1 => 9 (1 ~ 9)
 // m = 1, n = 2 => 65
+// m = 1, n = 4 => 2009
