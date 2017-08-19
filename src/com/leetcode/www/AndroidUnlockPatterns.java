@@ -4,7 +4,43 @@ public class AndroidUnlockPatterns { // LC 351
     private int[][] skipTable = new int[10][10];
     private boolean[] visited = new boolean[10];
 
-    public int numberOfPatterns(int m, int n) {
+    public int numberOfPatterns(int m, int n) { // beats 54.25%
+        initSkipTable();
+
+        int res = 0;
+
+        for (int i = m; i <= n; i++) {
+            res += (calculate(1, i - 1) * 4); // 1, 3, 7, 9 are symmetric
+            res += (calculate(2, i - 1) * 4); // 2, 4, 6, 8 are symmetric
+            res += calculate(5, i - 1);
+        }
+
+        return res;
+    }
+
+    private int calculate(int cur, int remain) {
+        if (remain < 0) {
+            return 0;
+        } else if (remain == 0) {
+            return 1;
+        } else {
+            int res = 0;
+            visited[cur] = true;
+
+            for (int i = 1; i <= 9; i++) {
+                // no key between cur and i, or key between cur and i is visited
+                if (!visited[i] && (skipTable[cur][i] == 0 || visited[skipTable[cur][i]])) {
+                    res += calculate(i, remain - 1);
+                }
+            }
+
+            visited[cur] = false;
+
+            return res;
+        }
+    }
+
+    public int numberOfPatternsV0(int m, int n) {
         initSkipTable();
 
         int res = 0;
