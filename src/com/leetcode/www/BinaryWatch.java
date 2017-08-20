@@ -22,13 +22,13 @@ public class BinaryWatch { // LC 401
             return;
         }
         for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < num; j++) {
+            for (int j = 1; j <= num; j++) {
                 int remain = getRemainTime(i, j, remainHour, remainMinute);
                 if (remain > 0) {
                     if (i < 4) {
-                        dfs(remain, remainMinute, num - 1, res);
+                        dfs(remain, remainMinute, num - j, res);
                     } else {
-                        dfs(remainHour, remain, num - 1, res);
+                        dfs(remainHour, remain, num - j, res);
                     }
                 } else {
                     return;
