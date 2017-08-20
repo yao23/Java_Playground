@@ -20,19 +20,14 @@ public class BestMeetingPoint {
         return getShortestDistance(grid, distance);
     }
 
-    private int searchPeople(int[][] grid, int[][] distance, int row, int col) {
-        int num = 0;
-
+    private void searchPeople(int[][] grid, int[][] distance, int row, int col) {
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
                 if (grid[i][j] == 1) {
                     updateDistance(distance, row, col, i, j);
-                    num++;
                 }
             }
         }
-
-        return num;
     }
 
     private void updateDistance(int[][] distance, int row, int col, int x, int y) {
