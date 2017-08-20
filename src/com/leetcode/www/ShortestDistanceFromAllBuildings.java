@@ -34,8 +34,7 @@ public class ShortestDistanceFromAllBuildings { // LC 317
 
                                 if (nextRow >= 0 && nextRow < row && nextCol >= 0 && nextCol < col
                                         && grid[nextRow][nextCol] == 0 && !isVisited[nextRow][nextCol]) {
-                                    //The shortest distance from [nextRow][nextCol] to thic building
-                                    // is 'level'.
+                                    //The shortest distance from [nextRow][nextCol] to this building is 'level'.
                                     distance[nextRow][nextCol] += level;
                                     reach[nextRow][nextCol]++;
 
