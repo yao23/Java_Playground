@@ -30,7 +30,7 @@ public class BinaryWatch { // LC 401
         } System.out.println();
         for (int i = 0; i < 10 && !timeIdx.contains(i); i++) {
             timeIdx.add(i);
-            int remain = getRemainTime(i, 1, remainHour, remainMinute);
+            int remain = getRemainTime(i, remainHour, remainMinute);
 
             if (remain > 0) {
                 if (i > 5) { // hour
@@ -45,11 +45,11 @@ public class BinaryWatch { // LC 401
         }
     }
 
-    private int getRemainTime(int i, int j, int remainHour, int remainMinute) {
+    private int getRemainTime(int i, int remainHour, int remainMinute) {
         if (i > 5) { // hour
-            return (remainHour - j * time[i]);
+            return (remainHour - time[i]);
         } else { // minute
-            return (remainMinute - j * time[i]);
+            return (remainMinute - time[i]);
         }
     }
 }
