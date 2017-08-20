@@ -83,6 +83,7 @@ public class BestMeetingPoint {
     }
 }
 
+// test case 1
 // [[1,0,0,0,1],[0,0,0,0,0],[0,0,1,0,0]] => 6
 
 // 1 - 0 - 0 - 0 - 1
@@ -94,4 +95,8 @@ public class BestMeetingPoint {
 // (0,2), 6 = 2 + 2 + 2 (Manhattan Distance, distance(p1, p2) = |p2.x - p1.x| + |p2.y - p1.y|)
 
 
+// test case 2
 // [[1,1]] => 1
+
+// test case 3
+// row: 110, col: 110, every element is 1
