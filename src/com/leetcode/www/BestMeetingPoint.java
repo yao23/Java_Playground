@@ -92,4 +92,4 @@ public class BestMeetingPoint {
 // [[1,1]] => 1
 
 // test case 3
-// row: 110, col: 110, every element is 1
+// row: 110, col: 110, every element is 1 => 665500
