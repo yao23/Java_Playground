@@ -4,22 +4,22 @@ import java.util.*;
 
 public class BestMeetingPoint { // LC 296
     public int minTotalDistance(int[][] grid) { // beats 55.32%
-        int m = grid.length;
-        int n = grid[0].length;
+        int row = grid.length;
+        int col = grid[0].length;
 
-        List<Integer> I = new ArrayList<>(m);
-        List<Integer> J = new ArrayList<>(n);
+        List<Integer> rowList = new ArrayList<>(row);
+        List<Integer> colList = new ArrayList<>(col);
 
-        for(int i = 0; i < m; i++){
-            for(int j = 0; j < n; j++){
-                if(grid[i][j] == 1){
-                    I.add(i);
-                    J.add(j);
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (grid[i][j] == 1) {
+                    rowList.add(i);
+                    colList.add(j);
                 }
             }
         }
 
-        return getMin(I) + getMin(J);
+        return getMin(rowList) + getMin(colList);
     }
 
     private int getMin(List<Integer> list){
@@ -29,8 +29,10 @@ public class BestMeetingPoint { // LC 296
 
         int i = 0;
         int j = list.size() - 1;
-        while(i < j){
-            ret += list.get(j--) - list.get(i++);
+        while (i < j) {
+            ret += list.get(j) - list.get(i);
+            j--;
+            i++;
         }
 
         return ret;
