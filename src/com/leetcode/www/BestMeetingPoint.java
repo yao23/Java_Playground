@@ -50,23 +50,30 @@ public class BestMeetingPoint { // LC 296
      * Originally I used total += abs(Z[i] - median)-style.
      */
     public int minTotalDistanceV2(int[][] grid) { // beats 88.66%
-        int m = grid.length, n = grid[0].length;
-        int total = 0, Z[] = new int[m*n];
-        for (int dim=0; dim<2; ++dim) {
+        int row = grid.length, col = grid[0].length;
+        int total = 0, Z[] = new int[row*col];
+        for (int dim = 0; dim < 2; ++dim) {
             int i = 0, j = 0;
             if (dim == 0) {
-                for (int x=0; x<n; ++x)
-                    for (int y=0; y<m; ++y)
-                        if (grid[y][x] == 1)
+                for (int x = 0; x < col; ++x) {
+                    for (int y = 0; y < row; ++y) {
+                        if (grid[y][x] == 1) {
                             Z[j++] = x;
+                        }
+                    }
+                }
             } else {
-                for (int y=0; y<m; ++y)
-                    for (int g : grid[y])
-                        if (g == 1)
+                for (int y = 0; y < row; ++y) {
+                    for (int g : grid[y]) {
+                        if (g == 1) {
                             Z[j++] = y;
+                        }
+                    }
+                }
             }
-            while (i < --j)
+            while (i < --j) {
                 total += Z[j] - Z[i++];
+            }
         }
         return total;
     }
