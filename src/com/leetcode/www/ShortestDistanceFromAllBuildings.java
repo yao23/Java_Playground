@@ -4,7 +4,7 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class ShortestDistanceFromAllBuildings { // LC 317
-    public int shortestDistance(int[][] grid) {
+    public int shortestDistance(int[][] grid) { // beats 44.18%
         if (grid == null || grid[0].length == 0) return 0;
         final int[] shift = new int[] {0, 1, 0, -1, 0};
 
