@@ -6,8 +6,42 @@ import java.util.Deque;
 import java.util.List;
 
 public class PacificAtlanticWaterFlow { // LC 417
-    public List<int[]> pacificAtlantic(int[][] matrix) {
+    public List<int[]> pacificAtlantic(int[][] matrix) { // beasts 86.27%
+        List<int[]> res = new ArrayList<>();
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+            return res;
+        }
+        int row = matrix.length, col = matrix[0].length;
+        boolean[][]pacific = new boolean[row][col];
+        boolean[][]atlantic = new boolean[row][col];
 
+        for (int i = 0; i < row; i++) {
+            dfs(matrix, pacific, Integer.MIN_VALUE, i, 0);
+            dfs(matrix, atlantic, Integer.MIN_VALUE, i, col - 1);
+        }
+        for (int i = 0; i < col; i++) {
+            dfs(matrix, pacific, Integer.MIN_VALUE, 0, i);
+            dfs(matrix, atlantic, Integer.MIN_VALUE, row - 1, i);
+        }
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (pacific[i][j] && atlantic[i][j]) {
+                    res.add(new int[]{i, j});
+                }
+            }
+        }
+        return res;
+    }
+
+    public void dfs(int[][]matrix, boolean[][]visited, int height, int x, int y) { // DFS
+        int row = matrix.length, col = matrix[0].length;
+        if(x < 0 || x >= row || y < 0 || y >= col || visited[x][y] || matrix[x][y] < height) {
+            return;
+        }
+        visited[x][y] = true;
+        for (int i = 0; i < 4; i++) {
+            dfs(matrix, visited, matrix[x][y], x + dx[i], y + dy[i]);
+        }
     }
 
 
@@ -55,7 +89,7 @@ public class PacificAtlanticWaterFlow { // LC 417
         return res;
     }
 
-    private void bfs(int[][]matrix, Deque<int[]> queue, boolean[][]visited){
+    private void bfs(int[][]matrix, Deque<int[]> queue, boolean[][]visited) { // BFS
         int row = matrix.length, col = matrix[0].length;
         while (!queue.isEmpty()) {
             int[] cur = queue.poll();
