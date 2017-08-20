@@ -4,6 +4,21 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class ShortestDistanceFromAllBuildings { // LC 317
+    /**
+     *
+     * @param grid
+     * @return
+     *
+     * Traverse the matrix. For each building, use BFS to compute the shortest distance from each '0' to
+     * this building. After we do this for all the buildings, we can get the sum of shortest distance
+     * from every '0' to all reachable buildings. This value is stored
+     * in 'distance[][]'. For example, if grid[2][2] == 0, distance[2][2] is the sum of shortest distance from this block to all reachable buildings.
+     * Time complexity: O(number of 1)O(number of 0) ~ O(m^2n^2)
+
+     * We also count how many building each '0' can be reached. It is stored in reach[][]. This can be done during the BFS. We also need to count how many total buildings are there in the matrix, which is stored in 'buildingNum'.
+
+     * Finally, we can traverse the distance[][] matrix to get the point having shortest distance to all buildings. O(m*n)
+     */
     public int shortestDistance(int[][] grid) { // beats 44.18%
         if (grid == null || grid[0].length == 0) return 0;
         final int[] shift = new int[] {0, 1, 0, -1, 0};
