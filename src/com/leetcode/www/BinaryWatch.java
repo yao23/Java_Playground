@@ -53,6 +53,18 @@ public class BinaryWatch { // LC 401
             return (remainMinute - time[i]);
         }
     }
+
+    public List<String> readBinaryWatchV1(int num) { // beats 25.93%
+        List<String> times = new ArrayList<>();
+        for (int h = 0; h < 12; h++) {
+            for (int m = 0; m < 60; m++) {
+                if (Integer.bitCount(h * 64 + m) == num) {
+                    times.add(String.format("%d:%02d", h, m));
+                }
+            }
+        }
+        return times;
+    }
 }
 
 // n = 0
