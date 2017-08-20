@@ -27,7 +27,7 @@ public class BinaryWatch { // LC 401
             int minute = totalMinute - remainMinute;
             res.add(hour + ":" + (minute < 10 ? "0" : "") + minute);
             return;
-        } System.out.println();
+        }
         for (int i = 0; i < 10 && !timeIdx.contains(i); i++) {
             timeIdx.add(i);
             int remain = getRemainTime(i, remainHour, remainMinute);
