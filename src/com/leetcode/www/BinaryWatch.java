@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 public class BinaryWatch { // LC 401
-    private int totalHour = 12;
+    private int totalHour = 11;
     private int totalMinute = 59;
     private int[] time = new int[] {1, 2, 4, 8, 16, 32, 1, 2, 4, 8};
 
@@ -32,7 +32,7 @@ public class BinaryWatch { // LC 401
             timeIdx.add(i);
             int remain = getRemainTime(i, remainHour, remainMinute);
 
-            if (remain > 0) {
+            if (remain >= 0) { // either remainHour or remainMinute is 0 could be continue
                 if (i > 5) { // hour
                     dfs(remain, remainMinute, num - 1, res, timeIdx);
                 } else { // minute
@@ -40,6 +40,7 @@ public class BinaryWatch { // LC 401
                 }
                 timeIdx.remove(i);
             } else {
+                timeIdx.remove(i); // don't forget to release for use in time
                 return;
             }
         }
