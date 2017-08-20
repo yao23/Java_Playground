@@ -61,6 +61,80 @@ public class ShortestDistanceFromAllBuildings { // LC 317
         return shortest == Integer.MAX_VALUE ? -1 : shortest;
     }
 
+    /**
+     * Solution V1 (improved my solution, working)
+     */
+    public int shortestDistanceV1(int[][] grid) {
+        if (grid == null || grid[0].length == 0) {
+            return 0;
+        }
+
+        int row  = grid.length, col = grid[0].length;
+        int[][] distance = new int[row][col];
+        int[][] reach = new int[row][col];
+        int buildingNum = searchBuilding(grid, reach, distance, row, col);
+
+        return getShortest(grid, reach, distance, row, col, buildingNum);
+    }
+
+    private int searchBuilding(int[][] grid, int[][] reach, int[][] distance, int row, int col) {
+        int buildingNum = 0;
+
+        for (int i = 0; i < row; i++) {
+            for (int j =0; j < col; j++) {
+                if (grid[i][j] == 1) {
+                    searchEmptyLand(grid, reach, distance, i, j, row, col);
+                }
+            }
+        }
+
+        return buildingNum;
+    }
+
+    private void searchEmptyLand(int[][]grid, int[][] reach, int[][] distance, int i, int j, int row, int col) {
+        Deque<int[]> myQueue = new ArrayDeque<>();
+        myQueue.offer(new int[] {i,j});
+
+        boolean[][] isVisited = new boolean[row][col];
+        int level = 1;
+
+        while (!myQueue.isEmpty()) {
+            int qSize = myQueue.size();
+            for (int q = 0; q < qSize; q++) {
+                int[] curr = myQueue.poll();
+
+                for (int k = 0; k < 4; k++) {
+                    int newX = curr[0] + dx[k];
+                    int newY = curr[1] + dy[k];
+
+                    if (newX >= 0 && newX < row && newY >= 0 && newY < col
+                            && grid[newX][newY] == 0 && !isVisited[newX][newY]) {
+                        //The shortest distance from [nextRow][nextCol] to this building is 'level'.
+                        distance[newX][newY] += level;
+                        reach[newX][newY]++;
+
+                        isVisited[newX][newY] = true;
+                        myQueue.offer(new int[] {newX, newY});
+                    }
+                }
+            }
+            level++;
+        }
+    }
+
+    private int getShortest(int[][] grid, int[][] reach, int[][] distance, int row, int col, int buildingNum) {
+        int shortest = Integer.MAX_VALUE;
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (grid[i][j] == 0 && reach[i][j] == buildingNum) {
+                    shortest = Math.min(shortest, distance[i][j]);
+                }
+            }
+        }
+
+        return shortest == Integer.MAX_VALUE ? -1 : shortest;
+    }
+
 
     /**
      * My Original Solution (not working, for retrospection)
