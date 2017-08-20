@@ -49,7 +49,7 @@ public class BestMeetingPoint {
                 for (int j = 0; j < 4; j++) {
                     int newX = pair[0] + dx[j];
                     int newY = pair[1] + dy[j];
-                    if (newX >= 0 && newX < row && newY >= 0 && newY < col && grid[newX][newY] == 0 && !visited[newX][newY]) {
+                    if (newX >= 0 && newX < row && newY >= 0 && newY < col && !visited[newX][newY]) {
                         distance[newX][newY] += (Math.abs(newX - x) + Math.abs(newY - y));
                         reach[newX][newY] += 1;
                         visited[newX][newY] = true;
@@ -69,7 +69,7 @@ public class BestMeetingPoint {
 
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
-                if (grid[i][j] == 0 && reach[i][j] == num && distance[i][j] < res) {
+                if (distance[i][j] < res) {
                     res = distance[i][j];
                 }
             }
