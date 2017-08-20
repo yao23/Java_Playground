@@ -25,14 +25,12 @@ public class BinaryWatch { // LC 401
         if (num == 0) {
             int hour = totalHour - remainHour;
             int minute = totalMinute - remainMinute;
-            res.add(hour + ":" + (minute < 10 ? "0" : "") + minute); System.out.println("res: " + res.get(res.size() - 1));System.out.println();
+            res.add(hour + ":" + (minute < 10 ? "0" : "") + minute);
             return;
         } System.out.println();
         for (int i = 0; i < 10 && !timeIdx.contains(i); i++) {
             timeIdx.add(i);
             int remain = getRemainTime(i, 1, remainHour, remainMinute);
-            System.out.println("i: " + i + ", " + time[i] + ", count: " + 1 + ", num: " + num);
-            System.out.println(remainHour + ", " + remainMinute + ", " + remain);
 
             if (remain > 0) {
                 if (i > 5) { // hour
