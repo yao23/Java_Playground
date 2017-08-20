@@ -92,6 +92,7 @@ public class ShortestDistanceFromAllBuildings { // LC 317
         return buildingNum;
     }
 
+    // BFS
     private void searchEmptyLand(int[][]grid, int[][] reach, int[][] distance, int i, int j, int row, int col) {
         Deque<int[]> myQueue = new ArrayDeque<>();
         myQueue.offer(new int[] {i,j});
