@@ -1,13 +1,50 @@
 package com.leetcode.www;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.*;
 
-public class BestMeetingPoint {
+public class BestMeetingPoint { // LC 296
+    public int minTotalDistance(int[][] grid) { // beats 55.32%
+        int m = grid.length;
+        int n = grid[0].length;
+
+        List<Integer> I = new ArrayList<>(m);
+        List<Integer> J = new ArrayList<>(n);
+
+        for(int i = 0; i < m; i++){
+            for(int j = 0; j < n; j++){
+                if(grid[i][j] == 1){
+                    I.add(i);
+                    J.add(j);
+                }
+            }
+        }
+
+        return getMin(I) + getMin(J);
+    }
+
+    private int getMin(List<Integer> list){
+        int ret = 0;
+
+        Collections.sort(list);
+
+        int i = 0;
+        int j = list.size() - 1;
+        while(i < j){
+            ret += list.get(j--) - list.get(i++);
+        }
+
+        return ret;
+    }
+
+
+    /**
+     * My original solution (TLE for test case 3, pass 56/57)
+     * similar problem: LC 317, Shortest Distance from All Buildings
+     */
     private int[] dx = new int[]{-1, 1, 0, 0};
     private int[] dy = new int[]{0, 0, -1, 1};
 
-    public int minTotalDistance(int[][] grid) { // TLE for test case 3 (pass 56/57)
+    public int minTotalDistanceV0(int[][] grid) { // TLE for test case 3 (pass 56/57)
         if (grid.length == 0 || grid[0].length == 0) {
             return 0;
         }
