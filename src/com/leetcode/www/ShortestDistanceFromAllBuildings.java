@@ -64,7 +64,7 @@ public class ShortestDistanceFromAllBuildings { // LC 317
     /**
      * Solution V1 (improved my solution, working)
      */
-    public int shortestDistanceV1(int[][] grid) {
+    public int shortestDistanceV1(int[][] grid) { // beats 39.63%
         if (grid == null || grid[0].length == 0) {
             return 0;
         }
