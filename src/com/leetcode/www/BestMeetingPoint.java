@@ -49,7 +49,7 @@ public class BestMeetingPoint { // LC 296
      * The neat total += Z[hi--] - Z[lo++]-style summing is from larrywang2014's solution (above 1st).
      * Originally I used total += abs(Z[i] - median)-style.
      */
-    public int minTotalDistanceV2(int[][] grid) {
+    public int minTotalDistanceV2(int[][] grid) { // beats 88.66%
         int m = grid.length, n = grid[0].length;
         int total = 0, Z[] = new int[m*n];
         for (int dim=0; dim<2; ++dim) {
@@ -78,23 +78,29 @@ public class BestMeetingPoint { // LC 296
      *
      * BucketSort-ish. Count how many people live in each row and each column. Only O(m+n) space.
      */
-    public int minTotalDistanceV1(int[][] grid) {
-        int m = grid.length, n = grid[0].length;
-        int[] I = new int[m], J = new int[n];
-        for (int i=0; i<m; ++i)
-            for (int j=0; j<n; ++j)
+    public int minTotalDistanceV1(int[][] grid) { // beats 96.76
+        int row = grid.length, col = grid[0].length;
+        int[] rowArr = new int[row], colArr = new int[col];
+        for (int i = 0; i < row; ++i) {
+            for (int j = 0; j < col; ++j) {
                 if (grid[i][j] == 1) {
-                    ++I[i];
-                    ++J[j];
+                    ++rowArr[i];
+                    ++colArr[j];
                 }
+            }
+        }
         int total = 0;
-        for (int[] K : new int[][]{ I, J }) {
-            int i = 0, j = K.length - 1;
+        for (int[] rowArray : new int[][]{ rowArr, colArr }) {
+            int i = 0, j = rowArray.length - 1;
             while (i < j) {
-                int k = Math.min(K[i], K[j]);
+                int k = Math.min(rowArray[i], rowArray[j]);
                 total += k * (j - i);
-                if ((K[i] -= k) == 0) ++i;
-                if ((K[j] -= k) == 0) --j;
+                if ((rowArray[i] -= k) == 0) {
+                    ++i;
+                }
+                if ((rowArray[j] -= k) == 0) {
+                    --j;
+                }
             }
         }
         return total;
