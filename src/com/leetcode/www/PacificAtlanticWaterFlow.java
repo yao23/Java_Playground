@@ -10,6 +10,13 @@ public class PacificAtlanticWaterFlow { // LC 417
 
     }
 
+
+    /**
+     * 1. Two Queue and add all the Pacific border to one queue; Atlantic border to another queue.
+     * 2. Keep a visited matrix for each queue. In the end, add the cell visited by two queue to the result.
+     * BFS: Water flood from ocean to the cell. Since water can only flow from high/equal cell to low cell, add the
+     * neighbor cell with height larger or equal to current cell to the queue and mark as visited.
+     */
     private int[] dx = new int[]{-1, 1, 0, 0};
     private int[] dy = new int[]{0, 0, -1, 1};
 
