@@ -1,0 +1,84 @@
+package com.leetcode.www;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+public class BestMeetingPoint {
+    private int[] dx = new int[]{-1, 1, 0, 0};
+    private int[] dy = new int[]{0, 0, -1, 1};
+
+    public int minTotalDistance(int[][] grid) {
+        if (grid.length == 0 || grid[0].length == 0) {
+            return 0;
+        }
+        int row = grid.length;
+        int col = grid[0].length;
+        int[][] reach = new int[row][col];
+        int[][] distance = new int[row][col];
+
+        int num = searchPeople(grid, reach, distance, row, col);
+
+        return getShortestDistance(grid, reach, distance, num);
+    }
+
+    private int searchPeople(int[][] grid, int[][] reach, int[][] distance, int row, int col) {
+        int num = 0;
+
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (grid[i][j] == 1) {
+                    updateDistance(grid, reach, distance, row, col, i, j);
+                    num++;
+                }
+            }
+        }
+
+        return num;
+    }
+
+    private void updateDistance(int[][] grid, int[][] reach, int[][] distance, int row, int col, int x, int y) {
+        Deque<int[]> queue = new ArrayDeque<>();
+        queue.offer(new int[]{x, y});
+        int cur = 1;
+        boolean[][] visited = new boolean[row][col];
+
+        while (!queue.isEmpty()) {
+            int next = 0;
+            for (int i = 0; i < cur; i++) {
+                int[] pair = queue.poll();
+                for (int j = 0; j < 4; j++) {
+                    int newX = pair[0] + dx[j];
+                    int newY = pair[1] + dy[j];
+                    if (newX >= 0 && newX < row && newY >= 0 && newY < col && grid[newX][newY] == 0 && !visited[newX][newY]) {
+                        distance[newX][newY] += (Math.abs(newX - x) + Math.abs(newY - y));
+                        reach[newX][newY] += 1;
+                        visited[newX][newY] = true;
+                        queue.offer(new int[]{newX, newY});
+                        next++;
+                    }
+                }
+            }
+            cur = next;
+        }
+    }
+
+    private int getShortestDistance(int[][] grid, int[][] reach, int[][] distance, int num) {
+        int row = grid.length;
+        int col = grid[0].length;
+        int res = Integer.MAX_VALUE;
+
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (grid[i][j] == 0 && reach[i][j] == num && distance[i][j] < res) {
+                    res = distance[i][j];
+                }
+            }
+        }
+
+        if (res == Integer.MAX_VALUE) {
+            return -1;
+        } else {
+            return res;
+        }
+    }
+}
