@@ -38,6 +38,68 @@ public class BestMeetingPoint { // LC 296
         return ret;
     }
 
+    /**
+     * As long as you have different numbers of people on your left and on your right,
+     * moving a little to the side with more people decreases the sum of distances.
+     * So to minimize it, you must have equally many people on your left and on your right. Same with above/below.
+     *
+     *
+     * Two O(mn) solutions, both take 2ms.
+
+     * The neat total += Z[hi--] - Z[lo++]-style summing is from larrywang2014's solution (above 1st).
+     * Originally I used total += abs(Z[i] - median)-style.
+     */
+    public int minTotalDistanceV2(int[][] grid) {
+        int m = grid.length, n = grid[0].length;
+        int total = 0, Z[] = new int[m*n];
+        for (int dim=0; dim<2; ++dim) {
+            int i = 0, j = 0;
+            if (dim == 0) {
+                for (int x=0; x<n; ++x)
+                    for (int y=0; y<m; ++y)
+                        if (grid[y][x] == 1)
+                            Z[j++] = x;
+            } else {
+                for (int y=0; y<m; ++y)
+                    for (int g : grid[y])
+                        if (g == 1)
+                            Z[j++] = y;
+            }
+            while (i < --j)
+                total += Z[j] - Z[i++];
+        }
+        return total;
+    }
+
+    /**
+     *
+     * @param grid
+     * @return
+     *
+     * BucketSort-ish. Count how many people live in each row and each column. Only O(m+n) space.
+     */
+    public int minTotalDistanceV1(int[][] grid) {
+        int m = grid.length, n = grid[0].length;
+        int[] I = new int[m], J = new int[n];
+        for (int i=0; i<m; ++i)
+            for (int j=0; j<n; ++j)
+                if (grid[i][j] == 1) {
+                    ++I[i];
+                    ++J[j];
+                }
+        int total = 0;
+        for (int[] K : new int[][]{ I, J }) {
+            int i = 0, j = K.length - 1;
+            while (i < j) {
+                int k = Math.min(K[i], K[j]);
+                total += k * (j - i);
+                if ((K[i] -= k) == 0) ++i;
+                if ((K[j] -= k) == 0) --j;
+            }
+        }
+        return total;
+    }
+
 
     /**
      * My original solution (TLE for test case 3, pass 56/57)
