@@ -13,21 +13,20 @@ public class BestMeetingPoint {
         }
         int row = grid.length;
         int col = grid[0].length;
-        int[][] reach = new int[row][col];
         int[][] distance = new int[row][col];
 
-        int num = searchPeople(grid, reach, distance, row, col);
+        searchPeople(grid, distance, row, col);
 
-        return getShortestDistance(grid, reach, distance, num);
+        return getShortestDistance(grid, distance);
     }
 
-    private int searchPeople(int[][] grid, int[][] reach, int[][] distance, int row, int col) {
+    private int searchPeople(int[][] grid, int[][] distance, int row, int col) {
         int num = 0;
 
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
                 if (grid[i][j] == 1) {
-                    updateDistance(grid, reach, distance, row, col, i, j);
+                    updateDistance(distance, row, col, i, j);
                     num++;
                 }
             }
@@ -36,7 +35,7 @@ public class BestMeetingPoint {
         return num;
     }
 
-    private void updateDistance(int[][] grid, int[][] reach, int[][] distance, int row, int col, int x, int y) {
+    private void updateDistance(int[][] distance, int row, int col, int x, int y) {
         Deque<int[]> queue = new ArrayDeque<>();
         queue.offer(new int[]{x, y});
         int cur = 1;
@@ -51,7 +50,6 @@ public class BestMeetingPoint {
                     int newY = pair[1] + dy[j];
                     if (newX >= 0 && newX < row && newY >= 0 && newY < col && !visited[newX][newY]) {
                         distance[newX][newY] += (Math.abs(newX - x) + Math.abs(newY - y));
-                        reach[newX][newY] += 1;
                         visited[newX][newY] = true;
                         queue.offer(new int[]{newX, newY});
                         next++;
@@ -62,7 +60,7 @@ public class BestMeetingPoint {
         }
     }
 
-    private int getShortestDistance(int[][] grid, int[][] reach, int[][] distance, int num) {
+    private int getShortestDistance(int[][] grid, int[][] distance) {
         int row = grid.length;
         int col = grid[0].length;
         int res = Integer.MAX_VALUE;
