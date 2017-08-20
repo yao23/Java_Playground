@@ -60,8 +60,6 @@ public class ShortestDistanceFromAllBuildings { // LC 317
         }
 
         return shortest == Integer.MAX_VALUE ? -1 : shortest;
-
-
     }
 
 
