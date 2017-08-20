@@ -7,7 +7,7 @@ public class BestMeetingPoint {
     private int[] dx = new int[]{-1, 1, 0, 0};
     private int[] dy = new int[]{0, 0, -1, 1};
 
-    public int minTotalDistance(int[][] grid) {
+    public int minTotalDistance(int[][] grid) { // TLE for test case 3 (pass 56/57)
         if (grid.length == 0 || grid[0].length == 0) {
             return 0;
         }
@@ -15,19 +15,28 @@ public class BestMeetingPoint {
         int col = grid[0].length;
         int[][] distance = new int[row][col];
 
-        searchPeople(grid, distance, row, col);
+        int num = searchPeople(grid, distance, row, col);
 
-        return getShortestDistance(grid, distance);
+        if (num == row * col) {
+            return distance[0][0];
+        } else {
+            return getShortestDistance(grid, distance);
+        }
     }
 
-    private void searchPeople(int[][] grid, int[][] distance, int row, int col) {
+    private int searchPeople(int[][] grid, int[][] distance, int row, int col) {
+        int num = 0;
+
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
                 if (grid[i][j] == 1) {
                     updateDistance(distance, row, col, i, j);
+                    num++;
                 }
             }
         }
+
+        return num;
     }
 
     private void updateDistance(int[][] distance, int row, int col, int x, int y) {
