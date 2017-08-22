@@ -1,6 +1,6 @@
 package com.leetcode.www;
 
-public class MinimumUniqueWordAbbreviation {
+public class MinimumUniqueWordAbbreviation { // LC 411
     public String minAbbreviation(String target, String[] dictionary) { // beats 98.79%
         char[] c = target.toCharArray();
         char[] tmp = new char[c.length];
@@ -88,5 +88,135 @@ public class MinimumUniqueWordAbbreviation {
             }
         }
         return false;
+    }
+
+    /**
+     *
+     * @param target
+     * @param dictionary
+     * @return
+     *
+     * Basically as commented, transform all dictionary words to binary form with 1 represent different char and
+     * 0 represent same char, while we transform target string using another binary form with 1 represent abbreviated
+     * char and 0 represent kept char.
+     * Example :
+
+     * Target : "apple", and test binary 01100 = a2le
+     * Dictionary : "accle" -> 01100
+
+     * Goal will be to find the shortest binary form which does not cover all difference bit of each word in dictionary:
+     * targetBinary & wordBinary != wordBinary
+     * Thus the test binary is not valid, instead we should use "1p3" (10111)
+     */
+    public String minAbbreviationV0(String target, String[] dictionary) {
+        if (target == null || target.length() == 0) {
+            return target;
+        }
+        if (dictionary.length == 0) {
+            return String.valueOf(target.length());
+        }
+        // Save the difference information say "abble" in dictionary against target "apple" : 01100
+        int[] binaryDict = new int[dictionary.length];
+        // Check if there are same length words in ditionary or not, save the loop effort
+        boolean exist = false;
+        for (int i = 0; i < target.length(); i++) {
+            for (int j = 0; j < dictionary.length; j++) {
+                String word = dictionary[j];
+                if (word.length() != target.length()) {
+                    continue;
+                }
+                exist = true;
+                if (word.charAt(i) != target.charAt(i)) {
+                    binaryDict[j] += (1 << i);
+                }
+            }
+        }
+        if (!exist) {
+            return String.valueOf(target.length());
+        }
+        // Use all 1 'binary' to initialize the check, which means abbreviating every char, 11111 : 5
+        int binary = generateAndCheck(binaryDict, (1 << target.length()) - 1, 0, target.length());
+        return binaryToString(target, binary);
+    }
+
+    // Recover string from the 'binary' for target, say "apple", then 01100 -> a2le
+    private String binaryToString(String target, int binary) {
+        StringBuilder builder = new StringBuilder();
+        int count = 0;
+        for (int i = 0; i < target.length(); i++) {
+            if (binary % 2 == 0) {
+                if (count != 0) {
+                    builder.append(count);
+                    count = 0;
+                }
+                builder.append(target.charAt(i));
+            } else {
+                count++;
+            }
+            binary >>>= 1;
+        }
+        if (count != 0) {
+            builder.append(count);
+        }
+        return builder.toString();
+    }
+
+    // Generate new 'binary' format of target and check with all words
+    private int generateAndCheck(int[] binaryDict, int target, int index, int length) {
+        // 0 is the ending condition with every char not abbreviated
+        if (index == length) {
+            return 0;
+        }
+        // Generate next binary (with bit at index set to 0)
+        int nextBinary = target - (1 << index);
+        boolean valid = true;
+        for (int i = 0; i < binaryDict.length; i++) {
+            // Which means either that word has different length or totally different characters
+            if (binaryDict[i] == 0) {
+                continue;
+            }
+            int check = binaryDict[i];
+            // Key : *The abbreviation bit* of binary format (or 1) of target *should not cover* all *difference bit* of the word, otherwise they is confict
+            // Like a4e (011110) will 'cover' appce (00010) or accle (01100)
+            valid = valid & ((nextBinary & check) != check);
+        }
+        int better = shorterBinary(generateAndCheck(binaryDict, nextBinary, index + 1, length),
+                generateAndCheck(binaryDict, target, index + 1, length));
+        if (valid) {
+            better = shorterBinary(better, nextBinary);
+        }
+        return better;
+    }
+    // Find a shorter binary format -> with more characters eliminated (continuous 1s)
+    private int shorterBinary(int i1, int i2) {
+        int count1 = 0;
+        int count2 = 0;
+        boolean flag1 = false;
+        boolean flag2 = false;
+        int temp1 = i1;
+        int temp2 = i2;
+        while (i1 != 0 || i2 != 0) {
+            if (i1 % 2 == 1) {
+                if (flag1) {
+                    count1++;
+                } else {
+                    flag1 = true;
+                }
+            } else {
+                flag1 = false;
+            }
+            if (i2 % 2 == 1) {
+                if (flag2) {
+                    count2++;
+                } else {
+                    flag2 = true;
+                }
+            } else {
+                flag2 = false;
+            }
+            i1 >>>= 1;
+            i2 >>>= 1;
+        }
+        return count1 > count2 ? temp1 : temp2;
     }
 }
