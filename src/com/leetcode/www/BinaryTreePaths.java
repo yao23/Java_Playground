@@ -1,11 +1,11 @@
-/**
+package com.leetcode.www; /**
  * Created by liyao on 6/18/17.
  */
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BinaryTreePaths {
+public class BinaryTreePaths { // LC 257
     private void helper(TreeNode root, StringBuilder sb, List<String> result) {
         if (root.left == null && root.right == null) {
             System.out.println("sb: " + sb);
