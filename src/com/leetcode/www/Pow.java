@@ -1,7 +1,15 @@
 package com.leetcode.www;
 
-public class Pow {
+public class Pow { // LC 50
     public double myPow(double x, int n) {
+        if (n > 0) {
+            return power(x, n);
+        } else {
+            return 1.0/power(x, -n);
+        }
+    }
+
+    private double power(double x, int n) {
         if (n == 0) {
             return 1;
         } else if (n == 1) {
@@ -14,11 +22,7 @@ public class Pow {
             } else { // odd
                 res = (half * half * x);
             }
-            if (n > 0) {
-                return res;
-            } else {
-                return 1.0/res;
-            }
+            return res;
         }
     }
 }
