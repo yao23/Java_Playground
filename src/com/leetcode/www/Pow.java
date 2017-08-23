@@ -26,6 +26,23 @@ public class Pow { // LC 50
         }
     }
 
+    public double myPowV1(double x, int n) { // beats 40.51%
+        if (n < 0) {
+            return (1 / x) * myPowV1(1 / x, -(n + 1));
+        }
+        if (n == 0) {
+            return 1;
+        }
+        if (n == 2) {
+            return x * x;
+        }
+        if (n % 2 == 0) {
+            return myPowV1(myPow(x, n / 2), 2);
+        } else {
+            return x * myPowV1(myPow(x, n / 2), 2);
+        }
+    }
+
     public double myPowV0(double x, int n) { // beast 78.25%
         if (n == 0) {
             return 1;
