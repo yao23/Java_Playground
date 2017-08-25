@@ -1,7 +1,9 @@
+package com.leetcode.www;
+
 /**
  * Created by liyao on 7/3/17.
  */
-public class ClimbingStairs {
+public class ClimbingStairs { // 70
     public int climbStairs(int n) {
         return climbV1(n);
     }
