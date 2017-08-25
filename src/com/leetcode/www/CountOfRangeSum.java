@@ -1,4 +1,6 @@
-public class CountOfRangeSum {
+package com.leetcode.www;
+
+public class CountOfRangeSum { // LC 327
     public static int countRangeSum(int[] nums, int lower, int upper) {
         int n = nums.length;
         long[] sums = new long[n + 1]; // pre-processed sums (hidden condition: sum element has index range info, don't worry about index messed after sorted
