@@ -1,11 +1,11 @@
-/**
+package com.leetcode.www; /**
  * Created by liyao on 6/10/17.
  */
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class CopyListWithRandomPointer {
+public class CopyListWithRandomPointer { // LC 138
     private void addNewNodes(RandomListNode head) { // add new nodes after original ones
         RandomListNode cur = head;
 
