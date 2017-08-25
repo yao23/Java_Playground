@@ -1,7 +1,9 @@
+package com.leetcode.www;
+
 /**
  * Created by liyao on 6/10/17.
  */
-public class ContainerWithMostWater {
+public class ContainerWithMostWater { // LC 11
     public int maxArea(int[] height) { // optimal solution
         int result = 0;
         int left = 0, right = height.length - 1;
