@@ -16,6 +16,18 @@ public class ReverseInteger { // LC 7
 
         return result;
     }
+
+    public int reverseV0(int x) { // beats 47.45%
+        long rev= 0;
+        while (x != 0) {
+            rev= rev * 10 + x % 10;
+            x = x / 10;
+            if (rev > Integer.MAX_VALUE || rev < Integer.MIN_VALUE) {
+                return 0;
+            }
+        }
+        return (int)rev;
+    }
 }
 
 // Example1: x = 123, return 321
