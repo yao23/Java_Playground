@@ -46,3 +46,6 @@ public class LongestPalindromicSubstring { // LC 5
         return s.substring(l_tmp, r_tmp + 1);
     }
 }
+
+// Input: "babad", Output: "bab" (Note: "aba" is also a valid answer.)
+// Input: "cbbd", Output: "bb"
