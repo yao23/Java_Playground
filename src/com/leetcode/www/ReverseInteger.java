@@ -1,6 +1,6 @@
 package com.leetcode.www;
 
-public class ReverseInteger {
+public class ReverseInteger { // LC 7
     public int reverse(int x) { // beats 41.73%
         int result = 0;
 
@@ -17,3 +17,6 @@ public class ReverseInteger {
         return result;
     }
 }
+
+// Example1: x = 123, return 321
+// Example2: x = -123, return -321
