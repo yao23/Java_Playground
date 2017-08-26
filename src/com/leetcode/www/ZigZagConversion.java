@@ -1,7 +1,7 @@
 package com.leetcode.www;
 
-public class ZigZagConversion {
-    public String convert(String s, int nRows) {
+public class ZigZagConversion { // LC 6
+    public String convert(String s, int nRows) { // 97.48%
         if (s == null || s.length() == 0 || nRows <= 1) {
             return s;
         } else {
@@ -37,3 +37,8 @@ public class ZigZagConversion {
         return stringBuilder.toString();
     }
 }
+
+// "PAYPALISHIRING", 3 => "PAHNAPLSIIGYIR
+// P   A   H   N
+// A P L S I I G
+// Y   I   R
