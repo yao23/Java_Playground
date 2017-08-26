@@ -1,9 +1,9 @@
-/**
+package com.leetcode.www; /**
  * Created by liyao on 6/24/17.
  */
 import java.util.*;
 
-public class CourseScheduleII {
+public class CourseScheduleII { // LC 210
     public int[] findOrder(int numCourses, int[][] prerequisites) {
         int row = prerequisites.length;
         if (row <= 1) {
