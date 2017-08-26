@@ -1,3 +1,5 @@
+package com.leetcode.www;
+
 public class DeleteNodeInABST { // LC 450
     public TreeNode deleteNode(TreeNode root, int key) {
         if (root == null) {
