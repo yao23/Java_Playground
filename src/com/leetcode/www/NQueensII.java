@@ -1,6 +1,6 @@
 package com.leetcode.www;
 
-public class NQueensII {
+public class NQueensII { // LC 52
     private int numSol;
     private int upper;
 
