@@ -1,10 +1,10 @@
-/**
+package com.leetcode.www; /**
  * Created by liyao on 6/22/17.
  */
 
 import java.util.*;
 
-public class CourseSchedule {
+public class CourseSchedule { // LC 207
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         int row = prerequisites.length;
         if (row <= 1) {
