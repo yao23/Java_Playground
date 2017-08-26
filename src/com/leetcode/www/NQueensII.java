@@ -27,3 +27,5 @@ public class NQueensII { // LC 52
         }
     }
 }
+
+// beats 98.71%
