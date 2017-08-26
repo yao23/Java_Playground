@@ -1,7 +1,9 @@
+package com.leetcode.www;
+
 /**
  * Created by liyao on 7/17/17.
  */
-public class DesignCompressedStringIterator {
+public class DesignCompressedStringIterator { // LC 604
     class StringIterator {
         private int curIdx;
         private char curLetter;
