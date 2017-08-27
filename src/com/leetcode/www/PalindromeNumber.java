@@ -1,23 +1,24 @@
 package com.leetcode.www;
 
-public class PalindromeNumber {
+public class PalindromeNumber { // LC 9
     public boolean isPalindrome(int x) { // beats 59.23%
-        if( x < 0 ) return false;
-        int ReverseX = ReverseNum(x);
-        if( x == ReverseX )
-            return true;
-        else
+        if (x < 0) {
             return false;
+        }
+        int reverseX = reverseNum(x);
+        return x == reverseX;
     }
-    private int ReverseNum(int x) {
-        boolean negative = x < 0 ? true : false;
+
+    private int reverseNum(int x) {
+        boolean negative = x < 0;
         int x_tmp = Math.abs(x), result = 0;
-        while( x_tmp > 0 ) {
+        while (x_tmp > 0) {
             result = result * 10 + x_tmp % 10;
             x_tmp /= 10;
         }
-        if( negative )
+        if (negative) {
             result *= (-1);
+        }
         return result;
     }
     public boolean isPalindrome2(int x) {
