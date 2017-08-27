@@ -21,28 +21,31 @@ public class PalindromeNumber { // LC 9
         }
         return result;
     }
+
     public boolean isPalindrome2(int x) {
-        if( x < 0 )	return false;
-        int x_tmp = x, TopDivider = 1;
-        int TopDigit = 0, LastDigit = 0;
+        if (x < 0) {
+            return false;
+        }
+        int x_tmp = x, topDivider = 1;
+        int topDigit = 0, lastDigit = 0;
         boolean flag = true;
 
-        while( x_tmp / 10 > 0 ) {
-            TopDivider *= 10;
+        while (x_tmp / 10 > 0) {
+            topDivider *= 10;
             x_tmp /= 10;
         }
 
         x_tmp = x;
 
-        while( x_tmp > 0 ) {
-            TopDigit = x_tmp / TopDivider;
-            LastDigit = x_tmp % 10;
-            if( TopDigit != LastDigit ) {
+        while (x_tmp > 0) {
+            topDigit = x_tmp / topDivider;
+            lastDigit = x_tmp % 10;
+            if (topDigit != lastDigit) {
                 flag = false;
                 break;
             }
-            x_tmp = x_tmp % TopDivider / 10;
-            TopDivider /= 100;
+            x_tmp = x_tmp % topDivider / 10;
+            topDivider /= 100;
         }
 
         return flag;
