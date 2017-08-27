@@ -25,4 +25,6 @@ public class StringToInteger { // LC 8
     }
 }
 
+// "" => 0
+// "9223372036854775809" => 2147483647 (Integer.MAX_VALUE)
 // beats 94.72%
