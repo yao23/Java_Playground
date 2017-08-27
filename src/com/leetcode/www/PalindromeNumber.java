@@ -22,7 +22,7 @@ public class PalindromeNumber { // LC 9
         return result;
     }
 
-    public boolean isPalindrome2(int x) {
+    public boolean isPalindromeV0(int x) { // beast 92.10%
         if (x < 0) {
             return false;
         }
