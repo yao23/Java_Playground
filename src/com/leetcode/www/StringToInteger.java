@@ -24,3 +24,5 @@ public class StringToInteger { // LC 8
         return sign * ans;
     }
 }
+
+// beats 94.72%
