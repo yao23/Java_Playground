@@ -2,18 +2,20 @@ package com.leetcode.www;
 
 public class RomanToInteger { // LC 13
     public int romanToInt(String s) {
-        if( s == null || s.length() == 0 )
+        if (s == null || s.length() == 0) {
             return 0;
+        }
         int result = 0;
-        for( int i = 0; i < s.length(); i++ ) {
-            if( (i > 0) && ChartoInt(s.charAt(i-1)) < ChartoInt(s.charAt(i)))
-                result += (ChartoInt(s.charAt(i)) - ChartoInt(s.charAt(i-1))*2);
-            else
-                result += ChartoInt(s.charAt(i));
+        for (int i = 0; i < s.length(); i++) {
+            if ((i > 0) && chartoInt(s.charAt(i - 1)) < chartoInt(s.charAt(i))) {
+                result += (chartoInt(s.charAt(i)) - chartoInt(s.charAt(i - 1)) * 2);
+            } else {
+                result += chartoInt(s.charAt(i));
+            }
         }
         return result;
     }
-    private int ChartoInt(char c) {
+    private int chartoInt(char c) {
         switch(c) {
             case 'I':
                 return 1;
