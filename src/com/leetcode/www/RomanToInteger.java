@@ -1,7 +1,7 @@
 package com.leetcode.www;
 
-public class RomanToInteger {
-    public int romanToInt(String s) {
+public class RomanToInteger { // LC 13
+    public int romanToInt(String s) { // beats 34.27%
         int nums[] = new int[s.length()];
         for (int i = 0; i < s.length(); i++) {
             switch (s.charAt(i)) {
