@@ -1,7 +1,9 @@
+package com.leetcode.www;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class EncodeAndDecodeStrings {
+public class EncodeAndDecodeStrings { // LC 271
 
     // Encodes a list of strings to a single string.
     public static String encode(List<String> strs) {
