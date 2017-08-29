@@ -1,9 +1,9 @@
-/**
+package com.leetcode.www; /**
  * Created by liyao on 6/29/17.
  */
 import java.util.*;
 
-public class EvaluateDivision {
+public class EvaluateDivision { // LC 399
     public double[] calcEquation(String[][] equations, double[] values, String[][] queries) {
         HashMap<String, ArrayList<String>> pairs = new HashMap<>();
         HashMap<String, ArrayList<Double>> valuesPair = new HashMap<>();
