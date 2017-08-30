@@ -1,7 +1,7 @@
 /**
  * Created by liyao on 6/18/17.
  */
-public class FindMinimumInRotatedSortedArray {
+public class FindMinimumInRotatedSortedArray { // LC 153
     public int findMin(int[] nums) {
         int min = Integer.MIN_VALUE;
         int len = nums.length;
