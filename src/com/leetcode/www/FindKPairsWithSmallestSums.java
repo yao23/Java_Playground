@@ -1,9 +1,9 @@
-/**
+package com.leetcode.www; /**
  * Created by liyao on 6/25/17.
  */
 import java.util.*;
 
-public class FindKPairsWithSmallestSums {
+public class FindKPairsWithSmallestSums { // LC 373
     public List<int[]> kSmallestPairs(int[] nums1, int[] nums2, int k) {
         List<int[]> result = new ArrayList<>();
         int len1 = nums1.length;
