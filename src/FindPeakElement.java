@@ -1,7 +1,7 @@
 /**
  * Created by liyao on 6/19/17.
  */
-public class FindPeakElement {
+public class FindPeakElement { // LC 162
     public int findPeakElement(int[] nums) {
         int len = nums.length;
         if (len == 0) {
