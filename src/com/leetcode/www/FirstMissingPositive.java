@@ -1,4 +1,6 @@
-public class FirstMissingPositive {
+package com.leetcode.www;
+
+public class FirstMissingPositive { // LC 41
     public int firstMissingPositive(int[] nums) {
         if (nums.length == 0) {
             return 1;
