@@ -1,7 +1,9 @@
+package com.leetcode.www;
+
 import java.util.HashSet;
 import java.util.Set;
 
-public class FriendCircles {
+public class FriendCircles { // LC 547
     private int[] parents;
     private Set<Integer> circles;
 
