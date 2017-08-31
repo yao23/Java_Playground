@@ -1,10 +1,11 @@
-/**
+package com.leetcode.www; /**
  * Created by liyao on 7/13/17.
  */
 import java.util.Iterator;
 import java.util.List;
 import java.util.ArrayList;
 
+// LC 251
 public class Flatten2DVector { // use 2 iterators to access outer and inner list, beats 17.97
     Iterator<List<Integer>> outer;
     Iterator<Integer> inner;
