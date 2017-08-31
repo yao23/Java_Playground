@@ -1,11 +1,11 @@
-/**
+package com.leetcode.www; /**
  * Created by liyao on 6/13/17.
  */
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class FractionToRecurringDecimal {
+public class FractionToRecurringDecimal { // LC 166
     public String fractionToDecimal(int numerator, int denominator) {
         if (denominator == 0) {
             return "";
