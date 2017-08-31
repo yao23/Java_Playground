@@ -3,7 +3,7 @@ import java.util.*;
 /**
  * Created by liyao on 7/17/17.
  */
-public class FlattenNestedListIterator {
+public class FlattenNestedListIterator { // LC 341
     /**
      * // This is the interface that allows for creating nested lists.
      * // You should not implement it, or speculate about its implementation
