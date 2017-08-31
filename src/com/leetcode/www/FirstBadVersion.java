@@ -1,7 +1,9 @@
+package com.leetcode.www;
+
 /**
  * Created by liyao on 6/18/17.
  */
-public class FirstBadVersion {
+public class FirstBadVersion { // LC 278
     private boolean isBadVersion(int version) {
         return false; // not correct, should be given in problem and temp return value to avoid error without return value
     }
