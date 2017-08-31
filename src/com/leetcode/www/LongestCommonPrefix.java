@@ -2,9 +2,9 @@ package com.leetcode.www;
 
 public class LongestCommonPrefix { // LC 14
     public String longestCommonPrefix(String[] strs) { // beats 26.72%
-        String CommonPrefix = "";
+        String commonPrefix = "";
         if (strs.length == 0) {
-            return CommonPrefix;
+            return commonPrefix;
         }
         int prefixIndex = 0;
 
@@ -25,10 +25,10 @@ public class LongestCommonPrefix { // LC 14
             if (i != strs.length) {
                 break;
             }
-            CommonPrefix += c;
+            commonPrefix += c;
             prefixIndex++;
         }
 
-        return CommonPrefix;
+        return commonPrefix;
     }
 }
