@@ -9,7 +9,7 @@ public class LongestCommonPrefix { // LC 14
         int i = 1;
         while (i < strs.length) {
             while (strs[i].indexOf(pre) != 0) {
-                pre = pre.substring(0, pre.length() - 1);
+                pre = pre.substring(0, pre.length() - 1); // shorten the word
             }
             i++;
         }
