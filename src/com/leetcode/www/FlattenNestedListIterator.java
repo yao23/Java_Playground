@@ -1,3 +1,5 @@
+package com.leetcode.www;
+
 import java.util.*;
 
 /**
@@ -7,18 +9,18 @@ public class FlattenNestedListIterator { // LC 341
     /**
      * // This is the interface that allows for creating nested lists.
      * // You should not implement it, or speculate about its implementation
-     * public interface NestedInteger {
+     * public interface com.leetcode.www.NestedInteger {
      *
-     *     // @return true if this NestedInteger holds a single integer, rather than a nested list.
+     *     // @return true if this com.leetcode.www.NestedInteger holds a single integer, rather than a nested list.
      *     public boolean isInteger();
      *
-     *     // @return the single integer that this NestedInteger holds, if it holds a single integer
-     *     // Return null if this NestedInteger holds a nested list
+     *     // @return the single integer that this com.leetcode.www.NestedInteger holds, if it holds a single integer
+     *     // Return null if this com.leetcode.www.NestedInteger holds a nested list
      *     public Integer getInteger();
      *
-     *     // @return the nested list that this NestedInteger holds, if it holds a nested list
-     *     // Return null if this NestedInteger holds a single integer
-     *     public List<NestedInteger> getList();
+     *     // @return the nested list that this com.leetcode.www.NestedInteger holds, if it holds a nested list
+     *     // Return null if this com.leetcode.www.NestedInteger holds a single integer
+     *     public List<com.leetcode.www.NestedInteger> getList();
      * }
      */
     class NestedIterator implements Iterator<Integer> { // beats 50.76%
