@@ -5,34 +5,37 @@ import java.util.PriorityQueue;
 
 public class MergeKSortedLists {
     public ListNode mergeKLists(ListNode[] lists) {
-        if( lists == null || lists.length == 0 )
+        if (lists == null || lists.length == 0) {
             return null;
-        Comparator<ListNode> comparator = new Comparator<ListNode>() {
-            public int compare(ListNode m, ListNode n) {
-                if( m.val == n.val )	return 0;
-                else if( m.val > n.val )
-                    return 1;
+        }
+        Comparator<ListNode> comparator = (m, n) -> {
+            if (m.val == n.val)	{
+                return 0;
+            } else if (m.val > n.val) {
+                return 1;
+            } else {
                 return -1;
             }
         };
 
-        PriorityQueue<ListNode> PQ = new PriorityQueue<ListNode>(lists.length, comparator);
-        for( int i = 0; i < lists.length; i++ ) {
-            if( lists[i] != null )
-                PQ.add(lists[i]);
+        PriorityQueue<ListNode> pq = new PriorityQueue<>(lists.length, comparator);
+        for (int i = 0; i < lists.length; i++) {
+            if (lists[i] != null) {
+                pq.add(lists[i]);
+            }
         }
         ListNode head = null, cur = null;
-        while( !PQ.isEmpty() ) {
-            if( head == null ) {
-                head = PQ.poll();
+        while (!pq.isEmpty()) {
+            if (head == null) {
+                head = pq.poll();
                 cur = head;
-            }
-            else {
-                cur.next = PQ.poll();
+            } else {
+                cur.next = pq.poll();
                 cur = cur.next;
             }
-            if( cur.next != null )
-                PQ.add(cur.next);
+            if (cur.next != null) {
+                pq.add(cur.next);
+            }
         }
 
         return head;
