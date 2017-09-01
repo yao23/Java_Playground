@@ -3,7 +3,7 @@
  */
 import java.util.*;
 
-public class GroupAnagrams {
+public class GroupAnagrams { // LC 49
     private String sortString(String str) {
         char[] charArray = str.toCharArray();
         Arrays.sort(charArray);
