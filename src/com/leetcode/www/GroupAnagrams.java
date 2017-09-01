@@ -1,4 +1,4 @@
-/**
+package com.leetcode.www; /**
  * Created by liyao on 6/10/17.
  */
 import java.util.*;
