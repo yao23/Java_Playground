@@ -20,6 +20,18 @@ public class RemoveElement { // LC 27
         }
         return current;
     }
+
+    public int removeElementV0(int[] nums, int val) { // beats 53.30%
+        int cur = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != val) {
+                nums[cur] = nums[i];
+                cur++;
+            }
+        }
+
+        return cur;
+    }
 }
 
 // [3,2,2,3], val = 3 => [2,2]
