@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class SubstringWithConcatenationOfAllWords { // LC 30
-    public List<Integer> findSubstring(String s, String[] words) {
+    public List<Integer> findSubstring(String s, String[] words) { // beats 37.46%
         List<Integer> res = new ArrayList<>();
         if (s == null || words == null || words.length == 0) {
             return res;
