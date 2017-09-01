@@ -3,8 +3,8 @@ package com.leetcode.www;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-public class MergeKSortedLists {
-    public ListNode mergeKLists(ListNode[] lists) {
+public class MergeKSortedLists { // LC 23
+    public ListNode mergeKLists(ListNode[] lists) { // beats 53.73%
         if (lists == null || lists.length == 0) {
             return null;
         }
