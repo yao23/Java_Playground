@@ -1,3 +1,5 @@
+package com.leetcode.www;
+
 /**
  * Created by liyao on 7/5/17.
  */
