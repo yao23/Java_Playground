@@ -42,3 +42,5 @@ public class SubstringWithConcatenationOfAllWords { // LC 30
         return res;
     }
 }
+
+// s: "barfoothefoobarman", words: ["foo", "bar"] => [0,9]
