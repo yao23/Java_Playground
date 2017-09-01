@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GenerateParentheses { // LC 22
-    public List<String> generateParenthesis(int n) {
+    public List<String> generateParenthesis(int n) { // beats 29.14%
         List<String> results = new ArrayList<>();
         if (n <= 0) {
             return results;
