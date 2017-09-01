@@ -1,7 +1,7 @@
 /**
  * Created by liyao on 7/5/17.
  */
-public class HouseRobber {
+public class HouseRobber { // LC 198
     public int rob(int[] nums) {
         int len = nums.length;
         if (len == 0) {
