@@ -3,7 +3,7 @@ package com.leetcode.www;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GenerateParentheses {
+public class GenerateParentheses { // LC 22
     public List<String> generateParenthesis(int n) {
         List<String> results = new ArrayList<>();
         if (n <= 0) {
@@ -30,3 +30,13 @@ public class GenerateParentheses {
         }
     }
 }
+
+// n = 3
+
+// [
+//    "((()))",
+//    "(()())",
+//    "(())()",
+//    "()(())",
+//    "()()()"
+// ]
