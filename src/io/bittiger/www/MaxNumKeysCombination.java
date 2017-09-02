@@ -11,4 +11,27 @@ public class MaxNumKeysCombination {
         }
         return   dp[n];
     }
+
+    public int maxAV0(int N) {
+        if (N <= 6) {
+            return N;
+        } else {
+            int[] dp = new int[N + 1];
+            for (int i = 0; i <= N; i++) {
+                dp[i] = i;
+            }
+            for (int i = 3; i < N - 2; i++) {
+                int num = dp[i] * 2;
+                int j = i + 3;
+                dp[j] = Math.max(dp[j], num);
+                while (j < N) {
+                    num += dp[i];
+                    j++;
+                    dp[j] = Math.max(dp[j], num);
+                }
+            }
+            return dp[N];
+        }
+    }
+
 }
