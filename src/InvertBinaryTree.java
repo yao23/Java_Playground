@@ -1,7 +1,7 @@
 /**
  * Created by liyao on 6/5/17.
  */
-public class InvertBinaryTree {
+public class InvertBinaryTree { // LC 226
     private void swap(TreeNode left, TreeNode right, TreeNode root) {
         TreeNode tmp = right;
         root.right = root.left;
