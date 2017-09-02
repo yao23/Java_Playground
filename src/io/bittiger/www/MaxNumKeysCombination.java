@@ -33,5 +33,8 @@ public class MaxNumKeysCombination {
             return dp[N];
         }
     }
-
 }
+
+// http://articles.leetcode.com/ctrla-ctrlc-ctrlv/
+// http://www.geeksforgeeks.org/how-to-print-maximum-number-of-a-using-given-four-keys/
+// http://www.cnblogs.com/grandyang/p/7448390.html
