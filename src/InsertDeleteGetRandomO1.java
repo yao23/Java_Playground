@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-public class InsertDeleteGetRandomO1 {
+public class InsertDeleteGetRandomO1 { // LC 380
     public class RandomizedSet {
         private Map<Integer, Integer> map; // store <inputElement, curIndex> for insert and remove in o(1)
         private Map<Integer, Integer> helperMap; // store <curIndex, inputElement> for getRandom in o(1)
