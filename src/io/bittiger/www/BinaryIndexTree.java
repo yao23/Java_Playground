@@ -1,3 +1,5 @@
+package io.bittiger.www;
+
 public class BinaryIndexTree {
     class NumArray {
         int[] nums;
