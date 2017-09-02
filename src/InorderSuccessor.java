@@ -5,7 +5,7 @@
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class InorderSuccessor {
+public class InorderSuccessor { // LC 285
     public TreeNode inorderSuccessor(TreeNode root, TreeNode p) { // from CLRS, beats 44.98%
         TreeNode res = null;
         while (root != null) {
