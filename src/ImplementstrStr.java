@@ -1,7 +1,7 @@
 /**
  * Created by liyao on 7/10/17.
  */
-public class ImplementstrStr {
+public class ImplementstrStr { // LC 28
     public int strStr(String haystack, String needle) {
         int firstIdx = -1;
         if (haystack.length() < needle.length()) {
