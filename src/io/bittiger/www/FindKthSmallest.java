@@ -1,3 +1,5 @@
+package io.bittiger.www;
+
 public class FindKthSmallest {
     private int findKthSmallest(int[] a, int[] b, int aStart, int aEnd, int bStart, int bEnd, int k) {
         if (aStart >= a.length) {
