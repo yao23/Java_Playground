@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class PerfectSubsets {
     private int counter = 0;
-    public int getPerfectCount(int[]   nums) {
+    public int getPerfectCount(int[] nums) {
         if (nums == null || nums.length == 0) {
             return -1;
         }
