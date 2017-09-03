@@ -1,11 +1,11 @@
-/**
+package com.leetcode.www; /**
  * Created by liyao on 7/2/17.
  */
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class NQueens {
+public class NQueens { // LC 51
     public List<List<String>> solveNQueens(int n) {
         List<List<String>> result = new ArrayList<>();
         if (n == 0) {
