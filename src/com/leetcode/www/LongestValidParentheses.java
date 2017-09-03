@@ -6,20 +6,20 @@ import java.util.Deque;
 public class LongestValidParentheses {
     public int longestValidParentheses(String s) {
         int max = 0;
-        Deque<Node> stack = new ArrayDeque<Node>();
+        Deque<Node> stack = new ArrayDeque<>();
         stack.push(new Node(')', -1));
-        for( int i = 0; i < s.length(); i++ ) {
+        for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            if( c == '(' )
+            if (c == '(') {
                 stack.push(new Node(c, i));
-            else {
+            } else {
                 Node top = stack.peek();
-                if( top.c == '(' ) {
+                if (top.c == '(') {
                     stack.pop();
                     max = Math.max(max, i - stack.peek().i);
-                }
-                else
+                } else {
                     stack.push(new Node(c, i));
+                }
             }
         }
         return max;
