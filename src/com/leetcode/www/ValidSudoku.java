@@ -1,5 +1,8 @@
 package com.leetcode.www;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class ValidSudoku { // LC 36
     public boolean isValidSudoku(char[][] board) { // beats 60.24%
         int[][] table = new int[27][9];
@@ -25,6 +28,28 @@ public class ValidSudoku { // LC 36
                     return false;
                 }
                 table[sNdx + 18][val - 1] = 1;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * https://discuss.leetcode.com/topic/27436/short-simple-java-using-strings
+     *
+     * @param board
+     * @return
+     */
+    public boolean isValidSudokuV0(char[][] board) { // beats 50.66%
+        Set seen = new HashSet();
+        for (int i = 0; i < 9; ++i) {
+            for (int j = 0; j < 9; ++j) {
+                char number = board[i][j];
+                if (number != '.') {
+                    if (!seen.add(number + " in row " + i) || !seen.add(number + " in column " + j) ||
+                            !seen.add(number + " in block " + i / 3 + "-" + j / 3)) {
+                        return false;
+                    }
+                }
             }
         }
         return true;
