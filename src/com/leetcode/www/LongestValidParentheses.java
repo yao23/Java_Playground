@@ -3,8 +3,8 @@ package com.leetcode.www;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class LongestValidParentheses {
-    public int longestValidParentheses(String s) {
+public class LongestValidParentheses { // LC 32
+    public int longestValidParentheses(String s) { // beats 36.25%
         int max = 0;
         Deque<Node> stack = new ArrayDeque<>();
         stack.push(new Node(')', -1));
