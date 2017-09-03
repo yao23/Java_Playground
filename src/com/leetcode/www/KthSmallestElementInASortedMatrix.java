@@ -1,9 +1,9 @@
-/**
+package com.leetcode.www; /**
  * Created by liyao on 6/26/17.
  */
 import java.util.PriorityQueue;
 
-public class KthSmallestElementInASortedMatrix {
+public class KthSmallestElementInASortedMatrix { // LC 378
     public int kthSmallest(int[][] matrix, int k) { // binary search
         int row = matrix.length;
         if (row == 0) {
