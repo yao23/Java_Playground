@@ -40,6 +40,28 @@ public class NextPermutation { // LC 31
         num[m] = num[n];
         num[n] = tmp;
     }
+
+    public void nextPermutationV0(int[] nums) { // beats 57.12%
+        if (nums == null || nums.length <= 1) {
+            return;
+        }
+        int i = nums.length - 2;
+        while (i >= 0 && nums[i] >= nums[i + 1]) {
+            i--; // find 1st id i that breaks descending order
+        }
+        // if not entirely descending
+        if (i >= 0) {
+            // start from the end
+            int j = nums.length - 1;
+            // find rightmost first larger id j
+            while (nums[j] <= nums[i]) {
+                j--;
+            }
+            swap(i, j, nums);
+        }
+        // reverse the descending sequence
+        reverseArray(i + 1, nums.length - 1, nums);
+    }
 }
 
 // 1,2,3 → 1,3,2
