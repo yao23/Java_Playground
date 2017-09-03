@@ -1,7 +1,7 @@
 package io.bittiger.www;
 
 public class FindFirstColumnHasOne {
-    public int getFirstColumnContainsOne(int[][] nums) {
+    public int getFirstColumnContainsOne(int[][] nums) { // time: O(M + N)
         if (nums == null || nums.length == 0) { // corner case
             return -1;
         }
