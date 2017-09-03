@@ -1,7 +1,7 @@
 package com.leetcode.www;
 
-public class NextPermutation {
-    public void nextPermutation(int[] nums) {
+public class NextPermutation { // LC 31
+    public void nextPermutation(int[] nums) { // beasts 40.19%
         int index = -1;
         for (int i = nums.length - 1; i > 0; i--) {
             if (nums[i - 1] < nums[i]) {
@@ -41,3 +41,7 @@ public class NextPermutation {
         num[n] = tmp;
     }
 }
+
+// 1,2,3 → 1,3,2
+// 3,2,1 → 1,2,3
+// 1,1,5 → 1,5,1
