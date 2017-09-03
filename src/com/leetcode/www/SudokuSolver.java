@@ -1,7 +1,7 @@
 package com.leetcode.www;
 
-public class SudokuSolver {
-    public void solveSudoku(char[][] board) {
+public class SudokuSolver { // LC 37
+    public void solveSudoku(char[][] board) { // beast 57.67%
         solveSudokuRecursive(board);
     }
     private boolean solveSudokuRecursive(char[][] board) {
