@@ -1,7 +1,7 @@
 package com.leetcode.www;
 
-public class CountAndSay {
-    public String countAndSay(int n) {
+public class CountAndSay { // LC 38
+    public String countAndSay(int n) { // beats 14.84%
         String result = "1";
         for (int i = 1; i < n; i++) {
             result = countAndCreate(result);
