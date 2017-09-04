@@ -1,7 +1,7 @@
 package com.leetcode.www;
 
-public class MultiplyStrings {
-    public String multiply(String num1, String num2) {
+public class MultiplyStrings { // 43
+    public String multiply(String num1, String num2) { // beats 97.37%
         int len1 = num1.length();
         int len2 = num2.length();
         int[] num = new int[len1 + len2 + 1];
