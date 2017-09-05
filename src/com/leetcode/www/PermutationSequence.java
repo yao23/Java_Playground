@@ -1,7 +1,7 @@
 package com.leetcode.www;
 
-public class PermutationSequence {
-    public String getPermutation(int n, int k) {
+public class PermutationSequence { // LC 60
+    public String getPermutation(int n, int k) { // beats 75.06%
         int[] num = new int[n];
         int count = 1, k_tmp = k;
         for (int i = 0; i < n; i++) {
