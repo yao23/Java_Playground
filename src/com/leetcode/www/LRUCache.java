@@ -1,11 +1,11 @@
-/**
+package com.leetcode.www; /**
  * Created by liyao on 7/11/17.
  */
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class LRUCache {
+public class LRUCache { // LC 146
     class Node {
         int key;
         int value;
@@ -86,15 +86,15 @@ public class LRUCache {
         node.next.prev = node;
     }
 
-    // ["LRUCache","put","put","get","put","get","put","get","get","get"], [[2],[1,1],[2,2],[1],[3,3],[2],[4,4],[1],[3],[4]] => [null,null,null,1,null,-1,null,-1,3,4]
-    // ["LRUCache","put","put","get","put","put","get"], [[2],[2,1],[2,2],[2],[1,1],[4,1],[2]] => [null,null,null,2,null,null,-1]
+    // ["com.leetcode.www.LRUCache","put","put","get","put","get","put","get","get","get"], [[2],[1,1],[2,2],[1],[3,3],[2],[4,4],[1],[3],[4]] => [null,null,null,1,null,-1,null,-1,3,4]
+    // ["com.leetcode.www.LRUCache","put","put","get","put","put","get"], [[2],[2,1],[2,2],[2],[1,1],[4,1],[2]] => [null,null,null,2,null,null,-1]
 
     // beats 49.65%
 }
 
 /**
- * Your LRUCache object will be instantiated and called as such:
- * LRUCache obj = new LRUCache(capacity);
+ * Your com.leetcode.www.LRUCache object will be instantiated and called as such:
+ * com.leetcode.www.LRUCache obj = new com.leetcode.www.LRUCache(capacity);
  * int param_1 = obj.get(key);
  * obj.put(key,value);
  */
