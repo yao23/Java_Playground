@@ -1,7 +1,7 @@
 package com.leetcode.www;
 
-public class SpiralMatrixII {
-    public int[][] generateMatrix(int n) {
+public class SpiralMatrixII { // LC 59
+    public int[][] generateMatrix(int n) { // beats 46.64%
         if (n <= 0) {
             return new int[0][];
         }
