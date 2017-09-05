@@ -1,10 +1,10 @@
-/**
+package com.leetcode.www; /**
  * Created by liyao on 6/11/17.
  */
 import java.util.List;
 import java.util.ArrayList;
 
-public class LetterCombinationsOfAPhoneNumber {
+public class LetterCombinationsOfAPhoneNumber { // LC 17
     private char[] getLetters(char c) {
         char[] letters;
         switch (c) {
