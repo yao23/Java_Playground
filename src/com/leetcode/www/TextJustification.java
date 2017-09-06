@@ -47,3 +47,12 @@ public class TextJustification { // LC 68
         }
     }
 }
+
+// words: ["This", "is", "an", "example", "of", "text", "justification."]
+// maxWidth (L): 16.
+
+// [
+//   "This    is    an"
+//   "example  of text",
+//   "justification.  "
+// ]
