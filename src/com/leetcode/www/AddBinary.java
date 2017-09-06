@@ -29,4 +29,19 @@ public class AddBinary { // LC 67
         sum.reverse();
         return sum.toString();
     }
+
+    public String addBinaryV0(String a, String b) { // beats 44.49%
+        int aLength = a.length();
+        int bLength = b.length();
+        StringBuilder sb = new StringBuilder();
+        int carry = 0;
+        while (Math.max(aLength, bLength) > 0) {
+            int aNum = aLength > 0 ? (a.charAt(aLength-- - 1) - '0') : 0;
+            int bNum = bLength > 0 ? (b.charAt(bLength-- - 1) - '0') : 0;
+            int cNum = aNum + bNum + carry;
+            sb.append(cNum % 2);
+            carry = cNum / 2;
+        }
+        return (carry == 1) ? sb.append(1).reverse().toString() : sb.reverse().toString();
+    }
 }
