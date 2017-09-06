@@ -1,7 +1,7 @@
 package com.leetcode.www;
 
-public class ValidNumber {
-    public boolean isNumber(String s) {
+public class ValidNumber { // LC 65
+    public boolean isNumber(String s) { // beats 28.67%
         if (s == null) {
             return false;
         }
