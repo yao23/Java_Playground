@@ -3,8 +3,8 @@ package com.leetcode.www;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TextJustification {
-    public List<String> fullJustify(String[] words, int maxWidth) {
+public class TextJustification { // LC 68
+    public List<String> fullJustify(String[] words, int maxWidth) { // beats 21.53%
         List<String> res = new ArrayList<>();
         int wordsCount = words.length;
         int curLen = 0, lastI = 0;
