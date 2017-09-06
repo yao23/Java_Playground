@@ -1,7 +1,7 @@
 package com.leetcode.www;
 
-public class RotateList {
-    public ListNode rotateRight(ListNode head, int k) {
+public class RotateList { // LC 61
+    public ListNode rotateRight(ListNode head, int k) { // beats 54.34%
         if (head == null || k == 0)	{
             return head;
         }
