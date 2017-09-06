@@ -1,7 +1,7 @@
 package com.leetcode.www;
 
-public class AddBinary {
-    public String addBinary(String a, String b) {
+public class AddBinary { // LC 67
+    public String addBinary(String a, String b) { // beats 27.70%
         if (a == null || a.equals("")) {
             return b;
         }
