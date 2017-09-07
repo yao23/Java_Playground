@@ -2,6 +2,7 @@ package com.leetcode.www;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.Iterator;
 
 public class SimplifyPath {
     public String simplifyPath(String path) {
@@ -17,7 +18,9 @@ public class SimplifyPath {
             }
         }
         StringBuilder res = new StringBuilder();
-        for (String s : stack) {
+        Iterator it = stack.descendingIterator();
+        while(it.hasNext()) { // do something with it.next()
+            String s = it.next().toString();
             res.append("/" + s);
         }
         if (res.length() == 0) {
