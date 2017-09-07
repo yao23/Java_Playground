@@ -1,7 +1,7 @@
 package com.leetcode.www;
 
-public class SetMatrixZeroes {
-    public void setZeroes(int[][] matrix) {
+public class SetMatrixZeroes { // LC 73
+    public void setZeroes(int[][] matrix) { // beats 20.95%
         int r = matrix.length;
         int c = matrix[0].length;
         if( r == 0 || c == 0 ) return;
