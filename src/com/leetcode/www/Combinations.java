@@ -5,12 +5,12 @@ import java.util.List;
 
 public class Combinations { // LC 77
     public List<List<Integer>> combine(int n, int k) { // beats 86.29%
-        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        List<List<Integer>> result = new ArrayList<>();
         if (k > n || k < 0) {
             return result;
         }
         if (k == 0) {
-            result.add(new ArrayList<Integer>());
+            result.add(new ArrayList<>());
             return result;
         }
         result = combine(n - 1, k - 1);
