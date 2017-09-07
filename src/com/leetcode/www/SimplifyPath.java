@@ -26,3 +26,7 @@ public class SimplifyPath {
         return res.toString();
     }
 }
+
+// path = "/home/", => "/home"
+// path = "/a/./b/../../c/", => "/c"
+// "/abc/..." => "/abc/..."
