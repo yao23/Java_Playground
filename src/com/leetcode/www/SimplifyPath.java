@@ -4,8 +4,8 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Iterator;
 
-public class SimplifyPath {
-    public String simplifyPath(String path) {
+public class SimplifyPath { // LC 71
+    public String simplifyPath(String path) { // beats 60.79%
         String[] paths = path.split("/");
         Deque<String> stack = new ArrayDeque<>();
         for (String s : paths) {
