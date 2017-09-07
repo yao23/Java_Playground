@@ -4,7 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Combinations { // LC 77
-    public List<List<Integer>> combine(int n, int k) { // beats 24.86%
+    public List<List<Integer>> combine(int n, int k) { // beats 86.29%
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        if (k > n || k < 0) {
+            return result;
+        }
+        if (k == 0) {
+            result.add(new ArrayList<Integer>());
+            return result;
+        }
+        result = combine(n - 1, k - 1);
+        for (List<Integer> list : result) {
+            list.add(n);
+        }
+        result.addAll(combine(n - 1, k));
+        return result;
+    }
+
+    public List<List<Integer>> combineV0(int n, int k) { // beats 24.86%
         List<List<Integer>> result = new ArrayList<>();
         if (k == 0)	{
             return result;
