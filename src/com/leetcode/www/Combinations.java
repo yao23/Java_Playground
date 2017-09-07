@@ -3,8 +3,8 @@ package com.leetcode.www;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Combinations {
-    public List<List<Integer>> combine(int n, int k) {
+public class Combinations { // LC 77
+    public List<List<Integer>> combine(int n, int k) { // beats 24.86%
         List<List<Integer>> result = new ArrayList<>();
         if (k == 0)	{
             return result;
@@ -15,8 +15,7 @@ public class Combinations {
         return result;
     }
 
-    private void generateCombination(int n, int k, int depth, List<Integer> combinations,
-                                    List<List<Integer>> result) {
+    private void generateCombination(int n, int k, int depth, List<Integer> combinations, List<List<Integer>> result) {
         if (combinations.size() == k) {
             List<Integer> tmp = new ArrayList<>();
             tmp.addAll(combinations);
