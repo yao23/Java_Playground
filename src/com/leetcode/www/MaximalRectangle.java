@@ -1,7 +1,7 @@
 package com.leetcode.www;
 
-public class MaximalRectangle {
-    public int maximalRectangle(char[][] matrix) {
+public class MaximalRectangle { // LC 85
+    public int maximalRectangle(char[][] matrix) { // beats 59.36%
         int r = matrix.length;
         if( r == 0 )	return 0;
         int c = matrix[0].length;
