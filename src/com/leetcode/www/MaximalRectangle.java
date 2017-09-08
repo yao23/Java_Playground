@@ -6,6 +6,9 @@ public class MaximalRectangle { // LC 85
      * @param matrix
      * @return
      *
+     *
+     * https://discuss.leetcode.com/topic/6650/share-my-dp-solution
+     * 
      * The DP solution proceeds row by row, starting from the first row. Let the maximal rectangle area at row i and
      * column j be computed by [right(i,j) - left(i,j)]*height(i,j).
 
