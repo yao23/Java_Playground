@@ -1,6 +1,23 @@
 package com.leetcode.www;
 
 public class MaximalRectangle { // LC 85
+    /**
+     *
+     * @param matrix
+     * @return
+     *
+     * The DP solution proceeds row by row, starting from the first row. Let the maximal rectangle area at row i and
+     * column j be computed by [right(i,j) - left(i,j)]*height(i,j).
+
+     * All the 3 variables left, right, and height can be determined by the information from previous row,
+     * and also information from the current row. So it can be regarded as a DP solution. The transition equations are:
+
+     * left(i,j) = max(left(i-1,j), cur_left), cur_left can be determined from the current row
+     * right(i,j) = min(right(i-1,j), cur_right), cur_right can be determined from the current row
+     * height(i,j) = height(i-1,j) + 1, if matrix[i][j]=='1';
+     * height(i,j) = 0, if matrix[i][j]=='0'
+     * The code is as below. The loops can be combined for speed but I separate them for more clarity of the algorithm.
+     */
     public int maximalRectangle(char[][] matrix) { // beats 75.25%
         if (matrix.length == 0) {
             return 0;
