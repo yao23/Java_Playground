@@ -79,3 +79,10 @@ public class MaximalRectangle { // LC 85
         return maxArea;
     }
 }
+
+// 1 0 1 0 0
+// 1 0 1 1 1
+// 1 1 1 1 1
+// 1 0 0 1 0
+
+// return 6
