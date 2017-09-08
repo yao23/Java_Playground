@@ -3,12 +3,14 @@ package com.leetcode.www;
 public class MaximalRectangle { // LC 85
     public int maximalRectangle(char[][] matrix) { // beats 59.36%
         int r = matrix.length;
-        if( r == 0 )	return 0;
+        if (r == 0) {
+            return 0;
+        }
         int c = matrix[0].length;
         int[][] dp = new int[r][c];
-        for( int i = 0; i < r; i++ ) {
-            for( int j = 0; j < c; j++ ) {
-                if( matrix[i][j] != '0' ) {
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                if (matrix[i][j] != '0') {
                     dp[i][j] = 1;
                     int k = j + 1;
 
@@ -19,20 +21,21 @@ public class MaximalRectangle { // LC 85
                 }
             }
         }
-        int MaxArea = 0;
-        for( int i = 0; i < r; i++ ) {
-            for( int j = 0; j < c; j++ ) {
-                if( matrix[i][j] != '0' ) {
-                    int MinWidth = dp[i][j];
-                    for( int k = i; k < r && dp[k][j] > 0; k++ ) {
-                        MinWidth = Math.min(MinWidth, dp[k][j]);
-                        int area = MinWidth * (k - i + 1);
-                        if( area > MaxArea )
-                            MaxArea  = area;
+        int maxArea = 0;
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                if (matrix[i][j] != '0') {
+                    int minWidth = dp[i][j];
+                    for (int k = i; k < r && dp[k][j] > 0; k++ ) {
+                        minWidth = Math.min(minWidth, dp[k][j]);
+                        int area = minWidth * (k - i + 1);
+                        if (area > maxArea) {
+                            maxArea = area;
+                        }
                     }
                 }
             }
         }
-        return MaxArea;
+        return maxArea;
     }
 }
