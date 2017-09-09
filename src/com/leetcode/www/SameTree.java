@@ -1,7 +1,20 @@
 package com.leetcode.www;
 
 public class SameTree { // LC 100
-    public boolean isSameTree(TreeNode p, TreeNode q) { // beats 1.30%
+    public boolean isSameTree(TreeNode p, TreeNode q) { // beats 14.30%
+        if (p == null && q == null) {
+            return true;
+        }
+        if (p == null || q == null) {
+            return false;
+        }
+        if (p.val == q.val) {
+            return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+        }
+        return false;
+    }
+
+    public boolean isSameTreeV0(TreeNode p, TreeNode q) { // beats 1.30%
         boolean p_null = (p == null);
         boolean q_null = (q == null);
 
