@@ -1,8 +1,6 @@
 package com.leetcode.www;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class RecoverBinarySearchTree { // LC 99
     /**
@@ -95,7 +93,45 @@ public class RecoverBinarySearchTree { // LC 99
     /**
      *
      * @param root
-     * 
+     *
+     * https://discuss.leetcode.com/topic/25303/beat-99-fast-java-solution-o-h-space-with-explanation
+     */
+    public void recoverTreeV1(TreeNode root) { // beats 15.58%
+        TreeNode pre = null, first = null, second = null;
+        Deque<TreeNode> stack = new LinkedList<>();
+        while (root != null) {
+            stack.push(root);
+            root = root.left;
+        }
+        while (!stack.isEmpty()) {
+            TreeNode temp = stack.pop();
+            if (pre != null) {
+                if (pre.val > temp.val) {
+                    if (first == null) {
+                        first = pre;
+                    }
+                    second = temp;
+                }
+            }
+            pre = temp;
+            if (temp.right != null) {
+                temp = temp.right;
+                while (temp != null) {
+                    stack.push(temp);
+                    temp = temp.left;
+                }
+            }
+        }
+
+        int temp = first.val;
+        first.val = second.val;
+        second.val = temp;
+    }
+
+    /**
+     *
+     * @param root
+     *
      * https://discuss.leetcode.com/topic/29161/share-my-solutions-and-detailed-explanation-with-recursive-iterative-in-order-traversal-and-morris-traversal
      * https://discuss.leetcode.com/topic/8925/share-my-java-solution-using-morris-traversal
      */
