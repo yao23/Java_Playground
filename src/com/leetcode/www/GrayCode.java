@@ -3,8 +3,8 @@ package com.leetcode.www;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GrayCode {
-    public List<Integer> grayCode(int n) {
+public class GrayCode { // LC 89
+    public List<Integer> grayCode(int n) { // beats 34.48%
         List<Integer> result = new ArrayList<>();
         int num_count = 1 << n;
         for (int i = 0; i < num_count; i++) {
@@ -34,3 +34,9 @@ public class GrayCode {
         return result;
     }
 }
+
+// given n = 2, return [0,1,3,2]. Its gray code sequence is:
+// 00 - 0
+// 01 - 1
+// 11 - 3
+// 10 - 2
