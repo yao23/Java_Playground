@@ -3,8 +3,8 @@ package com.leetcode.www;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RestoreIPAddresses {
-    public List<String> restoreIpAddresses(String s) {
+public class RestoreIPAddresses { // LC 93
+    public List<String> restoreIpAddresses(String s) { // beats 97.62%
         List<String> results = new ArrayList<>();
         if (s.length() == 0 || s == null) {
             return results;
@@ -41,7 +41,7 @@ public class RestoreIPAddresses {
         }
     }
 
-    public List<String> restoreIpAddresses2(String s) {
+    public List<String> restoreIpAddresses2(String s) { // beats 5.98%
         List<String> res = new ArrayList<>();
         if (s.length() < 4 || s.length() > 12) {
             return res;
