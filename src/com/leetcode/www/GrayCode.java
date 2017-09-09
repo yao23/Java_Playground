@@ -1,6 +1,7 @@
 package com.leetcode.www;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class GrayCode { // LC 89
@@ -30,6 +31,21 @@ public class GrayCode { // LC 89
         int top = 1 << (n - 1);
         for (int i = prev.size() - 1; i >= 0; i--) {
             result.add(top + prev.get(i));
+        }
+        return result;
+    }
+
+    /**
+     *
+     * @param n
+     * @return
+     *
+     * G(i) = i^ (i/2).
+     */
+    public List<Integer> grayCodeV0(int n) { // beats 34.48%
+        List<Integer> result = new LinkedList<>();
+        for (int i = 0; i < (1 << n); i++) {
+            result.add(i ^ (i >> 1));
         }
         return result;
     }
