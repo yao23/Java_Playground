@@ -4,8 +4,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class RecoverBinarySearchTree {
-    public void recoverTree(TreeNode root) {
+public class RecoverBinarySearchTree { // LC 99
+    /**
+     *
+     * @param root
+     *
+     * Two elements of a binary search tree (BST) are swapped by mistake.
+     * Recover the tree without changing its structure.
+     */
+    public void recoverTree(TreeNode root) { // beats 4.70%
         if (root == null) {
             return;
         }
@@ -33,7 +40,7 @@ public class RecoverBinarySearchTree {
         }
     }
 
-    public void recoverTree2(TreeNode root) {
+    public void recoverTree2(TreeNode root) { // beats 26.89%
         if (root == null) {
             return;
         }
