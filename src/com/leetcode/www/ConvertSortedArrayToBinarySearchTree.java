@@ -1,7 +1,7 @@
 package com.leetcode.www;
 
-public class ConvertSortedArrayToBinarySearchTree {
-    public TreeNode sortedArrayToBST(int[] num) {
+public class ConvertSortedArrayToBinarySearchTree { // LC 108
+    public TreeNode sortedArrayToBST(int[] num) { // beats 11.10%
         return generateBST(num, 0, num.length-1);
     }
     private TreeNode generateBST(int[] num, int start, int end) {
