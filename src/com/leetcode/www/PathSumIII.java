@@ -1,10 +1,10 @@
-/**
+package com.leetcode.www; /**
  * Created by liyao on 6/19/17.
  */
 
 import java.util.ArrayList;
 
-public class PathSumIII {
+public class PathSumIII { // LC 437
     private void helper(TreeNode root, int targetSum, ArrayList<Integer> tmpRes, int[] result) {
         int curSum = 0;
         tmpRes.add(root.val);
