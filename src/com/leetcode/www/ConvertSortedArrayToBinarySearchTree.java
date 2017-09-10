@@ -15,3 +15,5 @@ public class ConvertSortedArrayToBinarySearchTree { // LC 108
         return root;
     }
 }
+
+// [] => null
