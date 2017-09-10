@@ -1,19 +1,44 @@
 package com.leetcode.www;
 
 public class BalancedBinaryTree { // LC 110
-    public boolean isBalanced(TreeNode root) { // beats 5.02%
+    public boolean isBalanced(TreeNode root) {
+        if(root==null){
+            return true;
+        }
+        return height(root)!=-1;
+
+    }
+    public int height(TreeNode node){
+        if(node==null){
+            return 0;
+        }
+        int lH=height(node.left);
+        if(lH==-1){
+            return -1;
+        }
+        int rH=height(node.right);
+        if(rH==-1){
+            return -1;
+        }
+        if(lH-rH<-1 || lH-rH>1){
+            return -1;
+        }
+        return Math.max(lH,rH)+1;
+    }
+
+    public boolean isBalancedV0(TreeNode root) { // beats 5.02%
         if (root == null) {
             return true;
         }
         if (root.left == null && root.right == null) {
             return true;
         }
-        if (Math.abs(height(root.left) - height(root.right)) > 1) {
+        if (Math.abs(heightV0(root.left) - heightV0(root.right)) > 1) {
             return false;
         }
-        return (isBalanced(root.left) && isBalanced(root.right));
+        return (isBalancedV0(root.left) && isBalancedV0(root.right));
     }
-    public int height(TreeNode root) {
+    public int heightV0(TreeNode root) {
         if (root == null) {
             return 0;
         }
