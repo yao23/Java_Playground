@@ -38,7 +38,7 @@ public class BalancedBinaryTree { // LC 110
         }
         return (isBalancedV0(root.left) && isBalancedV0(root.right));
     }
-    public int heightV0(TreeNode root) {
+    private int heightV0(TreeNode root) {
         if (root == null) {
             return 0;
         }
