@@ -32,21 +32,25 @@ public class ConvertSortedListToBinarySearchTree { // LC 109
     }
 
     public TreeNode sortedListToBSTV0(ListNode head) { // beats 47.53%
-        if(head==null) return null;
+        if (head == null) {
+            return null;
+        }
         return toBST(head,null);
     }
-    public TreeNode toBST(ListNode head, ListNode tail){
+    private TreeNode toBST(ListNode head, ListNode tail){
         ListNode slow = head;
         ListNode fast = head;
-        if(head==tail) return null;
+        if (head == tail) {
+            return null;
+        }
 
-        while(fast!=tail&&fast.next!=tail){
+        while (fast != tail && fast.next != tail){
             fast = fast.next.next;
             slow = slow.next;
         }
         TreeNode thead = new TreeNode(slow.val);
         thead.left = toBST(head,slow);
-        thead.right = toBST(slow.next,tail);
+        thead.right = toBST(slow.next, tail);
         return thead;
     }
 }
