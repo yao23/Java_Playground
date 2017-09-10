@@ -1,7 +1,7 @@
 package com.leetcode.www;
 
-public class PathSum {
-    public boolean hasPathSum(TreeNode root, int sum) {
+public class PathSum { // LC 112
+    public boolean hasPathSum(TreeNode root, int sum) { // beats 9.74
         if (root == null) {
             return false;
         }
@@ -11,3 +11,5 @@ public class PathSum {
         return (hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val));
     }
 }
+
+// [], 1 => false
