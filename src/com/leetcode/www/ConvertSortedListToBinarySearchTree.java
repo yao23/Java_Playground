@@ -1,9 +1,9 @@
 package com.leetcode.www;
 
-public class ConvertSortedListToBinarySearchTree {
+public class ConvertSortedListToBinarySearchTree { // LC 109
     private static ListNode curNode;
 
-    public TreeNode sortedListToBST(ListNode head) {
+    public TreeNode sortedListToBST(ListNode head) { // beats 47.53%
         if (head == null) {
             return null;
         }
