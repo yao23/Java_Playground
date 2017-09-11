@@ -16,16 +16,19 @@ public class PopulatingNextRightPointersInEachNode { // LC 116
     }
 
     public void connectV0(TreeLinkNode root) { // beats 29.08%
-        TreeLinkNode level_start=root;
-        while(level_start!=null){
-            TreeLinkNode cur=level_start;
-            while(cur!=null){
-                if(cur.left!=null) cur.left.next=cur.right;
-                if(cur.right!=null && cur.next!=null) cur.right.next=cur.next.left;
-
+        TreeLinkNode levelStart = root;
+        while (levelStart != null) {
+            TreeLinkNode cur = levelStart;
+            while (cur != null) {
+                if (cur.left != null) {
+                    cur.left.next = cur.right;
+                }
+                if (cur.right != null && cur.next != null) {
+                    cur.right.next=cur.next.left;
+                }
                 cur=cur.next;
             }
-            level_start=level_start.left;
+            levelStart = levelStart.left;
         }
     }
 }
