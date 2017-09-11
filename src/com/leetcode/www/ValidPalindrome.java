@@ -32,6 +32,31 @@ public class ValidPalindrome { // LC 125
         return true;
     }
 
+    public boolean isPalindromeV1(String s) { // beats 56.52%
+        if (s.isEmpty()) {
+            return true;
+        }
+        int head = 0, tail = s.length() - 1;
+        char cHead, cTail;
+        while (head <= tail) {
+            cHead = s.charAt(head);
+            cTail = s.charAt(tail);
+            if (!Character.isLetterOrDigit(cHead)) {
+                head++;
+            } else if(!Character.isLetterOrDigit(cTail)) {
+                tail--;
+            } else {
+                if (Character.toLowerCase(cHead) != Character.toLowerCase(cTail)) {
+                    return false;
+                }
+                head++;
+                tail--;
+            }
+        }
+
+        return true;
+    }
+
     public boolean isPalindromeV0(String word) { // not working (TLE) for last test case
         //Strip out non-alphanumeric characters from string
         String cleanWord = word.replaceAll("[^a-zA-Z0-9]","");
