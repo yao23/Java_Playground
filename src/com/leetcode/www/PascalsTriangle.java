@@ -3,8 +3,8 @@ package com.leetcode.www;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PascalsTriangle {
-    public List<List<Integer>> generate(int numRows) {
+public class PascalsTriangle { // LC 118
+    public List<List<Integer>> generate(int numRows) { // beats 19.61%
         List<List<Integer>> result = new ArrayList<>();
         if (numRows <= 0) {
             return result;
