@@ -1,28 +1,33 @@
 package com.leetcode.www;
 
 public class DistinctSubsequences {
-    public int numDistinct(String S, String T) {
-        if( S.length() == 0 || S == null )
+    public int numDistinct(String s, String t) {
+        if (s.length() == 0 || s == null) {
             return 0;
-        if( T.length() == 0 || T == null )
+        }
+        if (t.length() == 0 || t == null) {
             return 1;
-        int SLen = S.length(), TLen = T.length();
-        if( SLen < TLen )
+        }
+        int sLen = s.length(), tLen = t.length();
+        if (sLen < tLen) {
             return 0;
-        int[][] NumDisSub = new int[SLen + 1][TLen + 1];
-        for( int i = 0; i < SLen + 1; i++ )
-            NumDisSub[i][0] = 1;
-        for( int i = 1; i < TLen + 1; i++ )
-            NumDisSub[0][i] = 0;
-        for( int i = 1; i < SLen + 1; i++ ) {
-            for( int j = 1; j < TLen + 1; j++ ) {
-                if( S.charAt(i - 1) == T.charAt(j - 1) )
-                    NumDisSub[i][j] = NumDisSub[i - 1][j - 1] +
-                            NumDisSub[i - 1][j];
-                else
-                    NumDisSub[i][j] = NumDisSub[i - 1][j];
+        }
+        int[][] numDisSub = new int[sLen + 1][tLen + 1];
+        for (int i = 0; i < sLen + 1; i++) {
+            numDisSub[i][0] = 1;
+        }
+        for (int i = 1; i < tLen + 1; i++) {
+            numDisSub[0][i] = 0;
+        }
+        for (int i = 1; i < sLen + 1; i++) {
+            for (int j = 1; j < tLen + 1; j++) {
+                if (s.charAt(i - 1) == t.charAt(j - 1)) {
+                    numDisSub[i][j] = numDisSub[i - 1][j - 1] + numDisSub[i - 1][j];
+                } else {
+                    numDisSub[i][j] = numDisSub[i - 1][j];
+                }
             }
         }
-        return NumDisSub[SLen][TLen];
+        return numDisSub[sLen][tLen];
     }
 }
