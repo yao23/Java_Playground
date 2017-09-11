@@ -1,7 +1,7 @@
 package com.leetcode.www;
 
-public class DistinctSubsequences {
-    public int numDistinct(String s, String t) {
+public class DistinctSubsequences { // LC 115
+    public int numDistinct(String s, String t) { // beats 70.75%
         if (s.length() == 0 || s == null) {
             return 0;
         }
