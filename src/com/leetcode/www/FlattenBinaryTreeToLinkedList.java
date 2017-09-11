@@ -1,12 +1,25 @@
 package com.leetcode.www;
 
 public class FlattenBinaryTreeToLinkedList { // LC 114
-    public void flatten(TreeNode root) { // beats 13.88%
+    private TreeNode prev = null;
+
+    public void flatten(TreeNode root) { // beats 22.15%
         if (root == null) {
             return;
         }
-        flatten(root.left);
         flatten(root.right);
+        flatten(root.left);
+        root.right = prev;
+        root.left = null;
+        prev = root;
+    }
+
+    public void flattenV0(TreeNode root) { // beats 13.88%
+        if (root == null) {
+            return;
+        }
+        flattenV0(root.left);
+        flattenV0(root.right);
         TreeNode tmp = root;
         if (tmp.left == null) {
             return; // flattening is done
