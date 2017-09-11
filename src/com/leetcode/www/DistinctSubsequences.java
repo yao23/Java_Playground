@@ -31,3 +31,5 @@ public class DistinctSubsequences { // LC 115
         return numDisSub[sLen][tLen];
     }
 }
+
+// S = "rabbbit", T = "rabbit", Return 3.
