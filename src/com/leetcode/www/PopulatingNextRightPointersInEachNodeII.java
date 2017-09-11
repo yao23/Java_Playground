@@ -46,4 +46,39 @@ public class PopulatingNextRightPointersInEachNodeII { // LC 117
         connect(root.right);
         connect(root.left);
     }
+
+    public void connectV0(TreeLinkNode root) { // beats 44.84%
+        if (root == null) {
+            return;
+        }
+        TreeLinkNode tmp = root.next;
+        while (tmp != null) {
+            if (tmp.left != null) {
+                tmp = tmp.left;
+                break;
+            }
+            if (tmp.right != null) {
+                tmp = tmp.right;
+                break;
+            }
+            tmp = tmp.next;
+        }
+        if (root.left != null) {
+            if (root.right == null) {
+                root.left.next = tmp;
+            } else {
+                root.left.next = root.right;
+            }
+        }
+        if (root.right != null) {
+            if (root.next == null) {
+                root.right.next = null;
+            } else {
+                root.right.next = tmp;
+            }
+        }
+
+        connect(root.right);
+        connect(root.left);
+    }
 }
