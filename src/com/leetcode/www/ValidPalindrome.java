@@ -30,8 +30,12 @@ public class ValidPalindrome { // LC 125
                 start++;
                 end--;
             } else {
-                if (cS == 0) start++;
-                if (cE == 0) end--;
+                if (cS == 0) {
+                    start++;
+                }
+                if (cE == 0) {
+                    end--;
+                }
             }
         }
         return true;
