@@ -1,7 +1,7 @@
 package com.leetcode.www;
 
-public class FlattenBinaryTreeToLinkedList {
-    public void flatten(TreeNode root) {
+public class FlattenBinaryTreeToLinkedList { // LC 114
+    public void flatten(TreeNode root) { // beats 13.88%
         if (root == null) {
             return;
         }
