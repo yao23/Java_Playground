@@ -7,6 +7,12 @@ public class ValidPalindrome { // LC 125
      * @param s
      * @return
      */
+
+
+    /**
+     * simply build an array that map all possible char into integer(if not alphanumeric,mark it as zero)
+     * this will help to speed up the process a lot.
+     */
     private static final char[]charMap = new char[256];
     static{
         for (int i = 0; i < 10; i++) {
