@@ -14,6 +14,24 @@ public class FlattenBinaryTreeToLinkedList { // LC 114
         prev = root;
     }
 
+    public void flattenV1(TreeNode root) { // beats 22.15% (iterative, based on Morris Traversal)
+        TreeNode cur = root;
+        TreeNode prev = null;
+        while (cur != null) {
+            if (cur.left == null) {
+                cur = cur.right;
+            } else {
+                prev = cur.left;
+                while (prev.right != null) {
+                    prev = prev.right;
+                }
+                prev.right = cur.right;
+                cur.right = cur.left;
+                cur.left = null;
+            }
+        }
+    }
+
     public void flattenV0(TreeNode root) { // beats 13.88%
         if (root == null) {
             return;
