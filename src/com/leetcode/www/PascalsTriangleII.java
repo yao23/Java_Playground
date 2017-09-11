@@ -34,3 +34,4 @@ public class PascalsTriangleII { // LC 119
 }
 
 // 0 => [1]
+// 3 => [1,3,3,1]
