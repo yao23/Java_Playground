@@ -1,7 +1,7 @@
 package com.leetcode.www;
 
-public class PopulatingNextRightPointersInEachNode {
-    public void connect(TreeLinkNode root) {
+public class PopulatingNextRightPointersInEachNode { // LC 116
+    public void connect(TreeLinkNode root) { // beats 29.08%
         if (root == null) {
             return;
         }
