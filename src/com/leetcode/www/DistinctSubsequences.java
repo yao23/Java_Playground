@@ -33,3 +33,4 @@ public class DistinctSubsequences { // LC 115
 }
 
 // S = "rabbbit", T = "rabbit", Return 3.
+// "", "a" => 0
