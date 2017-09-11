@@ -1,13 +1,13 @@
 package com.leetcode.www;
 
-public class ValidPalindrome {
+public class ValidPalindrome { // LC 125
     /**
      * Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
      *
      * @param s
      * @return
      */
-    public boolean isPalindrome(String s) {
+    public boolean isPalindrome(String s) { // beats 25.70%
         if (s.length() == 0) {
             return true;
         }
