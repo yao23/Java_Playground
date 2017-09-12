@@ -1,7 +1,7 @@
 package com.leetcode.www;
 
-public class LinkedListCycleII {
-    public ListNode detectCycle(ListNode head) {
+public class LinkedListCycleII { // LC 142
+    public ListNode detectCycle(ListNode head) { // beats 14.64%
         if (head == null || head.next == null) {
             return null;
         }
