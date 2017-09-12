@@ -39,3 +39,5 @@ public class PalindromePartitioningII { // LC 132
         return dp[0]; // dp[i] means from index i to end, min cut number
     }
 }
+
+// For example, given s = "aab", Return 1 since the palindrome partitioning ["aa","b"] could be produced using 1 cut.
