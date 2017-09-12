@@ -2,16 +2,17 @@ package com.leetcode.www;
 
 public class LinkedListCycleII {
     public ListNode detectCycle(ListNode head) {
-        if( head == null || head.next == null )
+        if (head == null || head.next == null) {
             return null;
+        }
         ListNode slow = head;
         ListNode fast = head;
-        while( fast != null && fast.next != null ) {
+        while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
-            if( slow == fast ) {
+            if (slow == fast) {
                 slow = head;
-                while( slow != fast ) {
+                while (slow != fast) {
                     slow = slow.next;
                     fast = fast.next;
                 }
