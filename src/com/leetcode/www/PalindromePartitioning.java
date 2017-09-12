@@ -3,8 +3,8 @@ package com.leetcode.www;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PalindromePartitioning {
-    public List<List<String>> partition(String s) {
+public class PalindromePartitioning { // LC 131
+    public List<List<String>> partition(String s) { // beats 68.43%
         List<List<String>> partitions = new ArrayList<>();
         List<String> partition = new ArrayList<>();
         createPartition(0, s, partition, partitions);
