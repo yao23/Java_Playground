@@ -1,7 +1,7 @@
 package com.leetcode.www;
 
-public class LinkedListCycle {
-    public boolean hasCycle(ListNode head) {
+public class LinkedListCycle { // LC 141
+    public boolean hasCycle(ListNode head) { // beats 10.93%
         if (head == null || head.next == null) {
             return false;
         }
