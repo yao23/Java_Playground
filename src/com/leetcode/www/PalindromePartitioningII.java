@@ -1,7 +1,7 @@
 package com.leetcode.www;
 
-public class PalindromePartitioningII {
-    public int minCut(String s) {
+public class PalindromePartitioningII { // LC 132
+    public int minCut(String s) { // beats 28.44%
         if (s == null || s.length() <= 1) {
             return 0;
         }
