@@ -12,12 +12,18 @@ public class MissingRanges { // 163
      */
     public List<String> findMissingRanges(int[] nums, int lower, int upper) { // beats 13.15%
         List<String> res = new ArrayList<>();
-        for(int i : nums) {
-            if(i > lower) res.add(lower+((i-1 > lower)?"->"+(i-1):""));
-            if(i == upper) return res; // Avoid overflow
-            lower = i+1;
+        for (int i : nums) {
+            if (i > lower) {
+                res.add(lower + ((i - 1 > lower) ? ("->" + (i - 1)) : ""));
+            }
+            if (i == upper) {
+                return res; // Avoid overflow
+            }
+            lower = i + 1;
         }
-        if(lower <= upper) res.add(lower + ((upper > lower)?"->"+(upper):""));
+        if (lower <= upper) {
+            res.add(lower + ((upper > lower) ? ("->" + (upper)) : ""));
+        }
         return res;
     }
 
