@@ -12,17 +12,25 @@ public class MissingRanges {
      */
     public List<String> findMissingRanges(int[] nums, int lo, int hi) {
         List<String> res = new ArrayList<>();
-        long Lower = (long)lo;
-        long Upper = (long)hi;
+        long lower = (long)lo;
+        long upper = (long)hi;
         for (int num : nums) {
             long justBelow = (long)num - 1;
-            if (justBelow == Lower) res.add(String.valueOf(justBelow));
-            else if (justBelow > Lower) res.add(Lower + "->" + justBelow);
-            if (num == Integer.MAX_VALUE) return res;
-            Lower = (long)num + 1;
+            if (justBelow == lower) {
+                res.add(String.valueOf(justBelow));
+            } else if (justBelow > lower) {
+                res.add(lower + "->" + justBelow);
+            }
+            if (num == Integer.MAX_VALUE) {
+                return res;
+            }
+            lower = (long)num + 1;
         }
-        if (Lower == Upper) res.add(String.valueOf(Upper));
-        else if (Lower < Upper) res.add(Lower + "->" + Upper);
+        if (lower == upper) {
+            res.add(String.valueOf(upper));
+        } else if (lower < upper) {
+            res.add(lower + "->" + upper);
+        }
         return res;
     }
 
