@@ -10,7 +10,18 @@ public class MissingRanges { // 163
      *  Given a sorted integer array where the range of elements are [0, 99] inclusive, return its missing ranges.
      *  For example, given [0, 1, 3, 50, 75], return [“2”, “4->49”, “51->74”, “76->99”]
      */
-    public List<String> findMissingRanges(int[] nums, int lo, int hi) { // beats 13.15%
+    public List<String> findMissingRanges(int[] nums, int lower, int upper) { // beats 13.15%
+        List<String> res = new ArrayList<>();
+        for(int i : nums) {
+            if(i > lower) res.add(lower+((i-1 > lower)?"->"+(i-1):""));
+            if(i == upper) return res; // Avoid overflow
+            lower = i+1;
+        }
+        if(lower <= upper) res.add(lower + ((upper > lower)?"->"+(upper):""));
+        return res;
+    }
+
+    public List<String> findMissingRangesV2(int[] nums, int lo, int hi) { // beats 13.15%
         List<String> res = new ArrayList<>();
         long lower = (long)lo;
         long upper = (long)hi;
