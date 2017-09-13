@@ -3,8 +3,8 @@ package com.leetcode.www;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MaxPointsOnALine {
-    public int maxPoints(Point[] points) {
+public class MaxPointsOnALine { // LC 149
+    public int maxPoints(Point[] points) { // not working for test case 2 (return 3)
         Map<Double, Integer> map = new HashMap<>();
         int res = 0;
         int len = points.length;
@@ -51,4 +51,5 @@ class Point {
 }
 
 // [] => 0
+// [[0,0],[94911151,94911150],[94911152,94911151]] => 2
 
