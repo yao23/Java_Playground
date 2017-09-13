@@ -10,7 +10,23 @@ public class MissingRanges {
      *  Given a sorted integer array where the range of elements are [0, 99] inclusive, return its missing ranges.
      *  For example, given [0, 1, 3, 50, 75], return [“2”, “4->49”, “51->74”, “76->99”]
      */
-    public List<String> findMissingRanges(int[] a, int lo, int hi) {
+    public List<String> findMissingRanges(int[] nums, int lo, int hi) {
+        List<String> res = new ArrayList<>();
+        long Lower = (long)lo;
+        long Upper = (long)hi;
+        for (int num : nums) {
+            long justBelow = (long)num - 1;
+            if (justBelow == Lower) res.add(String.valueOf(justBelow));
+            else if (justBelow > Lower) res.add(Lower + "->" + justBelow);
+            if (num == Integer.MAX_VALUE) return res;
+            Lower = (long)num + 1;
+        }
+        if (Lower == Upper) res.add(String.valueOf(Upper));
+        else if (Lower < Upper) res.add(Lower + "->" + Upper);
+        return res;
+    }
+
+    public List<String> findMissingRangesV1(int[] a, int lo, int hi) {
         List<String> res = new ArrayList<String>();
 
         // the next number we need to find
