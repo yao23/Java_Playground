@@ -1,10 +1,10 @@
-/**
+package com.leetcode.www; /**
  * Created by liyao on 7/15/17.
  */
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoggerRateLimiter {
+public class LoggerRateLimiter { // LC 359
 
     public class Logger {
 
