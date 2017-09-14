@@ -1,7 +1,9 @@
+package com.leetcode.www;
+
 import java.util.HashSet;
 import java.util.Set;
 
-public class LongestConsecutiveSequence {
+public class LongestConsecutiveSequence { // LC 128
     public int longestConsecutive(int[] nums) {
         int max = 0;
         if (nums.length == 0) {
