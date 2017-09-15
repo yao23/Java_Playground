@@ -1,11 +1,11 @@
-/**
+package com.leetcode.www; /**
  * Created by liyao on 7/10/17.
  */
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class LongestPalindrome {
+public class LongestPalindrome { // LC 409
     public int longestPalindrome(String s) {
         int len = s.length();
         if (len < 2) {
