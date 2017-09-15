@@ -1,7 +1,9 @@
+package com.leetcode.www;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class LongestSubstringWithAtMostKDistinctCharacters {
+public class LongestSubstringWithAtMostKDistinctCharacters { // LC 340
     private static Map<Character, Integer> map = new HashMap<>();
     private static int counter = 0;
 
