@@ -1,4 +1,6 @@
-public class LongestSubstringWithAtMostTwoDistinctCharacters {
+package com.leetcode.www;
+
+public class LongestSubstringWithAtMostTwoDistinctCharacters { // LC 159
     public int lengthOfLongestSubstringTwoDistinct(String s) {
         int k = 2, left = 0, num = 0, res = 0;
         int[] count = new int[256];
