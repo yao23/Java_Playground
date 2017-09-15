@@ -1,4 +1,6 @@
-public class LongestSubstringWithoutRepeatingCharacters {
+package com.leetcode.www;
+
+public class LongestSubstringWithoutRepeatingCharacters { // LC 3
     public int lengthOfLongestSubstring(String s) {
         int left = 0, res = 0;
         int[] count = new int[256];
