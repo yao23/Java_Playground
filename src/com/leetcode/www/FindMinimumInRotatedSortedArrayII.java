@@ -8,10 +8,10 @@ public class FindMinimumInRotatedSortedArrayII {
 
         int start = 0, end = nums.length - 1;
 
-        //only need to add the following while loop on top of the solution
-        //for Part I
-        //if two line segments have overlap, remove the overlap.
-        //so, the problem can be solved as Part I
+        // only need to add the following while loop on top of the solution
+        // for Part I
+        // if two line segments have overlap, remove the overlap.
+        // so, the problem can be solved as Part I
         while (nums[end] == nums[start] && end > start) {
             end--;
         }
@@ -25,8 +25,7 @@ public class FindMinimumInRotatedSortedArrayII {
             int mid = start + (end - start) / 2;
             if (nums[mid] >= nums[start]) {
                 start = mid + 1;
-            }
-            else {
+            } else {
                 end = mid;
             }
         }
