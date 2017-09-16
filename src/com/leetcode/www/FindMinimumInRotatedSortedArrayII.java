@@ -1,7 +1,7 @@
 package com.leetcode.www;
 
-public class FindMinimumInRotatedSortedArrayII {
-    public int findMin(int[] nums) {
+public class FindMinimumInRotatedSortedArrayII { // LC 154
+    public int findMin(int[] nums) { // beats 6.61
         if (nums == null || nums.length == 0) {
             return Integer.MIN_VALUE;
         }
