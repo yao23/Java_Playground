@@ -1,7 +1,9 @@
+package com.leetcode.www;
+
 /**
  * Created by liyao on 7/12/17.
  */
-public class MaximumDepthOfBinaryTree {
+public class MaximumDepthOfBinaryTree { // LC 104
     public int maxDepth(TreeNode root) {
         if (root == null) {
             return 0;
