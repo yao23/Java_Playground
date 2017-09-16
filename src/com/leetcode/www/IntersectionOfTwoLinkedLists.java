@@ -1,7 +1,24 @@
 package com.leetcode.www;
 
 public class IntersectionOfTwoLinkedLists { // LC 160
-    public ListNode getIntersectionNode(ListNode headA, ListNode headB) { // beats 13.74%
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) { // beats 31.60%
+        //boundary check
+        if(headA == null || headB == null) return null;
+
+        ListNode a = headA;
+        ListNode b = headB;
+
+        //if a & b have different len, then we will stop the loop after second iteration
+        while( a != b){
+            //for the end of first iteration, we just reset the pointer to the head of another linkedlist
+            a = a == null? headB : a.next;
+            b = b == null? headA : b.next;
+        }
+
+        return a;
+    }
+
+    public ListNode getIntersectionNodeV0(ListNode headA, ListNode headB) { // beats 13.74%
         int lenA = getLength(headA);
         int lenB = getLength(headB);
         if (lenA == lenB) {
