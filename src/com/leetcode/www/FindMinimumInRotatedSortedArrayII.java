@@ -32,4 +32,21 @@ public class FindMinimumInRotatedSortedArrayII { // LC 154
 
         return nums[start];
     }
+
+    public int findMinV0(int[] nums) { // beats 6.61%
+        int l = 0, r = nums.length - 1;
+        while (l < r) {
+            int mid = (l + r) / 2;
+            if (nums[mid] < nums[r]) {
+                r = mid;
+            } else if (nums[mid] > nums[r]){
+                l = mid + 1;
+            } else { // nums[mid] = nums[r] no idea, but we can eliminate nums[r];
+                r--;
+            }
+        }
+        return nums[l];
+    }
 }
+
+// [1] => 1
