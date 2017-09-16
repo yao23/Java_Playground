@@ -1,7 +1,7 @@
 package com.leetcode.www;
 
-public class IntersectionOfTwoLinkedLists {
-    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+public class IntersectionOfTwoLinkedLists { // LC 160
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) { // beats 13.74%
         int lenA = getLength(headA);
         int lenB = getLength(headB);
         if (lenA == lenB) {
