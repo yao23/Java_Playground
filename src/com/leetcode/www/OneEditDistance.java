@@ -1,6 +1,26 @@
 package com.leetcode.www;
 
 public class OneEditDistance { // LC 161
+    /**
+     *
+     * @param s
+     * @param t
+     * @return
+     *
+     * The basic idea is we keep comparing s and t from the beginning, once there's a difference,
+     * we try to replace s(i) with t(j) or insert t(j) to s(i) and see if the rest are the same.
+     * Example: i and j are the two pointers of S and T, we found that 'b' != 'c' and we try to replace it:
+     *         i                           i
+     *    S: a c d      replace       S: a b d
+     *    T: a b c d   --------->     T: a b c d    --->  "d" != "cd", no good
+     *         j                           j
+     * now we try to insert T(j) to S(i) and we get:
+     *         i                           i
+     *    S: a c d      insert        S: a b c d
+     *    T: a b c d   --------->     T: a b c d    --->  "cd" == "cd", viola!
+     *         j                           j
+     * to keep the code simple, we make s is always shorter than t, so we don't need to try deletion.
+     */
     public boolean isOneEditDistance(String s, String t) { // beats 49.94%
         if (s == null || t == null) {
             return false;
