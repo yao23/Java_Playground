@@ -2,11 +2,13 @@ package com.leetcode.www;
 
 public class OneEditDistance { // LC 161
     public boolean isOneEditDistance(String s, String t) { // beats 49.94%
-        if (s == null || t == null)
+        if (s == null || t == null) {
             return false;
+        }
 
-        if (s.length() > t.length())
+        if (s.length() > t.length()) {
             return isOneEditDistance(t, s);
+        }
 
         int i = 0, j = 0;
 
@@ -18,7 +20,8 @@ public class OneEditDistance { // LC 161
                         s.substring(i).equals(t.substring(j + 1));
             }
 
-            i++; j++;
+            i++;
+            j++;
         }
 
         return t.length() - j == 1;
