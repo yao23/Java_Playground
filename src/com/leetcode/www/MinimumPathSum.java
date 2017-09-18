@@ -1,7 +1,9 @@
+package com.leetcode.www;
+
 /**
  * Created by liyao on 7/8/17.
  */
-public class MinimumPathSum {
+public class MinimumPathSum { // LC 64
     public int minPathSum(int[][] grid) {
         int row = grid.length, col = grid[0].length;
         if (row == 1 && col == 1) { // only 1 number
