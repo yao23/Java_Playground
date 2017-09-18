@@ -1,10 +1,11 @@
+package com.leetcode.www;
 /**
  * Created by liyao on 6/6/17.
  */
 import java.util.Deque;
 import java.util.ArrayDeque;
 
-public class MinStack {
+public class MinStack { // LC 155
 
     private Deque<Integer> stack;
     private Deque<Integer> minStack;
@@ -44,7 +45,7 @@ public class MinStack {
         return minStack.peek();
     }
 
-    // ["MinStack","push","push","push","getMin","pop","top","getMin"]
+    // ["com.leetcode.www.MinStack","push","push","push","getMin","pop","top","getMin"]
     //  [[],[-2],[0],[-3],[],[],[],[]]
     // => [null,null,null,null,-3,null,0,-2]
 
@@ -52,8 +53,8 @@ public class MinStack {
 }
 
 /**
- * Your MinStack object will be instantiated and called as such:
- * MinStack obj = new MinStack();
+ * Your com.leetcode.www.MinStack object will be instantiated and called as such:
+ * com.leetcode.www.MinStack obj = new com.leetcode.www.MinStack();
  * obj.push(x);
  * obj.pop();
  * int param_3 = obj.top();
