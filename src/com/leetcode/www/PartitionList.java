@@ -1,7 +1,9 @@
+package com.leetcode.www;
+
 /**
  * Created by liyao on 6/6/17.
  */
-public class PartitionList {
+public class PartitionList { // LC 86
     public ListNode partition(ListNode head, int x) {
         if (head == null || head.next == null) {
             return head;
