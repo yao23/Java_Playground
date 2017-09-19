@@ -1,9 +1,9 @@
-/**
+package com.leetcode.www; /**
  * Created by liyao on 6/10/17.
  */
 import java.util.*;
 
-public class PalindromePairs {
+public class PalindromePairs { // LC 336
     private boolean isPalindrome(String str) {
         int len = str.length();
         if (len <= 1) {
