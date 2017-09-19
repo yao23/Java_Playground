@@ -1,7 +1,9 @@
+package com.leetcode.www;
+
 /**
  * Created by liyao on 7/8/17.
  */
-public class PalindromeLinkedList {
+public class PalindromeLinkedList { // LC 234
     public boolean isPalindrome(ListNode head) {
         if (head == null || head.next == null) {
             return true;
