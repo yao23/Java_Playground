@@ -1,9 +1,9 @@
-/**
+package com.leetcode.www; /**
  * Created by liyao on 7/3/17.
  */
 import java.util.Arrays;
 
-public class PerfectSquares {
+public class PerfectSquares { // LC 279
     public int numSquares(int n) {
         int[] dp = new int[n + 1];
         Arrays.fill(dp, Integer.MAX_VALUE);
