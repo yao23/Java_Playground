@@ -1,10 +1,10 @@
-/**
+package com.leetcode.www; /**
  * Created by liyao on 6/1/17.
  */
 import java.io.*;
 import java.util.*;
 
-public class PlusOne {
+public class PlusOne { // LC 66
     private static int[] plusOne(int[] arr) {
         int[] tmpRes = new int[arr.length];
         int carry = 1;
