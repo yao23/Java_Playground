@@ -1,4 +1,4 @@
-/**
+package com.leetcode.www; /**
  * Created by liyao on 7/15/17.
  */
 
@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-public class PeekingIterator implements Iterator<Integer> {
+public class PeekingIterator implements Iterator<Integer> { // LC 284
     private boolean isPeeked;
     private int peekedInt;
     private Iterator<Integer> iterator;
