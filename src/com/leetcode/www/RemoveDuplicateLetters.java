@@ -1,6 +1,8 @@
+package com.leetcode.www;
+
 import java.util.*;
 
-public class RemoveDuplicateLetters {
+public class RemoveDuplicateLetters { // LC 316
     public String removeDuplicateLetters(String s) { // beats 11.38%
         int[] cnt = new int[26];
         int pos = 0; // the position for the smallest s[i]
