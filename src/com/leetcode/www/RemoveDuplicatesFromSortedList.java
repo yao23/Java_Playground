@@ -1,7 +1,9 @@
+package com.leetcode.www;
+
 /**
  * Created by liyao on 6/4/17.
  */
-public class RemoveDuplicatesFromSortedList {
+public class RemoveDuplicatesFromSortedList { // LC 83
     public ListNode deleteDuplicates(ListNode head) {
         if (head == null || head.next == null) {
             return head;
