@@ -1,7 +1,9 @@
+package com.leetcode.www;
+
 /**
  * Created by liyao on 6/3/17.
  */
-public class RemoveDuplicatesFromSortedArrayII {
+public class RemoveDuplicatesFromSortedArrayII { // LC 80
     public int removeDuplicates(int[] nums) {
         int numsLength = nums.length;
 
