@@ -1,7 +1,9 @@
+package com.leetcode.www;
+
 /**
  * Created by liyao on 7/6/17.
  */
-public class RotateImage {
+public class RotateImage { // LC 48
     public void rotate(int[][] matrix) {
         int row = matrix.length, col = matrix[0].length;
 
