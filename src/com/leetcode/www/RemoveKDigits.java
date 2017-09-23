@@ -1,9 +1,11 @@
+package com.leetcode.www;
+
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
 
-public class RemoveKDigits {
+public class RemoveKDigits { // LC 402
     public String removeKdigits(String num, int k) { // beats 83.82%
         int len = num.length();
         int resLen = len - k;
