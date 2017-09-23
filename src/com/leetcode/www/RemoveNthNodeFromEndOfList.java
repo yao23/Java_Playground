@@ -1,7 +1,9 @@
+package com.leetcode.www;
+
 /**
  * Created by liyao on 6/6/17.
  */
-public class RemoveNthNodeFromEndOfList {
+public class RemoveNthNodeFromEndOfList { // LC 19
     public ListNode removeNthFromEnd(ListNode head, int n) {
         if (head == null) {
             return head;
