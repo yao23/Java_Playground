@@ -1,7 +1,9 @@
+package com.leetcode.www;
+
 /**
  * Created by liyao on 6/14/17.
  */
-public class SearchInsertPosition {
+public class SearchInsertPosition { // LC 35
     public int searchInsert(int[] arr, int target) {
         int start = 0, end = arr.length - 1;
         if (target < arr[start]) { // smaller than start
