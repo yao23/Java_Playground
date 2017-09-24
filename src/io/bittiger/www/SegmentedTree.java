@@ -1,3 +1,5 @@
+package io.bittiger.www;
+
 public class SegmentedTree {
     private SegmentedTreeNode build(int[] nums, int start, int end) {
         if (start > end) {
