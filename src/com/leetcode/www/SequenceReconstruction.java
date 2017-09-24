@@ -1,6 +1,8 @@
+package com.leetcode.www;
+
 import java.util.*;
 
-public class SequenceReconstruction {
+public class SequenceReconstruction { // LC 444
     public boolean sequenceReconstruction(int[] org, List<List<Integer>> seqs) {
         int len = seqs.size();
         if (len == 0) {
