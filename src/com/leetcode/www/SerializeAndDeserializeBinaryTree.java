@@ -1,4 +1,4 @@
-/**
+package com.leetcode.www; /**
  * Created by liyao on 6/20/17.
  */
 
@@ -114,7 +114,7 @@ public class SerializeAndDeserializeBinaryTree { // LC 297
             return "";
         } else {
             StringBuilder data = new StringBuilder();
-            Map<Integer,TreeNode> map = new HashMap<>();
+            Map<Integer, TreeNode> map = new HashMap<>();
             int height = buildMap(root, 0, map);
             int numNode = getNumNode(height);
 
