@@ -1,8 +1,10 @@
+package com.leetcode.www;
+
 /**
  * Created by liyao on 6/3/17.
  */
 
-public class SortColors {
+public class SortColors { // LC 75
     private static void swap(int[] nums, int left, int right) {
         int tmp = nums[left];
         nums[left] = nums[right];
