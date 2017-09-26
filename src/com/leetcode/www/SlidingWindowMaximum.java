@@ -1,7 +1,9 @@
+package com.leetcode.www;
+
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class SlidingWindowMaximum {
+public class SlidingWindowMaximum { // LC 239
     public int[] maxSlidingWindow(int[] nums, int k) {
         int len = nums.length;
         if (len == 0 || k == 0) {
