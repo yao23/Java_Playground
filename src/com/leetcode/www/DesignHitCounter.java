@@ -9,7 +9,7 @@ public class DesignHitCounter { // LC 362
      * HitCounter obj = new HitCounter();
      * obj.hit(timestamp);
      * int param_2 = obj.getHits(timestamp);
-     *
+     * <p>
      * O(s) s is total seconds in given time interval, in this case 300.
      * basic ideal is using buckets. 1 bucket for every second because we only need to keep the recent hits info for 300
      * seconds. hit[] array is wrapped around by mod operation. Each hit bucket is associated with times[] bucket which
@@ -19,14 +19,19 @@ public class DesignHitCounter { // LC 362
         private int[] times;
         private int[] hits;
 
-        /** Initialize your data structure here. */
+        /**
+         * Initialize your data structure here.
+         */
         public HitCounter() {
             times = new int[300];
             hits = new int[300];
         }
 
-        /** Record a hit.
-         @param timestamp - The current timestamp (in seconds granularity). */
+        /**
+         * Record a hit.
+         *
+         * @param timestamp - The current timestamp (in seconds granularity).
+         */
         public void hit(int timestamp) {
             int index = timestamp % 300;
             if (times[index] != timestamp) {
@@ -37,8 +42,11 @@ public class DesignHitCounter { // LC 362
             }
         }
 
-        /** Return the number of hits in the past 5 minutes.
-         @param timestamp - The current timestamp (in seconds granularity). */
+        /**
+         * Return the number of hits in the past 5 minutes.
+         *
+         * @param timestamp - The current timestamp (in seconds granularity).
+         */
         public int getHits(int timestamp) {
             int total = 0;
             for (int i = 0; i < 300; i++) {
@@ -57,21 +65,29 @@ public class DesignHitCounter { // LC 362
     class HitCounterV1 { // beats 16.49%
         Queue<Integer> q = null;
 
-        /** Initialize your data structure here. */
+        /**
+         * Initialize your data structure here.
+         */
         public HitCounterV1() {
             q = new LinkedList<>();
         }
 
-        /** Record a hit.
-         @param timestamp - The current timestamp (in seconds granularity). */
+        /**
+         * Record a hit.
+         *
+         * @param timestamp - The current timestamp (in seconds granularity).
+         */
         public void hit(int timestamp) {
             q.offer(timestamp);
         }
 
-        /** Return the number of hits in the past 5 minutes.
-         @param timestamp - The current timestamp (in seconds granularity). */
+        /**
+         * Return the number of hits in the past 5 minutes.
+         *
+         * @param timestamp - The current timestamp (in seconds granularity).
+         */
         public int getHits(int timestamp) {
-            while(!q.isEmpty() && timestamp - q.peek() >= 300) {
+            while (!q.isEmpty() && timestamp - q.peek() >= 300) {
                 q.poll();
             }
             return q.size();
@@ -86,15 +102,20 @@ public class DesignHitCounter { // LC 362
         private LinkedList<Integer> time;
         private LinkedList<Integer> hits;
 
-        /** Initialize your data structure here. */
+        /**
+         * Initialize your data structure here.
+         */
         public HitCounterV2() {
             sum = 0;
             time = new LinkedList<>();
             hits = new LinkedList<>();
         }
 
-        /** Record a hit.
-         @param timestamp - The current timestamp (in seconds granularity). */
+        /**
+         * Record a hit.
+         *
+         * @param timestamp - The current timestamp (in seconds granularity).
+         */
         public void hit(int timestamp) {
             if (time.isEmpty() || time.getLast() != timestamp) {
                 time.addLast(timestamp);
@@ -105,8 +126,11 @@ public class DesignHitCounter { // LC 362
             sum++;
         }
 
-        /** Return the number of hits in the past 5 minutes.
-         @param timestamp - The current timestamp (in seconds granularity). */
+        /**
+         * Return the number of hits in the past 5 minutes.
+         *
+         * @param timestamp - The current timestamp (in seconds granularity).
+         */
         public int getHits(int timestamp) {
             int head = timestamp - 300;
             while (!time.isEmpty() && time.getFirst() <= head) {
@@ -124,6 +148,7 @@ public class DesignHitCounter { // LC 362
         class Tuple {
             int time;
             int count;
+
             public Tuple(int time, int count) {
                 this.time = time;
                 this.count = count;
@@ -160,6 +185,57 @@ public class DesignHitCounter { // LC 362
         }
     }
 
+    /**
+     * Circular Array, most efficient solution
+     *
+     * There are two solutions, the first one we choose 1s as granularity, the other is full accuracy(see the post).
+     * We call move() before hit() and getHits(). move() will take time at most O(N), where N is the length of the array.
+     *
+     * https://nuttynanaus.wordpress.com/2014/03/09/software-engineer-interview-questions/
+     *
+     */
+    public class HitCounterV4 { // beats 85.11%
+        int N;
+        int[] count;
+        int lastPosition;
+        int lastTime;
+        int sum;
+
+        /** Initialize your data structure here. */
+        public HitCounterV4() {
+            N = 300;
+            count = new int[N];
+            lastPosition = 0;
+            lastTime = 0;
+            sum = 0;
+        }
+
+        /** Record a hit.
+         @param timestamp - The current timestamp (in seconds granularity). */
+        public void hit(int timestamp) {
+            move(timestamp);
+            count[lastPosition]++;
+            sum++;
+        }
+
+        /** Return the number of hits in the past 5 minutes.
+         @param timestamp - The current timestamp (in seconds granularity). */
+        public int getHits(int timestamp) {
+            move(timestamp);
+            return sum;
+        }
+
+        void move(int timestamp){
+            int gap = Math.min(timestamp - lastTime, N);
+            for (int i = 0; i < gap;i++) {
+                lastPosition = (lastPosition + 1) % N;
+                sum -= count[lastPosition];
+                count[lastPosition] = 0;
+            }
+            lastTime = timestamp;
+        }
+    }
+}
 // ["HitCounter","hit","hit","hit","getHits","hit","getHits","getHits"]
 // [[],[1],[2],[3],[4],[300],[300],[301]]
 // [null,null,null,null,3,null,4,3]
