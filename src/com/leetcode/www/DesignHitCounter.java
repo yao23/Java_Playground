@@ -77,6 +77,45 @@ public class DesignHitCounter { // LC 362
             return q.size();
         }
     }
+
+    /**
+     * 2 Linked List
+     */
+    class HitCounterV2 { // beats 73.77
+        private int sum;
+        private LinkedList<Integer> time;
+        private LinkedList<Integer> hits;
+
+        /** Initialize your data structure here. */
+        public HitCounterV2() {
+            sum = 0;
+            time = new LinkedList<>();
+            hits = new LinkedList<>();
+        }
+
+        /** Record a hit.
+         @param timestamp - The current timestamp (in seconds granularity). */
+        public void hit(int timestamp) {
+            if (time.isEmpty() || time.getLast() != timestamp) {
+                time.addLast(timestamp);
+                hits.addLast(1);
+            } else {
+                hits.addLast(hits.removeLast() + 1);
+            }
+            sum++;
+        }
+
+        /** Return the number of hits in the past 5 minutes.
+         @param timestamp - The current timestamp (in seconds granularity). */
+        public int getHits(int timestamp) {
+            int head = timestamp - 300;
+            while (!time.isEmpty() && time.getFirst() <= head) {
+                time.removeFirst();
+                sum -= hits.removeFirst();
+            }
+            return sum;
+        }
+    }
 }
 
 // ["HitCounter","hit","hit","hit","getHits","hit","getHits","getHits"]
