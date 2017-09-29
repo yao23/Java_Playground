@@ -116,7 +116,49 @@ public class DesignHitCounter { // LC 362
             return sum;
         }
     }
-}
+
+    /**
+     * Queue, not efficient as above 2 linked lists solution
+     */
+    class HitCounterV3 { // beats 52.69%
+        class Tuple {
+            int time;
+            int count;
+            public Tuple(int time, int count) {
+                this.time = time;
+                this.count = count;
+            }
+        }
+
+        Queue<Tuple> q;
+        int currCount;
+
+        public HitCounterV3() {
+            q = new LinkedList<>();
+            currCount = 0;
+        }
+
+        public void hit(int timestamp) {
+            advance(timestamp);
+            if (!q.isEmpty() && q.peek().time == timestamp) {
+                q.peek().count += 1;
+            } else {
+                q.offer(new Tuple(timestamp, 1));
+            }
+            currCount += 1;
+        }
+
+        private void advance(int timestamp) {
+            while (!q.isEmpty() && q.peek().time <= timestamp - 300) {
+                currCount -= q.poll().count;
+            }
+        }
+
+        public int getHits(int timestamp) {
+            advance(timestamp);
+            return currCount;
+        }
+    }
 
 // ["HitCounter","hit","hit","hit","getHits","hit","getHits","getHits"]
 // [[],[1],[2],[3],[4],[300],[300],[301]]
