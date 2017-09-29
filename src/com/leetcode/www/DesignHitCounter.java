@@ -5,6 +5,11 @@ import java.util.Queue;
 
 public class DesignHitCounter { // LC 362
     /**
+     * Your HitCounter object will be instantiated and called as such:
+     * HitCounter obj = new HitCounter();
+     * obj.hit(timestamp);
+     * int param_2 = obj.getHits(timestamp);
+     *
      * O(s) s is total seconds in given time interval, in this case 300.
      * basic ideal is using buckets. 1 bucket for every second because we only need to keep the recent hits info for 300
      * seconds. hit[] array is wrapped around by mod operation. Each hit bucket is associated with times[] bucket which
@@ -49,12 +54,12 @@ public class DesignHitCounter { // LC 362
      * use a queue to record the information of all the hits. Each time we call the function getHits( ), we have to
      * delete the elements which hits beyond 5 mins (300). The result would be the length of the queue
      */
-    class HitCounterV1 {
+    class HitCounterV1 { // beats 16.49%
         Queue<Integer> q = null;
 
         /** Initialize your data structure here. */
         public HitCounterV1() {
-            q = new LinkedList<Integer>();
+            q = new LinkedList<>();
         }
 
         /** Record a hit.
@@ -72,13 +77,6 @@ public class DesignHitCounter { // LC 362
             return q.size();
         }
     }
-
-    /**
-     * Your HitCounter object will be instantiated and called as such:
-     * HitCounter obj = new HitCounter();
-     * obj.hit(timestamp);
-     * int param_2 = obj.getHits(timestamp);
-     */
 }
 
 // ["HitCounter","hit","hit","hit","getHits","hit","getHits","getHits"]
