@@ -11,7 +11,7 @@ public class TwoSumIII { // LC 170
      * boolean param_2 = obj.find(value);
      */
 
-    class TwoSum {
+    class TwoSum { // beats 12.55%
         private Map<Integer, Integer> map;
 
         /** Initialize your data structure here. */
@@ -37,12 +37,12 @@ public class TwoSumIII { // LC 170
                 int diff = value - num;
                 if (map.containsKey(diff)) {
                     if (diff == num) {
-                        return map.get(num) > 1;
+                        if (map.get(num) > 1) {
+                            return true;
+                        }
                     } else {
                         return true;
                     }
-                } else {
-                    return false;
                 }
             }
             return false;
