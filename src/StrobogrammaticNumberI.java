@@ -1,7 +1,7 @@
 /**
  * Created by liyao on 6/13/17.
  */
-public class StrobogrammaticNumberI {
+public class StrobogrammaticNumberI { // LC 246
     private boolean checkTwoNumbers(int a, int b) {
         if ((a == 6 && b == 9) || (a == 9 && b==6)) {
             return true;
