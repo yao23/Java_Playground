@@ -1,9 +1,6 @@
 package com.leetcode.www;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class RepeatedDNASequences { // LC 187
     public List<String> findRepeatedDnaSequences(String s) { // beats 91.81%
@@ -15,6 +12,31 @@ public class RepeatedDNASequences { // LC 187
             }
         }
         return new ArrayList<String>(repeated);
+    }
+
+    /**
+     * The idea is to use rolling hash technique or in case of string search also known as Rabin-Karp algorithm. As our
+     * alphabet A consists of only 4 letters we can be not afraid of collisions. The hash for a current window slice
+     * could be found in a constant time by subtracting the former first character times size of the A in the power of
+     * 9 and updating remaining hash by the standard rule: hash = hash*A.size() + curr_char.
+     */
+    private static final Map<Character, Integer> A = new HashMap<>();
+    static { A.put('A',0); A.put('C',1); A.put('G',2); A.put('T',3); }
+    private final int A_SIZE_POW_9 = (int) Math.pow(A.size(), 9);
+
+    public List<String> findRepeatedDnaSequencesV1(String s) { // beats 18.37%
+        Set<String> res = new HashSet<>();
+        Set<Integer> hashes = new HashSet<>();
+        for (int i = 0, rhash = 0; i < s.length(); i++) {
+            if (i > 9) {
+                rhash -= A_SIZE_POW_9 * A.get(s.charAt(i - 10));
+            }
+            rhash = A.size() * rhash + A.get(s.charAt(i));
+            if (i > 8 && !hashes.add(rhash)) {
+                res.add(s.substring(i - 9, i + 1));
+            }
+        }
+        return new ArrayList<>(res);
     }
 
     public List<String> findRepeatedDnaSequencesV0(String s) { // beats 52.60%
