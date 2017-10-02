@@ -3,6 +3,21 @@ package com.leetcode.www;
 public class ProductOfArrayExceptSelf { // LC 238
     public int[] productExceptSelf(int[] nums) { // beats 27.57%
         int[] result = new int[nums.length];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = 1;
+        }
+        int left = 1, right = 1;
+        for (int i = 0, j = nums.length - 1; i < nums.length - 1; i++, j--) {
+            left *= nums[i];
+            right *= nums[j];
+            result[i + 1] *= left;
+            result[j - 1] *= right;
+        }
+        return result;
+    }
+
+    public int[] productExceptSelfV1(int[] nums) { // beats 27.57%
+        int[] result = new int[nums.length];
         for (int i = 0, tmp = 1; i < nums.length; i++) { // left to right (previous product)
             result[i] = tmp;
             tmp *= nums[i];
