@@ -1,10 +1,10 @@
-/**
+package com.leetcode.www; /**
  * Created by liyao on 7/8/17.
  */
 import java.util.ArrayList;
 import java.util.List;
 
-public class Subsets {
+public class Subsets { // LC 78
     public List<List<Integer>> subsets(int[] nums) {
         List<Integer> tmpRes = new ArrayList<Integer>();
         List<List<Integer>> result = new ArrayList<>();
