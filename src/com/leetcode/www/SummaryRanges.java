@@ -1,10 +1,10 @@
-/**
+package com.leetcode.www; /**
  * Created by liyao on 6/11/17.
  */
 import java.util.ArrayList;
 import java.util.List;
 
-public class SummaryRanges {
+public class SummaryRanges { // LC 228
     public class Solution {
         public List<String> summaryRanges(int[] nums) {
             List<String> result = new ArrayList<>();
