@@ -1,9 +1,29 @@
 package com.leetcode.www;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class NestedListWeightSum { // LC 339
-    public int depthSum(List<NestedInteger> nestedList) { // beats 60.44%
+    // BFS
+    public int depthSum(List<NestedInteger> nestedList) { // beats 13.72%
+        int level = 1, total = 0;
+        while (nestedList.size() != 0){
+            List<NestedInteger> next = new LinkedList<>();
+            for (NestedInteger nInt : nestedList){
+                if (nInt.isInteger()) {
+                    total += nInt.getInteger() * level;
+                } else {
+                    next.addAll(nInt.getList());
+                }
+            }
+            level++;
+            nestedList = next;
+        }
+        return total;
+    }
+
+    // DFS
+    public int depthSumV1(List<NestedInteger> nestedList) { // beats 60.44%
         return helper(nestedList, 1);
     }
 
