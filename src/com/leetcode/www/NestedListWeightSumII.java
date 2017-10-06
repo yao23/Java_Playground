@@ -21,3 +21,6 @@ public class NestedListWeightSumII { // LC 364
         return weighted;
     }
 }
+
+// [[1,1],2,[1,1]] => 8
+// [1,[4,[6]]] => 17
