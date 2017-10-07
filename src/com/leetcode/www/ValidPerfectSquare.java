@@ -1,7 +1,7 @@
 package com.leetcode.www;
 
 public class ValidPerfectSquare { // LC 367
-    // Newton
+    // Newton, https://en.wikipedia.org/wiki/Integer_square_root#Using_only_integer_division
     public boolean isPerfectSquare(int num) {
         long x = num;
         while (x * x > num) {
