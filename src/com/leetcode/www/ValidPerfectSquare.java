@@ -1,8 +1,17 @@
 package com.leetcode.www;
 
 public class ValidPerfectSquare { // LC 367
+    // Newton
+    public boolean isPerfectSquare(int num) {
+        long x = num;
+        while (x * x > num) {
+            x = (x + num / x) >> 1;
+        }
+        return x * x == num;
+    }
+
     // binary search
-    public boolean isPerfectSquare(int num) { // beats 37.97%, O(logn)
+    public boolean isPerfectSquareV1(int num) { // beats 37.97%, O(logn)
         int low = 1, high = num;
         while (low <= high) {
             long mid = (low + high) >>> 1; // use long to avoid mid*mid from overflow
