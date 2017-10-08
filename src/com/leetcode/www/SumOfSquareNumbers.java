@@ -30,14 +30,17 @@ public class SumOfSquareNumbers { // LC 633
         return false;
     }
     private boolean binary_search(long s, long e, int n) {
-        if (s > e)
+        if (s > e) {
             return false;
+        }
         long mid = s + (e - s) / 2;
-        if (mid * mid == n)
+        if (mid * mid == n) {
             return true;
-        if (mid * mid > n)
+        } else if (mid * mid > n) {
             return binary_search(s, mid - 1, n);
-        return binary_search(mid + 1, e, n);
+        } else {
+            return binary_search(mid + 1, e, n);
+        }
     }
 
     // sqrt function
