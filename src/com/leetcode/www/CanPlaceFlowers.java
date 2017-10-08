@@ -1,7 +1,25 @@
 package com.leetcode.www;
 
 public class CanPlaceFlowers { // 605
-    public boolean canPlaceFlowers(int[] flowerbed, int n) { // beats 20.42%
+    // greedy
+    public boolean canPlaceFlowers(int[] flowerbed, int n) { // beats 12.95%
+        int count = 0;
+        for (int i = 0; i < flowerbed.length && count < n; i++) {
+            if (flowerbed[i] == 0) {
+                //get next and prev flower bed slot values. If i lies at the ends the next and prev are considered as 0.
+                int next = (i == flowerbed.length - 1) ? 0 : flowerbed[i + 1];
+                int prev = (i == 0) ? 0 : flowerbed[i - 1];
+                if (next == 0 && prev == 0) {
+                    flowerbed[i] = 1;
+                    count++;
+                }
+            }
+        }
+
+        return count == n;
+    }
+
+    public boolean canPlaceFlowersV0(int[] flowerbed, int n) { // beats 20.42%
         int len = flowerbed.length;
         for (int i = 0; i < len && n > 0; i++) {
             if (isValid(flowerbed, i)) {
