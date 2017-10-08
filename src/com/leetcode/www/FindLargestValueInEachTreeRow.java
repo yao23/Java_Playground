@@ -6,7 +6,29 @@ import java.util.Deque;
 import java.util.List;
 
 public class FindLargestValueInEachTreeRow { // LC 515
-    public List<Integer> largestValues(TreeNode root) { // beats 37.33%
+    // DFS
+    // pre-order traverse idea. Use depth to expand result list size and put the max value in the appropriate position
+    public List<Integer> largestValues(TreeNode root) { // beats 97.01%
+        List<Integer> res = new ArrayList<>();
+        helper(root, res, 0);
+        return res;
+    }
+    private void helper(TreeNode root, List<Integer> res, int d) {
+        if (root == null) {
+            return;
+        }
+        // expand list size
+        if (d == res.size()) {
+            res.add(root.val);
+        } else{ //or set value
+            res.set(d, Math.max(res.get(d), root.val));
+        }
+        helper(root.left, res, d + 1);
+        helper(root.right, res, d + 1);
+    }
+
+    // BFS
+    public List<Integer> largestValuesV0(TreeNode root) { // beats 37.33%
         List<Integer> res = new ArrayList<>();
         if (root == null) {
             return res;
