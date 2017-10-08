@@ -1,5 +1,8 @@
 package com.leetcode.www;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class SecondMinimumNodeInABinaryTree { // LC 671
     private int[] res = new int[]{Integer.MAX_VALUE, Integer.MAX_VALUE};
 
@@ -29,6 +32,29 @@ public class SecondMinimumNodeInABinaryTree { // LC 671
         }
         helper(root.left);
         helper(root.right);
+    }
+
+    // BFS
+    public int findSecondMinimumValueV1(TreeNode root) {
+        int rootVal = root.val;
+        int secondSmall =Integer.MAX_VALUE;
+        boolean diffFound = false;
+        Queue<TreeNode> Q= new LinkedList<>();
+        Q.add(root);
+
+        while(!Q.isEmpty()) {
+            TreeNode curr=Q.poll();
+            if (curr.val != rootVal && curr.val < secondSmall) {
+                secondSmall = curr.val;
+                diffFound = true;
+            }
+            if(curr.left != null) {
+                Q.add(curr.left);
+                Q.add(curr.right);
+            }
+        }
+
+        return (secondSmall == Integer.MAX_VALUE && !diffFound) ? -1 : secondSmall;
     }
 
     // DFS
