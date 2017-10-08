@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CanIWin { // LC 464
+    // https://discuss.leetcode.com/topic/68773/java-solution
     public boolean canIWin(int n, int total) { // beats 98.05%
         if (total <= 1) {
             return true;
@@ -38,6 +39,51 @@ public class CanIWin { // LC 464
         }
         map[status] = false;
         return false;
+    }
+
+    // https://discuss.leetcode.com/topic/68896/java-solution-using-hashmap-with-detailed-explanation/2
+    Map<Integer, Boolean> map;
+    boolean[] used;
+    public boolean canIWinV1(int maxChoosableInteger, int desiredTotal) { // beats 71.26%
+        int sum = (1+maxChoosableInteger)*maxChoosableInteger/2;
+        if(sum < desiredTotal) return false;
+        if(desiredTotal <= 0) return true;
+
+        map = new HashMap<>();
+        used = new boolean[maxChoosableInteger+1];
+        return helper(desiredTotal);
+    }
+
+    public boolean helper(int desiredTotal){
+        if(desiredTotal <= 0) return false;
+        int key = format(used);
+        if(!map.containsKey(key)){
+            // try every unchosen number as next step
+            for(int i=1; i<used.length; i++){
+                if(!used[i]){
+                    used[i] = true;
+                    // check whether this lead to a win (i.e. the other player lose)
+                    if(!helper(desiredTotal-i)){
+                        map.put(key, true);
+                        used[i] = false;
+                        return true;
+                    }
+                    used[i] = false;
+                }
+            }
+            map.put(key, false);
+        }
+        return map.get(key);
+    }
+
+    // transfer boolean[] to an Integer
+    private int format(boolean[] used){
+        int num = 0;
+        for(boolean b: used){
+            num <<= 1;
+            if(b) num |= 1;
+        }
+        return num;
     }
 
     // https://discuss.leetcode.com/topic/68792/java-easy-strightforward-solution-with-explanation
