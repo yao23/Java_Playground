@@ -31,6 +31,7 @@ public class SecondMinimumNodeInABinaryTree { // LC 671
         helper(root.right);
     }
 
+    // DFS
     public int findSecondMinimumValueV0(TreeNode root) { // beats 45.82%
         if (root == null) {
             return -1;
