@@ -4,9 +4,45 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CanIWin { // LC 464
+    public boolean canIWin(int n, int total) { // beats 98.05%
+        if (total <= 1) {
+            return true;
+        }
+        if ((1 + n) * n / 2 < total) {
+            return false;
+        }
+        Boolean[] map = new Boolean[1 << n];
+        return canWin(total, n, 0, map);
+    }
+
+    private boolean canWin(int remains, int n, int status, Boolean[] map) {
+        if (map[status] != null) {
+            return map[status];
+        }
+        for (int i = n; i >= 1; i--) {
+            int bit = 1 << (i - 1);
+            if ((status & bit) == 0) {
+                if (i >= remains) {
+                    map[status] = true;
+                    return true;
+                }
+
+                status ^= bit;
+                boolean opWin = canWin(remains - i, n, status, map);
+                status ^= bit;
+                if (!opWin) {
+                    map[status] = true;
+                    return true;
+                }
+            }
+        }
+        map[status] = false;
+        return false;
+    }
+
     // https://discuss.leetcode.com/topic/68792/java-easy-strightforward-solution-with-explanation
     Map<Integer, Boolean> set[];
-    public boolean canIWin(int maxChoosableInteger, int desiredTotal) { // beats 22.78%
+    public boolean canIWinV0(int maxChoosableInteger, int desiredTotal) { // beats 22.78%
         if (maxChoosableInteger >= desiredTotal) {
             return true;
         }
