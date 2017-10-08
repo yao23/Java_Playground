@@ -3,9 +3,9 @@ package com.leetcode.www;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CanIWin {
+public class CanIWin { // LC 464
     Map<Integer, Boolean> set[];
-    public boolean canIWin(int maxChoosableInteger, int desiredTotal) {
+    public boolean canIWin(int maxChoosableInteger, int desiredTotal) { // beats 22.78%
         if(maxChoosableInteger >= desiredTotal) return true;
         if(maxChoosableInteger+1 >=desiredTotal) return false;
         set = new Map[301];
