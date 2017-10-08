@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CanIWin { // LC 464
+    // https://discuss.leetcode.com/topic/68792/java-easy-strightforward-solution-with-explanation
     Map<Integer, Boolean> set[];
     public boolean canIWin(int maxChoosableInteger, int desiredTotal) { // beats 22.78%
         if (maxChoosableInteger >= desiredTotal) {
