@@ -1,13 +1,29 @@
 package com.leetcode.www;
 
-public class CanPlaceFlowers { // 605
+public class CanPlaceFlowers { // LC 605
+    public boolean canPlaceFlowers(int[] flowerbed, int n) { // beats 86.77%
+        int i = 0, count = 0;
+        while (i < flowerbed.length) {
+            if (flowerbed[i] == 0 && (i == 0 || flowerbed[i - 1] == 0)
+                    && (i == flowerbed.length - 1 || flowerbed[i + 1] == 0)) {
+                flowerbed[i++] = 1;
+                count++;
+            }
+            if (count >= n) {
+                return true;
+            }
+            i++;
+        }
+        return false;
+    }
+
     // DP
     // A Java DP solution runs on
     // K: number of flowers to plant
     // N: length of flower bed
     // O(K) space, O(NK) time
 
-    public boolean canPlaceFlowers(int[] flowerbed, int n) { // beats 0.57%
+    public boolean canPlaceFlowersV2(int[] flowerbed, int n) { // beats 0.57%
         //dp[i][j]: can put j flowers in first i place, i, j starting from 1
         //dp[i][j] =
         //          dp[i-1][j] || dp[i-2][j-1], if flower[i] == 0
