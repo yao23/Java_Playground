@@ -10,7 +10,7 @@ public class HappyNumber { // LC 202
      * @param n
      * @return
      */
-    public boolean isHappy(int n) {
+    public boolean isHappy(int n) { // beats 18.79%
         Set<Integer> inLoop = new HashSet<>();
         int squareSum, remain;
         while (inLoop.add(n)) {
