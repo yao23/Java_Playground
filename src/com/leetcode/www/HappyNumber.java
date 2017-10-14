@@ -36,22 +36,18 @@ public class HappyNumber { // LC 202
     public boolean isHappyV2(int n) { // beats 96.12%
         /* Base cases */
 
-        // A negative or zero value
-        // is not a valid input
+        // A negative or zero value is not a valid input
         // Return grumpily
         if (n < 1) {
             return false;
         }
 
-        // You have entered
-        // the chain of despair.
-        // You will never be
-        // happy again
+        // You have entered the chain of despair.
+        // You will never be happy again
         if (n == 4 ||  n == 16 ||  n == 20 ||  n == 37 ||  n == 42 ||  n == 58 ||  n == 89 ||  n == 145) {
             return false;
         }
-        // Check Wikipedia for
-        // the explanation of despairing numbers
+        // Check Wikipedia for the explanation of despairing numbers
         // You don't need to remember all of them.
         // Just remembering one of them will do
 
