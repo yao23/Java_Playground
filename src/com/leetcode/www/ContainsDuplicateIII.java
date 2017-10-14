@@ -43,3 +43,5 @@ public class ContainsDuplicateIII { // LC 220
         return false;
     }
 }
+
+// [-2147483648,-2147483647], 3, 3 => true
