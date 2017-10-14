@@ -4,6 +4,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ReverseBits { // LC 190
+    public int reverseBitsV3(int n) {
+        int res = 0;
+        for (int i = 0; i < 32; i++) {
+            res = (res << 1) | (n & 1);
+            n = n >> 1;
+        }
+        return res;
+    }
+
     public int reverseBitsV2(int n) { // beats 27.74%
         int answer = 0; // initializing answer
         for (int i = 0; i < 32; i++) { // 32 bit integers
