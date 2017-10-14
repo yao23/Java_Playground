@@ -1,10 +1,25 @@
 package com.leetcode.www;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class ContainsDuplicateII { // LC 219
-    public boolean containsNearbyDuplicate(int[] nums, int k) { // beats 39.90%
+    public boolean containsNearbyDuplicate(int[] nums, int k) { // beats 93.93%
+        Set<Integer> set = new HashSet<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (i > k) {
+                set.remove(nums[i - k - 1]);
+            }
+            if (!set.add(nums[i])) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean containsNearbyDuplicateV0(int[] nums, int k) { // beats 39.90%
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             if (map.containsKey(nums[i])) {
