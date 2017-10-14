@@ -25,3 +25,5 @@ public class MajorityElement { // LC 169
         return major;
     }
 }
+
+// [1] => 1
