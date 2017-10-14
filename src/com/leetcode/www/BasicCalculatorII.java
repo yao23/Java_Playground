@@ -41,3 +41,7 @@ public class BasicCalculatorII { // LC 227
         return re;
     }
 }
+
+// "3+2*2" = 7
+// " 3/2 " = 1
+// " 3+5 / 2 " = 5
