@@ -4,7 +4,42 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class BasicCalculatorII { // LC 227
-    public int calculate(String s) { // beats 53.99%
+    public int calculate(String s) { // beats 97.05%
+        if (s.length() == 0) {
+            return 0;
+        }
+        char operator = '+';
+        char partOperator = '*';
+        int sum = 0;
+        int partVal = 1;
+        int curVal = 0;
+
+        for (int i = 0; i <= s.length(); i++) {
+            char c = (i == s.length()) ? 0 : s.charAt(i);
+            if (c == ' ') {
+                continue;
+            }
+            if (c >= '0' && c <= '9') {
+                curVal = curVal * 10 + (c - '0');
+                continue;
+            }
+            if (c == 0 || "+-*/".indexOf(c) >= 0) {
+                partVal = (partOperator == '*') ? partVal * curVal : partVal / curVal;
+                curVal = 0;
+                if (c == '+' || c == '-' || c == 0) {
+                    sum += (operator == '+') ? partVal : -partVal;
+                    partVal = 1;
+                    operator = c;
+                    partOperator = '*';
+                } else {
+                    partOperator = c;
+                }
+            }
+        }
+        return sum;
+    }
+
+    public int calculateV0(String s) { // beats 53.99%
         int len;
         if (s == null || (len = s.length()) == 0) {
             return 0;
