@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ReverseBits { // LC 190
-    public int reverseBitsV3(int n) {
+    public int reverseBitsV3(int n) { // beats 27.74%
         int res = 0;
         for (int i = 0; i < 32; i++) {
             res = (res << 1) | (n & 1);
