@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MajorityElementII { // LC 229
+    /**
+     * https://gregable.com/2013/10/majority-vote-algorithm-find-majority.html
+     *
+     * @param nums
+     * @return
+     */
     public List<Integer> majorityElement(int[] nums) { // beats 45.64%
         if (nums == null || nums.length == 0) {
             return new ArrayList<>();
