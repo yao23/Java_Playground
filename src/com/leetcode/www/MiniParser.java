@@ -7,6 +7,36 @@ import java.util.List;
 
 public class MiniParser { // LC 385
     /**
+     * recursive solution
+     *
+     * @param s
+     * @return
+     */
+    public NestedInteger deserialize(String s) { // beats 90.55%
+        NestedInteger ret = new NestedInteger();
+        if (s == null || s.length() == 0) {
+            return ret;
+        }
+        if (s.charAt(0) != '[') {
+            ret.setInteger(Integer.parseInt(s));
+        } else if (s.length() > 2) {
+            int start = 1, count = 0;
+            for (int i = 1; i < s.length(); i++) {
+                char c = s.charAt(i);
+                if (count == 0 && (c == ',' || i == s.length() - 1)) {
+                    ret.add(deserialize(s.substring(start, i)));
+                    start = i + 1;
+                } else if (c == '[') {
+                    count++;
+                } else if (c == ']') {
+                    count--;
+                }
+            }
+        }
+        return ret;
+    }
+
+    /**
      * If encounters '[', push current NestedInteger to stack and start a new one.
      * If encounters ']', end current NestedInteger and pop a NestedInteger from stack to continue.
      * If encounters ',', append a new number to curr NestedInteger, if this comma is not right after a brackets.
@@ -15,7 +45,7 @@ public class MiniParser { // LC 385
      * @param s
      * @return
      */
-    public NestedInteger deserialize(String s) { // beats 53.05%
+    public NestedInteger deserializeV0(String s) { // beats 53.05%
         if (s.isEmpty()) {
             return null;
         }
