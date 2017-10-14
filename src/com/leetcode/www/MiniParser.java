@@ -1,6 +1,7 @@
 package com.leetcode.www;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
 
@@ -58,42 +59,64 @@ public class MiniParser { // LC 385
     }
 
     class NestedInteger {
-         // Constructor initializes an empty nested list.
-         public NestedInteger() {
+        private List<NestedInteger> list;
+        private Integer integer;
 
-         }
+        public NestedInteger(List<NestedInteger> list){
+            this.list = list;
+        }
 
-         // Constructor initializes a single integer.
-         public NestedInteger(int value) {
+        public void add(NestedInteger nestedInteger) {
+            if(this.list != null){
+                this.list.add(nestedInteger);
+            } else {
+                this.list = new ArrayList<>();
+                this.list.add(nestedInteger);
+            }
+        }
 
-         }
+        public void setInteger(int num) {
+            this.integer = num;
+        }
 
-         // @return true if this NestedInteger holds a single integer, rather than a nested list.
-         public boolean isInteger() {
-             return true;
-         }
+        public NestedInteger(Integer integer){
+            this.integer = integer;
+        }
 
-         // @return the single integer that this NestedInteger holds, if it holds a single integer
-         // Return null if this NestedInteger holds a nested list
-         public Integer getInteger() {
-             return 0;
-         }
+        public NestedInteger() {
+            this.list = new ArrayList<>();
+        }
 
-         // Set this NestedInteger to hold a single integer.
-         public void setInteger(int value) {
+        public boolean isInteger() {
+            return integer != null;
+        }
 
-         }
+        public Integer getInteger() {
+            return integer;
+        }
 
-         // Set this NestedInteger to hold a nested list and adds a nested integer to it.
-         public void add(NestedInteger ni) {
+        public List<NestedInteger> getList() {
+            return list;
+        }
 
-         }
-
-         // @return the nested list that this NestedInteger holds, if it holds a nested list
-         // Return null if this NestedInteger holds a single integer
-         public List<NestedInteger> getList() {
-             return null;
-         }
+        public String printNi(NestedInteger thisNi, StringBuilder sb){
+            if(thisNi.isInteger()) {
+                sb.append(thisNi.integer);
+                sb.append(",");
+            }
+            sb.append("[");
+            for(NestedInteger ni : thisNi.list){
+                if(ni.isInteger()) {
+                    sb.append(ni.integer);
+                    sb.append(",");
+                }
+                else {
+                    printNi(ni, sb);
+                }
+            }
+            sb.append("]");
+            return sb.toString();
+        }
     }
 }
 
