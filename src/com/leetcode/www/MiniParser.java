@@ -5,6 +5,15 @@ import java.util.Deque;
 import java.util.List;
 
 public class MiniParser { // LC 385
+    /**
+     * If encounters '[', push current NestedInteger to stack and start a new one.
+     * If encounters ']', end current NestedInteger and pop a NestedInteger from stack to continue.
+     * If encounters ',', append a new number to curr NestedInteger, if this comma is not right after a brackets.
+     * Update index l and r, where l shall point to the start of a integer substring, while r shall points to the end+1 of substring.
+     *
+     * @param s
+     * @return
+     */
     public NestedInteger deserialize(String s) { // beats 53.05%
         if (s.isEmpty()) {
             return null;
