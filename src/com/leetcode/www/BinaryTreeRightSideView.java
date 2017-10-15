@@ -6,8 +6,27 @@ import java.util.List;
 import java.util.Queue;
 
 public class BinaryTreeRightSideView { // LC 199
-    // BFS, reverse level traversal
+    // Divide and Conquer
     public List<Integer> rightSideView(TreeNode root) { // beats 22.08%
+        if (root == null) {
+            return new ArrayList<>();
+        }
+        List<Integer> left = rightSideView(root.left);
+        List<Integer> right = rightSideView(root.right);
+        List<Integer> res = new ArrayList<>();
+        res.add(root.val);
+        for (int i = 0; i < Math.max(left.size(), right.size()); i++) {
+            if (i >= right.size()) {
+                res.add(left.get(i));
+            } else {
+                res.add(right.get(i));
+            }
+        }
+        return res;
+    }
+
+    // BFS, reverse level traversal
+    public List<Integer> rightSideViewV1(TreeNode root) { // beats 22.08%
         List<Integer> result = new ArrayList<>();
         Queue<TreeNode> queue = new LinkedList<>();
         if (root == null) {
