@@ -8,8 +8,18 @@ public class HammingDistance { // LC 461
      * @param y
      * @return
      */
+    public int hammingDistance(int x, int y) { // beats 72.94%
+        int xor = x ^ y;
+        int res = 0;
+        while (xor != 0) {
+            res += (xor & 1);
+            xor >>= 1;
+        }
+        return res;
+    }
+
     // XOR
-    public int hammingDistance(int x, int y) { // beats 38.47%
+    public int hammingDistanceV0(int x, int y) { // beats 38.47%
         return Integer.bitCount(x ^ y);
     }
 }
