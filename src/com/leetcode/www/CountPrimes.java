@@ -1,5 +1,7 @@
 package com.leetcode.www;
 
+import java.util.BitSet;
+
 public class CountPrimes { // LC 204
     public int countPrimes(int n) { // beats 97.01%
         if (n < 3) {
@@ -24,13 +26,13 @@ public class CountPrimes { // LC 204
         return count;
     }
 
-    public int countPrimesV2(int n) { // beats 96.72%
+    public int countPrimesV3(int n) { // beats 96.72%
         if (n <= 2) {
             return 0;
         }
 
         int c = 1;
-        boolean isNotPrime[] = new boolean[n+1];
+        boolean isNotPrime[] = new boolean[n + 1];
 
         for (int i = 3; i * i <= n; i = i + 2) {
             if (isNotPrime[i]) {
@@ -48,7 +50,26 @@ public class CountPrimes { // LC 204
             }
         }
         return c;
+    }
 
+    public int countPrimesV2(int n) { // beats 78.11%
+        BitSet bs = new BitSet(n);
+        bs.set(0);
+        bs.set(1);
+        int index = 0, count = 0;
+
+        while (index < n){
+            index = bs.nextClearBit(index + 1);
+            if (index >= n) {
+                return count;
+            }
+            count++;
+            for (int i = 2 * index; i < n; i += index) {
+                bs.set(i);
+            }
+        }
+
+        return count;
     }
 
     // Sieve of Eratosthenes algorithm
