@@ -17,4 +17,10 @@ public class JudgeRouteCircle { // LC 657
         }
         return x == 0 && y == 0;
     }
+
+    public boolean judgeCircleV0(String moves) { // beats 6.94%
+        moves=" " + moves + " ";
+        return moves.split("L").length == moves.split("R").length &&
+                moves.split("U").length == moves.split("D").length;
+    }
 }
