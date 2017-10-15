@@ -1,5 +1,10 @@
 package com.leetcode.www;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class FirstUniqueCharacterInAString { // LC 387
     public int firstUniqChar(String s) { // beats 86.51%
         if (s == null || s.length() == 0) {
@@ -29,6 +34,26 @@ public class FirstUniqueCharacterInAString { // LC 387
             fast++;
         }
         return slow;
+    }
+
+    public int firstUniqCharV1(String s) { // beats 29.21%
+        if (s == null || s.length() == 0) {
+            return -1;
+        }
+        char[] chars = s.toCharArray();
+        Map<Character,Integer> charsPositions = new HashMap<>();
+        List<Integer> uniqsPositions = new ArrayList<>();
+        for (int i = 0; i < chars.length; i++) {
+            char c = chars[i];
+            if (charsPositions.containsKey(c)) {
+                Integer charFirstPosition = charsPositions.get(c);
+                uniqsPositions.remove(charFirstPosition);
+            } else {
+                charsPositions.put(c,i);
+                uniqsPositions.add(i);
+            }
+        }
+        return uniqsPositions.isEmpty() ? -1 : uniqsPositions.get(0);
     }
 
     public int firstUniqCharV0(String s) { // beats 60.01%
