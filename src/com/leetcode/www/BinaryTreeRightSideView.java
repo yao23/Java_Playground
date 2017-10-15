@@ -4,6 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BinaryTreeRightSideView { // LC 199
+    /**
+     * 1. Each depth of the tree only select one node.
+     * 2. View depth is current size of result list.
+     *
+     * @param root
+     * @return
+     */
     public List<Integer> rightSideView(TreeNode root) { // beats 22.08%
         List<Integer> result = new ArrayList<>();
         rightView(root, result, 0);
