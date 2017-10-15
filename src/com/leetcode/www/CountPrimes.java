@@ -24,6 +24,33 @@ public class CountPrimes { // LC 204
         return count;
     }
 
+    public int countPrimesV2(int n) { // beats 96.72%
+        if (n <= 2) {
+            return 0;
+        }
+
+        int c = 1;
+        boolean isNotPrime[] = new boolean[n+1];
+
+        for (int i = 3; i * i <= n; i = i + 2) {
+            if (isNotPrime[i]) {
+                continue;
+            }
+
+            for (int j = i * i; j <= n; j = j + 2 * i) {
+                isNotPrime[j] = true;
+            }
+        }
+
+        for (int i = 3; i < n; i = i+2) {
+            if (!isNotPrime[i]) {
+                c++;
+            }
+        }
+        return c;
+
+    }
+
     // Sieve of Eratosthenes algorithm
     /**
      * In the boolean array m, m[n] means the number n. Thus for each time, if m[n] is a prime, we need to delete all
