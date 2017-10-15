@@ -23,6 +23,26 @@ public class ValidAnagram { // LC 242
         return true;
     }
 
+    public boolean isAnagramV1(String s, String t) { // beats 68.93%
+        if (s == null || t == null || s.length() != t.length()) {
+            return false;
+        }
+        int[] count = new int[26];
+        int len = t.length();
+        for (int i = 0; i < len; i++) {
+            count[t.charAt(i) - 'a']++;
+        }
+        for (int i = 0; i < len; i++) {
+            char c = s.charAt(i);
+            if (count[c - 'a'] > 0) {
+                count[c - 'a']--;
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public boolean isAnagramV0(String s, String t) { // beats 68.93%
         int[] alphabet = new int[26];
         for (int i = 0; i < s.length(); i++) {
