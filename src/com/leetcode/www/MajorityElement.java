@@ -11,8 +11,8 @@ public class MajorityElement { // LC 169
         return nums[nums.length/2];
     }
 
-    // Hashtable
-    public int majorityElement2(int[] nums) { // beats 11.57%
+    // HashMap
+    public int majorityElementV1(int[] nums) { // beats 11.57%
         Map<Integer, Integer> myMap = new HashMap<>();
         int ret = 0;
         for (int num: nums) {
@@ -29,6 +29,7 @@ public class MajorityElement { // LC 169
         return ret;
     }
 
+    // Moore voting algorithm
     public int majorityElementV0(int[] nums) { // beats 70.59%
         int major = nums[0], count = 1;
         for (int i = 1; i < nums.length; i++){
