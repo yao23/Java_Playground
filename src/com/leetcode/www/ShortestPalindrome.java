@@ -52,3 +52,6 @@ public class ShortestPalindrome { // LC 214
         return table;
     }
 }
+
+// Given "aacecaaa", return "aaacecaaa".
+// Given "abcd", return "dcbabcd".
