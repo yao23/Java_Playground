@@ -1,11 +1,21 @@
 package com.leetcode.www;
 
 public class PowerOfThree { // LC 326
-
+    /**
+     * https://leetcode.com/articles/power-of-three/
+     *
+     * @param n
+     * @return
+     */
     // If log10(n) / log10(3) returns an int (more precisely, a double but has 0 after decimal point),
     // then n is a power of 3.
     public boolean isPowerOfThree(int n) { // beats 27.68%
         return (Math.log10(n) / Math.log10(3)) % 1 == 0;
+    }
+
+    // Base Conversion
+    public boolean isPowerOfThreeV2(int n) { // beats 3.95%
+        return Integer.toString(n, 3).matches("^10*$");
     }
 
     // Find the maximum integer that is a power of 3 and check if it is a multiple of the given input.
