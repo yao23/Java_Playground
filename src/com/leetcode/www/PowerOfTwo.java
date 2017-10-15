@@ -1,8 +1,13 @@
 package com.leetcode.www;
 
 public class PowerOfTwo { // LC 231
-    // iteration
+    // recursion
     public boolean isPowerOfTwo(int n) { // beats 11.81, O(logn)
+        return n > 0 && (n == 1 || (n % 2 == 0 && isPowerOfTwo(n / 2)));
+    }
+
+    // iteration
+    public boolean isPowerOfTwoV3(int n) { // beats 11.81, O(logn)
         if (n == 0) {
             return false;
         }
