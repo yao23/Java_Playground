@@ -1,6 +1,39 @@
 package com.leetcode.www;
 
 public class MergeTwoBinaryTrees { // LC 617
+    public TreeNode mergeTreesV2(TreeNode t1, TreeNode t2) { // beats 34.90%
+        if (t1 == null && t2 != null) {
+            return t2;
+        } else if (t1 != null && t2 == null) {
+            return t1;
+        }
+
+        return mergeTreesUtil(t1, t2);
+
+    }
+
+    private TreeNode mergeTreesUtil(TreeNode t1, TreeNode t2) {
+        if (t1 == null || t2 == null) {
+            return null;
+        }
+
+        t1.val += t2.val;
+
+        if (mergeTreesUtil(t1.left, t2.left) == null) {
+            if (t1.left == null) {
+                t1.left = t2.left;
+            }
+        }
+
+        if (mergeTreesUtil(t1.right, t2.right) == null) {
+            if (t1.right == null) {
+                t1.right = t2.right;
+            }
+        }
+
+        return t1;
+    }
+
     public TreeNode mergeTreesV1(TreeNode t1, TreeNode t2) { // beats 91.81%
         TreeNode p1 = new TreeNode(0);
         TreeNode p2 = new TreeNode(0);
