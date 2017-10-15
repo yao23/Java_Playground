@@ -23,6 +23,16 @@ public class MoveZeroes { // LC 283
         }
     }
 
+    public void moveZeroesV0(int[] nums) { // beats 21.59%
+        int j = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                swap(nums, i, j);
+                j++;
+            }
+        }
+    }
+
     private void swap(int[] nums, int i, int j) {
         int tmp = nums[i];
         nums[i] = nums[j];
