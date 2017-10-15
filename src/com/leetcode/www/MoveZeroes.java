@@ -1,18 +1,25 @@
 package com.leetcode.www;
 
 public class MoveZeroes { // LC 283
-    public void moveZeroes(int[] nums) { // not working ([12,1,0,3,0] for test case 1)
-        int l = 0, r = nums.length - 1;
-        while (l < r) {
-            while (l != 0 && l < r) {
-                l++;
+    /**
+     * Shift non-zero values as far forward as possible
+     * Fill remaining space with zeros
+     * @param nums
+     */
+    public void moveZeroes(int[] nums) { // beats 87.71%
+        if (nums == null || nums.length == 0) {
+            return;
+        }
+
+        int insertPos = 0;
+        for (int num: nums) {
+            if (num != 0) {
+                nums[insertPos++] = num;
             }
-            while (r == 0 && l < r) {
-                r--;
-            }
-            if (l < r) {
-                swap(nums, l, r);
-            }
+        }
+
+        while (insertPos < nums.length) {
+            nums[insertPos++] = 0;
         }
     }
 
