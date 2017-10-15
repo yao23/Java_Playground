@@ -16,7 +16,9 @@ public class ShortestPalindrome { // LC 214
     public String shortestPalindrome(String s) { // beats 70.27%
         int j = 0;
         for (int i = s.length() - 1; i >= 0; i--) {
-            if (s.charAt(i) == s.charAt(j)) { j += 1; }
+            if (s.charAt(i) == s.charAt(j)) {
+                j += 1;
+            }
         }
         if (j == s.length()) {
             return s;
