@@ -7,9 +7,21 @@ public class PowerOfThree { // LC 326
      * @param n
      * @return
      */
+    public boolean isPowerOfThree(int n) { // beats 62.18%
+        if (n < 1) {
+            return false;
+        }
+
+        while (n % 3 == 0) {
+            n /= 3;
+        }
+
+        return n == 1;
+    }
+
     // If log10(n) / log10(3) returns an int (more precisely, a double but has 0 after decimal point),
     // then n is a power of 3.
-    public boolean isPowerOfThree(int n) { // beats 27.68%
+    public boolean isPowerOfThreeV3(int n) { // beats 27.68%
         return (Math.log10(n) / Math.log10(3)) % 1 == 0;
     }
 
