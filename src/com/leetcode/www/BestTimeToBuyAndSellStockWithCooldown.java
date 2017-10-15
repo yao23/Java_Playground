@@ -1,7 +1,28 @@
 package com.leetcode.www;
 
 public class BestTimeToBuyAndSellStockWithCooldown { // LC 309
-    public int maxProfit(int[] prices) { // beats 20.41%
+    // DP
+    public int maxProfit(int[] prices) { // beats 43.43%
+        if (prices == null || prices.length < 2)  {
+            return 0;
+        }
+        int[] s0 = new int[2];
+        int[] s1 = new int[2];
+        int[] s2 = new int[2];
+        s0[0] = 0;
+        s1[0] = -prices[0];
+        s2[0] = Integer.MIN_VALUE;
+
+        for (int i = 1; i < prices.length; ++i) {
+            s0[i % 2] = Math.max(s0[(i - 1) % 2], s2[(i - 1) % 2]);
+            s1[i % 2] = Math.max(s1[(i - 1) % 2], s0[(i - 1) % 2] - prices[i]);
+            s2[i % 2] = s1[(i - 1) % 2] + prices[i];
+        }
+
+        return Math.max(s0[(prices.length - 1) % 2], s2[(prices.length - 1) % 2]);
+    }
+
+    public int maxProfitV0(int[] prices) { // beats 20.41%
         int sell = 0, prev_sell = 0, buy = Integer.MIN_VALUE, prev_buy;
         for (int price : prices) {
             prev_buy = buy;
