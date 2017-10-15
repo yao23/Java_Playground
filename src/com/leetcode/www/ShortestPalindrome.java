@@ -2,10 +2,35 @@ package com.leetcode.www;
 
 public class ShortestPalindrome { // LC 214
     /**
+     * https://leetcode.com/articles/shortest-palindrome/
+     *
+     * The idea is to use two anchors j and i to compare the String from beginning and end.
+     * If j can reach the end, the String itself is Palindrome. Otherwise, we divide the String by j, and get
+     * mid = s.substring(0, j) and suffix.
+     * We reverse suffix as beginning of result and recursively call shortestPalindrome to get result of mid then
+     * append suffix to get result.
+     *
+     * @param s
+     * @return
+     */
+    public String shortestPalindrome(String s) { // beats 70.27%
+        int j = 0;
+        for (int i = s.length() - 1; i >= 0; i--) {
+            if (s.charAt(i) == s.charAt(j)) { j += 1; }
+        }
+        if (j == s.length()) {
+            return s;
+        }
+        String suffix = s.substring(j);
+        return new StringBuffer(suffix).reverse().toString() + shortestPalindrome(s.substring(0, j)) + suffix;
+    }
+
+    /**
      * https://discuss.leetcode.com/topic/27261/clean-kmp-solution-with-super-detailed-explanation
      *
+     * KMP Algorithm
      */
-    public String shortestPalindrome(String s) { // beats 52.42%
+    public String shortestPalindromeV0(String s) { // beats 52.42%
         String temp = s + "#" + new StringBuilder(s).reverse().toString();
         int[] table = getTable(temp);
 
