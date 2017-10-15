@@ -9,8 +9,36 @@ public class EncodeAndDecodeTinyURL { // LC 535
      * https://leetcode.com/articles/encode-and-decode-tinyurl/
      */
 
+    // random fixed-length encoding
+    class CodecV4 { // beats 8.32%
+        String alphabet = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        HashMap<String, String> map = new HashMap<>();
+        Random rand = new Random();
+        String key = getRand();
+
+        public String getRand() {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < 6; i++) {
+                sb.append(alphabet.charAt(rand.nextInt(62)));
+            }
+            return sb.toString();
+        }
+
+        public String encode(String longUrl) {
+            while (map.containsKey(key)) {
+                key = getRand();
+            }
+            map.put(key, longUrl);
+            return "http://tinyurl.com/" + key;
+        }
+
+        public String decode(String shortUrl) {
+            return map.get(shortUrl.replace("http://tinyurl.com/", ""));
+        }
+    }
+
     // variable-length encoding
-    class Codec { // beats 33.56%
+    class CodecV3 { // beats 33.56%
         String chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         HashMap<String, String> map = new HashMap<>();
         int count = 1;
