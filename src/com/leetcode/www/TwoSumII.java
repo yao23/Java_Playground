@@ -1,6 +1,6 @@
 package com.leetcode.www;
 
-public class TwoSumII { // Input array is sorted
+public class TwoSumII { // LC 167, Input array is sorted
     // binary search
     public int[] twoSum(int[] numbers, int target) { // beats 99.27%
         if (numbers == null || numbers.length == 0) {
