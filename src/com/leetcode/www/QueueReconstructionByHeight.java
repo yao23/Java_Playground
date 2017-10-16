@@ -1,11 +1,32 @@
 package com.leetcode.www;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class QueueReconstructionByHeight { // LC 406
+    public int[][] reconstructQueue(int[][] people) { // beats 84.54%
+        if (people == null || people.length == 0 || people[0].length == 0) {
+            return people;
+        }
+
+        Arrays.sort(people, new Comparator<int[]>(){
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                if (o1[0] == o2[0]) {
+                    return o1[1] - o2[1];
+                }
+                return o2[0] - o1[0];
+            }
+        });
+
+        List<int[]> list = new ArrayList<>();
+
+        for (int[] p: people) {
+            list.add(p[1], p);
+        }
+
+        return list.toArray(new int[][]{});
+    }
+
     /**
      * 1. Pick out tallest group of people and sort them in a subarray (S). Since there's no other groups of people
      * taller than them, therefore each guy's index will be just as same as his k value.
@@ -19,7 +40,7 @@ public class QueueReconstructionByHeight { // LC 406
      * @param people
      * @return
      */
-    public int[][] reconstructQueue(int[][] people) { // beats 63.14%
+    public int[][] reconstructQueueV1(int[][] people) { // beats 63.14%
         //pick up the tallest guy first
         //when insert the next tall guy, just need to insert him into kth position
         //repeat until all people are inserted into list
