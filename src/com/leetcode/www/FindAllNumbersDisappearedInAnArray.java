@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FindAllNumbersDisappearedInAnArray { // LC 448
-    public List<Integer> findDisappearedNumbers(int[] nums) {
+    public List<Integer> findDisappearedNumbers(int[] nums) { // beats 88.08%
         List<Integer> res = new ArrayList<>();
         int n = nums.length;
         for (int i = 0; i < nums.length; i ++) {
