@@ -35,4 +35,13 @@ public class QueueReconstructionByHeight { // LC 406
         }
         return res.toArray(new int[people.length][]);
     }
+
+    public int[][] reconstructQueueV0(int[][] people) { // beats 22.69%
+        Arrays.sort(people, (a, b) -> (a[0] == b[0]) ? (a[1] - b[1]) : (b[0] - a[0]));
+        List<int[]> list = new LinkedList<>();
+        for (int[] p : people) {
+            list.add(p[1], p);
+        }
+        return list.toArray(new int[list.size()][]);
+    }
 }
