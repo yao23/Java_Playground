@@ -28,7 +28,7 @@ public class ReverseVowelsOfAString { // LC 345
         return new String(tab);
     }
 
-    private boolean isVowel(char a){
+    private boolean isVowel(char a) {
         switch(a){
             case ('a') : return true;
             case ('e') : return true;
