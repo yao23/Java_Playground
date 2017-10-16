@@ -45,3 +45,8 @@ public class QueueReconstructionByHeight { // LC 406
         return list.toArray(new int[list.size()][]);
     }
 }
+
+// Input:
+// [[7,0], [4,4], [7,1], [5,0], [6,1], [5,2]]
+// Output:
+// [[5,0], [7,0], [5,2], [6,1], [4,4], [7,1]]
