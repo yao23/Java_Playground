@@ -1,4 +1,4 @@
-/**
+package com.leetcode.www; /**
  * Created by liyao on 6/24/17.
  */
 import java.util.Queue;
