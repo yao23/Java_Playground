@@ -1,7 +1,7 @@
 /**
  * Created by liyao on 6/11/17.
  */
-public class SwapNodesInPairs {
+public class SwapNodesInPairs { // LC 24
     public ListNode swapPairs(ListNode head) {
         if (head == null || head.next == null) {
             return head;
