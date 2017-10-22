@@ -4,7 +4,7 @@
 
 import java.util.LinkedList;
 
-public class SymmetricTree {
+public class SymmetricTree { // LC 101
     private static boolean recursiveFunc(TreeNode left, TreeNode right) { // recursive
         if (left == null && right == null) {
             return true;
