@@ -1,7 +1,7 @@
 /**
  * Created by liyao on 7/16/17.
  */
-public class TicTacToe {
+public class TicTacToe { // LC 348
     private int n;
     private int[] rows; // row number occupied by players
     private int[] cols; // col number occupied by players
