@@ -3,7 +3,7 @@
  */
 import java.lang.*;
 
-public class TrappingRainWater {
+public class TrappingRainWater { // LC 42
     public int trap(int[] height) { // beats 60.02%
         int result = 0;
         int len = height.length;
