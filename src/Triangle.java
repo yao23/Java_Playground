@@ -3,7 +3,7 @@
  */
 import java.util.List;
 
-public class Triangle {
+public class Triangle { // LC 120
     public int minimumTotal(List<List<Integer>> triangle) {
         int row = triangle.size();
         int results[] = new int[row];
