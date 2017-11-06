@@ -1,3 +1,5 @@
+package com.leetcode.www;
+
 import java.util.List;
 
 public class ValidWordSquare { // LC 422
