@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class ValidWordSquare {
+public class ValidWordSquare { // LC 422
     public boolean validWordSquare(List<String> words) {
         int len = words.size();
         if (len == 0) {
