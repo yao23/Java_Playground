@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-public class WordBreak {
+public class WordBreak { // LC 139
     public boolean wordBreak(String s, List<String> wordDict) {
         return check(s, wordDict);
     }
