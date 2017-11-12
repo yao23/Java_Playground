@@ -1,3 +1,5 @@
+package com.leetcode.www;
+
 public class WordSearch { // LC 79
     public boolean exist(char[][] board, String word) { // beats 69.70%
         int row = board.length;
