@@ -1,4 +1,4 @@
-public class WordSearch {
+public class WordSearch { // LC 79
     public boolean exist(char[][] board, String word) { // beats 69.70%
         int row = board.length;
         if (row == 0) {
