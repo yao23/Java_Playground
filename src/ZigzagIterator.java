@@ -5,7 +5,7 @@
 import java.util.Iterator;
 import java.util.List;
 
-public class ZigzagIterator {
+public class ZigzagIterator { // LC 281
     private Iterator<Integer> iterator1;
     private Iterator<Integer> iterator2;
     private int mode;
