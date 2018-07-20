@@ -15,3 +15,12 @@ private Object readResolve() {
     // take care of the Elvis impersonator
     return INSTANCE;
 }
+
+// Enum singleton - the preferred approach
+public enum Elvis {
+    INSTANCE;
+
+    public void leaveTheBuilding() {
+
+    }
+}
