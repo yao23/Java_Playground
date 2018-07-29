@@ -16,7 +16,9 @@ public class Stack {
         if (size == 0) {
             throw new EmptyStackException();
         }
-        return elements[--size];
+        Object result = elements[--size];
+        elements[size] = null; // Eliminate obsolete reference
+        return result;
     }
 
     /**
