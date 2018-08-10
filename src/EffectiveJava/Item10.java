@@ -11,3 +11,16 @@ private static final Set<Point> unitCircle = Set.of(
 public static boolean onUnitCircle(Point p) {
     return unitCircle.contains(p);
 }
+
+public class CounterPoint extends Point {
+    private static final AtomicInteger counter = new AtomicInteger();
+
+    public CounterPoint(int x, int y) {
+        super(x, y);
+        counter.incrementAndGet();
+    }
+
+    public static int numberCreated() {
+        return counter.get();
+    }
+}
