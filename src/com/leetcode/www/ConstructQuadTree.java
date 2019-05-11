@@ -1,3 +1,5 @@
+package com.leetcode.www;
+
 // Definition for a QuadTree node.
 class Node {
     public boolean val;
@@ -23,6 +25,9 @@ class Solution {
     /**
      * Runtime: 8 ms, faster than 6.00% of Java online submissions for Construct Quad Tree.
      * Memory Usage: 44.3 MB, less than 45.98% of Java online submissions for Construct Quad Tree.
+     *
+     * the following link is similar like my proposed one (following code)
+     * https://leetcode.com/problems/construct-quad-tree/discuss/286829/Java-recursive
      *
      * @param grid
      * @return
