@@ -63,7 +63,7 @@ class Solution {
         int len = grid.length / 2;
         int[][] subGrid = new int[len][len];
         for (int i = 0; i < len; i++) {
-            for (int j = 0; j < len; j++) {
+            for (int j = 0; j < len; j++) { // System.arraycopy(grid[row + i], col, subGrid[i], 0, len);
                 subGrid[i][j] = grid[row + i][col + j];
             }
         }
