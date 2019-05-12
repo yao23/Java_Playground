@@ -23,6 +23,51 @@ class Node {
 
 class Solution {
     /**
+     * Runtime: 1 ms, faster than 99.95% of Java online submissions for Construct Quad Tree.
+     * Memory Usage: 41.5 MB, less than 68.97% of Java online submissions for Construct Quad Tree.
+     *
+     * https://leetcode.com/problems/construct-quad-tree/discuss/279486/Java-beats-100-recursion-solution
+     *
+     * check same section by compare values with start grid element, no extra space use
+     *
+     * @param grid
+     * @return
+     */
+
+    public Node construct(int[][] grid) {
+        return construct(grid,0, 0, grid.length) ;
+    }
+
+    private Node construct(int[][] grid, int startRow, int startCol, int n)  {
+        if (sameSection(grid, startRow, startCol, n)) {
+            return new Node(grid[startRow][startCol] == 1,true,null,null,null,null);
+        } else{
+            int halfLength = n / 2;
+            Node topLeft = construct(grid, startRow, startCol, halfLength) ;
+            Node topRight = construct(grid, startRow, startCol + halfLength, halfLength);
+            Node bottomLeft = construct(grid,startRow + halfLength,startCol, halfLength);
+            Node bottomRight = construct(grid,startRow + halfLength,startCol + halfLength, halfLength);
+            return new Node(false, false, topLeft, topRight, bottomLeft, bottomRight);
+        }
+    }
+
+    private boolean sameSection(int[][] sect, int startRow, int startCol, int n) {
+        if (n == 1) {
+            return true;
+        }
+
+        for (int i = startRow; i < startRow + n; i++) {
+            for (int j = startCol; j < startCol + n; j++) {
+                if (sect[startRow][startCol] != sect[i][j]) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    /**
      * Runtime: 8 ms, faster than 6.00% of Java online submissions for Construct Quad Tree.
      * Memory Usage: 44.3 MB, less than 45.98% of Java online submissions for Construct Quad Tree.
      *
@@ -32,7 +77,7 @@ class Solution {
      * @param grid
      * @return
      */
-    public Node construct(int[][] grid) {
+    public Node construct0(int[][] grid) {
         if (grid == null || grid.length == 0 || grid[0].length == 0) {
             return new Node();
         } else {
