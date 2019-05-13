@@ -8,7 +8,7 @@ public class ReverseLinkedList { // LC 206
      * @param head node
      * @return final reversed head node
      */
-    public ListNode reverseList(ListNode head) { // recursive
+    public ListNode reverseList(ListNode head) { // recursive (non-tail recursion, finish later)
         if (head == null || head.next == null) {
             return head;
         } else {
@@ -16,6 +16,27 @@ public class ReverseLinkedList { // LC 206
             head.next.next = head; // reverse pointing from next to head
             head.next = null; // remove next pointer from head
             return result;
+        }
+    }
+
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Reverse Linked List.
+     * Memory Usage: 36.4 MB, less than 99.25% of Java online submissions for Reverse Linked List.
+     *
+     * @param head node
+     * @return final reversed head node
+     */
+    public ListNode reverseListV3(ListNode head) {
+        return reverse(head, null);
+    }
+
+    private ListNode reverse(ListNode head, ListNode newHead) { // recursive (tail recursion, finish previously)
+        if (head == null) {
+            return newHead;
+        } else {
+            ListNode nextNode = head.next; // handle next next node
+            head.next = newHead; // reverse pointing
+            return reverse(nextNode, head);
         }
     }
 
