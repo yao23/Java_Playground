@@ -8,6 +8,13 @@ import java.util.Deque;
 import java.util.List;
 
 public class BinaryTreeLevelOrderTraversal { // LC 102
+    /**
+     * Runtime: 1 ms, faster than 75.54% of Java online submissions for Binary Tree Level Order Traversal.
+     * Memory Usage: 35.4 MB, less than 98.97% of Java online submissions for Binary Tree Level Order Traversal.
+     *
+     * @param root
+     * @return
+     */
     public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> result = new ArrayList<>();
         if (root == null) {
