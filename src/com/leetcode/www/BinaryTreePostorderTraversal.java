@@ -3,6 +3,13 @@ package com.leetcode.www;
 import java.util.*;
 
 public class BinaryTreePostorderTraversal { // LC 145
+    /**
+     * Runtime: 1 ms, faster than 49.35% of Java online submissions for Binary Tree Postorder Traversal.
+     * Memory Usage: 34 MB, less than 98.78% of Java online submissions for Binary Tree Postorder Traversal.
+     *
+     * @param root
+     * @return
+     */
     public List<Integer> postorderTraversal(TreeNode root) {
         LinkedList<Integer> res = new LinkedList<>();
         if (root == null) {
