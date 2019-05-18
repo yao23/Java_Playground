@@ -5,6 +5,10 @@ package com.leetcode.www;
  */
 
 public class AddAndSearchWord { // LC 211
+    /**
+     * Runtime: 90 ms, faster than 48.43% of Java online submissions for Add and Search Word - Data structure design.
+     * Memory Usage: 59.5 MB, less than 40.50% of Java online submissions for Add and Search Word - Data structure design.
+     */
     class WordDictionary {
         class TrieNode {
             public TrieNode[] children = new TrieNode[26];
