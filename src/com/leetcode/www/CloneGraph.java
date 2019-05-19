@@ -5,20 +5,20 @@ import java.util.*;
 public class CloneGraph { // LC 133
 
     // time: O(V + 2E), space: O(V)
-    public UndirectedGraphNode cloneGraphV0(UndirectedGraphNode node) { // beats 71.08% (DFS)
+    public Node cloneGraphV0(Node node) { // beats 71.08% (DFS)
         if (node == null) {
             return node;
         }
-        Map<UndirectedGraphNode, UndirectedGraphNode> map = new HashMap<>();
+        Map<Node, Node> map = new HashMap<>();
         return dfsHelper(node, map);
     }
 
-    private UndirectedGraphNode dfsHelper(UndirectedGraphNode node, Map<UndirectedGraphNode, UndirectedGraphNode> map) {
+    private Node dfsHelper(Node node, Map<Node, Node> map) {
         // 1. create node and put into map
-        map.put(node, new UndirectedGraphNode(node.label));
+        map.put(node, new Node(node.val, null));
         // 2. create all edges starting from current copied
-        for (UndirectedGraphNode neighbor : node.neighbors) {
-            UndirectedGraphNode newNeighbor = map.get(neighbor);
+        for (Node neighbor : node.neighbors) {
+            Node newNeighbor = map.get(neighbor);
             // create with DFS if not exist
             if (newNeighbor == null) {
                 newNeighbor = dfsHelper(neighbor, map);
