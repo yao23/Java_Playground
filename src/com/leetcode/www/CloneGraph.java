@@ -29,7 +29,14 @@ public class CloneGraph { // LC 133
         return map.get(node);
     }
 
-    public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) { // beats 42.27% (BFS)
+    /**
+     * Runtime: 2 ms, faster than 63.73% of Java online submissions for Clone Graph.
+     * Memory Usage: 33 MB, less than 98.87% of Java online submissions for Clone Graph.
+     *
+     * @param node
+     * @return
+     */
+    public Node cloneGraph(Node node) { // BFS
         if (node == null) {
             return node;
         }
@@ -37,22 +44,23 @@ public class CloneGraph { // LC 133
         return bfsHelper(node);
     }
 
-    private UndirectedGraphNode bfsHelper(UndirectedGraphNode node) {
-        Map<UndirectedGraphNode, UndirectedGraphNode> map = new HashMap<>();
-        Deque<UndirectedGraphNode> queue = new ArrayDeque<>();
+    private Node bfsHelper(Node node) {
+        Map<Node, Node> map = new HashMap<>();
+        Deque<Node> queue = new ArrayDeque<>();
 
         queue.offerLast(node);
-        map.put(node, new UndirectedGraphNode(node.label));
+        map.put(node, new Node(node.val, null));
 
         while (!queue.isEmpty()) {
-            UndirectedGraphNode cur = queue.pollFirst();
-            UndirectedGraphNode copy = map.get(cur);
-            for (UndirectedGraphNode neighbor : cur.neighbors) {
-                UndirectedGraphNode newNeighbor = map.get(neighbor);
+            Node cur = queue.pollFirst();
+            Node copy = map.get(cur);
+            copy.neighbors = new ArrayList<>();
+            for (Node neighbor : cur.neighbors) {
+                Node newNeighbor = map.get(neighbor);
                 if (newNeighbor == null) {
                     // 1. create node, put into map & queue
                     queue.offerLast(neighbor);
-                    map.put(neighbor, new UndirectedGraphNode(neighbor.label));
+                    map.put(neighbor, new Node(neighbor.val, null));
                 }
                 // 2. create edge starting from current copied
                 copy.neighbors.add(map.get(neighbor));
@@ -62,10 +70,17 @@ public class CloneGraph { // LC 133
         return map.get(node);
     }
 
-    class UndirectedGraphNode {
-      int label;
-      List<UndirectedGraphNode> neighbors;
-      UndirectedGraphNode(int x) { label = x; neighbors = new ArrayList<UndirectedGraphNode>(); }
+    // Definition for a Node.
+    class Node {
+        public int val;
+        public List<Node> neighbors;
+
+        public Node() {}
+
+        public Node(int _val,List<Node> _neighbors) {
+            val = _val;
+            neighbors = _neighbors;
+        }
     }
 }
 
