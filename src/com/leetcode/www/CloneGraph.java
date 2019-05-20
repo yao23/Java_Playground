@@ -2,7 +2,7 @@ package com.leetcode.www;
 
 import java.util.*;
 
-public class CloneGraph { // LC 133
+public class CloneGraph { // LC 133 - Graph traversal (DFS/BFS + HashMap)
     /**
      * Runtime: 1 ms, faster than 100.00% of Java online submissions for Clone Graph.
      * Memory Usage: 32.5 MB, less than 98.91% of Java online submissions for Clone Graph.
