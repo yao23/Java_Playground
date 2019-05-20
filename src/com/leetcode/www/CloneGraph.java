@@ -3,9 +3,16 @@ package com.leetcode.www;
 import java.util.*;
 
 public class CloneGraph { // LC 133
-
-    // time: O(V + 2E), space: O(V)
-    public Node cloneGraphV0(Node node) { // beats 71.08% (DFS)
+    /**
+     * Runtime: 1 ms, faster than 100.00% of Java online submissions for Clone Graph.
+     * Memory Usage: 32.5 MB, less than 98.91% of Java online submissions for Clone Graph.
+     *
+     * time: O(V + 2E), space: O(V)
+     *
+     * @param node
+     * @return
+     */
+    public Node cloneGraphV0(Node node) { // DFS
         if (node == null) {
             return node;
         }
@@ -15,7 +22,7 @@ public class CloneGraph { // LC 133
 
     private Node dfsHelper(Node node, Map<Node, Node> map) {
         // 1. create node and put into map
-        map.put(node, new Node(node.val, null));
+        map.put(node, new Node(node.val, new ArrayList<>()));
         // 2. create all edges starting from current copied
         for (Node neighbor : node.neighbors) {
             Node newNeighbor = map.get(neighbor);
