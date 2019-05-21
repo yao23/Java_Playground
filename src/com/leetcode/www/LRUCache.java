@@ -13,7 +13,7 @@ public class LRUCache { // LC 146
     class Node {
         int key;
         int value;
-        Node prev;
+        Node prev; // easy to get last node (least recently used)
         Node next;
         public Node(int key, int value) {
             this.key = key;
@@ -25,8 +25,8 @@ public class LRUCache { // LC 146
 
     private int capacity;
     private int numNode;
-    private Node head;
-    private Node tail;
+    private Node head; // easy to add node in head
+    private Node tail; // easy to remove last node when over capacity
     private Map<Integer, Node> map;
 
     public LRUCache(int capacity) {
