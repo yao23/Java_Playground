@@ -18,7 +18,7 @@ public class AddTwoNumbers { // LC 2
         ListNode root = new ListNode(0);
         ListNode cur = root;
 
-        while (one != null || two != null) { // one != null || two != null
+        while (one != null || two != null) {
             int tmp = carry;
 
             if (one != null) {
