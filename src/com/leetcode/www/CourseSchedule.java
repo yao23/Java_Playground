@@ -90,6 +90,53 @@ public class CourseSchedule { // LC 207
         }
     }
 
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        int numEdge = prerequisites.length;
+        if (numCourses <= numEdge) {
+            return false;
+        } else {
+            Map<Integer, Node> map = new HashMap<>();
+            // construct graph
+            for (int[] edge : prerequisites) {
+                int start = edge[0];
+                int end = edge[1];
+                if (map.get(start) == null) {
+                    map.put(start, new Node(start));
+                }
+                Node startNode = map.get(start);
+                if (!startNode.neighbors.contains(end)) {
+                    startNode.neighbors.push(end);
+                }
+                startNode.degree++;
+            }
+
+            PriorityQueue<Node> pq = new PriorityQueue() {
+                // comparator with degree in desending order
+            }
+            for (Entry<Integer, Node> entrySet : map.entrySet()) {
+
+            }
+
+            // traverse and check cyclic or not
+
+            // if has cycle, return false
+
+            // if no cycle, return true
+        }
+
+    }
+
+    class Node {
+        int val;
+        int degree;
+        Set<Integer> neighbors;
+        Node(int x) {
+            val = x;
+            degree = 0;
+            neighbors = new HashSet<>();
+        }
+    }
+
     // didn't add void case (some course info has not been provided (default in-degree as 0) as 2 in test case 6)
     // didn't figure out the way to process zero in-degree nodes
 
