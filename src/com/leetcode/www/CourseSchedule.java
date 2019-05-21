@@ -98,6 +98,47 @@ public class CourseSchedule { // LC 207
         }
     }
 
+    /**
+     * Runtime: 28 ms, faster than 37.40% of Java online submissions for Course Schedule.
+     * Memory Usage: 81 MB, less than 5.00% of Java online submissions for Course Schedule.
+     *
+     * @param numCourses
+     * @param prerequisites
+     * @return
+     */
+    public boolean canFinishV1(int numCourses, int[][] prerequisites) {
+        int[][] matrix = new int[numCourses][numCourses]; // i -> j
+        int[] inDegree = new int[numCourses];
+
+        for (int i = 0; i < prerequisites.length; i++) {
+            int ready = prerequisites[i][0];
+            int pre = prerequisites[i][1];
+            if (matrix[pre][ready] == 0) {
+                inDegree[ready]++; // duplicate case
+            }
+            matrix[pre][ready] = 1; // construct graph with adjacency matrix
+        }
+
+        int count = 0;
+        Queue<Integer> zeroDegreeQueue = new LinkedList<>();
+        for (int i = 0; i < inDegree.length; i++) {
+            if (inDegree[i] == 0) {
+                zeroDegreeQueue.offer(i);
+            }
+        }
+        while (!zeroDegreeQueue.isEmpty()) {
+            int course = zeroDegreeQueue.poll();
+            count++;
+            for (int i = 0; i < numCourses; i++) {
+                if (matrix[course][i] != 0) {
+                    if (--inDegree[i] == 0)
+                        zeroDegreeQueue.offer(i);
+                }
+            }
+        }
+        return count == numCourses;
+    }
+
     // didn't add void case (some course info has not been provided (default in-degree as 0) as 2 in test case 6)
     // didn't figure out the way to process zero in-degree nodes
 
