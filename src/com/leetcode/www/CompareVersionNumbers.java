@@ -1,6 +1,14 @@
 package com.leetcode.www;
 
 public class CompareVersionNumbers { // LC 165
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Compare Version Numbers.
+     * Memory Usage: 33.3 MB, less than 64.51% of Java online submissions for Compare Version Numbers.
+     *
+     * @param version1
+     * @param version2
+     * @return
+     */
     public int compareVersion(String version1, String version2) { // beats 96.33%
         int temp1 = 0, temp2 = 0;
         int len1 = version1.length(), len2 = version2.length();
