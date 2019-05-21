@@ -4,6 +4,7 @@ package com.leetcode.www; /**
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.LinkedHashMap;
 
 public class LRUCache { // LC 146
     /**
@@ -94,6 +95,44 @@ public class LRUCache { // LC 146
     // ["com.leetcode.www.LRUCache","put","put","get","put","put","get"], [[2],[2,1],[2,2],[2],[1,1],[4,1],[2]] => [null,null,null,2,null,null,-1]
 
     // beats 49.65%
+}
+
+/**
+ * Runtime: 67 ms, faster than 45.80% of Java online submissions for LRU Cache.
+ * Memory Usage: 56 MB, less than 78.77% of Java online submissions for LRU Cache.
+ *
+ * LinkedHashMap
+ */
+class LRUCacheV0 {
+    public int cap;
+    private LinkedHashMap<Integer, Integer> lru;
+    public LRUCacheV0(int capacity) {
+        this.lru = new LinkedHashMap<>();
+        cap = capacity;
+    }
+
+    public int get(int key) {
+        if (lru.containsKey(key)) {
+            int new_value = lru.get(key);
+            lru.remove(key);
+            lru.put(key,new_value);
+            return new_value;
+        } else {
+            return -1;
+        }
+    }
+
+    public void put(int key, int value) {
+        if (lru.containsKey(key)) {
+            lru.remove(key);
+        } else if(lru.size() >= cap) {
+            for(int k:lru.keySet()) {
+                lru.remove(k); // remove last node (least recently used)
+                break;
+            }
+        }
+        lru.put(key,value);
+    }
 }
 
 /**
