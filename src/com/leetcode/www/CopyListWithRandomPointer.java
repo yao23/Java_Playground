@@ -168,6 +168,46 @@ public class CopyListWithRandomPointer { // LC 138
         return dummy.next;
     }
 
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Copy List with Random Pointer.
+     * Memory Usage: 34.2 MB, less than 95.19% of Java online submissions for Copy List with Random Pointer.
+     *
+     * @param head
+     * @return
+     */
+    public RandomListNode copyRandomListV2(RandomListNode head) {
+        if (head == null) {
+            return null;
+        }
+
+        //1. duplicate each node
+        RandomListNode node = head;
+        while (node != null) {
+            RandomListNode newNode = new RandomListNode(node.label);
+            newNode.next = node.next;
+            node.next = newNode;
+            node = newNode.next;
+        }
+
+        //2. set random pointer
+        node = head;
+        while (node != null){
+            node.next.random = node.random == null ? null : node.random.next;
+            node = node.next.next;
+        }
+
+        //3. build new list
+        RandomListNode newHead = head.next;
+        node = newHead;
+        while (head != null) {
+            head.next = head.next.next;
+            head = head.next;
+            node.next = head == null ? null : head.next;
+            node = node.next;
+        }
+        return newHead;
+    }
+
     // {-1,1,#,#}
 
     // beats 25.53%
