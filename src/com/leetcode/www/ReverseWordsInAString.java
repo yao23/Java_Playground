@@ -1,7 +1,13 @@
 package com.leetcode.www;
 
 public class ReverseWordsInAString {
-
+    /**
+     * Runtime: 2 ms, faster than 89.57% of Java online submissions for Reverse Words in a String.
+     * Memory Usage: 35.5 MB, less than 99.96% of Java online submissions for Reverse Words in a String.
+     *
+     * @param s
+     * @return
+     */
     // https://discuss.leetcode.com/topic/7610/in-place-java-solution-with-comments-just-for-fun/2
     public String reverseWords(String s) { // beats 83.27%
         // reverse the whole string and convert to char array
