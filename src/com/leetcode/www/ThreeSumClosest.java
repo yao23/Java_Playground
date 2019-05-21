@@ -4,6 +4,14 @@ package com.leetcode.www; /**
 import java.util.Arrays;
 
 public class ThreeSumClosest { // LC 16
+    /**
+     * Runtime: 4 ms, faster than 98.05% of Java online submissions for 3Sum Closest.
+     * Memory Usage: 35.4 MB, less than 99.75% of Java online submissions for 3Sum Closest.
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
     public int threeSumClosest(int[] nums, int target) {
         Arrays.sort(nums);
 
@@ -15,7 +23,7 @@ public class ThreeSumClosest { // LC 16
         }
 
         for (int i = 0; i < len - 2; i++) {
-            while (i > 0 && nums[i - 1] == nums[i]) { // skip duplicate element
+            while (i > 0 && i < len - 2 && nums[i - 1] == nums[i]) { // skip duplicate element
                 i++;
             }
 
