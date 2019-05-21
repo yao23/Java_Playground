@@ -6,6 +6,13 @@ package com.leetcode.www;
 import java.util.*;
 
 public class BinaryTreeZigzagLevelOrderTraversal { // LC 103
+    /**
+     * Runtime: 1 ms, faster than 75.92% of Java online submissions for Binary Tree Zigzag Level Order Traversal.
+     * Memory Usage: 35.1 MB, less than 97.51% of Java online submissions for Binary Tree Zigzag Level Order Traversal.
+     *
+     * @param root
+     * @return
+     */
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) { // beats 38.80%
         List<List<Integer>> result = new ArrayList<>();
         if (root == null) {
