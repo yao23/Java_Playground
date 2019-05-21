@@ -111,7 +111,7 @@ public class BinaryTreeZigzagLevelOrderTraversal { // LC 103
     public List<List<Integer>> zigzagLevelOrderV0(TreeNode root) { // not working
         List<List<Integer>> result = new ArrayList<>();
         if (root == null) {
-            return result; // 不必把下面的大部分code放到 else 中
+            return result; // don't have to put most code inside else block
         } else {
             int order = 1; // 0 for left to right, 1 for right to left
             Deque<TreeNode> q = new ArrayDeque<>();
@@ -138,7 +138,7 @@ public class BinaryTreeZigzagLevelOrderTraversal { // LC 103
                         levelRes.add(curNode.val);
 
                         if (curNode.right != null) {
-                            q.offer(curNode.right); // 不能在这里改变queue啊，自己debug一下看看就知道为什么了 (it will affect q.removeLast() get curNode)
+                            q.offer(curNode.right); // cannot update queue here, (it will affect q.removeLast() get curNode)
                             nextNum++;
                         }
                         if (curNode.left != null) {
