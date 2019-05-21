@@ -6,6 +6,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CopyListWithRandomPointer { // LC 138
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Copy List with Random Pointer.
+     * Memory Usage: 33 MB, less than 98.92% of Java online submissions for Copy List with Random Pointer.
+     *
+     * @param head
+     */
     private void addNewNodes(RandomListNode head) { // add new nodes after original ones
         RandomListNode cur = head;
 
@@ -51,6 +57,19 @@ public class CopyListWithRandomPointer { // LC 138
 
         return newHead;
     }
+    private RandomListNode processSingleNode(RandomListNode head) {
+        if (head.next == null) {
+            RandomListNode newHead = new RandomListNode(head.label);
+            if (head.random == null) {
+                newHead.random = null;
+            } else {
+                newHead.random = newHead;
+            }
+            return newHead;
+        } else {
+            return null;
+        }
+    }
 
     public RandomListNode copyRandomList(RandomListNode head) { // without hashmap, beats 72.33%
         if (head == null) {
@@ -78,20 +97,6 @@ public class CopyListWithRandomPointer { // LC 138
             hashMap.put(node,newNode); // construct old-new node map
         }
         return newNode;
-    }
-
-    private RandomListNode processSingleNode(RandomListNode head) {
-        if (head.next == null) {
-            RandomListNode newHead = new RandomListNode(head.label);
-            if (head.random == null) {
-                newHead.random = null;
-            } else {
-                newHead.random = newHead;
-            }
-            return newHead;
-        } else {
-            return null;
-        }
     }
 
     public RandomListNode copyRandomListV1(RandomListNode head) { // hashmap with one pass, beats 25.53%
