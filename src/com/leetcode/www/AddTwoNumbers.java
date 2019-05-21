@@ -5,6 +5,14 @@ package com.leetcode.www;
  */
 public class AddTwoNumbers { // LC 2
 
+    /**
+     * Runtime: 2 ms, faster than 94.87% of Java online submissions for Add Two Numbers.
+     * Memory Usage: 43.6 MB, less than 87.25% of Java online submissions for Add Two Numbers.
+     *
+     * @param one
+     * @param two
+     * @return
+     */
     private static ListNode addTwoNumber(ListNode one, ListNode two) {
         int carry = 0;
         ListNode root = new ListNode(0);
