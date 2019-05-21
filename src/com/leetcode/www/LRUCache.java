@@ -10,6 +10,9 @@ public class LRUCache { // LC 146
     /**
      * Runtime: 63 ms, faster than 75.45% of Java online submissions for LRU Cache.
      * Memory Usage: 57.1 MB, less than 74.20% of Java online submissions for LRU Cache.
+     *
+     * HashMap + Double LinkedList
+     *
      */
     class Node {
         int key;
