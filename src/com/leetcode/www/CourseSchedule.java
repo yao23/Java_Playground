@@ -5,6 +5,14 @@ package com.leetcode.www; /**
 import java.util.*;
 
 public class CourseSchedule { // LC 207
+    /**
+     * Runtime: 11 ms, faster than 50.60% of Java online submissions for Course Schedule.
+     * Memory Usage: 45.3 MB, less than 79.84% of Java online submissions for Course Schedule.
+     *
+     * @param numCourses
+     * @param prerequisites
+     * @return
+     */
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         int row = prerequisites.length;
         if (row <= 1) {
@@ -87,53 +95,6 @@ public class CourseSchedule { // LC 207
                     }
                 }
             }
-        }
-    }
-
-    public boolean canFinish(int numCourses, int[][] prerequisites) {
-        int numEdge = prerequisites.length;
-        if (numCourses <= numEdge) {
-            return false;
-        } else {
-            Map<Integer, Node> map = new HashMap<>();
-            // construct graph
-            for (int[] edge : prerequisites) {
-                int start = edge[0];
-                int end = edge[1];
-                if (map.get(start) == null) {
-                    map.put(start, new Node(start));
-                }
-                Node startNode = map.get(start);
-                if (!startNode.neighbors.contains(end)) {
-                    startNode.neighbors.push(end);
-                }
-                startNode.degree++;
-            }
-
-            PriorityQueue<Node> pq = new PriorityQueue() {
-                // comparator with degree in desending order
-            }
-            for (Entry<Integer, Node> entrySet : map.entrySet()) {
-
-            }
-
-            // traverse and check cyclic or not
-
-            // if has cycle, return false
-
-            // if no cycle, return true
-        }
-
-    }
-
-    class Node {
-        int val;
-        int degree;
-        Set<Integer> neighbors;
-        Node(int x) {
-            val = x;
-            degree = 0;
-            neighbors = new HashSet<>();
         }
     }
 
