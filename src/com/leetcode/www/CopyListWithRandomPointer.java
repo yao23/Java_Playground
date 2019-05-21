@@ -182,7 +182,7 @@ public class CopyListWithRandomPointer { // LC 138
             return null;
         }
 
-        // 1. duplicate each node
+        // 1. duplicate each node, interleave old and new nodes like 1-1'-2-2'-3-3'
         RandomListNode node = head;
         while (node != null) {
             RandomListNode newNode = new RandomListNode(node.label);
@@ -198,7 +198,7 @@ public class CopyListWithRandomPointer { // LC 138
             node = node.next.next;
         }
 
-        // 3. build new list
+        // 3. build new list, 1-1'-2-2'-3-3' => 1-2-3,1'-2'-3'
         RandomListNode newHead = head.next;
         node = newHead;
         while (head != null) {
