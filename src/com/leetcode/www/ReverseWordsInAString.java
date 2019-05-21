@@ -2,6 +2,26 @@ package com.leetcode.www;
 
 public class ReverseWordsInAString {
     /**
+     * Runtime: 1 ms, faster than 99.93% of Java online submissions for Reverse Words in a String.
+     * Memory Usage: 35.6 MB, less than 99.96% of Java online submissions for Reverse Words in a String.
+     *
+     * @param s
+     * @return
+     */
+    public String reverseWords(String s) {
+        // Reverse the entire string
+        StringBuilder sb = new StringBuilder();
+        String[] strings = s.trim().split(" ");
+        for (int i = strings.length - 1; i >= 0; i--) {
+            if (strings[i].length() > 0) {
+                sb.append(strings[i]);
+                if (i > 0) sb.append(" ");
+            }
+        }
+        return sb.toString();
+    }
+
+    /**
      * Runtime: 2 ms, faster than 89.57% of Java online submissions for Reverse Words in a String.
      * Memory Usage: 35.5 MB, less than 99.96% of Java online submissions for Reverse Words in a String.
      *
@@ -9,7 +29,7 @@ public class ReverseWordsInAString {
      * @return
      */
     // https://discuss.leetcode.com/topic/7610/in-place-java-solution-with-comments-just-for-fun/2
-    public String reverseWords(String s) { // beats 83.27%
+    public String reverseWordsV1(String s) { // beats 83.27%
         // reverse the whole string and convert to char array
         char[] str = reverse(s.toCharArray(), 0, s.length()-1);
 
