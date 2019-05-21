@@ -1,6 +1,12 @@
 package com.leetcode.www;
 
 public class ReverseWordsInAStringII { // LC 186
+    /**
+     * Runtime: 1 ms, faster than 100.00% of Java online submissions for Reverse Words in a String II.
+     * Memory Usage: 42.3 MB, less than 68.57% of Java online submissions for Reverse Words in a String II.
+     *
+     * @param s
+     */
     public void reverseWords(char[] s) {
         if (s == null || s.length == 0) {
             return;
