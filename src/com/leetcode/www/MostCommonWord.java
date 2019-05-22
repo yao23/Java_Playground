@@ -14,13 +14,13 @@ public class MostCommonWord {
      * @return
      */
     public String mostCommonWord(String paragraph, String[] banned) {
-        Set<String> ban = new HashSet<>(Arrays.asList(banned));
+        Set<String> bannedSet = new HashSet<>(Arrays.asList(banned));
         Map<String, Integer> map = new HashMap<>();
         // https://www.vogella.com/tutorials/JavaRegularExpressions/article.html
         // \\W+ - several non-word characters [^\w+] like punctuation symbols !?',;.
         String[] strs = paragraph.replaceAll("\\W+" , " ").toLowerCase().split("\\s+");
         for (String str : strs) {
-            if (!ban.contains(str)) {
+            if (!bannedSet.contains(str)) {
                 map.put(str, map.getOrDefault(str, 0) + 1);
             }
         }
@@ -33,5 +33,46 @@ public class MostCommonWord {
             }
         }
         return res;
+    }
+
+    /**
+     * Runtime: 7 ms, faster than 82.36% of Java online submissions for Most Common Word.
+     * Memory Usage: 35.2 MB, less than 98.46% of Java online submissions for Most Common Word.
+     *
+     * https://leetcode.com/problems/most-common-word/discuss/295701/Java-Simple-HashMap-Solution
+     *
+     * @param paragraph
+     * @param banned
+     * @return
+     */
+    public String mostCommonWordV0(String paragraph, String[] banned) {
+        Set<String> bannedSet = new HashSet<>(Arrays.asList(banned));
+
+        int maxVal = 0;
+        Map<String, Integer> map = new HashMap<>();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < paragraph.length(); i++) {
+            char c = paragraph.charAt(i);
+            if (Character.isLetter(c)) {
+                sb.append(c);
+            }
+
+            if (!Character.isLetter(c) || i == paragraph.length() - 1) {
+                String temp = sb.toString().toLowerCase();
+                sb.setLength(0);
+                if (temp.length() > 0 && !bannedSet.contains(temp)) {
+                    map.put(temp, map.getOrDefault(temp, 0) + 1);
+                    maxVal = Math.max(maxVal, map.get(temp));
+                }
+            }
+        }
+
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            if (entry.getValue() == maxVal) {
+                return entry.getKey();
+            }
+        }
+
+        return "";
     }
 }
