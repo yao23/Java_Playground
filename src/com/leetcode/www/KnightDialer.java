@@ -44,4 +44,52 @@ public class KnightDialer {
         }
         return (int)res;
     }
+
+    /**
+     * Runtime: 51 ms, faster than 37.64% of Java online submissions for Knight Dialer.
+     * Memory Usage: 36.6 MB, less than 60.20% of Java online submissions for Knight Dialer.
+     *
+     * The problem can be transformed into:
+     * Traverse a directed graph (each node with a number as label and edges are defined by Knight's moving rule)
+     * Start from 0 to 9
+     * Move N - 1 step
+     * Return how many ways to reach the end
+     *
+     * Easy to come up with a DFS solution to start traversal from 0 to 9
+     * In each recursion, move to one of the current node's neighbors and the remain step becomes N-1
+     * Stop recursion when N == 0
+     *
+     * Optimization:
+     * Observe the recursive problem. The variances are:
+     *
+     * Current Node
+     * Remain Steps
+     * Therefore, we can store these two variables as the memo to speed up DFS (then it's a Top Down DP)
+     *
+     * https://leetcode.com/problems/knight-dialer/discuss/189271/Java-Top-Down-Memo-DP-O(N)
+     */
+    public static final int MOD = 1000000007;
+    public int knightDialerV0(int N) {
+        int[][] graph = new int[][]{{4,6},{6,8},{7,9},{4,8},{3,9,0},{},{1,7,0},{2,6},{1,3},{2,4}};
+        int cnt = 0;
+        Integer[][] memo = new Integer[N+1][10];
+        for (int i = 0; i <= 9; i++) {
+            cnt = (cnt + helper(N - 1, i, graph, memo)) % MOD;
+        }
+        return cnt;
+    }
+    private int helper(int N, int cur, int[][] graph, Integer[][] memo) {
+        if (N == 0) {
+            return 1;
+        }
+        if (memo[N][cur] != null) {
+            return memo[N][cur];
+        }
+        int cnt = 0;
+        for (int nei : graph[cur]) {
+            cnt = (cnt + helper(N - 1, nei, graph, memo)) % MOD;
+        }
+        memo[N][cur] = cnt;
+        return cnt;
+    }
 }
