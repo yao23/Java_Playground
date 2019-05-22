@@ -2,6 +2,30 @@ package com.leetcode.www;
 
 public class DiameterOfBinaryTree {
     /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Diameter of Binary Tree.
+     * Memory Usage: 35.8 MB, less than 99.80% of Java online submissions for Diameter of Binary Tree.
+     *
+     * https://leetcode.com/problems/diameter-of-binary-tree/discuss/290143/Simple-O(n)-solution-beats-100-java-solution
+     */
+    int result = 0;
+    public int diameterOfBinaryTree(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        height(root);
+        return result;
+    }
+    public int height(TreeNode root){
+        if (root == null) {
+            return 0;
+        }
+        int l = height(root.left);
+        int r = height(root.right);
+        result = Math.max(result, l + r); // Calculate the diameter and store it in global variable.
+        return 1 + Math.max(l, r);
+    }
+
+    /**
      * not working for test case
      *
      * [4,-7,-3,null,null,-9,-3,9,-7,-4,null,6,null,-6,-6,null,null,0,6,5,null,9,null,null,-1,-4,null,null,null,-2]
@@ -11,7 +35,7 @@ public class DiameterOfBinaryTree {
      * @param root
      * @return
      */
-    public int diameterOfBinaryTree(TreeNode root) {
+    public int diameterOfBinaryTreeV0(TreeNode root) {
         if (root == null) {
             return 0;
         } else {
