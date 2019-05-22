@@ -1,6 +1,6 @@
 package com.leetcode.www;
 
-public class StringCompression {
+public class StringCompression { // LC 443
     /**
      * Runtime: 1 ms, faster than 98.78% of Java online submissions for String Compression.
      * Memory Usage: 35.7 MB, less than 99.46% of Java online submissions for String Compression.
