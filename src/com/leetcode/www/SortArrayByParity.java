@@ -1,6 +1,6 @@
 package com.leetcode.www;
 
-public class SortArrayByParity {
+public class SortArrayByParity { // LC 905
     /**
      * Runtime: 1 ms, faster than 100.00% of Java online submissions for Sort Array By Parity.
      * Memory Usage: 40.4 MB, less than 89.85% of Java online submissions for Sort Array By Parity.
