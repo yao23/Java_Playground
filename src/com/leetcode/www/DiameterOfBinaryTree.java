@@ -28,7 +28,8 @@ public class DiameterOfBinaryTree { // LC 543
     /**
      * not working for test case
      *
-     * [4,-7,-3,null,null,-9,-3,9,-7,-4,null,6,null,-6,-6,null,null,0,6,5,null,9,null,null,-1,-4,null,null,null,-2]
+     * [4,-7,-3,null,null,-9,-3,9,-7,-4,null, 6,null,-6,-6,null,null, 0, 6,  5,null, 9,null,null,-1,-4,null,null,null,-2]
+     * [0, 1, 2,   3,   4, 5, 6,7, 8, 9,  10,11,  12,13,14,  15,  16,17, 18,19,  20,21,  22,  23,24,25,  26,  27,  28,29]
      * output: 7
      * expect: 8
      *
