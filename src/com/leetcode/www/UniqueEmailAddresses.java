@@ -3,7 +3,7 @@ package com.leetcode.www;
 import java.util.HashSet;
 import java.util.Set;
 
-public class UniqueEmailAddresses {
+public class UniqueEmailAddresses { // LC 929
     /**
      * Runtime: 5 ms, faster than 99.66% of Java online submissions for Unique Email Addresses.
      * Memory Usage: 36.4 MB, less than 99.86% of Java online submissions for Unique Email Addresses.
