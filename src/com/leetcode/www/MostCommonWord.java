@@ -45,7 +45,7 @@ public class MostCommonWord {
      * @param banned
      * @return
      */
-    public String mostCommonWordV0(String paragraph, String[] banned) {
+    public String mostCommonWordV1(String paragraph, String[] banned) {
         Set<String> bannedSet = new HashSet<>(Arrays.asList(banned));
 
         int maxVal = 0;
@@ -74,5 +74,37 @@ public class MostCommonWord {
         }
 
         return "";
+    }
+
+    /**
+     * Runtime: 13 ms, faster than 71.81% of Java online submissions for Most Common Word.
+     * Memory Usage: 35.8 MB, less than 97.81% of Java online submissions for Most Common Word.
+     *
+     * @param paragraph
+     * @param banned
+     * @return
+     */
+    public String mostCommonWordV0(String paragraph, String[] banned) {
+        Set<String> bannedSet = new HashSet<>(Arrays.asList(banned));
+
+        // use "#" to replace all non alphabet characters
+        String[] candidates = paragraph.replaceAll("[^a-zA-Z0-9]", "#").split("#");
+        Map<String, Integer> map = new HashMap<>();
+        String res = null;
+        int maxFreq = 0;
+
+        for (String can: candidates) {
+            can = can.toLowerCase();
+            if (bannedSet.contains(can) || can.isEmpty()) {
+                continue;
+            }
+            map.put(can, map.getOrDefault(can, 0) + 1);
+            if (map.get(can) > maxFreq) {
+                maxFreq = map.get(can);
+                res = can;
+            }
+        }
+
+        return res;
     }
 }
