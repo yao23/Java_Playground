@@ -25,5 +25,33 @@ public class DailyTemperatures { // LC 739
         return res;
     }
 
+    /**
+     * Runtime: 376 ms, faster than 5.07% of Java online submissions for Daily Temperatures.
+     * Memory Usage: 41.7 MB, less than 98.65% of Java online submissions for Daily Temperatures.
+     *
+     * @param T
+     * @return
+     */
+    public int[] dailyTemperaturesV0(int[] T) {
+        int ans[] = new int[T.length];
+        int frontIndex = 0, backIndex = 0;
+        while (backIndex < T.length && frontIndex < T.length) {
+            if (frontIndex == T.length-1) {
+                ans[backIndex] = 0;
+                backIndex++;
+                frontIndex = backIndex;
+            } else {
+                frontIndex++;
+                if (T[backIndex] < T[frontIndex]) {
+                    ans[backIndex] = frontIndex - backIndex;
+                    backIndex++;
+                    frontIndex = backIndex;
+                }
+
+            }
+        }
+        return ans;
+    }
+
     // T = [73, 74, 75, 71, 69, 72, 76, 73] => [1, 1, 4, 2, 1, 1, 0, 0]
 }
