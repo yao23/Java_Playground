@@ -14,6 +14,8 @@ public class KnightDialer {
      *
      * For DP, we should try to get the next state based on the current known state.
      *
+     * https://hackernoon.com/google-interview-questions-deconstructed-the-knights-dialer-f780d516f029
+     *
      * @param N
      * @return
      */
