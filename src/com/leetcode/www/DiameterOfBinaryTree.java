@@ -1,6 +1,6 @@
 package com.leetcode.www;
 
-public class DiameterOfBinaryTree {
+public class DiameterOfBinaryTree { // LC 543
     /**
      * Runtime: 0 ms, faster than 100.00% of Java online submissions for Diameter of Binary Tree.
      * Memory Usage: 35.8 MB, less than 99.80% of Java online submissions for Diameter of Binary Tree.
