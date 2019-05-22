@@ -10,6 +10,8 @@ public class KClosestPointsToOrigin { // LC 973
      *
      * Quick Sort - average O(N), worst case is O(N^2)
      *
+     * https://leetcode.com/problems/k-closest-points-to-origin/discuss/220235/Java-Three-solutions-to-this-classical-K-th-problem.
+     *
      * @param points
      * @param K
      * @return
