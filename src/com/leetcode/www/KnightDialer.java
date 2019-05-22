@@ -2,7 +2,7 @@ package com.leetcode.www;
 
 import java.util.Arrays;
 
-public class KnightDialer {
+public class KnightDialer { // LC 935
     /**
      * Runtime: 19 ms, faster than 87.07% of Java online submissions for Knight Dialer.
      * Memory Usage: 34.8 MB, less than 69.75% of Java online submissions for Knight Dialer.
