@@ -3,6 +3,25 @@ package com.leetcode.www;
 public class SortArrayByParity {
     /**
      * Runtime: 1 ms, faster than 100.00% of Java online submissions for Sort Array By Parity.
+     * Memory Usage: 40.4 MB, less than 89.85% of Java online submissions for Sort Array By Parity.
+     *
+     * https://leetcode.com/problems/sort-array-by-parity/discuss/170734/C%2B%2BJava-In-Place-Swap
+     *
+     * @param A
+     * @return
+     */
+    public int[] sortArrayByParity(int[] A) {
+        for (int i = 0, j = 0; j < A.length; j++)
+            if (A[j] % 2 == 0) {
+                int tmp = A[i];
+                A[i++] = A[j];
+                A[j] = tmp;
+            }
+        return A;
+    }
+
+    /**
+     * Runtime: 1 ms, faster than 100.00% of Java online submissions for Sort Array By Parity.
      * Memory Usage: 40.4 MB, less than 89.34% of Java online submissions for Sort Array By Parity.
      *
      * https://leetcode.com/problems/sort-array-by-parity/discuss/297258/Java-solution-O(n)-beats-100
@@ -10,7 +29,7 @@ public class SortArrayByParity {
      * @param A
      * @return
      */
-    public int[] sortArrayByParity(int[] A) {
+    public int[] sortArrayByParityV0(int[] A) {
         int oddNumIndex = 0;
         int evenNumIndex = 0;
 
