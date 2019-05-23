@@ -4,7 +4,38 @@ package com.leetcode.www; /**
 
 import java.util.*;
 
-public class MeetingRoomsII {
+public class MeetingRoomsII { // LC 253
+    /**
+     * Runtime: 39 ms, faster than 17.24% of Java online submissions for Meeting Rooms II.
+     * Memory Usage: 36.4 MB, less than 78.98% of Java online submissions for Meeting Rooms II.
+     *
+     * @param intervals
+     * @return
+     */
+    public int minMeetingRooms(int[][] intervals) {
+        if (intervals == null || intervals.length == 0) {
+            return 0;
+        }
+
+        Arrays.sort(intervals, Comparator.comparingInt(i -> i[0]));
+
+        PriorityQueue<Integer> queue = new PriorityQueue<>();
+        int count = 1;
+        queue.offer(intervals[0][1]);
+
+        for (int i = 1; i < intervals.length; i++) {
+            if (intervals[i][0] < queue.peek()) {
+                count++;
+            } else {
+                queue.poll();
+            }
+
+            queue.offer(intervals[i][1]); // append end time for next update
+        }
+
+        return count;
+    }
+
     public int minMeetingRooms(Interval[] intervals) { // beats 44.57%
         if (intervals == null || intervals.length == 0) {
             return 0;
