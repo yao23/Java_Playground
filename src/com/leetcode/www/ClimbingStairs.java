@@ -4,6 +4,13 @@ package com.leetcode.www;
  * Created by liyao on 7/3/17.
  */
 public class ClimbingStairs { // 70
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Climbing Stairs.
+     * Memory Usage: 32 MB, less than 60.15% of Java online submissions for Climbing Stairs.
+     *
+     * @param n
+     * @return
+     */
     public int climbStairs(int n) {
         return climbV1(n);
     }
@@ -24,6 +31,13 @@ public class ClimbingStairs { // 70
         }
     }
 
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Climbing Stairs.
+     * Memory Usage: 32.2 MB, less than 59.64% of Java online submissions for Climbing Stairs.
+     *
+     * @param n
+     * @return
+     */
     private int climbV0(int n) {
         if (n <= 2) {
             return n;
