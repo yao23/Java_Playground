@@ -84,7 +84,7 @@ public class BattleshipsInABoard { // LC 419
     public int countBattleshipsV2(char[][] board) {
         int row = board.length;
         int col = board[0].length;
-        boolean visited[][] = new boolean[row][col];
+        boolean[][] visited = new boolean[row][col];
         int count = 0;
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
