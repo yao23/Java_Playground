@@ -83,6 +83,9 @@ public class ShortestDistanceFromAllBuildings { // LC 317
     }
 
     /**
+     * Runtime: 33 ms, faster than 54.15% of Java online submissions for Shortest Distance from All Buildings.
+     * Memory Usage: 41.2 MB, less than 71.90% of Java online submissions for Shortest Distance from All Buildings.
+     *
      * Solution V1 (improved my solution, working)
      */
     public int shortestDistanceV1(int[][] grid) { // beats 39.63%
