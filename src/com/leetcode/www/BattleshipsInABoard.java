@@ -55,7 +55,7 @@ public class BattleshipsInABoard { // LC 419
      * @param board
      * @return
      */
-    public int countBattleshipsV2(char[][] board) {
+    public int countBattleshipsV3(char[][] board) {
         int count = 0;
         for (int r = 0; r < board.length; r++) {
             boolean found = false;
@@ -69,6 +69,43 @@ public class BattleshipsInABoard { // LC 419
             }
         }
         return count;
+    }
+
+    /**
+     * Runtime: 1 ms, faster than 98.22% of Java online submissions for Battleships in a Board.
+     * Memory Usage: 42 MB, less than 70.75% of Java online submissions for Battleships in a Board.
+     *
+     * https://leetcode.com/problems/battleships-in-a-board/discuss/283948/Simple-Java-easy-solution-(Backtracking)
+     * Backtracking
+     *
+     * @param board
+     * @return
+     */
+    public int countBattleshipsV2(char[][] board) {
+        int row = board.length;
+        int col = board[0].length;
+        boolean visited[][] = new boolean[row][col];
+        int count = 0;
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (board[i][j] == 'X' && !visited[i][j]) {
+                    helper(board, i, j, visited);
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    private void helper(char[][] board, int i, int j, boolean visited[][]){
+        if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || board[i][j] == '.' || visited[i][j]) {
+            return;
+        }
+        visited[i][j] = true;
+        helper(board,i + 1, j, visited);
+        helper(board,i - 1, j, visited);
+        helper(board, i,j + 1, visited);
+        helper(board, i,j - 1, visited);
     }
 
     /**
@@ -114,7 +151,7 @@ public class BattleshipsInABoard { // LC 419
      * @param board
      * @return
      */
-    public int countBattleshipsV0(char[][] board) {
+    public int countBattleshipsV0(char[][] board) { // iterative
         int count = 0;
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
