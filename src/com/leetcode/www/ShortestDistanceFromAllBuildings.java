@@ -42,9 +42,9 @@ public class ShortestDistanceFromAllBuildings { // LC 317
                     myQueue.offer(new int[] {i,j});
 
                     boolean[][] isVisited = new boolean[row][col];
-                    int level = 1;
+                    int level = 1; // set level before BFS
 
-                    while (!myQueue.isEmpty()) {
+                    while (!myQueue.isEmpty()) { // BFS
                         int qSize = myQueue.size();
                         for (int q = 0; q < qSize; q++) {
                             int[] curr = myQueue.poll();
@@ -73,7 +73,7 @@ public class ShortestDistanceFromAllBuildings { // LC 317
         int shortest = Integer.MAX_VALUE;
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
-                if (grid[i][j] == 0 && reach[i][j] == buildingNum) {
+                if (grid[i][j] == 0 && reach[i][j] == buildingNum) { // the current empty land could access to all buildings or not
                     shortest = Math.min(shortest, distance[i][j]);
                 }
             }
