@@ -6,6 +6,39 @@ import java.util.*;
 
 public class MeetingRoomsII { // LC 253
     /**
+     * Runtime: 2 ms, faster than 100.00% of Java online submissions for Meeting Rooms II.
+     * Memory Usage: 35 MB, less than 91.13% of Java online submissions for Meeting Rooms II.
+     *
+     * https://leetcode.com/problems/meeting-rooms-ii/discuss/293855/Java%3A-2D-Array-Input-2ms.-Faster-than-100.-%40magicyuli-algorithm
+     *
+     * @param intervals
+     * @return
+     */
+    public int minMeetingRooms(int[][] intervals) {
+        int[] startTime = new int[intervals.length];
+        int[] endTime = new int[intervals.length];
+
+        for (int i = 0; i < intervals.length ; i++) {
+            startTime[i] = intervals[i][0];
+            endTime[i] = intervals[i][1];
+        }
+
+        Arrays.sort(startTime);
+        Arrays.sort(endTime);
+
+        int noOfRooms = 0, endPtr = 0;
+        for (int i = 0; i < intervals.length; i++) {
+            if (startTime[i] < endTime[endPtr]) {
+                noOfRooms++;
+            } else {
+                endPtr++;
+            }
+        }
+
+        return noOfRooms;
+    }
+
+    /**
      * Runtime: 9 ms, faster than 47.71% of Java online submissions for Meeting Rooms II.
      * Memory Usage: 36.6 MB, less than 77.33% of Java online submissions for Meeting Rooms II.
      *
@@ -14,7 +47,7 @@ public class MeetingRoomsII { // LC 253
      * @param intervals
      * @return
      */
-    public int minMeetingRooms(int[][] intervals) {
+    public int minMeetingRoomsV1(int[][] intervals) {
         if (intervals == null || intervals.length == 0) {
             return 0;
         }
