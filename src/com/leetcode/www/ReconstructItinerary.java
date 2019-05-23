@@ -7,6 +7,8 @@ public class ReconstructItinerary { // LC 332
      * Runtime: 38 ms, faster than 11.69% of Java online submissions for Reconstruct Itinerary.
      * Memory Usage: 42.9 MB, less than 66.82% of Java online submissions for Reconstruct Itinerary.
      *
+     * https://leetcode.com/problems/reconstruct-itinerary/discuss/78768/Short-Ruby-Python-Java-C%2B%2B
+     *
      * @param tickets
      * @return
      */
