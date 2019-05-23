@@ -26,12 +26,12 @@ public class BinaryTreeZigzagLevelOrderTraversal { // LC 103
         while (!curQueue.isEmpty()) {
             List<TreeNode> nextQueue = new ArrayList<>();
             List<Integer> levelRes = new ArrayList<>();
-            for (TreeNode node : curQueue) {
+            for (TreeNode node : curQueue) { // get node value in cur level
                 levelRes.add(node.val);
             }
             result.add(levelRes);
 
-            for (int i = curQueue.size() - 1; i >= 0; i--) {
+            for (int i = curQueue.size() - 1; i >= 0; i--) { // get node in next level
                 TreeNode curNode = curQueue.get(i);
 
                 if (order == 0) { // from left to right
