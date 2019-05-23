@@ -97,7 +97,7 @@ public class BattleshipsInABoard { // LC 419
         return count;
     }
 
-    private void helper(char[][] board, int i, int j, boolean visited[][]){
+    private void helper(char[][] board, int i, int j, boolean[][] visited){
         if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || board[i][j] == '.' || visited[i][j]) {
             return;
         }
