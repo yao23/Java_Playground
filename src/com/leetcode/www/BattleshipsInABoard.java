@@ -55,7 +55,7 @@ public class BattleshipsInABoard { // LC 419
      * @param board
      * @return
      */
-    public int countBattleshipsV0(char[][] board) {
+    public int countBattleshipsV1(char[][] board) {
         int count = 0;
         for (int r = 0; r < board.length; r++) {
             boolean found = false;
@@ -65,6 +65,31 @@ public class BattleshipsInABoard { // LC 419
                     count++;
                 } else if (board[r][c]=='.' && found) {
                     found = false;
+                }
+            }
+        }
+        return count;
+    }
+
+    /**
+     * Runtime: 1 ms, faster than 98.22% of Java online submissions for Battleships in a Board.
+     * Memory Usage: 40.7 MB, less than 88.96% of Java online submissions for Battleships in a Board.
+     *
+     * https://leetcode.com/problems/battleships-in-a-board/discuss/293482/Java-simple-solutions
+     *
+     * @param board
+     * @return
+     */
+    public int countBattleshipsV0(char[][] board) {
+        int count = 0;
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                if(board[i][j] == 'X'){
+                    count++;
+                    if(j > 0 && board[i][j - 1] == 'X')
+                        count--;
+                    else if(i > 0 && board[i - 1][j] == 'X')
+                        count--;
                 }
             }
         }
