@@ -45,4 +45,29 @@ public class BattleshipsInABoard { // LC 419
 
         return count;
     }
+
+    /**
+     * Runtime: 1 ms, faster than 98.22% of Java online submissions for Battleships in a Board.
+     * Memory Usage: 40.6 MB, less than 89.47% of Java online submissions for Battleships in a Board.
+     *
+     * https://leetcode.com/problems/battleships-in-a-board/discuss/296699/Java-Single-Pass-Constant-Space-Solution
+     *
+     * @param board
+     * @return
+     */
+    public int countBattleshipsV0(char[][] board) {
+        int count = 0;
+        for (int r = 0; r < board.length; r++) {
+            boolean found = false;
+            for (int c = 0; c < board[r].length; c++) {
+                if (board[r][c]=='X' && !found && (r == 0 || board[r-1][c] != 'X')) {
+                    found = true;
+                    count++;
+                } else if (board[r][c]=='.' && found) {
+                    found = false;
+                }
+            }
+        }
+        return count;
+    }
 }
