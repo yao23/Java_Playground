@@ -3,7 +3,7 @@ package com.leetcode.www;
 /**
  * Created by liyao on 7/3/17.
  */
-public class ClimbingStairs { // 70
+public class ClimbingStairs { // LC 70
     /**
      * Runtime: 0 ms, faster than 100.00% of Java online submissions for Climbing Stairs.
      * Memory Usage: 32 MB, less than 60.15% of Java online submissions for Climbing Stairs.
