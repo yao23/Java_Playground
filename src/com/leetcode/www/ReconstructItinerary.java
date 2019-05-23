@@ -3,6 +3,30 @@ package com.leetcode.www;
 import java.util.*;
 
 public class ReconstructItinerary { // LC 332
+    /**
+     * Runtime: 38 ms, faster than 11.69% of Java online submissions for Reconstruct Itinerary.
+     * Memory Usage: 42.9 MB, less than 66.82% of Java online submissions for Reconstruct Itinerary.
+     *
+     * @param tickets
+     * @return
+     */
+    public List<String> findItinerary(List<List<String>> tickets) {
+        Map<String, PriorityQueue<String>> targets = new HashMap<>();
+        for (List<String>ticket : tickets) {
+            targets.computeIfAbsent(ticket.get(0), k -> new PriorityQueue<>()).add(ticket.get(1));
+        }
+        List<String> route = new LinkedList<>();
+        Deque<String> stack = new ArrayDeque<>();
+        stack.push("JFK");
+        while (!stack.isEmpty()) {
+            while (targets.containsKey(stack.peek()) && !targets.get(stack.peek()).isEmpty()) {
+                stack.push(targets.get(stack.peek()).poll());
+            }
+            route.add(0, stack.pop());
+        }
+        return route;
+    }
+
     public List<String> findItinerary(String[][] tickets) { // beats 15.60%
         Map<String, PriorityQueue<String>> targets = new HashMap<>();
         for (String[] ticket : tickets) {
