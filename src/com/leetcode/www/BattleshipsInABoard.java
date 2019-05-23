@@ -98,9 +98,9 @@ public class BattleshipsInABoard { // LC 419
 
     private void mark(int[][] mark, int x, int y, char[][] board) {
         mark[x][y] = -1;
-        if (y < mark[x].length - 1 && board[x][y + 1] == 'X') { //Right
+        if (y < mark[x].length - 1 && board[x][y + 1] == 'X') { // Right
             mark(mark, x, y + 1, board);
-        } else if(x < mark.length - 1 && board[x + 1][y] == 'X') { //Bottom
+        } else if(x < mark.length - 1 && board[x + 1][y] == 'X') { // Bottom
             mark(mark, x + 1, y, board);
         }
     }
