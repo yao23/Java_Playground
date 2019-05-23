@@ -10,7 +10,7 @@ public class ReconstructItinerary { // LC 332
      * @param tickets
      * @return
      */
-    public List<String> findItinerary(List<List<String>> tickets) {
+    public List<String> findItinerary(List<List<String>> tickets) { // iterative
         Map<String, PriorityQueue<String>> targets = new HashMap<>();
         for (List<String>ticket : tickets) {
             targets.computeIfAbsent(ticket.get(0), k -> new PriorityQueue<>()).add(ticket.get(1));
@@ -41,6 +41,21 @@ public class ReconstructItinerary { // LC 332
             }
             route.add(0, stack.pop());
         }
+        return route;
+    }
+
+    /**
+     * Runtime: 37 ms, faster than 13.84% of Java online submissions for Reconstruct Itinerary.
+     * Memory Usage: 40.3 MB, less than 86.66% of Java online submissions for Reconstruct Itinerary.
+     *
+     * @param tickets
+     * @return
+     */
+    public List<String> findItineraryV1(List<List<String>> tickets) { // recursion
+        for (List<String>ticket : tickets) {
+            targets.computeIfAbsent(ticket.get(0), k -> new PriorityQueue<>()).add(ticket.get(1));
+        }
+        visit("JFK");
         return route;
     }
 
