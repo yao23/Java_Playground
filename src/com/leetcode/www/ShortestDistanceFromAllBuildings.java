@@ -60,7 +60,17 @@ public class ShortestDistanceFromAllBuildings { // LC 317
                                     reach[nextRow][nextCol]++;
 
                                     isVisited[nextRow][nextCol] = true;
-                                    myQueue.offer(new int[] {nextRow, nextCol});
+
+                                    // only add to queue when current position could be reached by all previous buildings
+                                    /**
+                                     * After add the condition check in line 71 for current empty land which could access to all previous buildings
+                                     *
+                                     * Runtime: 7 ms, faster than 79.13% of Java online submissions for Shortest Distance from All Buildings.
+                                     * Memory Usage: 42.9 MB, less than 56.84% of Java online submissions for Shortest Distance from All Buildings.
+                                     */
+                                    if (reach[nextRow][nextCol] == buildingNum) {
+                                        myQueue.offer(new int[] {nextRow, nextCol});
+                                    }
                                 }
                             }
                         }
