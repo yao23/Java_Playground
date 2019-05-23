@@ -47,7 +47,7 @@ public class MeetingRoomsII { // LC 253
      * @param intervals
      * @return
      */
-    public int minMeetingRoomsV2(int[][] intervals) {
+    public int minMeetingRoomsV3(int[][] intervals) {
         if (intervals == null || intervals.length == 0) {
             return 0;
         }
@@ -84,7 +84,7 @@ public class MeetingRoomsII { // LC 253
      * @param intervals
      * @return
      */
-    public int minMeetingRoomsV1(int[][] intervals) {
+    public int minMeetingRoomsV2(int[][] intervals) {
         Arrays.sort(intervals, Comparator.comparingInt(x -> x[0]));
 
         int ans = 0;
@@ -107,6 +107,30 @@ public class MeetingRoomsII { // LC 253
         }
 
         return ans;
+    }
+
+    /**
+     * Runtime: 39 ms, faster than 17.24% of Java online submissions for Meeting Rooms II.
+     * Memory Usage: 35 MB, less than 91.06% of Java online submissions for Meeting Rooms II.
+     *
+     * https://leetcode.com/problems/meeting-rooms-ii/discuss/67857/AC-Java-solution-using-min-heap
+     *
+     * @param intervals
+     * @return
+     */
+    public int minMeetingRoomsV1(int[][] intervals) {
+        Queue<Integer> queue = new PriorityQueue<>();
+        if (intervals.length > 0) {
+            Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
+            queue.add(intervals[0][1]);
+            for (int i = 1; i < intervals.length; i++) {
+                if (intervals[i][0] >= queue.peek()) {
+                    queue.remove();
+                }
+                queue.add(intervals[i][1]);
+            }
+        }
+        return queue.size();
     }
 
     /**
