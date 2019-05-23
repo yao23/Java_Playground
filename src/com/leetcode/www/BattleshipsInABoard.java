@@ -55,7 +55,7 @@ public class BattleshipsInABoard { // LC 419
      * @param board
      * @return
      */
-    public int countBattleshipsV1(char[][] board) {
+    public int countBattleshipsV2(char[][] board) {
         int count = 0;
         for (int r = 0; r < board.length; r++) {
             boolean found = false;
@@ -69,6 +69,40 @@ public class BattleshipsInABoard { // LC 419
             }
         }
         return count;
+    }
+
+    /**
+     * Runtime: 1 ms, faster than 98.22% of Java online submissions for Battleships in a Board.
+     * Memory Usage: 40.5 MB, less than 89.54% of Java online submissions for Battleships in a Board.
+     *
+     * @param board
+     * @return
+     */
+    public int countBattleshipsV1(char[][] board) { // recursive
+        int count = 0;
+        int row = board.length;
+        int col = board[0].length;
+        int mark[][] = new int[row][col];
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (mark[i][j] != -1 && board[i][j] == 'X') {
+                    count++;
+                    mark(mark, i, j, board);
+                } else {
+                    mark[i][j] = -1;
+                }
+            }
+        }
+        return count;
+    }
+
+    private void mark(int[][] mark, int x, int y, char[][] board) {
+        mark[x][y] = -1;
+        if (y < mark[x].length - 1 && board[x][y + 1] == 'X') { //Right
+            mark(mark, x, y + 1, board);
+        } else if(x < mark.length - 1 && board[x + 1][y] == 'X') { //Bottom
+            mark(mark, x + 1, y, board);
+        }
     }
 
     /**
