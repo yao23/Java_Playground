@@ -7,7 +7,15 @@ import java.util.List;
 /**
  * Created by liyao on 7/12/17.
  */
-public class CoinChange {
+public class CoinChange { // LC 322
+    /**
+     * Runtime: 10 ms, faster than 84.43% of Java online submissions for Coin Change.
+     * Memory Usage: 34.8 MB, less than 99.99% of Java online submissions for Coin Change.
+     *
+     * @param coins
+     * @param amount
+     * @return
+     */
     public int coinChange(int[] coins, int amount) {
         if (coins == null || coins.length == 0 || amount <= 0) {
             return 0;
