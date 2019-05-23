@@ -30,6 +30,14 @@ public class SurroundedRegions { // LC 130
         }
     }
 
+    /**
+     * Runtime: 1 ms, faster than 100.00% of Java online submissions for Surrounded Regions.
+     * Memory Usage: 40 MB, less than 92.36% of Java online submissions for Surrounded Regions.
+     *
+     * @param x
+     * @param y
+     * @param board
+     */
     private void dfs(int x, int y, char[][] board) { // stack overflow for test case 6
         int row = board.length, col = board[0].length;
         if (x < 0 || x >= row || y < 0 || y >= col || board[x][y] == 'X'|| board[x][y] == 'V') { // out of bounds or invalid point
