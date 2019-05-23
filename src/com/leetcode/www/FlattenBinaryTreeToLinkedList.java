@@ -1,6 +1,11 @@
 package com.leetcode.www;
 
 public class FlattenBinaryTreeToLinkedList { // LC 114
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Flatten Binary Tree to Linked List.
+     * Memory Usage: 38.7 MB, less than 23.96% of Java online submissions for Flatten Binary Tree to Linked List.
+     *
+     */
     private TreeNode prev = null;
 
     public void flatten(TreeNode root) { // beats 22.15%
