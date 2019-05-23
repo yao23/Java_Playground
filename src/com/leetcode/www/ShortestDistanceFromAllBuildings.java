@@ -6,6 +6,9 @@ import java.util.Deque;
 public class ShortestDistanceFromAllBuildings { // LC 317
     /**
      *
+     * Runtime: 38 ms, faster than 44.96% of Java online submissions for Shortest Distance from All Buildings.
+     * Memory Usage: 36.5 MB, less than 99.44% of Java online submissions for Shortest Distance from All Buildings.
+     *
      * @param grid
      * @return
      *
@@ -15,12 +18,15 @@ public class ShortestDistanceFromAllBuildings { // LC 317
      * in 'distance[][]'. For example, if grid[2][2] == 0, distance[2][2] is the sum of shortest distance from this block to all reachable buildings.
      * Time complexity: O(number of 1)O(number of 0) ~ O(m^2n^2)
 
-     * We also count how many building each '0' can be reached. It is stored in reach[][]. This can be done during the BFS. We also need to count how many total buildings are there in the matrix, which is stored in 'buildingNum'.
+     * We also count how many building each '0' can be reached. It is stored in reach[][]. This can be done during the BFS.
+     * We also need to count how many total buildings are there in the matrix, which is stored in 'buildingNum'.
 
      * Finally, we can traverse the distance[][] matrix to get the point having shortest distance to all buildings. O(m*n)
      */
     public int shortestDistance(int[][] grid) { // beats 44.18%
-        if (grid == null || grid[0].length == 0) return 0;
+        if (grid == null || grid[0].length == 0) {
+            return 0;
+        }
         final int[] shift = new int[] {0, 1, 0, -1, 0};
 
         int row  = grid.length, col = grid[0].length;
@@ -43,13 +49,13 @@ public class ShortestDistanceFromAllBuildings { // LC 317
                         for (int q = 0; q < qSize; q++) {
                             int[] curr = myQueue.poll();
 
-                            for (int k = 0; k < 4; k++) {
+                            for (int k = 0; k < 4; k++) { // right, down, left, up
                                 int nextRow = curr[0] + shift[k];
                                 int nextCol = curr[1] + shift[k + 1];
 
                                 if (nextRow >= 0 && nextRow < row && nextCol >= 0 && nextCol < col
                                         && grid[nextRow][nextCol] == 0 && !isVisited[nextRow][nextCol]) {
-                                    //The shortest distance from [nextRow][nextCol] to this building is 'level'.
+                                    // The shortest distance from [nextRow][nextCol] to this building is 'level'.
                                     distance[nextRow][nextCol] += level;
                                     reach[nextRow][nextCol]++;
 
