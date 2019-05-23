@@ -6,13 +6,50 @@ import java.util.*;
 
 public class MeetingRoomsII { // LC 253
     /**
+     * Runtime: 9 ms, faster than 47.71% of Java online submissions for Meeting Rooms II.
+     * Memory Usage: 36.6 MB, less than 77.33% of Java online submissions for Meeting Rooms II.
+     *
+     * https://leetcode.com/problems/meeting-rooms-ii/discuss/293745/Easy-to-understand-Java-solution-using-heap
+     *
+     * @param intervals
+     * @return
+     */
+    public int minMeetingRooms(int[][] intervals) {
+        if (intervals == null || intervals.length == 0) {
+            return 0;
+        }
+
+        int count = 0;
+        PriorityQueue<int[]> pq = new PriorityQueue<>((p1, p2) -> {
+            if (p1[0] == p2[0]) {
+                return p1[1] - p2[1];
+            } else {
+                return p1[0] - p2[0];
+            }
+        });
+        for (int[] interval : intervals) {
+            pq.offer(new int[]{interval[0], 1});
+            pq.offer(new int[]{interval[1], -1});
+        }
+
+        int min = 0;
+
+        while (!pq.isEmpty()) {
+            int[] p = pq.poll();
+            count += p[1];
+            min = Math.max(count, min);
+        }
+        return min;
+    }
+
+    /**
      * Runtime: 39 ms, faster than 17.24% of Java online submissions for Meeting Rooms II.
      * Memory Usage: 36.4 MB, less than 78.98% of Java online submissions for Meeting Rooms II.
      *
      * @param intervals
      * @return
      */
-    public int minMeetingRooms(int[][] intervals) {
+    public int minMeetingRoomsV0(int[][] intervals) {
         if (intervals == null || intervals.length == 0) {
             return 0;
         }
