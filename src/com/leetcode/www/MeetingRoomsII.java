@@ -47,7 +47,7 @@ public class MeetingRoomsII { // LC 253
      * @param intervals
      * @return
      */
-    public int minMeetingRoomsV1(int[][] intervals) {
+    public int minMeetingRoomsV2(int[][] intervals) {
         if (intervals == null || intervals.length == 0) {
             return 0;
         }
@@ -73,6 +73,40 @@ public class MeetingRoomsII { // LC 253
             min = Math.max(count, min);
         }
         return min;
+    }
+
+    /**
+     * Runtime: 38 ms, faster than 24.07% of Java online submissions for Meeting Rooms II.
+     * Memory Usage: 35.5 MB, less than 90.30% of Java online submissions for Meeting Rooms II.
+     *
+     * https://leetcode.com/problems/meeting-rooms-ii/discuss/294029/Easy-to-understand-Java-solution
+     *
+     * @param intervals
+     * @return
+     */
+    public int minMeetingRoomsV1(int[][] intervals) {
+        Arrays.sort(intervals, Comparator.comparingInt(x -> x[0]));
+
+        int ans = 0;
+
+        // priority queue keeps track of intervals for which room is assigned in order of their ending times
+        PriorityQueue<int[]> q = new PriorityQueue<>(Comparator.comparingInt(x -> x[1]));
+
+        for (int i = 0; i < intervals.length; i++) {
+            int[] a = intervals[i];
+            if (q.isEmpty()) {
+                q.add(a);
+                ans++;
+            } else if (a[0] < q.peek()[1]) {  // overlap means we need to assign a new room for current interval
+                ans++;
+                q.add(a);
+            } else { // no overlap means the previous room is freed. So, we will remove previous interval from queue and add current interval
+                q.remove();
+                q.add(a);
+            }
+        }
+
+        return ans;
     }
 
     /**
