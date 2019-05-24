@@ -5,6 +5,15 @@ import java.util.Arrays;
 import java.util.Deque;
 
 public class TheMazeII { // LC 505
+    /**
+     * Runtime: 7 ms, faster than 99.21% of Java online submissions for The Maze II.
+     * Memory Usage: 44.8 MB, less than 82.40% of Java online submissions for The Maze II.
+     *
+     * @param maze
+     * @param start
+     * @param destination
+     * @return
+     */
     public int shortestDistance(int[][] maze, int[] start, int[] destination) {
         int row = maze.length;
         int col = maze[0].length;
