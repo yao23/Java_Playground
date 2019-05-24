@@ -1,6 +1,6 @@
 package com.leetcode.www;
 
-public class DesignHashMap {
+public class DesignHashMap { // LC 706
     /**
      * Runtime: 62 ms, faster than 98.10% of Java online submissions for Design HashMap.
      * Memory Usage: 50.4 MB, less than 93.88% of Java online submissions for Design HashMap.
