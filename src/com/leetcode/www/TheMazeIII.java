@@ -4,8 +4,8 @@ import java.util.PriorityQueue;
 
 public class TheMazeIII { // LC 499
     /**
-     * Runtime: 11 ms, faster than 39.63% of Java online submissions for The Maze III.
-     * Memory Usage: 35.9 MB, less than 97.84% of Java online submissions for The Maze III.
+     * Runtime: 7 ms, faster than 75.70% of Java online submissions for The Maze III.
+     * Memory Usage: 38.3 MB, less than 82.97% of Java online submissions for The Maze III.
      *
      * BFS
      *
