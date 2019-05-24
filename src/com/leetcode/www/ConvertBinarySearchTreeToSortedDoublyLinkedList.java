@@ -9,6 +9,10 @@ public class ConvertBinarySearchTreeToSortedDoublyLinkedList { // LC 426
      * Runtime: 0 ms, faster than 100.00% of Java online submissions for Convert Binary Search Tree to Sorted Doubly Linked List.
      * Memory Usage: 35.2 MB, less than 57.47% of Java online submissions for Convert Binary Search Tree to Sorted Doubly Linked List.
      *
+     * Inorder traverse recursion
+     *
+     * https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked-list/discuss/174111/inorder-vs-divide-and-conquer
+     *
      * @param root
      * @return
      */
@@ -36,6 +40,45 @@ public class ConvertBinarySearchTreeToSortedDoublyLinkedList { // LC 426
             tail = root;
         }
         inorder(root.right);
+    }
+
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Convert Binary Search Tree to Sorted Doubly Linked List.
+     * Memory Usage: 35.8 MB, less than 53.64% of Java online submissions for Convert Binary Search Tree to Sorted Doubly Linked List.
+     *
+     * Divide and Conquer
+     * @param root
+     * @return
+     */
+    public TreeNode treeToDoublyListV1(TreeNode root) {
+        if (root == null) {
+            return null;
+        }
+        TreeNode leftHead = treeToDoublyListV1(root.left);
+        TreeNode rightHead = treeToDoublyListV1(root.right);
+
+        root.left = root;
+        root.right = root;
+
+        return connect(connect(leftHead, root), rightHead);
+    }
+    // list1 and list2 must be circular doubly linked list
+    private TreeNode connect(TreeNode list1, TreeNode list2) {
+        if (list2 == null) {
+            return list1;
+        }
+        if (list1 == null) {
+            return list2;
+        }
+
+        TreeNode tail1 = list1.left;
+        TreeNode tail2 = list2.left;
+        list1.left = tail2;
+        tail2.right = list1;
+        tail1.right = list2;
+        list2.left = tail1;
+
+        return list1;
     }
 
     /**
