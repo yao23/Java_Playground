@@ -44,6 +44,46 @@ public class ConvertBinarySearchTreeToSortedDoublyLinkedList { // LC 426
 
     /**
      * Runtime: 0 ms, faster than 100.00% of Java online submissions for Convert Binary Search Tree to Sorted Doubly Linked List.
+     * Memory Usage: 33.3 MB, less than 98.00% of Java online submissions for Convert Binary Search Tree to Sorted Doubly Linked List.
+     *
+     * https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked-list/discuss/287149/Recursive-single-method-O(1)-space-Beats-100
+     *
+     * @param root
+     * @return
+     */
+    public TreeNode treeToDoublyListV3(TreeNode root) {
+        if (root == null) {
+            return null;
+        }
+
+        TreeNode left = treeToDoublyList(root.left);
+        TreeNode right = treeToDoublyList(root.right);
+
+        TreeNode newLeft = left == null ? root : left;
+        TreeNode newRight = right == null ? root : right.left;
+
+        TreeNode midLeft = left == null ? null : left.left;
+        TreeNode midRight = right == null ? null : right;
+
+        // Connect the middle.
+        if (midLeft != null) {
+            root.left = midLeft;
+            midLeft.right = root;
+        }
+        if (midRight != null) {
+            root.right = midRight;
+            midRight.left = root;
+        }
+
+        // Connect two sides;
+        newLeft.left = newRight;
+        newRight.right = newLeft;
+
+        return newLeft;
+    }
+
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Convert Binary Search Tree to Sorted Doubly Linked List.
      * Memory Usage: 34.1 MB, less than 86.76% of Java online submissions for Convert Binary Search Tree to Sorted Doubly Linked List.
      *
      * DFS
