@@ -3,7 +3,28 @@ package com.leetcode.www;
 /**
  * Created by liyao on 6/5/17.
  */
-public class InvertBinaryTree { // LC 226
+public class    InvertBinaryTree { // LC 226
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Invert Binary Tree.
+     * Memory Usage: 33.4 MB, less than 99.05% of Java online submissions for Invert Binary Tree.
+     *
+     * @param root
+     * @return
+     */
+    public TreeNode invertTree(TreeNode root) {
+        if (root == null) {
+            return root;
+        }
+
+        if (root.left == null && root.right == null) {
+            return root;
+        }
+
+        invertHelper(root.left, root.right, root);
+
+        return root;
+    }
+
     private void swap(TreeNode left, TreeNode right, TreeNode root) {
         TreeNode tmp = right;
         root.right = root.left;
@@ -23,20 +44,6 @@ public class InvertBinaryTree { // LC 226
 
             swap(left, right, root);
         }
-    }
-
-    public TreeNode invertTree(TreeNode root) {
-        if (root == null) {
-            return root;
-        }
-
-        if (root.left == null && root.right == null) {
-            return root;
-        }
-
-        invertHelper(root.left, root.right, root);
-
-        return root;
     }
 
     // []
