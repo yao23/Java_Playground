@@ -3,6 +3,41 @@ package com.leetcode.www;
 import java.util.Stack;
 
 public class ConvertBinarySearchTreeToSortedDoublyLinkedList { // LC 426
+    private TreeNode head = null, tail = null;
+
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Convert Binary Search Tree to Sorted Doubly Linked List.
+     * Memory Usage: 35.2 MB, less than 57.47% of Java online submissions for Convert Binary Search Tree to Sorted Doubly Linked List.
+     *
+     * @param root
+     * @return
+     */
+    public TreeNode treeToDoublyList(TreeNode root) {
+        if (root == null) {
+            return root;
+        }
+
+        inorder(root);
+        head.left = tail;
+        tail.right = head;
+        return head;
+    }
+    private void inorder(TreeNode root) {
+        if (root == null)
+            return;
+
+        inorder(root.left);
+        if (head == null) {
+            head = root;
+            tail = head;
+        } else {
+            tail.right = root;
+            root.left = tail;
+            tail = root;
+        }
+        inorder(root.right);
+    }
+
     /**
      * Runtime: 2 ms, faster than 49.57% of Java online submissions for Convert Binary Search Tree to Sorted Doubly Linked List.
      * Memory Usage: 37.4 MB, less than 22.18% of Java online submissions for Convert Binary Search Tree to Sorted Doubly Linked List.
@@ -12,7 +47,7 @@ public class ConvertBinarySearchTreeToSortedDoublyLinkedList { // LC 426
      * @param root
      * @return
      */
-    public TreeNode treeToDoublyList(TreeNode root) {
+    public TreeNode treeToDoublyListV0(TreeNode root) {
         if (root == null) {
             return null;
         }
