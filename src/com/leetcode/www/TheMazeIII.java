@@ -10,6 +10,7 @@ public class TheMazeIII { // LC 499
      * BFS
      *
      * https://leetcode.com/problems/the-maze-iii/discuss/97797/Similar-to-The-Maze-II.-Easy-understanding-Java-bfs-solution.
+     * https://leetcode.com/problems/the-maze-iii/discuss/224577/5ms-Java-BFS-with-pruning-that-beats-100
      *
      * @param maze
      * @param ball
@@ -28,6 +29,9 @@ public class TheMazeIII { // LC 499
         list.offer(new Point(ball[0], ball[1], 0, ""));
         while (!list.isEmpty()) {
             Point p = list.poll();
+            if (points[hole[0]][hole[1]].compareTo(p) <= 0) { // current path cost is greater or equal to the path cost to hole
+                continue;
+            }
             if (points[p.x][p.y].compareTo(p) <= 0) { // if we have already found a route shorter
                 continue;
             }
