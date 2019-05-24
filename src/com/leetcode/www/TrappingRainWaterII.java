@@ -10,6 +10,8 @@ public class TrappingRainWaterII { // LC 407
      *
      * https://leetcode.com/problems/trapping-rain-water-ii/discuss/89461/Java-solution-using-PriorityQueue
      *
+     * BFS + Heap (Min Heap)
+     *
      */
     public class Cell {
         int row;
