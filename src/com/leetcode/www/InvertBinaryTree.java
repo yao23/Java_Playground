@@ -6,12 +6,30 @@ package com.leetcode.www;
 public class    InvertBinaryTree { // LC 226
     /**
      * Runtime: 0 ms, faster than 100.00% of Java online submissions for Invert Binary Tree.
-     * Memory Usage: 33.4 MB, less than 99.05% of Java online submissions for Invert Binary Tree.
+     * Memory Usage: 33.7 MB, less than 99.05% of Java online submissions for Invert Binary Tree.
      *
      * @param root
      * @return
      */
     public TreeNode invertTree(TreeNode root) {
+        if (root == null) {
+            return null;
+        }
+        TreeNode right = invertTree(root.right);
+        TreeNode left = invertTree(root.left);
+        root.left = right;
+        root.right = left;
+        return root;
+    }
+
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Invert Binary Tree.
+     * Memory Usage: 33.4 MB, less than 99.05% of Java online submissions for Invert Binary Tree.
+     *
+     * @param root
+     * @return
+     */
+    public TreeNode invertTreeV0(TreeNode root) {
         if (root == null) {
             return root;
         }
