@@ -24,7 +24,7 @@ public class ReverseWordsInAStringIII { // LC 557
             }
             right++;
         }
-        reverseWord(arr, left, right);
+        reverseWord(arr, left, right); // last word
         return new String(arr);
 
     }
@@ -38,5 +38,37 @@ public class ReverseWordsInAStringIII { // LC 557
             right--;
         }
         return arr;
+    }
+
+    /**
+     * Runtime: 3 ms, faster than 97.50% of Java online submissions for Reverse Words in a String III.
+     * Memory Usage: 36.3 MB, less than 99.91% of Java online submissions for Reverse Words in a String III.
+     *
+     * @param s
+     * @return
+     */
+    public String reverseWordsV0(String s) {
+        String[] strArr=s.split(" ");
+        StringBuilder build=new StringBuilder();
+        for (int i = 0; i < strArr.length-1; i++) {
+            build.append(reverseWord(strArr[i]));
+            build.append(" ");
+        }
+        build.append(reverseWord(strArr[strArr.length - 1])); // last word
+        return new String(build);
+    }
+
+    private String reverseWord(String word){
+        char[] arr = word.toCharArray();
+        int left = 0;
+        int right = arr.length - 1;
+        while (left <= right) {
+            char temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+            left++;
+            right--;
+        }
+        return new String(arr);
     }
 }
