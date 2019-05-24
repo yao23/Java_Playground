@@ -1,5 +1,8 @@
 package com.leetcode.www;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * Created by liyao on 6/5/17.
  */
@@ -19,6 +22,38 @@ public class    InvertBinaryTree { // LC 226
         TreeNode left = invertTree(root.left);
         root.left = right;
         root.right = left;
+        return root;
+    }
+
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Invert Binary Tree.
+     * Memory Usage: 33.6 MB, less than 99.05% of Java online submissions for Invert Binary Tree.
+     *
+     * BFS
+     *
+     * @param root
+     * @return
+     */
+    public TreeNode invertTreeV1(TreeNode root) {
+        if (root == null) {
+            return null;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            TreeNode current = queue.poll();
+            // swap children first
+            TreeNode temp = current.left;
+            current.left = current.right;
+            current.right = temp;
+            // add children
+            if (current.left != null) {
+                queue.add(current.left);
+            }
+            if (current.right != null) {
+                queue.add(current.right);
+            }
+        }
         return root;
     }
 
