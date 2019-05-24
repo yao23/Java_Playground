@@ -26,11 +26,11 @@ public class TheMaze { // LC 490
         for (int[] dir : dirs) {
             x = start[0];
             y = start[1];
-            while (x >= 0 && y >= 0 && x < row && y < col && maze[x][y] == 0) {
+            while (x >= 0 && y >= 0 && x < row && y < col && maze[x][y] == 0) { // roll as far as possible in one direction
                 x += dir[0];
                 y += dir[1];
             }
-            if (hasPath(maze, new int[]{x - dir[0], y - dir[1]}, destination)) {
+            if (hasPath(maze, new int[]{x - dir[0], y - dir[1]}, destination)) { // reach destination from the direction
                 return true;
             }
         }
