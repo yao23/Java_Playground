@@ -33,7 +33,7 @@ public class DesignHashMap {
                 previous = current;
                 current = current.next;
             }
-            if(!isOverridden) {
+            if (!isOverridden) {
                 if (previous == null) {
                     array[index] = node;
                 } else {
