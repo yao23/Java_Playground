@@ -32,7 +32,7 @@ public class BoundaryOfBinaryTree { // LC 545
         if (root == null) {
             return;
         }
-        if (root.left == null && root.right == null) {
+        if (root.left == null && root.right == null) { // processed in helperBottom()
             return;
         }
         res.add(root.val);
@@ -47,7 +47,7 @@ public class BoundaryOfBinaryTree { // LC 545
         if (root == null) {
             return;
         }
-        if (root.left == null && root.right == null) {
+        if (root.left == null && root.right == null) { // processed in helperBottom()
             return;
         }
         if (root.right != null) {
