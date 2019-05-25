@@ -44,6 +44,71 @@ public class KnightProbabilityInChessboard { // LC 688
         return x >= 0 && x < N && y >= 0 && y < N;
     }
 
+    private int[][] dirs = new int[][]{
+            {-1, -2},
+            {-2, -1},
+            {-2, 1},
+            {-1, 2},
+            {1, 2},
+            {2, 1},
+            {2, -1},
+            {1, -2}
+    };
+
+    // Let F(r, c, K) be count of valid positions after K move from (r, c)
+    // Assume F(r', c', k-1) works where (r', c') is next position of move
+    // F(r, c, k) = sum(F(r', c', k-1)) for all valid (r', c')
+    // Base case, k = 0 or move is out of boundary
+
+    Double[][][] memo;
+    int N;
+
+    /**
+     * Runtime: 3 ms, faster than 95.61% of Java online submissions for Knight Probability in Chessboard.
+     * Memory Usage: 35 MB, less than 55.26% of Java online submissions for Knight Probability in Chessboard.
+     *
+     * https://leetcode.com/problems/knight-probability-in-chessboard/discuss/261802/Java-backtrack-detailed-comments
+     *
+     * Time - O(N^2 * K)
+     * Space - O(N^2 * K)
+     *
+     * @param N
+     * @param K
+     * @param r
+     * @param c
+     * @return
+     */
+    public double knightProbabilityV1(int N, int K, int r, int c) {
+        memo = new Double[N][N][K + 1];
+        this.N = N;
+        return backtrack(r, c, K) / Math.pow(8, K);
+    }
+
+    private double backtrack(int i, int j, int k) {
+        if (i < 0 || j < 0 || i >= N || j >= N) {
+            return 0.0;
+        }
+
+        if (k == 0) {
+            return 1.0;
+        }
+
+        if (memo[i][j][k] != null) {
+            return memo[i][j][k];
+        }
+
+        double count = 0.0;
+        for (int[] dir : dirs) {
+            int ii = i + dir[0];
+            int jj = j + dir[1];
+
+            count += backtrack(ii, jj, k - 1);
+        }
+
+        memo[i][j][k] = count;
+        return count;
+    }
+
     /**
      * Runtime: 2 ms, faster than 100.00% of Java online submissions for Knight Probability in Chessboard.
      * Memory Usage: 34.4 MB, less than 57.60% of Java online submissions for Knight Probability in Chessboard.
