@@ -91,4 +91,49 @@ public class TwentyFourGame { // LC 679
 //           [1/5,   5, 5]       i=1, j=0, k=-
 //           [5-1/5, 5]          i=0, j=1, k=*
 //           [24]                --> true
+
+    /**
+     * Runtime: 2 ms, faster than 95.14% of Java online submissions for 24 Game.
+     * Memory Usage: 40 MB, less than 36.10% of Java online submissions for 24 Game.
+     *
+     * DFS
+     *
+     * https://leetcode.com/problems/24-game/discuss/262558/Java-recursive-easy-to-read
+     *
+     * @param nums
+     * @return
+     */
+    public boolean judgePoint24V0(int[] nums) {
+        double[] doubles = new double[4];
+        for (int i = 0; i < 4; i++) {
+            doubles[i] = nums[i] / 1.0;
+        }
+        return dfs(doubles);
+    }
+
+    public boolean dfs(double[] nums) {
+        int n = nums.length;
+        if (n == 1 && Math.abs(nums[0] - 24.0) < 1e-6) {
+            return true;
+        }
+        double[] restNum = new double[n - 1];
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                for (int k = 0, l = 0; k < n; k++) {
+                    if (k != i && k != j) {
+                        restNum[l] = nums[k];
+                        l++;
+                    }
+                }
+                double a = nums[i], b = nums[j];
+                restNum[n - 2] = a + b; if (dfs(restNum)) return true;
+                restNum[n - 2] = a * b; if (dfs(restNum)) return true;
+                restNum[n - 2] = a - b; if (dfs(restNum)) return true;
+                restNum[n - 2] = a / b; if (dfs(restNum)) return true;
+                restNum[n - 2] = b - a; if (dfs(restNum)) return true;
+                restNum[n - 2] = b / a; if (dfs(restNum)) return true;
+            }
+        }
+        return false;
+    }
 }
