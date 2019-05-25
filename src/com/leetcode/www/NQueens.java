@@ -6,6 +6,13 @@ import java.util.Arrays;
 import java.util.List;
 
 public class NQueens { // LC 51
+    /**
+     * Runtime: 3 ms, faster than 80.80% of Java online submissions for N-Queens.
+     * Memory Usage: 38.1 MB, less than 78.67% of Java online submissions for N-Queens.
+     *
+     * @param n
+     * @return
+     */
     public List<List<String>> solveNQueens(int n) {
         List<List<String>> result = new ArrayList<>();
         if (n == 0) {
