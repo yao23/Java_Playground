@@ -20,3 +20,19 @@ where p1.x != p2.x or p1.y != p2.y
 select round(min(sqrt(power(a.x - b.x, 2) + power(a.y - b.y, 2))), 2) as shortest
 from point_2d a
 join point_2d b on a.x != b.x or a.y != b.y
+
+# Input
+#
+# | x  | y  |
+# |----|----|
+# | -1 | -1 |
+# | 0  | 0  |
+# | -1 | -2 |
+#
+# Output
+#
+# | shortest |
+# |----------|
+# | 1.00     |
+#
+# The shortest distance is 1.00 from point (-1, -1) to (-1, -2)
