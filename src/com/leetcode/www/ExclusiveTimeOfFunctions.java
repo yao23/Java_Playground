@@ -8,7 +8,9 @@ public class ExclusiveTimeOfFunctions { // LC 636
      * Runtime: 14 ms, faster than 95.85% of Java online submissions for Exclusive Time of Functions.
      * Memory Usage: 37.7 MB, less than 98.70% of Java online submissions for Exclusive Time of Functions.
      *
-     *  https://leetcode.com/problems/exclusive-time-of-functions/discuss/293215/Simple-Java-solution-using-Stack
+     * Stack
+     *
+     * https://leetcode.com/problems/exclusive-time-of-functions/discuss/293215/Simple-Java-solution-using-Stack
      *
      * @param n
      * @param logs
