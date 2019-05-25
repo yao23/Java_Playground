@@ -4,6 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TwentyFourGame { // LC 679
+    /**
+     * Runtime: 9 ms, faster than 76.91% of Java online submissions for 24 Game.
+     * Memory Usage: 35 MB, less than 99.92% of Java online submissions for 24 Game.
+     *
+     * https://leetcode.com/problems/24-game/discuss/276292/Java-Detailed-explanation-with-examples
+     *
+     * @param nums
+     * @return
+     */
     public boolean judgePoint24(int[] nums) {
         List<Double> inputList = new ArrayList<>();
         for (int v: nums) {
