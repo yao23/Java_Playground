@@ -4,6 +4,13 @@ public class NQueensII { // LC 52
     private int numSol;
     private int upper;
 
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for N-Queens II.
+     * Memory Usage: 32 MB, less than 72.04% of Java online submissions for N-Queens II.
+     *
+     * @param n
+     * @return
+     */
     public int totalNQueens(int n) {
         numSol = 0;
         upper = (1 << n) - 1 ;
