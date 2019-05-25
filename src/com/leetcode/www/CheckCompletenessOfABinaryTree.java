@@ -62,13 +62,13 @@ public class CheckCompletenessOfABinaryTree { // LC 958
             q.offer(root);
         }
 
-        boolean end = false;
+        boolean hasNull = false;
         while (!q.isEmpty()) {
             TreeNode t = q.poll();
             if (t == null) {
-                end = true;
+                hasNull = true;
             } else {
-                if(end) { // there are nodes after null in current level
+                if(hasNull) { // there are nodes after null in current level
                     return false;
                 }
                 q.offer(t.left);
