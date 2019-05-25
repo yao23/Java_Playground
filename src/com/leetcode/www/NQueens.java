@@ -45,9 +45,9 @@ public class NQueens { // LC 51
             result.add(queens);
         } else {
             for (int col = 0; col < n; col++) {
-                if (check(row, col, preQueens)) {
+                if (check(row, col, preQueens)) { // valid in current position
                     preQueens[row] = col;
-                    helper(row + 1, preQueens, n, result);
+                    helper(row + 1, preQueens, n, result); // next row
                     preQueens[row] = -1;
                 }
             }
@@ -56,7 +56,7 @@ public class NQueens { // LC 51
 
     private boolean check(int row, int col, int[] preQueens) {
         for (int i = 0; i < row; i++) {
-            if (preQueens[i] == col || Math.abs(row - i) == Math.abs(col - preQueens[i])) {
+            if (preQueens[i] == col || Math.abs(row - i) == Math.abs(col - preQueens[i])) { // same column or diagonal
                 return false;
             }
         }
