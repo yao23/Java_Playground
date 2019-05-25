@@ -57,7 +57,7 @@ public class SerializeAndDeserializeNaryTree {
         String[] elements = data.split("#");
         Node root = new Node(Integer.valueOf(elements[0]), null);
         parents.offer(root);
-        for (int i = 1; i < elements.length; i++) {
+        for (int i = 1; i < elements.length; i++) { // start from i = 1 since processed root already
             Node parent = parents.poll();
             String[] kids = elements[i].split(",");
             List<Node> c = new ArrayList<>();
