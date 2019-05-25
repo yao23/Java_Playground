@@ -41,4 +41,52 @@ public class ExclusiveTimeOfFunctions { // LC 636
 
         return result;
     }
+
+    /**
+     * Runtime: 14 ms, faster than 95.85% of Java online submissions for Exclusive Time of Functions.
+     * Memory Usage: 37.2 MB, less than 99.40% of Java online submissions for Exclusive Time of Functions.
+     *
+     * https://leetcode.com/problems/exclusive-time-of-functions/discuss/275895/Stack
+     *
+     * @param n
+     * @param logs
+     * @return
+     */
+    public int[] exclusiveTimeV0(int n, List<String> logs) {
+        // Init stack of function ids
+        Stack<Integer> stack = new Stack<>();
+        int prevTime = 0;
+        int[] result = new int[n];
+
+        for (String log : logs) {
+            String[] splits = log.split(":");
+            int curId = Integer.parseInt(splits[0]);
+            int curTime = Integer.parseInt(splits[2]);
+            // Push function id to stack
+
+            if (stack.isEmpty()) {
+                stack.push(curId);
+                continue;
+            }
+
+            // If start, curTime - prevTime inc stack.peek() function time
+            int totalTime = 0;
+            if (splits[1].equals("start")) {
+                totalTime = curTime - prevTime;
+                prevTime = curTime;
+
+                result[stack.peek()] += totalTime;
+                stack.push(curId);
+            } else {
+                // Else, curTime - prevTime + 1 inc stack.pop() function time
+                totalTime = curTime - prevTime + 1;
+                // Increase by one because only inner-most function is longer by one, others should be with totalTime = curTime - prevTime;
+                prevTime = curTime + 1;
+
+                result[stack.pop()] += totalTime;
+            }
+        }
+
+        return result;
+    }
 }
