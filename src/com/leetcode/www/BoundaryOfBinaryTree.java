@@ -69,4 +69,39 @@ public class BoundaryOfBinaryTree { // LC 545
         helperBottom(root.left, res);
         helperBottom(root.right, res);
     }
+
+    /**
+     * Runtime: 1 ms, faster than 100.00% of Java online submissions for Boundary of Binary Tree.
+     * Memory Usage: 37.5 MB, less than 97.70% of Java online submissions for Boundary of Binary Tree.
+     *
+     * DFS
+     *
+     * https://leetcode.com/problems/boundary-of-binary-tree/discuss/281587/Java-One-Pass-DFS-beat-100
+     *
+     * @param root
+     * @return
+     */
+    public List<Integer> boundaryOfBinaryTreeV0(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        recursion(null, root, true, true, res);
+        return res;
+    }
+
+    private void recursion(TreeNode pre, TreeNode root, boolean leftMost, boolean rightMost, List<Integer> res) {
+        if (root == null) {
+            return;
+        }
+        // leftBoundary or leaves  + preOrder
+        if (leftMost || (root.left == null && root.right == null)) {
+            res.add(root.val);
+        }
+        recursion(root, root.left, leftMost, (pre != null && root.right == null) ? rightMost : false, res);
+
+        recursion(root, root.right, (pre != null && root.left == null) ? leftMost : false, rightMost, res);
+
+        // rightBoundary  + postOrder
+        if (rightMost && !leftMost && !(root.left == null && root.right == null)) {
+            res.add(root.val);
+        }
+    }
 }
