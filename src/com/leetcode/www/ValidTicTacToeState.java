@@ -90,3 +90,21 @@ public class ValidTicTacToeState { // LC 794
         return false;
     }
 }
+
+// Example 1:
+// Input: board = ["O  ", "   ", "   "]
+// Output: false
+// Explanation: The first player always plays "X".
+//
+// Example 2:
+// Input: board = ["XOX", " X ", "   "]
+// Output: false
+// Explanation: Players take turns making moves.
+//
+// Example 3:
+// Input: board = ["XXX", "   ", "OOO"]
+// Output: false
+//
+// Example 4:
+// Input: board = ["XOX", "O O", "XOX"]
+// Output: true
