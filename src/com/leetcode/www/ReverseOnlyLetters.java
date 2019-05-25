@@ -5,6 +5,8 @@ public class ReverseOnlyLetters { // LC 917
      * Runtime: 1 ms, faster than 76.38% of Java online submissions for Reverse Only Letters.
      * Memory Usage: 33.6 MB, less than 100.00% of Java online submissions for Reverse Only Letters.
      *
+     * https://leetcode.com/problems/reverse-only-letters/discuss/296549/Probably-the-easiest-or-Beats-100
+     *
      * @param S
      * @return
      */
