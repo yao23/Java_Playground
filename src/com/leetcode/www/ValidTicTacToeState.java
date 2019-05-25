@@ -7,6 +7,10 @@ public class ValidTicTacToeState { // LC 794
      *
      * https://leetcode.com/problems/valid-tic-tac-toe-state/discuss/291681/Without-recursion-Beats-100-Java-0ms-runtime
      *
+     * https://leetcode.com/problems/valid-tic-tac-toe-state/discuss/248111/Java-Solution-4ms-Easy-to-Understand-(Similar-to-LC-348.-LC-1001)
+     *
+     * similar problem: 348. Design Tic Tac Toe, 1001. Grid Illumination. the N-Queens problem. check each row, col, and two diagonals.
+     *
      * @param board
      * @return
      */
