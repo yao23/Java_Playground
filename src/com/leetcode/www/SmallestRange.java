@@ -61,14 +61,13 @@ public class SmallestRange { // LC 632
      */
     public int[] smallestRangeV0(List<List<Integer>> nums) {
         PriorityQueue<int[]> min=new PriorityQueue<>(Comparator.comparingInt(a -> a[2]));
-        int max;
         int[] res = {Integer.MAX_VALUE, Integer.MIN_VALUE};
         for (int i = 0; i < nums.size(); i++) {
-            min.add(new int[]{i, 0, nums.get(i).get(0)});
-            res[1] = Math.max(res[1], nums.get(i).get(0));
+            min.add(new int[]{i, 0, nums.get(i).get(0)}); // {listIndex, smallestNumIndexInList, smallestNum}
             res[0] = Math.min(res[0], nums.get(i).get(0));
+            res[1] = Math.max(res[1], nums.get(i).get(0));
         }
-        max = res[1];
+        int max = res[1];
         while (!min.isEmpty()) {
             int[] listWithSmallestNum = min.poll();
             int smallestNum = listWithSmallestNum[2];
