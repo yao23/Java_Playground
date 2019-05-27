@@ -19,7 +19,7 @@ public class TrappingRainWater { // LC 42
         }
 
         int leftMax = height[0];
-        int rightMax = height[len-1];
+        int rightMax = height[len - 1];
         int[] rightMaxValues = new int[len - 2]; // cache
 
         for (int i = rightMaxValues.length - 1; i >= 0; i--) {
