@@ -4,6 +4,13 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class LargestRectangleInHistogram { // LC 84
+    /**
+     * Runtime: 9 ms, faster than 76.94% of Java online submissions for Largest Rectangle in Histogram.
+     * Memory Usage: 39.1 MB, less than 82.53% of Java online submissions for Largest Rectangle in Histogram.
+     *
+     * @param heights
+     * @return
+     */
     public int largestRectangleArea(int[] heights) { // beats 79.53%
         int max = 0;
         Deque<Integer> stack = new ArrayDeque<>();
