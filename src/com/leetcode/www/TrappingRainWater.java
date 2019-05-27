@@ -4,6 +4,13 @@ package com.leetcode.www; /**
 import java.lang.*;
 
 public class TrappingRainWater { // LC 42
+    /**
+     * Runtime: 1 ms, faster than 99.76% of Java online submissions for Trapping Rain Water.
+     * Memory Usage: 36.2 MB, less than 99.88% of Java online submissions for Trapping Rain Water.
+     *
+     * @param height
+     * @return
+     */
     public int trap(int[] height) { // beats 60.02%
         int result = 0;
         int len = height.length;
