@@ -57,7 +57,7 @@ public class TrappingRainWater { // LC 42
      * @param height
      * @return
      */
-    public int trapV1(int[] height) {
+    public int trapV2(int[] height) {
         if (height.length == 0) {
             return 0;
         }
@@ -82,6 +82,45 @@ public class TrappingRainWater { // LC 42
             }
         }
         return result;
+    }
+
+    /**
+     * Runtime: 1 ms, faster than 99.76% of Java online submissions for Trapping Rain Water.
+     * Memory Usage: 38.6 MB, less than 87.23% of Java online submissions for Trapping Rain Water.
+     *
+     * https://leetcode.com/problems/trapping-rain-water/discuss/297879/JAVA-Simplest-Solution-with-Explanation-O(n)time-complexity-and-O(1)-space-complexity.
+     *
+     * A simpler solution with O(n) time complexity and O(1) space complexity.
+     *
+     * Iterate the array to find the max height iMax. The water will be trapped to the left and right of it.
+     * Now first iterate the array from left to iMax, and keep a track of maximum height until that point.
+     * To the water count add height[i] - maxTillNow
+     * Repeat the step 2 from right to iMax.
+     *
+     * @param height
+     * @return
+     */
+    public int trapV1(int[] height) {
+        if (height.length < 2) {
+            return 0;
+        }
+        int maxIndex = 0;
+        for (int i = 1; i < height.length; i++) {
+            maxIndex = (height[i] > height[maxIndex]) ? i : maxIndex;
+        }
+
+        int max = -1;
+        int water = 0;
+        for (int i = 0; i < maxIndex; i++) {
+            max = (height[i] > max) ? height[i] : max;
+            water += (max - height[i]);
+        }
+        max = -1;
+        for (int i = height.length - 1; i > maxIndex; i--) {
+            max = (height[i] > max) ? height[i] : max;
+            water += (max - height[i]);
+        }
+        return water;
     }
 
     public int trapV0(int[] height) { // beats 0.66%
