@@ -53,12 +53,12 @@ public class TrappingRainWaterII { // LC 407
 
         // from the borders, pick the shortest cell visited and check its neighbors:
         // if the neighbor is shorter, collect the water it can trap and update its height as its height plus the water trapped
-        /**
-         * Reason is we put boarder elements in min heap, we start from shortest cell(imaging there are many tall walls
-         * surrounding those cells which are short,and we start from the shortest wall) to find the neighbor which is
-         * shorter than the shortest wall (this poor short neighbor is going to trap water because it's shorter than the
-         * shortest wall so that it's also shorter than all other wall surrounding it.)
-         */
+        //
+        // Reason is we put boarder elements in min heap, we start from shortest cell(imaging there are many tall walls
+        // surrounding those cells which are short,and we start from the shortest wall) to find the neighbor which is
+        // shorter than the shortest wall (this poor short neighbor is going to trap water because it's shorter than the
+        // shortest wall so that it's also shorter than all other wall surrounding it.)
+        //
         // add all its neighbors to the queue.
         int[][] dirs = new int[][]{{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
         int res = 0;
