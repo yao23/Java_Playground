@@ -4,7 +4,36 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class HappyNumber { // LC 202
-    public boolean isHappy(int n) { // beats 96.12%
+    /**
+     * Runtime: 1 ms, faster than 90.24% of Java online submissions for Happy Number.
+     * Memory Usage: 32.3 MB, less than 81.07% of Java online submissions for Happy Number.
+     *
+     * similar like find the start point in a cyclic linked list
+     *
+     * @param n
+     * @return
+     */
+    public boolean isHappy(int n) {
+        int slow = n, fast = n;
+        do {
+            slow = getSquareSum(slow);
+            fast = getSquareSum(getSquareSum(fast));
+        } while (slow != fast);
+
+        return slow == 1;
+    }
+
+    private int getSquareSum(int num) {
+        int sum = 0;
+        while (num > 0) {
+            int digit = num % 10;
+            sum += digit * digit;
+            num /= 10;
+        }
+        return sum;
+    }
+
+    public boolean isHappyV3(int n) { // beats 96.12%
         int x = n;
         int y = n;
         while (x > 1) {
