@@ -48,6 +48,42 @@ public class TrappingRainWater { // LC 42
         return result;
     }
 
+    /**
+     * Runtime: 1 ms, faster than 99.76% of Java online submissions for Trapping Rain Water.
+     * Memory Usage: 40.1 MB, less than 19.17% of Java online submissions for Trapping Rain Water.
+     *
+     * https://leetcode.com/problems/trapping-rain-water/discuss/297698/Simple-Solution-with-O(n)-Time-and-O(1)-Space-complexity-with-clean-code
+     *
+     * @param height
+     * @return
+     */
+    public int trapV1(int[] height) {
+        if (height.length == 0) {
+            return 0;
+        }
+        int low = 0, high = height.length - 1;
+        int leftMax = 0, rightMax = 0; // left and right point for storing max up to that point
+        int result = 0;
+        while (low <= high) {
+            if (height[low] < height[high]) { // check left side
+                if (height[low] > leftMax) { // next left max
+                    leftMax = height[low];
+                } else { // left_max height - current height
+                    result += leftMax - height[low]; // add to the result
+                }
+                low++;
+            } else { // check right side
+                if (height[high] > rightMax) { // new height upto high
+                    rightMax = height[high];
+                } else {
+                    result += rightMax - height[high];
+                }
+                high--;
+            }
+        }
+        return result;
+    }
+
     public int trapV0(int[] height) { // beats 0.66%
         int result = 0;
         int len = height.length;
