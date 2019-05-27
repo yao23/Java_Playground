@@ -28,7 +28,7 @@ public class MeetingRoomsII { // LC 253
 
         int noOfRooms = 0, endPtr = 0;
         for (int i = 0; i < intervals.length; i++) {
-            if (startTime[i] < endTime[endPtr]) {
+            if (startTime[i] < endTime[endPtr]) { // current meeting start before another meeting end
                 noOfRooms++;
             } else {
                 endPtr++;
