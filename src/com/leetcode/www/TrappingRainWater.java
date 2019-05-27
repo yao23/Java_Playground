@@ -20,10 +20,10 @@ public class TrappingRainWater { // LC 42
 
         int leftMax = height[0];
         int rightMax = height[len-1];
-        int[] rightMaxValues = new int[len-2]; // cache
+        int[] rightMaxValues = new int[len - 2]; // cache
 
         for (int i = rightMaxValues.length - 1; i >= 0; i--) {
-            int right = height[i+2]; // offset 2, rightLargeValues.length = height.length - 2
+            int right = height[i + 2]; // offset 2, rightLargeValues.length = height.length - 2
             if (right > rightMax) {
                 rightMax = right;
             }
@@ -32,13 +32,13 @@ public class TrappingRainWater { // LC 42
         }
 
         for (int i = 1; i < len - 1; i++) {
-            int left = height[i-1]; // last element
+            int left = height[i - 1]; // last element
             int cur = height[i];
             if (left > leftMax) {
                 leftMax = left;
             }
 
-            int minHeight = Math.min(leftMax, rightMaxValues[i-1]);
+            int minHeight = Math.min(leftMax, rightMaxValues[i - 1]);
 
             if (minHeight > cur) {
                 result += (minHeight - cur);
