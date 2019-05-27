@@ -57,6 +57,43 @@ public class EmployeeFreeTime { // LC 759
 
     /**
      * Runtime: 40 ms, faster than 54.99% of Java online submissions for Employee Free Time.
+     * Memory Usage: 48 MB, less than 47.92% of Java online submissions for Employee Free Time.
+     *
+     * https://leetcode.com/problems/employee-free-time/discuss/287346/Java-sorting-solution
+     *
+     * @param schedule
+     * @return
+     */
+    public int[][] employeeFreeTimeV1(int[][][] schedule) {
+        List<int[]> intervals = new ArrayList();
+        List<int[]> res = new ArrayList();
+
+        for (int[][] employee : schedule) {
+            for (int[] interval : employee) {
+                intervals.add(interval);
+            }
+        }
+
+        Collections.sort(intervals, Comparator.comparingInt(a -> a[0]));
+
+        int end = intervals.get(0)[1];
+        for (int[] interval : intervals) {
+            if (interval[0] > end) {
+                res.add(new int[]{end, interval[0]});
+            }
+
+            end = Math.max(end, interval[1]);
+        }
+
+        int[][] ans = new int[res.size()][2];
+        for (int i = 0; i < ans.length; ++i) {
+            ans[i] = res.get(i);
+        }
+        return ans;
+    }
+
+    /**
+     * Runtime: 40 ms, faster than 54.99% of Java online submissions for Employee Free Time.
      * Memory Usage: 48 MB, less than 47.85% of Java online submissions for Employee Free Time.
      *
      * https://leetcode.com/problems/employee-free-time/discuss/289293/Java-PriorityQueue-detailed-comments
