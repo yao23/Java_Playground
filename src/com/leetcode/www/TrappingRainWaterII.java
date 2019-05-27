@@ -69,7 +69,7 @@ public class TrappingRainWaterII { // LC 407
                 int newY = cell.col + dir[1];
                 if (newX >= 0 && newX < row && newY >= 0 && newY < col && !visited[newX][newY]) {
                     visited[newX][newY] = true;
-                    res += Math.max(0, cell.height - heights[newX][newY]);
+                    res += Math.max(0, cell.height - heights[newX][newY]); // ignore negative height difference
                     queue.offer(new Cell(newX, newY, Math.max(heights[newX][newY], cell.height)));
                 }
             }
