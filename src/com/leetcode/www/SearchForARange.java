@@ -28,6 +28,57 @@ public class SearchForARange { // LC 34 (FindFirstAndLastPositionOfElementInSort
         return new int[] {leftIndex, rightIndex};
     }
 
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Find First and Last Position of Element in Sorted Array.
+     * Memory Usage: 38.9 MB, less than 99.92% of Java online submissions for Find First and Last Position of Element in Sorted Array.
+     *
+     * https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/discuss/291888/Java-solution-with-explanation-(faster-than-100-and-memory-less-than-99.65)
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
+    public int[] searchRangeV1  (int[] nums, int target) {
+        if (nums == null || nums.length == 0) {
+            return new int[]{-1, -1};
+        }
+        int low = 0, high = nums.length - 1, first_position = -1, last_position = -1;
+
+        // Search for the first position of element.
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (target == nums[mid]) {
+                first_position = mid;
+                high = mid - 1;
+            } else if (target < nums[mid]) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+
+        // If no element searched, return [-1, -1].
+        if (first_position == -1) {
+            return new int[]{-1, -1};
+        }
+
+        // Search for the last position of element.
+        low = 0; high = nums.length - 1;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (target == nums[mid]){
+                last_position = mid;
+                low = mid + 1;
+            } else if (target < nums[mid]) {
+                high = mid - 1;
+            }
+            else {
+                low = mid + 1;
+            }
+        }
+        return new int[]{first_position, last_position};
+    }
+
     public int[] searchRangeV0(int[] nums, int target) {
         if (nums == null || nums.length == 0) {
             return new int[]{-1, -1};
