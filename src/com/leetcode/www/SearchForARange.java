@@ -19,7 +19,7 @@ public class SearchForARange { // LC 34 (FindFirstAndLastPositionOfElementInSort
                 leftIndex = subLeft[0] == -1 ? mid : subLeft[0];
                 rightIndex = subRight[1] == -1 ? mid : subRight[1];
                 break;
-            } else if(target>nums[mid]) {
+            } else if (target > nums[mid]) {
                 start = mid + 1;
             } else {
                 end = mid - 1;
