@@ -1,6 +1,14 @@
 package com.leetcode.www;
 
 public class AddBinary { // LC 67
+    /**
+     * Runtime: 2 ms, faster than 53.06% of Java online submissions for Add Binary.
+     * Memory Usage: 35.1 MB, less than 59.55% of Java online submissions for Add Binary.
+     *
+     * @param a
+     * @param b
+     * @return
+     */
     public String addBinary(String a, String b) { // beats 27.70%
         if (a == null || a.equals("")) {
             return b;
