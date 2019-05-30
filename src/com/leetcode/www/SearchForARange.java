@@ -1,6 +1,6 @@
 package com.leetcode.www;
 
-public class SearchForARange { // LC 34
+public class SearchForARange { // LC 34 (FindFirstAndLastPositionOfElementInSortedArray)
     public int[] searchRange(int[] nums, int target) {
         if (nums == null) {
             return new int[]{-1, -1};
