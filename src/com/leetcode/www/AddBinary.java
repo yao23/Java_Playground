@@ -38,6 +38,14 @@ public class AddBinary { // LC 67
         return sum.toString();
     }
 
+    /**
+     * Runtime: 2 ms, faster than 53.06% of Java online submissions for Add Binary.
+     * Memory Usage: 35.1 MB, less than 59.54% of Java online submissions for Add Binary.
+     *
+     * @param a
+     * @param b
+     * @return
+     */
     public String addBinaryV0(String a, String b) { // beats 44.49%
         int aLength = a.length();
         int bLength = b.length();
