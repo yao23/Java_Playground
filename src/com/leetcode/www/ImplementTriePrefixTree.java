@@ -6,6 +6,10 @@ import java.util.ArrayList;
  * Created by liyao on 7/18/17.
  */
 public class ImplementTriePrefixTree { // LC 208
+    /**
+     * Runtime: 79 ms, faster than 56.07% of Java online submissions for Implement Trie (Prefix Tree).
+     * Memory Usage: 50.5 MB, less than 98.94% of Java online submissions for Implement Trie (Prefix Tree).
+     */
     class Trie {
         private TrieNode root;
 
