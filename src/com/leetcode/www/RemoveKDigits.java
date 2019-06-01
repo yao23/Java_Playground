@@ -6,6 +6,14 @@ import java.util.Deque;
 import java.util.List;
 
 public class RemoveKDigits { // LC 402
+    /**
+     * Runtime: 2 ms, faster than 98.75% of Java online submissions for Remove K Digits.
+     * Memory Usage: 36 MB, less than 99.83% of Java online submissions for Remove K Digits.
+     *
+     * @param num
+     * @param k
+     * @return
+     */
     public String removeKdigits(String num, int k) { // beats 83.82%
         int len = num.length();
         int resLen = len - k;
