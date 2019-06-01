@@ -29,6 +29,14 @@ public class Combinations { // LC 77
         return result;
     }
 
+    /**
+     * Runtime: 34 ms, faster than 30.98% of Java online submissions for Combinations.
+     * Memory Usage: 38.7 MB, less than 86.68% of Java online submissions for Combinations.
+     *
+     * @param n
+     * @param k
+     * @return
+     */
     public List<List<Integer>> combineV0(int n, int k) { // beats 24.86%
         List<List<Integer>> result = new ArrayList<>();
         if (k == 0)	{
