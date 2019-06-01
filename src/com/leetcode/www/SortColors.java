@@ -65,6 +65,12 @@ public class SortColors { // LC 75
         }
     }
 
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Sort Colors.
+     * Memory Usage: 34.5 MB, less than 100.00% of Java online submissions for Sort Colors.
+     *
+     * @param nums
+     */
     public static void sortColors1(int[] nums) { // beats 5.63%, three pointers
         int numLength = nums.length;
         if (numLength <= 1) {
