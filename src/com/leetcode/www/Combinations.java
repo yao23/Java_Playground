@@ -4,6 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Combinations { // LC 77
+    /**
+     * Runtime: 4 ms, faster than 86.37% of Java online submissions for Combinations.
+     * Memory Usage: 39.2 MB, less than 82.35% of Java online submissions for Combinations.
+     *
+     * @param n
+     * @param k
+     * @return
+     */
     public List<List<Integer>> combine(int n, int k) { // beats 86.29%
         List<List<Integer>> result = new ArrayList<>();
         if (k > n || k < 0) {
