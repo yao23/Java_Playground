@@ -88,13 +88,13 @@ public class SortColors { // LC 75
 
                     redIdx++;
                     curIdx++;
-                } else if (curElement == 2) {
+                } else if (curElement == 2) { // blue
                     if (curIdx != blueIdx) {
                         swap(nums, curIdx, blueIdx);
                     }
 
                     blueIdx--;
-                } else {
+                } else { // green
                     curIdx++;
                 }
             }
