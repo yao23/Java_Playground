@@ -20,7 +20,7 @@ public class RemoveKDigits { // LC 402
         char[] stack = new char[len]; // len hold all elements, test case num "10" and k = 2, test case 7
         int ptr = 0;
         for (int i = 0; i < len; i++) {
-            while (k > 0 && ptr > 0 && stack[ptr - 1] > num.charAt(i)) {
+            while (k > 0 && ptr > 0 && stack[ptr - 1] > num.charAt(i)) { // pop out numbers larger than current one
                 ptr--;
                 k--;
             }
@@ -29,7 +29,7 @@ public class RemoveKDigits { // LC 402
         }
 
         int idx = 0;
-        while (idx < resLen && stack[idx] == '0') {
+        while (idx < resLen && stack[idx] == '0') { // trim leading zeroes
             idx++;
         }
 
