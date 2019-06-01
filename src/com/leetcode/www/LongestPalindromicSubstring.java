@@ -3,6 +3,13 @@ package com.leetcode.www;
 public class LongestPalindromicSubstring { // LC 5
     private int lo, maxLen;
 
+    /**
+     * Runtime: 5 ms, faster than 97.43% of Java online submissions for Longest Palindromic Substring.
+     * Memory Usage: 35.5 MB, less than 99.89% of Java online submissions for Longest Palindromic Substring.
+     *
+     * @param s
+     * @return
+     */
     public String longestPalindrome(String s) { // beats 91.56%
         int len = s.length();
         if (len < 2) {
