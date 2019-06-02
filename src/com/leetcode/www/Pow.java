@@ -34,6 +34,14 @@ public class Pow { // LC 50
         }
     }
 
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Pow(x, n).
+     * Memory Usage: 32.8 MB, less than 52.39% of Java online submissions for Pow(x, n).
+     *
+     * @param x
+     * @param n
+     * @return
+     */
     public double myPowV1(double x, int n) { // beats 40.51%
         if (n < 0) {
             return (1 / x) * myPowV1(1 / x, -(n + 1));
