@@ -5,6 +5,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MajorityElement { // LC 169
+    /**
+     * Runtime: 1 ms, faster than 100.00% of Java online submissions for Majority Element.
+     * Memory Usage: 41 MB, less than 83.88% of Java online submissions for Majority Element.
+     *
+     * @param nums
+     * @return
+     */
     // sorting
     public int majorityElement(int[] nums) { // beats 70.59%
         Arrays.sort(nums);
