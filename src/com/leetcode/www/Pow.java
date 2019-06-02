@@ -1,6 +1,14 @@
 package com.leetcode.www;
 
 public class Pow { // LC 50
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Pow(x, n).
+     * Memory Usage: 32.7 MB, less than 52.89% of Java online submissions for Pow(x, n).
+     *
+     * @param x
+     * @param n
+     * @return
+     */
     public double myPow(double x, int n) { // beats 28.57%
         if (n >= 0) {
             return power(x, n);
