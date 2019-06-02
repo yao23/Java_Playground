@@ -14,6 +14,9 @@ public class MajorityElementII { // LC 229
      * or equal to two numbers.
      * So we can modify the algorithm to maintain two counters for two majorities.
      *
+     * Runtime: 1 ms, faster than 100.00% of Java online submissions for Majority Element II.
+     * Memory Usage: 40.9 MB, less than 64.59% of Java online submissions for Majority Element II.
+     *
      * @param nums
      * @return
      */
