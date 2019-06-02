@@ -3,6 +3,15 @@ package com.leetcode.www;
 import java.util.List;
 
 public class LowestCommonAncestorOfABinaryTree { // LC 236
+    /**
+     * Runtime: 5 ms, faster than 19.89% of Java online submissions for Lowest Common Ancestor of a Binary Search Tree.
+     * Memory Usage: 35.6 MB, less than 9.80% of Java online submissions for Lowest Common Ancestor of a Binary Search Tree.
+     *
+     * @param root
+     * @param p
+     * @param q
+     * @return
+     */
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) { // beats 59.36%
         if (root == null || root == p || root == q) {
             return root;
