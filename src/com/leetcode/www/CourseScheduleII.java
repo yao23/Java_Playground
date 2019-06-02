@@ -4,6 +4,14 @@ package com.leetcode.www; /**
 import java.util.*;
 
 public class CourseScheduleII { // LC 210
+    /**
+     * Runtime: 11 ms, faster than 37.92% of Java online submissions for Course Schedule II.
+     * Memory Usage: 45.8 MB, less than 85.70% of Java online submissions for Course Schedule II.
+     *
+     * @param numCourses
+     * @param prerequisites
+     * @return
+     */
     public int[] findOrder(int numCourses, int[][] prerequisites) {
         int row = prerequisites.length;
         if (row <= 1) {
