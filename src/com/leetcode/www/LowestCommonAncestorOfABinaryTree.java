@@ -4,8 +4,8 @@ import java.util.List;
 
 public class LowestCommonAncestorOfABinaryTree { // LC 236
     /**
-     * Runtime: 5 ms, faster than 19.89% of Java online submissions for Lowest Common Ancestor of a Binary Search Tree.
-     * Memory Usage: 35.6 MB, less than 9.80% of Java online submissions for Lowest Common Ancestor of a Binary Search Tree.
+     * Runtime: 5 ms, faster than 100.00% of Java online submissions for Lowest Common Ancestor of a Binary Tree.
+     * Memory Usage: 33 MB, less than 99.70% of Java online submissions for Lowest Common Ancestor of a Binary Tree.
      *
      * @param root
      * @param p
