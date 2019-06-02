@@ -24,7 +24,7 @@ public class SubarraySumEqualsK { // LC 560
      * @return
      */
     public int subarraySum(int[] nums, int k) {
-        int count = 0, sum=0;
+        int count = 0, sum = 0;
         Map<Integer, Integer> preSumFreq = new HashMap<>();
         preSumFreq.put(0, 1);
         for (int i = 0; i < nums.length; i++) {
