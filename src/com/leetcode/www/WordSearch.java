@@ -1,6 +1,14 @@
 package com.leetcode.www;
 
 public class WordSearch { // LC 79
+    /**
+     * Runtime: 6 ms, faster than 57.41% of Java online submissions for Word Search.
+     * Memory Usage: 37.9 MB, less than 99.92% of Java online submissions for Word Search.
+     *
+     * @param board
+     * @param word
+     * @return
+     */
     public boolean exist(char[][] board, String word) { // beats 69.70%
         int row = board.length;
         if (row == 0) {
