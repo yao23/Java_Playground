@@ -29,6 +29,13 @@ public class MajorityElement { // LC 169
         return ret;
     }
 
+    /**
+     * Runtime: 1 ms, faster than 100.00% of Java online submissions for Majority Element.
+     * Memory Usage: 41.9 MB, less than 50.37% of Java online submissions for Majority Element.
+     *
+     * @param nums
+     * @return
+     */
     // Moore voting algorithm
     public int majorityElementV0(int[] nums) { // beats 70.59%
         int major = nums[0], count = 1;
