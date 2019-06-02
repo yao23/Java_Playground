@@ -4,6 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WordSearchII { // LC 212
+    /**
+     * Runtime: 19 ms, faster than 54.34% of Java online submissions for Word Search II.
+     * Memory Usage: 45 MB, less than 76.57% of Java online submissions for Word Search II.
+     *
+     * @param board
+     * @param words
+     * @return
+     */
     public List<String> findWords(char[][] board, String[] words) {
         List<String> res = new ArrayList<>();
         int row = board.length;
