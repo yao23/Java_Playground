@@ -60,3 +60,13 @@ public class MajorityElementII { // LC 229
         return result;
     }
 }
+
+// Example 1:
+//
+// Input: [3,2,3]
+// Output: [3]
+//
+// Example 2:
+//
+// Input: [1,1,1,3,3,2,2,2]
+// Output: [1,2]
