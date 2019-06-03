@@ -12,7 +12,7 @@ public class SquaresOfASortedArray { // LC 977
         int[] b = new int[A.length];
         int begin = 0;
         int end = A.length - 1;
-        for (int i = A.length - 1; i >= 0; i--) {
+        for (int i = A.length - 1; i >= 0; i--) { // largest number is more certain than smaller one
             b[i] = A[begin] * A[begin] > A[end] * A[end] ? A[begin] * A[begin++] : A[end] * A[end--];
         }
         return b;
