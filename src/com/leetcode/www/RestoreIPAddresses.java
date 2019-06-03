@@ -1,6 +1,7 @@
 package com.leetcode.www;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class RestoreIPAddresses { // LC 93
@@ -48,7 +49,54 @@ public class RestoreIPAddresses { // LC 93
         }
     }
 
-    public List<String> restoreIpAddresses2(String s) { // beats 5.98%
+    /**
+     * Runtime: 3 ms, faster than 23.55% of Java online submissions for Restore IP Addresses.
+     * Memory Usage: 35.6 MB, less than 67.38% of Java online submissions for Restore IP Addresses.
+     *
+     * @param string
+     * @return
+     */
+    public List<String> restoreIpAddressesV1(String string) {
+        List<String> res = new LinkedList<>();
+
+        if (string == null || string.length() < 4 || string.length() > 12) {
+            return res;
+        }
+
+        if (string.length() == 4) {
+            String s = "";
+            for (Character c : string.toCharArray()) {
+                s = s + c + ".";
+            }
+            res.add(s.substring(0, s.length() - 1));
+            return res;
+        }
+
+        helper(string, res, "", 0, 0);
+        return res;
+
+    }
+
+    private void helper(String string, List<String> res, String tmpS, int count, int index) {
+        if (index == string.length() && count == 4) {
+            res.add(tmpS.substring(0, tmpS.length() - 1));
+            return;
+        }
+
+        if (count >= 4 || index >= string.length()) {
+            return;
+        }
+
+
+        for (int i = index; i < string.length(); i++) {
+            long tmp = Long.valueOf(string.substring(index, i + 1));
+            if (tmp >= 0 && tmp <= 255 && String.valueOf(tmp).length() == string.substring(index, i + 1).length()) {
+                helper(string, res, tmpS + tmp + ".", count + 1, i + 1);
+            }
+        }
+    }
+
+    public List<String> restoreIpAddressesV0(String s) { // beats 5.98%
         List<String> res = new ArrayList<>();
         if (s.length() < 4 || s.length() > 12) {
             return res;
