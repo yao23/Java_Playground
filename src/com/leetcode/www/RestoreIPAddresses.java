@@ -96,6 +96,13 @@ public class RestoreIPAddresses { // LC 93
         }
     }
 
+    /**
+     * Runtime: 3 ms, faster than 23.55% of Java online submissions for Restore IP Addresses.
+     * Memory Usage: 37.5 MB, less than 33.27% of Java online submissions for Restore IP Addresses.
+     *
+     * @param s
+     * @return
+     */
     public List<String> restoreIpAddressesV0(String s) { // beats 5.98%
         List<String> res = new ArrayList<>();
         if (s.length() < 4 || s.length() > 12) {
