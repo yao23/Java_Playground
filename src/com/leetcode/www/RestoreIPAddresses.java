@@ -4,6 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RestoreIPAddresses { // LC 93
+    /**
+     * Runtime: 1 ms, faster than 99.75% of Java online submissions for Restore IP Addresses.
+     * Memory Usage: 35.7 MB, less than 66.82% of Java online submissions for Restore IP Addresses.
+     *
+     * @param s
+     * @return
+     */
     public List<String> restoreIpAddresses(String s) { // beats 97.62%
         List<String> results = new ArrayList<>();
         if (s.length() == 0 || s == null) {
