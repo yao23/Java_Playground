@@ -72,15 +72,16 @@ public class FloodFill { // LC 733
         return image;
     }
 
-    private void dfs(int[][] image, int i, int j, int newColor, int x) {
-        if (i < 0 || j < 0 || i >= image.length || j >= image[0].length || image[i][j] != x || image[i][j] == newColor) {
+    private void dfs(int[][] image, int i, int j, int newColor, int startingPixelColor) {
+        if (i < 0 || j < 0 || i >= image.length || j >= image[0].length || image[i][j] != startingPixelColor ||
+                image[i][j] == newColor) {
             return;
         }
         image[i][j] = newColor;
-        dfs(image,i - 1, j, newColor, x);
-        dfs(image,i + 1, j, newColor, x);
-        dfs(image,i,j - 1, newColor, x);
-        dfs(image,i,j + 1, newColor, x);
+        dfs(image,i - 1, j, newColor, startingPixelColor);
+        dfs(image,i + 1, j, newColor, startingPixelColor);
+        dfs(image,i,j - 1, newColor, startingPixelColor);
+        dfs(image,i,j + 1, newColor, startingPixelColor);
     }
 
     // left, top, right, bottom
