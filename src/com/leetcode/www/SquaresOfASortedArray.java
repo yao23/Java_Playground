@@ -5,7 +5,7 @@ public class SquaresOfASortedArray { // LC 977
      * Runtime: 1 ms, faster than 100.00% of Java online submissions for Squares of a Sorted Array.
      * Memory Usage: 40.8 MB, less than 97.07% of Java online submissions for Squares of a Sorted Array.
      *
-     * @param A
+     * @param A which is an int array
      * @return
      */
     public int[] sortedSquares(int[] A) {
