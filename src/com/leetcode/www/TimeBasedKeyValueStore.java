@@ -54,6 +54,12 @@ public class TimeBasedKeyValueStore { // LC 981
         }
     }
 
+    /**
+     * Runtime: 209 ms, faster than 81.79% of Java online submissions for Time Based Key-Value Store.
+     * Memory Usage: 139 MB, less than 70.78% of Java online submissions for Time Based Key-Value Store.
+     *
+     * https://leetcode.com/problems/time-based-key-value-store/discuss/305875/Map-with-binary-search
+     */
     class TimeMapV0 {
 
         // Stores key to Node map
