@@ -17,6 +17,13 @@ public class NumberOfIslands { // LC 200
         }
     }
 
+    /**
+     * Runtime: 1 ms, faster than 100.00% of Java online submissions for Number of Islands.
+     * Memory Usage: 41 MB, less than 61.74% of Java online submissions for Number of Islands.
+     *
+     * @param grid
+     * @return
+     */
     public int numIslands(char[][] grid) {
         int[] num = new int[]{0};
         int row = grid.length;
