@@ -24,6 +24,14 @@ public class PathSumIII { // LC 437
         tmpRes.remove(tmpRes.size() - 1);
     }
 
+    /**
+     * Runtime: 18 ms, faster than 17.56% of Java online submissions for Path Sum III.
+     * Memory Usage: 39.6 MB, less than 88.07% of Java online submissions for Path Sum III.
+     *
+     * @param root
+     * @param sum
+     * @return
+     */
     public int pathSum(TreeNode root, int sum) {
         if (root == null) {
             return 0;
