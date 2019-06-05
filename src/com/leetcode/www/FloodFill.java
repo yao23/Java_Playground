@@ -55,6 +55,33 @@ public class FloodFill { // LC 733
         image[r][c] = newColor;
     }
 
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Flood Fill.
+     * Memory Usage: 45 MB, less than 68.35% of Java online submissions for Flood Fill.
+     *
+     * https://leetcode.com/problems/flood-fill/discuss/291959/Java-Solution-using-DFS
+     *
+     * @param image
+     * @param i
+     * @param j
+     * @param newColor
+     * @return
+     */
+    public int[][] floodFillV1(int[][] image, int i, int j, int newColor) {
+        dfs(image, i, j, newColor, image[i][j]);
+        return image;
+    }
+
+    private void dfs(int[][] image, int i, int j, int newColor, int x) {
+        if (i < 0 || j < 0 || i >= image.length || j >= image[0].length || image[i][j] != x || image[i][j] == newColor) {
+            return;
+        }
+        image[i][j] = newColor;
+        dfs(image,i - 1, j, newColor, x);
+        dfs(image,i + 1, j, newColor, x);
+        dfs(image,i,j - 1, newColor, x);
+        dfs(image,i,j + 1, newColor, x);
+    }
 
     // left, top, right, bottom
     private final int[][] sides = {{0, -1}, {1, 0}, {0, 1}, {-1, 0}};
