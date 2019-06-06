@@ -9,6 +9,8 @@ public class PathSumIII { // LC 437
      * Runtime: 11 ms, faster than 53.13% of Java online submissions for Path Sum III.
      * Memory Usage: 40.8 MB, less than 63.45% of Java online submissions for Path Sum III.
      *
+     * https://leetcode.com/problems/path-sum-iii/discuss/297635/Simple-efficient-and-easy-to-understand-Recursion-(Java)
+     *
      * @param root
      * @param sum
      * @return
