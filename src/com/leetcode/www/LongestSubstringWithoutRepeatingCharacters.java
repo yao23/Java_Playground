@@ -1,6 +1,13 @@
 package com.leetcode.www;
 
 public class LongestSubstringWithoutRepeatingCharacters { // LC 3
+    /**
+     * Runtime: 3 ms, faster than 93.94% of Java online submissions for Longest Substring Without Repeating Characters.
+     * Memory Usage: 35.9 MB, less than 99.94% of Java online submissions for Longest Substring Without Repeating Characters.
+     *
+     * @param s
+     * @return
+     */
     public int lengthOfLongestSubstring(String s) {
         int left = 0, res = 0;
         int[] count = new int[256];
