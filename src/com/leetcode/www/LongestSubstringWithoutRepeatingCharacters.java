@@ -20,7 +20,7 @@ public class LongestSubstringWithoutRepeatingCharacters { // LC 3
                 count[s.charAt(left)] = 0;
                 while (s.charAt(left) != curChar) { // find repeated character
                     left++;
-                    count[s.charAt(left)] = 0;
+                    count[s.charAt(left)] = 0; // update passed character counter
                 }
                 left++;
                 count[curChar] = 1;
