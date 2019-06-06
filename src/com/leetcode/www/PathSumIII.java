@@ -5,6 +5,30 @@ package com.leetcode.www; /**
 import java.util.ArrayList;
 
 public class PathSumIII { // LC 437
+    /**
+     * Runtime: 11 ms, faster than 53.13% of Java online submissions for Path Sum III.
+     * Memory Usage: 40.8 MB, less than 63.45% of Java online submissions for Path Sum III.
+     *
+     * @param root
+     * @param sum
+     * @return
+     */
+    public int pathSum(TreeNode root, int sum) {
+        if (root == null) {
+            return 0;
+        } else {
+            return numPathStartingAtNode(root, sum) + pathSum(root.left, sum) + pathSum(root.right, sum);
+        }
+    }
+    private int numPathStartingAtNode(TreeNode root, int sum){
+        if (root == null) {
+            return 0;
+        } else {
+            return (root.val == sum ? 1 : 0) + numPathStartingAtNode(root.left, sum - root.val) +
+                    numPathStartingAtNode(root.right, sum - root.val);
+        }
+    }
+
     private void helper(TreeNode root, int targetSum, ArrayList<Integer> tmpRes, int[] result) {
         int curSum = 0;
         tmpRes.add(root.val);
@@ -32,7 +56,7 @@ public class PathSumIII { // LC 437
      * @param sum
      * @return
      */
-    public int pathSum(TreeNode root, int sum) {
+    public int pathSumV0(TreeNode root, int sum) {
         if (root == null) {
             return 0;
         } else {
