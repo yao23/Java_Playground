@@ -97,7 +97,7 @@ public class WordSearchII { // LC 212
         public TrieNode[] children = new TrieNode[26];
 
         public TrieNode() {}
-        TrieNode(char c){
+        TrieNode(char c) {
             TrieNode node = new TrieNode();
             node.val = c;
         }
