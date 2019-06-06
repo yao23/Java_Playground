@@ -6,6 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PathSumII { // LC 113
+    /**
+     * Runtime: 1 ms, faster than 99.96% of Java online submissions for Path Sum II.
+     * Memory Usage: 37.8 MB, less than 99.96% of Java online submissions for Path Sum II.
+     *
+     * @param root
+     * @param sum
+     * @param tmpResult
+     * @param result
+     */
     private void helper(TreeNode root, int sum, ArrayList<Integer> tmpResult, List<List<Integer>> result) {
         if (root.left == null && root.right == null) {
             if (root.val == sum) {
