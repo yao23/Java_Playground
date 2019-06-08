@@ -1,5 +1,14 @@
+package EffectiveJava;
+
+import java.util.EnumSet;
+import java.util.Objects;
+import java.util.Set;
+
+import static EffectiveJava.NyPizza.Size.SMALL;
+import static EffectiveJava.Pizza.Topping.*;
+
 // Builder Pattern
-public class NutritionFacts {
+class NutritionFacts {
     private final int servingSize;
     private final int servings;
     private final int calories;
@@ -39,7 +48,7 @@ public class NutritionFacts {
         }
 
         public Builder carbonhydrate(int val) {
-            carbonhydrate = val
+            carbonhydrate = val;
             return this;
         }
 
@@ -58,7 +67,7 @@ public class NutritionFacts {
     }
 }
 
-public abstract class Pizza {
+abstract class Pizza {
     public enum Topping { HAM, MUSHROOM, ONION, PEPPER, SAUSAGE }
     final Set<Topping> toppings;
 
@@ -77,7 +86,7 @@ public abstract class Pizza {
     }
 }
 
-public class NyPizza extends Pizza {
+class NyPizza extends Pizza {
     public enum Size { SMALL, MEDIUM, LARGE }
     private final Size size;
 
@@ -103,7 +112,7 @@ public class NyPizza extends Pizza {
     }
 }
 
-public class Calzone extends Pizza {
+class Calzone extends Pizza {
     private final boolean sauceInside;
 
     public static class Builder extends Pizza.Builder<Builder> {
@@ -129,7 +138,7 @@ public class Calzone extends Pizza {
     }
 }
 
-public class Test {
+class Test {
     public static void main(String args) {
         NyPizza pizza = new NyPizza.builder(SMALL).addTopping(SAUSAGE).addTopping(ONION).build();
         Calzone calzone = new Calzone.Builder().addTopping(HAM).sauceInside().build();

@@ -1,5 +1,7 @@
+package EffectiveJava;
+
 // An autocloseable class using a cleaner as a safety net
-public class Room implements AutoCloseable {
+class Room implements AutoCloseable {
     private static final Cleaner cleaner = Cleaner.create();
 
     // Resource that requires cleaning. Must noe refer to Room!
@@ -33,7 +35,7 @@ public class Room implements AutoCloseable {
     }
 }
 
-public class Adult {
+class Adult {
     public static void main(String[] args) {
         try (Room myRoom = new Room(7)) {
             System.out.println("Goodbye");
