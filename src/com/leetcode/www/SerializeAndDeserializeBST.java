@@ -6,6 +6,13 @@ import java.util.LinkedList;
  * Created by liyao on 6/22/17.
  */
 public class SerializeAndDeserializeBST { // LC 449
+    /**
+     * Runtime: 10 ms, faster than 31.91% of Java online submissions for Serialize and Deserialize BST.
+     * Memory Usage: 39.6 MB, less than 73.73% of Java online submissions for Serialize and Deserialize BST.
+     *
+     * @param root
+     * @return
+     */
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
         if (root == null) {
