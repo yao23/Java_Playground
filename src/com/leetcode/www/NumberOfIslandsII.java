@@ -6,15 +6,35 @@ import java.util.List;
 public class NumberOfIslandsII { // LC 305
     private int[][] direction = new int[][]{{1,0},{0,1},{-1,0},{0,-1}};
 
+    /**
+     * Runtime: 9 ms, faster than 91.57% of Java online submissions for Number of Islands II.
+     * Memory Usage: 53.6 MB, less than 79.58% of Java online submissions for Number of Islands II.
+     *
+     * https://leetcode.com/problems/number-of-islands-ii/discuss/289575/It-seems-that-the-newly-test-case-would-make-high-votes-answers-not-pass...
+     * https://leetcode.com/problems/number-of-islands-ii/discuss/286515/Java-Union-Find-9-ms-faster-than-93.31-51.5-MB-less-than-86.78
+     *
+     * @param m
+     * @param n
+     * @param positions
+     * @return
+     */
     public List<Integer> numIslands2(int m, int n, int[][] positions) {
         List<Integer> res = new ArrayList<>();
         int[] id = new int[m * n];
         int[] size = new int[m * n];
         UnionFind uf = new UnionFind(id, size);
         int count = 0;
+        for (int i = 0; i < n * m; ++i) {
+            id[i] = -1;
+        }
+
         for (int[] p : positions) {
-            count++;
             int cur = p[0] * n + p[1];
+            if (id[cur] != -1) {
+                res.add(count);
+                continue;
+            }
+            count++;
             id[cur] = cur;
             size[cur] = 1;
             for (int[] d : direction) {
