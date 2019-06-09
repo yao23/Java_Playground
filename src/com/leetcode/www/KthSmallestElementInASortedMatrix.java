@@ -40,6 +40,14 @@ public class KthSmallestElementInASortedMatrix { // LC 378
         }
     }
 
+    /**
+     * Runtime: 15 ms, faster than 53.88% of Java online submissions for Kth Smallest Element in a Sorted Matrix.
+     * Memory Usage: 42.6 MB, less than 78.19% of Java online submissions for Kth Smallest Element in a Sorted Matrix.
+     *
+     * @param matrix
+     * @param k
+     * @return
+     */
     public int kthSmallestV1(int[][] matrix, int k) { // min heap
         int n = matrix.length;
         PriorityQueue<Tuple> pq = new PriorityQueue<>();
@@ -51,7 +59,7 @@ public class KthSmallestElementInASortedMatrix { // LC 378
             if (t.x == n - 1) {
                 continue;
             }
-            pq.offer(new Tuple(t. x + 1, t.y, matrix[t.x + 1][t.y])); // next smallest
+            pq.offer(new Tuple(t.x + 1, t.y, matrix[t.x + 1][t.y])); // next smallest
         }
         return pq.poll().val;
     }
