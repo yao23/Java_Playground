@@ -1,8 +1,11 @@
+package EffectiveJava;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 // Dependency injection provides flexibility and testability
-public class SpellChecker {
+class SpellChecker {
     private final Lexicon dictionary;
 
     public SpellChecker(Lexicon dictionary) {
@@ -10,10 +13,12 @@ public class SpellChecker {
     }
 
     public boolean isValid(String word) {
-
+        return true;
     }
 
     public List<String> suggestions(String typo) {
-
+        return new ArrayList<>();
     }
 }
+
+class Lexicon {}
