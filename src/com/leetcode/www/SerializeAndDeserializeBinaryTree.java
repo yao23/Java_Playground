@@ -6,8 +6,8 @@ import java.util.*;
 
 public class SerializeAndDeserializeBinaryTree { // LC 297
     /**
-     * Runtime: 9 ms, faster than 45.11% of Java online submissions for Serialize and Deserialize BST.
-     * Memory Usage: 38.1 MB, less than 99.90% of Java online submissions for Serialize and Deserialize BST.
+     * Runtime: 13 ms, faster than 51.25% of Java online submissions for Serialize and Deserialize Binary Tree.
+     * Memory Usage: 39.6 MB, less than 54.23% of Java online submissions for Serialize and Deserialize Binary Tree.
      *
      * @param root
      * @return
