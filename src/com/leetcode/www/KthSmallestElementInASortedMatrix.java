@@ -4,6 +4,14 @@ package com.leetcode.www; /**
 import java.util.PriorityQueue;
 
 public class KthSmallestElementInASortedMatrix { // LC 378
+    /**
+     * Runtime: 1 ms, faster than 81.32% of Java online submissions for Kth Smallest Element in a Sorted Matrix.
+     * Memory Usage: 44.8 MB, less than 38.52% of Java online submissions for Kth Smallest Element in a Sorted Matrix.
+     *
+     * @param matrix
+     * @param k
+     * @return
+     */
     public int kthSmallest(int[][] matrix, int k) { // binary search
         int row = matrix.length;
         if (row == 0) {
