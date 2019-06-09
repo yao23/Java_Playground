@@ -4,6 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SpiralMatrix { // LC 54
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Spiral Matrix.
+     * Memory Usage: 34.4 MB, less than 99.89% of Java online submissions for Spiral Matrix.
+     *
+     * @param matrix
+     * @return
+     */
     public List<Integer> spiralOrder(int[][] matrix) {
         List<Integer> res = new ArrayList<>();
         if (matrix == null || matrix.length == 0) {
