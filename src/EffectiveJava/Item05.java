@@ -1,3 +1,6 @@
+import java.util.List;
+import java.util.Objects;
+
 // Dependency injection provides flexibility and testability
 public class SpellChecker {
     private final Lexicon dictionary;
