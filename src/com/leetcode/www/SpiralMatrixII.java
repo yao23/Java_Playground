@@ -1,6 +1,13 @@
 package com.leetcode.www;
 
 public class SpiralMatrixII { // LC 59
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Spiral Matrix II.
+     * Memory Usage: 34 MB, less than 43.78% of Java online submissions for Spiral Matrix II.
+     *
+     * @param n
+     * @return
+     */
     public int[][] generateMatrix(int n) { // beats 46.64%
         if (n <= 0) {
             return new int[0][];
