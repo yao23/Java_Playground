@@ -4,6 +4,14 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class SlidingWindowMaximum { // LC 239
+    /**
+     * Runtime: 11 ms, faster than 56.06% of Java online submissions for Sliding Window Maximum.
+     * Memory Usage: 41.5 MB, less than 74.71% of Java online submissions for Sliding Window Maximum.
+     *
+     * @param nums
+     * @param k
+     * @return
+     */
     public int[] maxSlidingWindow(int[] nums, int k) {
         int len = nums.length;
         if (len == 0 || k == 0) {
