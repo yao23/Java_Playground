@@ -34,10 +34,10 @@ public class DesignHitCounter { // LC 362
          */
         public void hit(int timestamp) {
             int index = timestamp % 300;
-            if (times[index] != timestamp) {
+            if (times[index] != timestamp) { // the timestamp comes first time
                 times[index] = timestamp;
                 hits[index] = 1;
-            } else {
+            } else { // the timestamp comes more than 1 time
                 hits[index]++;
             }
         }
