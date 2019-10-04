@@ -44,7 +44,7 @@ public class P01_01_ZeroOneKnapsack {
      * This means that dp[i][c] will represent the maximum knapsack profit for capacity ‘c’ calculated from the first ‘i’ items.
      *
      * Time and Space complexity
-     * The above solution has the time and space complexity of O(N*C)O(N∗C), where ‘N’ represents total items and ‘C’
+     * The above solution has the time and space complexity of O(N*C), where ‘N’ represents total items and ‘C’
      * is the maximum capacity.
      *
      * @param profits
