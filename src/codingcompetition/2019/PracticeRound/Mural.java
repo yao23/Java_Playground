@@ -1,5 +1,7 @@
 package PracticeRound;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Mural {
@@ -10,8 +12,7 @@ public class Mural {
         for (int i = 0; i < testNum; i++) {
             int N = Integer.parseInt(input.nextLine());
 
-            String str = input.nextLine();
-            String[] digits = str.split("\\s+");
+            String digits = input.nextLine();
 
             int score = expand(digits, N);
 
@@ -19,23 +20,39 @@ public class Mural {
         }
     }
 
-    private static int expand(String[] digits, int len) {
+    private static int expand(String digits, int len) {
         if (len == 1) {
-            return Integer.parseInt(digits[0]);
+            return Integer.parseInt(digits);
         } else if (len == 2) {
-            return Math.max(Integer.parseInt(digits[0]), Integer.parseInt(digits[1]));
+            String[] digitsArr = digits.split("\\s+");
+            return Math.max(Integer.parseInt(digitsArr[0]), Integer.parseInt(digitsArr[1]));
         } else {
-            int max = 0;
+            int max = 0, numIdx = 0, sum = 0, sumStart = 0;
             int radius = len / 2 == 0 ? len / 2 : (len + 1) / 2;
-            for (int i = 0; i < radius; i++) {
-                max += Integer.parseInt(digits[i]);
-            }
-            int tmp;
-            for (int i = radius, j = 0; i < len; i++, j++) {
-                tmp = max - Integer.parseInt(digits[j]) + Integer.parseInt(digits[i]);
-                if (tmp > max) {
-                    max = tmp;
+            String tmp = "";
+            List<Integer> nums = new ArrayList<>();
+            for (char ch : digits.toCharArray()) {
+                if (ch != ' ') {
+                    tmp += ch;
+                } else {
+                    int cur = Integer.parseInt(tmp);
+                    nums.add(cur);
+                    if (numIdx < radius) {
+                        sum += cur;
+                    } else {
+                        if (sum > max) {
+                            max = sum;
+                        }
+                        sum += (cur - nums.get(sumStart));
+                        sumStart++;
+                    }
+                    tmp = "";
+                    numIdx++;
                 }
+            }
+
+            if (sum > max) {
+                max = sum;
             }
 
             return max;
