@@ -7,7 +7,7 @@ public class Mural {
         Scanner input = new Scanner(System.in);
         int testNum = input.nextInt();
 
-        for (int i = 0; i < testNum; i++) {
+        for (int i = 1; i <= testNum; i++) {
             int score = solve(input);
 
             System.out.println("Case #" + i + ": " + score);
