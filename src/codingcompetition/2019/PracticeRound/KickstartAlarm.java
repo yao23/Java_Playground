@@ -1,81 +1,66 @@
 package PracticeRound;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class KickstartAlarm {
-    private static int modNum = 1000000007;
+    private static int mod = 1000000007;
+    private static long[] a = new long[1000001];
+
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        int testNum = Integer.parseInt(input.nextLine());
-
-        for (int i = 1; i <= testNum; i++) {
-            String str = input.nextLine();
-            String[] params = str.split("\\s+");
-            int N = Integer.parseInt(params[0]), K = Integer.parseInt(params[1]);
-            int x1 = Integer.parseInt(params[2]), y1 = Integer.parseInt(params[3]);
-            int P1 = Integer.parseInt(params[4]) + Integer.parseInt(params[5]);
-            int P2 = Integer.parseInt(params[6]) + Integer.parseInt(params[7]);
-            int F = Integer.parseInt(params[8]);
-            int[] arr = getArray(N, x1, y1, P1, P2, F);
-            List<List<Integer>> subsets = new ArrayList<>();
-            getSubsets(0, arr, new ArrayList<>(), subsets);
-            System.out.println("Case #" + i + ": " + getPowerSum(K, subsets));
+        Scanner scanner = new Scanner(System.in);
+        int caseNum = scanner.nextInt();
+        for (int i = 1; i <= caseNum; i++) {
+            System.out.println(String.format("Case #%d: %s", i, solve(scanner)));
         }
     }
 
-    private static int[] getArray(int N, int x1, int y1, int P1, int P2, int F) {
-        int[] arr = new int[N];
-        arr[0] = (x1 + y1) % F;
-        for (int i = 1; i < N; i++) {
-            arr[i] = ((P1 % F) * (arr[i - 1] % F) + P2 % F) %F;
-        }
-        return arr;
-    }
+    private static String solve(Scanner scanner) {
+        int N = scanner.nextInt();
+        int K = scanner.nextInt();
+        long x1 = scanner.nextInt();
+        long y1 = scanner.nextInt();
+        int C = scanner.nextInt();
+        int D = scanner.nextInt();
+        int E1 = scanner.nextInt();
+        int E2 = scanner.nextInt();
+        int F = scanner.nextInt();
 
-    private static void getSubsets(int depth, int[] arr, List<Integer> tmp, List<List<Integer>> result) {
-        if (tmp.size() > 0) {
-            result.add(new ArrayList<>(tmp));
+        int i;
+        long x, y;
+        a[1] = (x1 + y1) % F;
+        for (i = 2; i <= N; i++) {
+            x = (C * x1 + D * y1 + E1) % F;
+            y = (D * x1 + C * y1 + E2) % F;
+            a[i] = (x + y) % F;
+            x1 = x;
+            y1 = y;
         }
-        int len = arr.length;
-        if (depth == len) {
-            return;
-        } else {
-            for (int i = depth; i < len; i++) {
-                tmp.add(arr[i]);
-                getSubsets(i + 1, arr, tmp, result);
-                tmp.remove(tmp.size() - 1);
+        long ans=0;
+        long la = K;
+        for (i = 2; i <= N + 1; i++) {
+            ans = (ans + la * (long)(N + 2 - i) % mod * a[i - 1] % mod) % mod;
+            x = (power(i,K + 1) - 1) * power(i - 1,mod - 2) % mod;
+            x--;
+            if(x < 0) {
+                x += mod;
             }
+            la += x;
+            la %= mod;
         }
+
+
+        return String.valueOf(ans);
     }
 
-    private static int getPowerSum(int K, List<List<Integer>> subsets) {
-        int sum = 0;
-
-        for (List<Integer> subset : subsets) {
-            sum += getPower(K, subset);
+    private static long power(long x,long y) {
+        long t = 1;
+        while (y != 0) {
+            if (y % 2 == 1) {
+                t = t * x % mod;
+            }
+            x= x * x % mod;
+            y /= 2;
         }
-
-        return sum % modNum;
-    }
-
-    private static int getPower(int K, List<Integer> subset) {
-        int sum = 0;
-        for (int i = 1; i <= subset.size(); i++) {
-            int num = subset.get(i - 1);
-            int Ai = getAi(i, K, num);
-            sum += Ai;
-        }
-        return sum % modNum;
-    }
-
-    private static int getAi(int i, int K, int Ai) {
-        if (i == 1) {
-            return Ai * K;
-        } else {
-            return (int)(Ai * i * (Math.pow(i, K) - 1) / (i - 1)) % modNum;
-        }
-
+        return t;
     }
 }
