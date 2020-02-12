@@ -5,6 +5,17 @@ import java.util.Collections;
 import java.util.Scanner;
 
 public class Training {
+    /**
+     * Sort in descending order and each contiguous subarray could be target ones
+     *
+     * First is max in subarray and potential min num is sum(S[i] - S[j]) where j = i to i + P - 1
+     *
+     * sum(S[i] - S[j]) = P * S[i] - sum(S[j]) -> O(N)
+     *
+     * precompute sum(s[j]) as sums[j] in following code for each subarray -> O(N)
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int caseNum = scanner.nextInt();
@@ -20,17 +31,8 @@ public class Training {
         for (int i = 0; i < N; i++) {
             arr[i] = scanner.nextInt();
         }
-//        System.out.println("Arr:");
-//        for (int i = 0; i < N; i++) {
-//            System.out.print(arr[i] + ", ");
-//        }
-//        System.out.println();
+
         Arrays.sort(arr, Collections.reverseOrder());
-//        System.out.println("Sorted Arr:");
-//        for (int i = 0; i < N; i++) {
-//            System.out.print(arr[i] + ", ");
-//        }
-//        System.out.println();
 
         int[] sums = new int[N - P + 1];
         for (int i = 0; i < N; i++) {
@@ -40,15 +42,9 @@ public class Training {
                 sums[i - P + 1] = sums[i - P] + arr[i] - arr[i - P];
             }
         }
-//        System.out.println("Sums: ");
-//        for (int i = 0; i < sums.length; i++) {
-//            System.out.print(sums[i] + ", ");
-//        }
-//        System.out.println();
 
         int min = Integer.MAX_VALUE;
         for (int i = 0; i < N - P + 1; i++) {
-//            System.out.print((P * arr[i] - sums[i]) + ", ");
             min = Math.min(min, (P * arr[i] - sums[i]));
         }
 
