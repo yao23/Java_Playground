@@ -3,6 +3,15 @@ package RoundA;
 import java.util.*;
 
 public class Parcels {
+    /**
+     *
+     * https://w630.cc/kickstart-2019-A-Parcels/
+     *
+     * https://xiaozhuanlan.com/topic/4862135709
+     * https://www.cnblogs.com/SGCollin/p/9636955.html
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int testCase = input.nextInt();
@@ -64,7 +73,8 @@ public class Parcels {
             int min2 = Integer.MAX_VALUE;
             int max2 = Integer.MIN_VALUE;
             // dist((x1, y1), (x2, y2)) = max(abs(x1 + y1 - (x2 + y2)), abs(x1 - y1 - (x2 - y2)))
-            // 𝑚𝑎𝑥{𝑥1−𝑥2+𝑦1−𝑦2, 𝑥1−𝑥2+𝑦2−𝑦1, 𝑥2−𝑥1+𝑦1−𝑦2, 𝑥2−𝑥1+𝑦2−𝑦1}(1)
+            // max{x1-x2+y1-y2, x1-x2+y2-y1, x2-x1+y1-y2, x2-x1+y2-y1}
+            // max(|(x1+y1)-(x2+y2)|, |(x1-y1)-(x2-y2)|)
             for (int i = 0; i < r; i++) {
                 for (int j = 0; j < c; j++) {
                     if (len[i][j] > m) {
@@ -84,9 +94,9 @@ public class Parcels {
             if (d1 % 2 == 0 && d2 % 2 == 0 && d1 == d2 && (min1 + min2) % 2 == 1) {
                 l++;
             }
-            if (l <= m) {
+            if (l <= m) { // left in binary search
                 max = m;
-            } else {
+            } else { // right in binary search
                 min = m;
             }
         }
