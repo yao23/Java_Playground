@@ -24,7 +24,7 @@ public class Contention {
             Request request = new Request(L, R);
             queue.add(request);
         }
-        System.out.println("N, Q: " + N + ", " + Q);
+
         int[] bookedSeats = new int[N+1];
         int min = Integer.MAX_VALUE;
         while (!queue.isEmpty()) {
