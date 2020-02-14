@@ -5,6 +5,11 @@ import java.util.PriorityQueue;
 import java.util.Scanner;
 
 public class Contention {
+    /**
+     * https://blog.csdn.net/Lfhase/article/details/88823761
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int testCase = input.nextInt();
@@ -13,6 +18,16 @@ public class Contention {
         }
     }
 
+    /**
+     * Sort requests in ascending order with length
+     *
+     * Iterate requests and calculate unassigned seats number
+     *
+     * Get min from left seats in each request
+     *
+     * @param scanner
+     * @return
+     */
     private static String solve(Scanner scanner) {
         int N = scanner.nextInt();
         int Q = scanner.nextInt();
