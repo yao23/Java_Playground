@@ -18,7 +18,6 @@ public class Parcels {
         for (int i = 1; i <= testCase; i++) {
             System.out.println(String.format("Case #%d: %s", i, solve(input)));
         }
-
     }
 
     private static String solve(Scanner scanner) {
