@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class Contention {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-//        int testCase = Integer.parseInt(input.nextLine());
         int testCase = input.nextInt();
         for (int i = 1; i <= testCase; i++) {
             System.out.println(String.format("Case #%d: %s", i, solve(input)));
@@ -15,19 +14,11 @@ public class Contention {
     }
 
     private static String solve(Scanner scanner) {
-//        String s = scanner.nextLine();
-//        String[] sp = s.split("\\s+");
-//        int N = Integer.parseInt(sp[0]);
-//        int Q = Integer.parseInt(sp[1]);
         int N = scanner.nextInt();
         int Q = scanner.nextInt();
         PriorityQueue<Request> queue = new PriorityQueue<>(Q, new RequestComparator());
 
         for (int i = 0; i < Q; i++) {
-//            String str = scanner.nextLine();
-//            String[] splited = str.split("\\s+");
-//            int L = Integer.parseInt(splited[0]);
-//            int R = Integer.parseInt(splited[1]);
             int L = scanner.nextInt();
             int R = scanner.nextInt();
             Request request = new Request(L, R);
@@ -37,7 +28,7 @@ public class Contention {
         int[] bookedSeats = new int[N+1];
         int min = Integer.MAX_VALUE;
         while (!queue.isEmpty()) {
-            Request r = queue.poll(); System.out.println("L, R: " + r.getL() + ", " + r.getR());
+            Request r = queue.poll();
             int leftSeatsNum = getLeftSeatsNum(r, bookedSeats);
             min = Math.min(min, leftSeatsNum);
         }
