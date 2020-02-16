@@ -8,6 +8,8 @@ public class Contention {
     /**
      * https://blog.csdn.net/Lfhase/article/details/88823761
      *
+     * https://xiaozhuanlan.com/topic/4862135709
+     *
      * @param args
      */
     public static void main(String[] args) {
