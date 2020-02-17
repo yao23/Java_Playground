@@ -9,6 +9,7 @@ public class Contention {
      * https://blog.csdn.net/Lfhase/article/details/88823761
      *
      * https://xiaozhuanlan.com/topic/4862135709
+     * https://github.com/zouzhitao/competitive-programing/blob/master/kick-start/2019-roundA-contention.cpp
      *
      * @param args
      */
