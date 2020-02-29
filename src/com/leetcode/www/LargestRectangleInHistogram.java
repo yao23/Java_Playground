@@ -5,8 +5,8 @@ import java.util.Deque;
 
 public class LargestRectangleInHistogram { // LC 84
     /**
-     * Runtime: 9 ms, faster than 76.94% of Java online submissions for Largest Rectangle in Histogram.
-     * Memory Usage: 39.1 MB, less than 82.53% of Java online submissions for Largest Rectangle in Histogram.
+     * Runtime: 7 ms, faster than 83.46% of Java online submissions for Largest Rectangle in Histogram.
+     * Memory Usage: 41.3 MB, less than 63.64% of Java online submissions for Largest Rectangle in Histogram.
      *
      * @param heights
      * @return

@@ -6,7 +6,8 @@ public class GasStation { // LC 134
     /**
      * gas: [3, 4, 3, 6, 7, 1, 2], cost: [2, 4, 5, 1, 5, 1, 3] => 3 (gas: 6)
      * [4], [5] => -1
-     * beats 57.95%
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Gas Station.
+     * Memory Usage: 39 MB, less than 5.88% of Java online submissions for Gas Station.
      *
      * @param gas
      * @param cost
