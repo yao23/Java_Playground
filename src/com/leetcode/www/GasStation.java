@@ -9,6 +9,11 @@ public class GasStation { // LC 134
      * Runtime: 0 ms, faster than 100.00% of Java online submissions for Gas Station.
      * Memory Usage: 39 MB, less than 5.88% of Java online submissions for Gas Station.
      *
+     * Solution: find a start position forming a circle with sum larger or equal to zero
+     *
+     * Why start from len - 1?
+     * Input is a directed cycle in clockwise, if start from zero 0, have to use mod operation if position 0 need gas
+     *
      * @param gas
      * @param cost
      * @return
