@@ -12,7 +12,8 @@ public class GasStation { // LC 134
      * Solution: find a start position forming a circle with sum larger or equal to zero
      *
      * Why start from len - 1?
-     * Input is a directed cycle in clockwise, if start from zero 0, have to use mod operation if position 0 need gas
+     * Input is a directed cycle in clockwise, if start from zero 0, have to use mod operation if position 0 need more
+     * gas as solution 2
      *
      * @param gas
      * @param cost
@@ -53,7 +54,7 @@ public class GasStation { // LC 134
      * @param cost
      * @return
      */
-    public int canCompleteCircuitV1(int[] gas, int[] cost) {
+    public int canCompleteCircuitV2(int[] gas, int[] cost) {
         int idx = -1;
         if (gas == null || cost == null) {
             return idx;
@@ -80,7 +81,7 @@ public class GasStation { // LC 134
             return idx;
         }
 
-        while (maxHeap.size() > 0) {
+        while (maxHeap.size() > 0) { // optimization: avoid calculate sum for every start position as solution 1
             int i = maxHeap.poll();
             if (isValid(i, diff)) {
                 return i;
@@ -99,6 +100,6 @@ public class GasStation { // LC 134
             }
         }
 
-        return sumDiff >= 0;
+        return true;
     }
 }
