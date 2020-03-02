@@ -5,6 +5,15 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CountOfSmallerNumbersAfterSelf { // LC 315
+    /**
+     * 1. Construct Binary Search Tree
+     * 2. Calculate smaller numbers while constructing
+     *
+     * Binary Search Tree is ordered, have smaller in left and larger in right
+     *
+     * @param nums
+     * @return
+     */
     public List<Integer> countSmaller(int[] nums) { // beats 77.50%
         Integer[] res = new Integer[nums.length];
         if (nums == null || nums.length == 0) {
@@ -49,6 +58,12 @@ public class CountOfSmallerNumbersAfterSelf { // LC 315
         }
     }
 
+    /**
+     * Count smaller numbers while merge
+     *
+     * @param nums
+     * @return
+     */
     public List<Integer> countSmallerV0(int[] nums) {
         Integer[] res = new Integer[nums.length];
         if (nums == null || nums.length == 0) {
