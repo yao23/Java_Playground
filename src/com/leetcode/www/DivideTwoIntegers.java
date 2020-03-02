@@ -1,6 +1,13 @@
 package com.leetcode.www;
 
 public class DivideTwoIntegers { // LC 29
+    /**
+     * bit operation left shift as multiplication, right shift as division
+     *
+     * @param dividend
+     * @param divisor
+     * @return
+     */
     public int divide(int dividend, int divisor) {
         if (divisor == 0) {
             return Integer.MAX_VALUE;
