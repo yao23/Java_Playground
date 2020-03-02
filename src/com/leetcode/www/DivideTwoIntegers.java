@@ -4,6 +4,13 @@ public class DivideTwoIntegers { // LC 29
     /**
      * bit operation left shift as multiplication, right shift as division
      *
+     * (0, 1) => 0
+     * (1, 0) => Integer.MAX_VALUE
+     * (Integer.MIN_VALUE, -1) => Integer.MAX_VALUE
+     *
+     * Runtime: 1 ms, faster than 100.00% of Java online submissions for Divide Two Integers.
+     * Memory Usage: 37 MB, less than 6.06% of Java online submissions for Divide Two Integers.
+     *
      * @param dividend
      * @param divisor
      * @return
@@ -45,8 +52,3 @@ public class DivideTwoIntegers { // LC 29
     }
 }
 
-// (0, 1) => 0
-// (1, 0) => Integer.MAX_VALUE
-// (Integer.MIN_VALUE, -1) => Integer.MAX_VALUE
-
-// beats 65.41%
