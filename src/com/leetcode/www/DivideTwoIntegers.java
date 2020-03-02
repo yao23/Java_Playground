@@ -1,5 +1,10 @@
 package com.leetcode.www;
 
+import java.util.Deque;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+
 public class DivideTwoIntegers { // LC 29
     /**
      * bit operation left shift as multiplication, right shift as division
@@ -49,6 +54,50 @@ public class DivideTwoIntegers { // LC 29
         } else {
             return res;
         }
+    }
+
+    /**
+     * Use plus to simulate multiplication and times two if current divisor less than or equal to dividend
+     *
+     * TLE
+     *
+     * @param dividend
+     * @param divisor
+     * @return
+     */
+    public int divideV2(int dividend, int divisor) {
+        Map<Integer, Integer> map = new HashMap<>();
+        Deque<Integer> stack = new LinkedList<>();
+        int res = 0, time = 1, base = divisor;
+        map.put(divisor, time);
+        stack.addLast(divisor);
+
+        while (dividend >= divisor || stack.size() > 1) {
+            while (dividend < divisor && stack.size() > 1) {
+                divisor = stack.pollLast();
+                time = map.get(divisor);
+            }
+            if (dividend < divisor && stack.size() <= 1) {
+                break;
+            }
+            divisor = stack.peek();
+            dividend -= divisor;
+            res += time;
+            time = multiply(1, time + time);
+            divisor = multiply(base, time);
+            map.put(divisor, time);
+            stack.addLast(divisor);
+        }
+
+        return res;
+    }
+
+    private int multiply(int base, int time) {
+        int sum = 0;
+        for (int i = 0; i < time; i++) {
+            sum += base;
+        }
+        return sum;
     }
 }
 
