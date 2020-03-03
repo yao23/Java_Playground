@@ -1,6 +1,18 @@
 package com.leetcode.www;
 
 public class MedianOfTwoSortedArrays { // LC 4
+    /**
+     * Binary Search Tree - Cut Rule and Half Range Control
+     *
+     * Recursion is easy to handle left and right parts
+     *
+     * a[mid] < b[mid], then half of a and b numbers < b[mid], so ((m+n)/2 + 1) numbers < b[mid],
+     * move to b's left and a's right for next level recursion
+     *
+     * @param nums1
+     * @param nums2
+     * @return
+     */
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         if (nums1 == null || nums2 == null || (nums1.length == 0 && nums2.length == 0)) {
             return Integer.MIN_VALUE / 1.0;
