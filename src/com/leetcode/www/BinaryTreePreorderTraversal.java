@@ -17,10 +17,10 @@ public class BinaryTreePreorderTraversal { // LC 144
         while (!stack.isEmpty()) {
             TreeNode cur = stack.pollFirst();
             res.add(cur.val);
-            if (cur.right != null) {
+            if (cur.right != null) { // right child
                 stack.offerFirst(cur.right);
             }
-            if (cur.left != null) {
+            if (cur.left != null) { // left child
                 stack.offerFirst(cur.left);
             }
         }
