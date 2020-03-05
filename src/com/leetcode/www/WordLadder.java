@@ -53,6 +53,14 @@ public class WordLadder { // LC 127
         return 0;
     }
 
+    /**
+     * BFS (level by level)
+     *
+     * @param beginWord
+     * @param endWord
+     * @param wordList
+     * @return
+     */
     public int ladderLengthV0(String beginWord, String endWord, List<String> wordList) {
         if (beginWord == null || endWord == null || wordList == null) {
             return 0;
@@ -75,7 +83,7 @@ public class WordLadder { // LC 127
                 for (int j = 0; j < curStr.length(); j++) {
                     for (char k = 'a'; k <= 'z'; k++) {
                         String toStr = replace(curStr, j, k); // find a candidate for next level
-                        if (toStr.equals(endWord)) {
+                        if (toStr.equals(endWord)) { // get min steps when first time reach end word
                             steps++;
                             return steps;
                         }
