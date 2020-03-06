@@ -42,7 +42,7 @@ public class NumberOfIslandsII { // LC 305
                 int j = p[1] + d[1];
                 int next = i * n + j;
                 if (isValid(i, j, m, n, size)) {
-                    if (!uf.isConnected(cur, next)) {
+                    if (!uf.isConnected(cur, next)) { // check not visited implicitly
                         uf.union(cur, next);
                         count--;
                     }
