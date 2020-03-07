@@ -1,6 +1,14 @@
 package com.leetcode.www;
 
 public class InterleavingString { // LC 97
+    /**
+     * Current status based on previous one and current character match
+     *
+     * @param s1
+     * @param s2
+     * @param s3
+     * @return
+     */
     public boolean isInterleave(String s1, String s2, String s3) { // beats 68.05% (DP)
         int len1 = s1.length(), len2 = s2.length();
         boolean[][] matrix = new boolean[len1 + 1][len2 + 1];
