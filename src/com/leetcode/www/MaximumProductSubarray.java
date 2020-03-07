@@ -10,6 +10,8 @@ public class MaximumProductSubarray { // LC 152
      *
      * min[i] = Max(num[i], num[i] * max[i - 1], num[i] * min[i - 1])
      *
+     * Time: O(n), Space: O(1)
+     *
      * @param nums
      * @return
      */
