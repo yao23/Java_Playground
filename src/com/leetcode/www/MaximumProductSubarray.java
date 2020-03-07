@@ -1,6 +1,18 @@
 package com.leetcode.www;
 
 public class MaximumProductSubarray { // LC 152
+    /**
+     * Max product could be smallest * smallest
+     *
+     * Track both max and min
+     *
+     * max[i] = Max(num[i], num[i] * max[i - 1], num[i] * min[i - 1])
+     *
+     * min[i] = Max(num[i], num[i] * max[i - 1], num[i] * min[i - 1])
+     *
+     * @param nums
+     * @return
+     */
     public int maxProduct(int[] nums) {
         if (nums == null || nums.length == 0) {
             return 0;
