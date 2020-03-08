@@ -5,6 +5,14 @@ import java.util.Arrays;
 import java.util.List;
 
 public class UniqueBinarySearchTreesII { // LC 95
+    /**
+     * Choose a root
+     * Construct a Tree
+     * Construct all Trees Recursively
+     *
+     * @param n
+     * @return
+     */
     public List<TreeNode> generateTrees(int n) {
         if (n <= 0) {
             return new ArrayList<>();
