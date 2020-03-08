@@ -32,6 +32,41 @@ public class FrogJump { // LC 403
                 set.contains(cur + jump) && canReach(set, cur + jump, jump, last) ||
                 jump > 1 && set.contains(cur + jump - 1) && canReach(set, cur + jump - 1, jump - 1, last);
     }
+
+
+    /**
+     *
+     * Failure test case since failed to handle stone 6 (should skip from 5 to 8 directly)
+     * Input: [0,1,3,5,6,8,12,17]
+     * Output: false
+     * Expected: true
+     *
+     * @param stones
+     * @return
+     */
+    public boolean canCrossV2(int[] stones) {
+        if (stones == null || stones.length == 0) {
+            return false;
+        }
+        int n = stones.length;
+        if (n == 1 || n == 2 && stones[1] == 1) {
+            return true;
+        }
+        int step = 1;
+        for (int i = 1; i < n; i++) {
+            int last = stones[i - 1], cur = stones[i];
+            if (cur == last + step + 1) {
+                step += 1;
+            } else if (cur == last + step || cur < last + step - 1) {
+                continue;
+            } else if (cur == last + step - 1) {
+                step -= 1;
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
 }
 
 // [0,1,3,5,6,8,12,17] => true ([1,1,0,1,0,1,1,0,1,0,0,0,1,0,0,0,0,1])
