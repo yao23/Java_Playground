@@ -10,6 +10,8 @@ public class UniqueBinarySearchTreesII { // LC 95
      * Construct a Tree
      * Construct all Trees Recursively
      *
+     * beats 98.72%, time: O(mn), space: O(n ^ 2)
+     *
      * @param n
      * @return
      */
@@ -57,10 +59,6 @@ public class UniqueBinarySearchTreesII { // LC 95
         return roots;
     }
 }
-
-// beats 98.72%
-
-// time: O(mn), space: O(n ^ 2)
 
 /**
     Given n = 3, your program should return all 5 unique BST's shown below.
