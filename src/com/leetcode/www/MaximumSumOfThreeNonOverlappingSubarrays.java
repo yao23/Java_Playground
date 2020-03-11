@@ -17,7 +17,7 @@ public class MaximumSumOfThreeNonOverlappingSubarrays {
     }
 
     private int solve(int depth, int[] nums, int k, int tmpIdx1, int tmpIdx2, int resIdx1, int resIdx2, int[] resArr1,  int[] resArr2, int[] m) {
-        if (resIdx1 == 3 || resIdx2 ==3 || depth == nums.length) {
+        if (depth == nums.length) {
             return 0;
         } else {
             if (m[depth] < 0) {
@@ -27,17 +27,26 @@ public class MaximumSumOfThreeNonOverlappingSubarrays {
                 if (tmpIdx2 == k) {
                     tmpIdx2 = 0;
                 }
-                if (tmpIdx2 == 0) {
-                    resArr2[resIdx2] = depth;
-                    resIdx2++;
-                }
-                int res1 = solve(depth + 1, nums, k, tmpIdx1, tmpIdx2, resIdx1, resIdx2, resArr1, resArr2, m);
+                int res1 = 0;
+                if (resIdx2 < 3 ) {
+                    if (tmpIdx2 == 0) {
+                        resArr2[resIdx2] = depth;
+                        resIdx2++;
+                    }
 
-                if (tmpIdx1 == 0) {
-                    resArr1[resIdx1] = depth;
-                    resIdx1++;
+                    res1 = solve(depth + 1, nums, k, tmpIdx1, tmpIdx2 + 1, resIdx1, resIdx2, resArr1, resArr2, m);
                 }
-                int res2 = nums[depth] + solve(depth + 1, nums, k, tmpIdx1 + 1, tmpIdx2, resIdx1, resIdx2, resArr1, resArr2, m);
+
+                int res2 = 0;
+                if (resIdx1 < 3) {
+                    if (tmpIdx1 == 0) {
+                        resArr1[resIdx1] = depth;
+                        resIdx1++;
+                    }
+
+                    res2 = nums[depth] + solve(depth + 1, nums, k, tmpIdx1 + 1, tmpIdx2, resIdx1, resIdx2, resArr1, resArr2, m);
+                }
+
                 m[depth] = Math.max(res1, res2);
             }
             return m[depth];
