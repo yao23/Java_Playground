@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class MaximumSumOfThreeNonOverlappingSubarrays {
     private static int max = 0;
     private static int[] resultArr = new int[3];
+    private static final int NUM_SUBARRAYS = 3;
     public int[] maxSumOfThreeSubarrays(int[] nums, int k) {
         int[] m = new int[nums.length];
         Arrays.fill(m, -1);
@@ -17,27 +18,28 @@ public class MaximumSumOfThreeNonOverlappingSubarrays {
             sum += nums[depth];
             if (sum > max) {
                 max = sum;
-                resultArr = Arrays.copyOf(resArr, nums.length);
+                resultArr = Arrays.copyOf(resArr, NUM_SUBARRAYS);
             }
         } else {
             if (m[depth] < 0) {
                 if (tmpIdx == k) {
+                    resIdx++;
+                    tmpIdx = 0;
                     if (resIdx == 3) {
                         sum += nums[depth];
                         if (sum > max) {
                             max = sum;
                             resultArr = Arrays.copyOf(resArr, nums.length);
                         }
+                        return;
                     }
-                    resIdx++;
-                    tmpIdx = 0;
                 }
 
                 if (tmpIdx == 0) {
                     resArr[resIdx] = depth;
                 }
 
-                for (int i = depth; i <= nums.length - (3 - resIdx) * k; i++) {
+                for (int i = depth; i <= nums.length - (NUM_SUBARRAYS - resIdx) * k; i++) {
                     solve(i + 1, nums, k, tmpIdx + 1, resIdx, resArr, m, sum + nums[i]);
                 }
             }
