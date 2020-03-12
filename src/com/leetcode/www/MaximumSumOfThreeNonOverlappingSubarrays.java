@@ -3,53 +3,44 @@ package com.leetcode.www;
 import java.util.Arrays;
 
 public class MaximumSumOfThreeNonOverlappingSubarrays {
+    private static int max = 0;
+    private static int[] resultArr = new int[3];
     public int[] maxSumOfThreeSubarrays(int[] nums, int k) {
-        int[] res1 = new int[3];
-        int[] res2 = new int[3];
         int[] m = new int[nums.length];
         Arrays.fill(m, -1);
-        solve(0, nums, k, 0, 0, 0, 0, res1, res2, m);
-        if (res1[2] == 0) {
-            return res2;
-        } else {
-            return res1;
-        }
+        solve(0, nums, k, 0, 0, new int[3], m, 0);
+        return resultArr;
     }
 
-    private int solve(int depth, int[] nums, int k, int tmpIdx1, int tmpIdx2, int resIdx1, int resIdx2, int[] resArr1,  int[] resArr2, int[] m) {
-        if (depth == nums.length) {
-            return 0;
+    private void solve(int depth, int[] nums, int k, int tmpIdx, int resIdx, int[] resArr, int[] m, int sum) {
+        if (depth == nums.length - 1) {
+            sum += nums[depth];
+            if (sum > max) {
+                max = sum;
+                resultArr = Arrays.copyOf(resArr, nums.length);
+            }
         } else {
             if (m[depth] < 0) {
-                if (tmpIdx1 == k) {
-                    tmpIdx1 = 0;
-                }
-                if (tmpIdx2 == k) {
-                    tmpIdx2 = 0;
-                }
-                int res1 = 0;
-                if (resIdx2 < 3 ) {
-                    if (tmpIdx2 == 0) {
-                        resArr2[resIdx2] = depth;
-                        resIdx2++;
+                if (tmpIdx == k) {
+                    if (resIdx == 3) {
+                        sum += nums[depth];
+                        if (sum > max) {
+                            max = sum;
+                            resultArr = Arrays.copyOf(resArr, nums.length);
+                        }
                     }
-
-                    res1 = solve(depth + 1, nums, k, tmpIdx1, tmpIdx2 + 1, resIdx1, resIdx2, resArr1, resArr2, m);
+                    resIdx++;
+                    tmpIdx = 0;
                 }
 
-                int res2 = 0;
-                if (resIdx1 < 3) {
-                    if (tmpIdx1 == 0) {
-                        resArr1[resIdx1] = depth;
-                        resIdx1++;
-                    }
-
-                    res2 = nums[depth] + solve(depth + 1, nums, k, tmpIdx1 + 1, tmpIdx2, resIdx1, resIdx2, resArr1, resArr2, m);
+                if (tmpIdx == 0) {
+                    resArr[resIdx] = depth;
                 }
 
-                m[depth] = Math.max(res1, res2);
+                for (int i = depth; i <= nums.length - (3 - resIdx) * k; i++) {
+                    solve(i + 1, nums, k, tmpIdx + 1, resIdx, resArr, m, sum + nums[i]);
+                }
             }
-            return m[depth];
         }
     }
 }
