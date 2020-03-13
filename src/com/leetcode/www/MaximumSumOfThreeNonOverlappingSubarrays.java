@@ -3,9 +3,10 @@ package com.leetcode.www;
 import java.util.Arrays;
 
 public class MaximumSumOfThreeNonOverlappingSubarrays {
-    private static int max = 0;
-    private static int[] resultArr = new int[3];
     private static final int NUM_SUBARRAYS = 3;
+    private static int max = 0;
+    private static int[] resultArr = new int[NUM_SUBARRAYS];
+
     public int[] maxSumOfThreeSubarrays(int[] nums, int k) {
         int[] m = new int[nums.length];
         Arrays.fill(m, -1);
@@ -18,15 +19,14 @@ public class MaximumSumOfThreeNonOverlappingSubarrays {
             sum += nums[depth];
             if (sum > max) {
                 max = sum;
-                resultArr = Arrays.copyOf(resArr, NUM_SUBARRAYS);
+                System.arraycopy(resArr, 0, resultArr, 0, NUM_SUBARRAYS);
             }
         } else {
             if (m[depth] < 0) {
                 if (tmpIdx == k) {
                     resIdx++;
                     tmpIdx = 0;
-                    if (resIdx == 3) {
-                        sum += nums[depth];
+                    if (resIdx == NUM_SUBARRAYS) {
                         if (sum > max) {
                             max = sum;
                             resultArr = Arrays.copyOf(resArr, nums.length);
