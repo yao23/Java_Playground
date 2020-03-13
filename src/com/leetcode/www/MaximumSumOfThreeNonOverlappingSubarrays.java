@@ -15,33 +15,29 @@ public class MaximumSumOfThreeNonOverlappingSubarrays {
     }
 
     private void solve(int depth, int[] nums, int k, int tmpIdx, int resIdx, int[] resArr, int[] m, int sum) {
-        if (depth == nums.length - 1) {
-            sum += nums[depth];
-            if (sum > max) {
-                max = sum;
-                System.arraycopy(resArr, 0, resultArr, 0, NUM_SUBARRAYS);
-            }
-        } else {
-            if (m[depth] < 0) {
-                if (tmpIdx == k) {
-                    resIdx++;
-                    tmpIdx = 0;
-                    if (resIdx == NUM_SUBARRAYS) {
-                        if (sum > max) {
-                            max = sum;
-                            resultArr = Arrays.copyOf(resArr, nums.length);
-                        }
-                        return;
+        if (m[depth] < 0) {
+            if (tmpIdx == k) {
+                resIdx++;
+                tmpIdx = 0;
+                if (resIdx == NUM_SUBARRAYS) {
+                    if (sum > max) {
+                        max = sum;
+                        resultArr = Arrays.copyOf(resArr, nums.length);
                     }
+                    return;
                 }
+            }
 
-                if (tmpIdx == 0) {
-                    resArr[resIdx] = depth;
-                }
+            if (tmpIdx == 0) {
+                resArr[resIdx] = depth;
+            }
 
-                for (int i = depth; i <= nums.length - (NUM_SUBARRAYS - resIdx) * k; i++) {
-                    solve(i + 1, nums, k, tmpIdx + 1, resIdx, resArr, m, sum + nums[i]);
+            for (int i = depth; i <= nums.length - (NUM_SUBARRAYS - resIdx) * k; i++) {
+                int tmpSum = 0;
+                for (int j = 0; j < k; j++) {
+                    tmpSum += nums[i + j];
                 }
+                solve(i + k, nums, k, tmpIdx + k, resIdx, resArr, m, sum + tmpSum);
             }
         }
     }
