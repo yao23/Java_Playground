@@ -7,38 +7,59 @@ public class MaximumSumOfThreeNonOverlappingSubarrays {
     private static int max = 0;
     private static int[] resultArr = new int[NUM_SUBARRAYS];
 
-    public int[] maxSumOfThreeSubarrays(int[] nums, int k) {
+    public static int[] maxSumOfThreeSubarrays(int[] nums, int k) {
         int[] m = new int[nums.length];
         Arrays.fill(m, -1);
         solve(0, nums, k, 0, 0, new int[3], m, 0);
         return resultArr;
     }
 
-    private void solve(int depth, int[] nums, int k, int tmpIdx, int resIdx, int[] resArr, int[] m, int sum) {
-        if (m[depth] < 0) {
-            if (tmpIdx == k) {
-                resIdx++;
-                tmpIdx = 0;
-                if (resIdx == NUM_SUBARRAYS) {
-                    if (sum > max) {
-                        max = sum;
-                        resultArr = Arrays.copyOf(resArr, nums.length);
+    private static int solve(int depth, int[] nums, int k, int tmpIdx, int resIdx, int[] resArr, int[] m, int sum) {
+        if (depth == nums.length) {
+            if (sum > max) {
+                max = sum;
+                System.arraycopy(resArr, 0, resultArr, 0, NUM_SUBARRAYS);
+            }
+            return 0;
+        } else {
+            if (m[depth] < 0) {
+                if (tmpIdx == k) {
+                    resIdx++;
+                    tmpIdx = 0;
+                    if (resIdx == 3) {
+                        if (sum > max) {
+                            max = sum;
+                            System.arraycopy(resArr, 0, resultArr, 0, NUM_SUBARRAYS);
+                        }
+                        return 0;
                     }
-                    return;
+                }
+
+                int curMax = Integer.MIN_VALUE;
+                for (int i = depth; i <= nums.length - (NUM_SUBARRAYS - resIdx) * k; i++) {
+                    if (tmpIdx == 0) {
+                        resArr[resIdx] = i;
+                    }
+
+                    int curSubArrSum = 0;
+                    for (int j = 0; j < k; j++) {
+                        curSubArrSum += nums[i + j];
+                    }
+                    int nextMax = solve(i + k, nums, k, tmpIdx + k, resIdx, resArr, m, sum + curSubArrSum);
+                    curMax = Math.max(curMax, nextMax + curSubArrSum);
+                }
+
+                // index: 0   1   2  3  4  5  6  7
+                // input: 1   2   1  2  6  7  5  1
+                // m:     23  -1 20 20 19 12  6 -1
+                // m is memorization for seedup
+                // m[4] should be 19 (6 + 7 + 5 + 1) as non-last subarray [0, 1, 4, 5, 6, 7] not 13 (6 + 7) as last subarray [0, 1, 2, 3, 4, 5]
+                if (nums.length - depth < 2 * k || resIdx < NUM_SUBARRAYS - 1) {
+                    m[depth] = curMax;
                 }
             }
 
-            if (tmpIdx == 0) {
-                resArr[resIdx] = depth;
-            }
-
-            for (int i = depth; i <= nums.length - (NUM_SUBARRAYS - resIdx) * k; i++) {
-                int tmpSum = 0;
-                for (int j = 0; j < k; j++) {
-                    tmpSum += nums[i + j];
-                }
-                solve(i + k, nums, k, tmpIdx + k, resIdx, resArr, m, sum + tmpSum);
-            }
+            return m[depth];
         }
     }
 }
