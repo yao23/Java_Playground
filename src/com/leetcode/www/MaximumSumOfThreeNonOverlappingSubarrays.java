@@ -7,6 +7,14 @@ public class MaximumSumOfThreeNonOverlappingSubarrays {
     private static int max = 0;
     private static int[] resultArr = new int[NUM_SUBARRAYS];
 
+    /**
+     * [1,2,1,2,6,7,5,1], 2
+     * [1,2,1,2,1,2,1,2,1], 2
+     *
+     * @param nums
+     * @param k
+     * @return
+     */
     public static int[] maxSumOfThreeSubarrays(int[] nums, int k) {
         int[] m = new int[nums.length];
         Arrays.fill(m, -1);
