@@ -11,6 +11,8 @@ public class MaximumSumOfThreeNonOverlappingSubarrays {
      * [1,2,1,2,6,7,5,1], 2
      * [1,2,1,2,1,2,1,2,1], 2
      *
+     * DP
+     *
      * @param nums
      * @param k
      * @return
