@@ -73,16 +73,14 @@ public class MaximumSumOfThreeNonOverlappingSubarrays {
         }
     }
 
-    private static int[] solve(int depth, int[] nums, int k, int tmpIdx, int resIdx, int[] resArr, int[] m, int sum) {
+    private static int[] solveV2(int[] nums, int k) {
         int[] res = new int[NUM_SUBARRAYS];
         int len = nums.length;
         int[][] dp = new int[NUM_SUBARRAYS][len];
         int maxIdx = len - 1;
+        int sum = 0;
         for (int i = len - k; i >= len - (NUM_SUBARRAYS - 1) * k; i--) {
-            int tmpSum = 0;
-            for (int j = 0; j < k; j++) {
-                tmpSum += nums[i + j];
-            }
+            int tmpSum = getKNumsSum(nums, k, i);
             if (tmpSum > dp[NUM_SUBARRAYS][i + 1]) {
                 dp[NUM_SUBARRAYS - 1][i] = tmpSum;
                 res[NUM_SUBARRAYS - 1] = i;
@@ -91,7 +89,43 @@ public class MaximumSumOfThreeNonOverlappingSubarrays {
                 dp[NUM_SUBARRAYS - 1][i] = dp[NUM_SUBARRAYS][i + 1];
                 res[NUM_SUBARRAYS - 1] = maxIdx;
             }
+            if (dp[NUM_SUBARRAYS - 1][i] > sum) {
+                sum = dp[NUM_SUBARRAYS - 1][i];
+            }
+        }
+        for (int i = NUM_SUBARRAYS - 2; i >= 0; i--) {
+            int offset = i + 1;
+            for (int j = len - offset * k; j >= len - (offset + 1) * k; j--) {
+                int tmpSum = getKNumsSum(nums, k, j);
+                int tmpMax = 0;
+
+                for (int m = j + k; m <= len - i * k; m++) {
+                    if (dp[i + 1][m] > tmpMax) {
+                        tmpMax = dp[i + 1][m];
+                    }
+                }
+
+                tmpSum += tmpMax;
+
+                if (tmpSum > dp[i][j + 1]) {
+                    dp[i][j] = tmpSum;
+                    res[i] = j;
+                    maxIdx = j;
+                } else {
+                    dp[i][j] = dp[i][j + 1];
+                    res[i] = maxIdx;
+                }
+            }
         }
 
+        return res;
+    }
+
+    private static int getKNumsSum(int[] nums, int k, int idx) {
+        int sum = 0;
+        for (int j = 0; j < k; j++) {
+            sum += nums[idx + j];
+        }
+        return sum;
     }
 }
