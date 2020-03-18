@@ -72,4 +72,26 @@ public class MaximumSumOfThreeNonOverlappingSubarrays {
             return m[depth];
         }
     }
+
+    private static int[] solve(int depth, int[] nums, int k, int tmpIdx, int resIdx, int[] resArr, int[] m, int sum) {
+        int[] res = new int[NUM_SUBARRAYS];
+        int len = nums.length;
+        int[][] dp = new int[NUM_SUBARRAYS][len];
+        int maxIdx = len - 1;
+        for (int i = len - k; i >= len - (NUM_SUBARRAYS - 1) * k; i--) {
+            int tmpSum = 0;
+            for (int j = 0; j < k; j++) {
+                tmpSum += nums[i + j];
+            }
+            if (tmpSum > dp[NUM_SUBARRAYS][i + 1]) {
+                dp[NUM_SUBARRAYS - 1][i] = tmpSum;
+                res[NUM_SUBARRAYS - 1] = i;
+                maxIdx = i;
+            } else {
+                dp[NUM_SUBARRAYS - 1][i] = dp[NUM_SUBARRAYS][i + 1];
+                res[NUM_SUBARRAYS - 1] = maxIdx;
+            }
+        }
+
+    }
 }
