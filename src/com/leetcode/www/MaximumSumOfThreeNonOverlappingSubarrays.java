@@ -62,7 +62,7 @@ public class MaximumSumOfThreeNonOverlappingSubarrays {
                 // index: 0   1   2  3  4  5  6  7
                 // input: 1   2   1  2  6  7  5  1
                 // m:     23  -1 20 20 19 12  6 -1
-                // m is memorization for seedup
+                // m is memorization for speedup
                 // m[4] should be 19 (6 + 7 + 5 + 1) as non-last subarray [0, 1, 4, 5, 6, 7] not 13 (6 + 7) as last subarray [0, 1, 2, 3, 4, 5]
                 if (nums.length - depth < 2 * k || resIdx < NUM_SUBARRAYS - 1) {
                     m[depth] = curMax;
@@ -79,14 +79,14 @@ public class MaximumSumOfThreeNonOverlappingSubarrays {
         int[][] dp = new int[NUM_SUBARRAYS][len];
         int maxIdx = len - 1;
         int sum = 0;
-        for (int i = len - k; i >= len - (NUM_SUBARRAYS - 1) * k; i--) {
+        for (int i = len - k; i >= (NUM_SUBARRAYS - 1) * k; i--) {
             int tmpSum = getKNumsSum(nums, k, i);
-            if (tmpSum > dp[NUM_SUBARRAYS][i + 1]) {
+            if (tmpSum > dp[NUM_SUBARRAYS - 1][i + 1]) {
                 dp[NUM_SUBARRAYS - 1][i] = tmpSum;
                 res[NUM_SUBARRAYS - 1] = i;
                 maxIdx = i;
             } else {
-                dp[NUM_SUBARRAYS - 1][i] = dp[NUM_SUBARRAYS][i + 1];
+                dp[NUM_SUBARRAYS - 1][i] = dp[NUM_SUBARRAYS - 1][i + 1];
                 res[NUM_SUBARRAYS - 1] = maxIdx;
             }
             if (dp[NUM_SUBARRAYS - 1][i] > sum) {
@@ -94,12 +94,12 @@ public class MaximumSumOfThreeNonOverlappingSubarrays {
             }
         }
         for (int i = NUM_SUBARRAYS - 2; i >= 0; i--) {
-            int offset = i + 1;
-            for (int j = len - offset * k; j >= len - (offset + 1) * k; j--) {
+            int offset = NUM_SUBARRAYS - i;
+            for (int j = len - offset * k; j >= i * k; j--) {
                 int tmpSum = getKNumsSum(nums, k, j);
                 int tmpMax = 0;
 
-                for (int m = j + k; m <= len - i * k; m++) {
+                for (int m = j + k; m <= len - (offset - 1) * k; m++) {
                     if (dp[i + 1][m] > tmpMax) {
                         tmpMax = dp[i + 1][m];
                     }
