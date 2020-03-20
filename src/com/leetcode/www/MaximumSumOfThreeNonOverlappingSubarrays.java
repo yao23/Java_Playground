@@ -73,6 +73,14 @@ public class MaximumSumOfThreeNonOverlappingSubarrays {
         }
     }
 
+    /**
+     * Runtime: 647 ms, faster than 5.00% of Java online submissions for Maximum Sum of 3 Non-Overlapping Subarrays.
+     * Memory Usage: 44 MB, less than 5.88% of Java online submissions for Maximum Sum of 3 Non-Overlapping Subarrays.
+     *
+     * @param nums
+     * @param k
+     * @return
+     */
     private static int[] solveV2(int[] nums, int k) {
         int[] res = new int[NUM_SUBARRAYS];
         int len = nums.length;
