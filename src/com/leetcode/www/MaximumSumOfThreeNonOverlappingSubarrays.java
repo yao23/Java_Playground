@@ -77,43 +77,38 @@ public class MaximumSumOfThreeNonOverlappingSubarrays {
         int[] res = new int[NUM_SUBARRAYS];
         int len = nums.length;
         int[][] dp = new int[NUM_SUBARRAYS][len];
-        int maxIdx = len - 1;
-        int sum = 0;
-        for (int i = len - k; i >= (NUM_SUBARRAYS - 1) * k; i--) {
+        int[] lastRowIdx = new int[len]; // record last row index connected with 2nd row to form tmp max sum
+        for (int i = len - k; i >= (NUM_SUBARRAYS - 1) * k; i--) { // last row
             int tmpSum = getKNumsSum(nums, k, i);
-            if (tmpSum > dp[NUM_SUBARRAYS - 1][i + 1]) {
-                dp[NUM_SUBARRAYS - 1][i] = tmpSum;
-                res[NUM_SUBARRAYS - 1] = i;
-                maxIdx = i;
-            } else {
-                dp[NUM_SUBARRAYS - 1][i] = dp[NUM_SUBARRAYS - 1][i + 1];
-                res[NUM_SUBARRAYS - 1] = maxIdx;
-            }
-            if (dp[NUM_SUBARRAYS - 1][i] > sum) {
-                sum = dp[NUM_SUBARRAYS - 1][i];
-            }
+            dp[NUM_SUBARRAYS - 1][i] = tmpSum;
         }
         for (int i = NUM_SUBARRAYS - 2; i >= 0; i--) {
             int offset = NUM_SUBARRAYS - i;
+            int thisRowMax = 0;
             for (int j = len - offset * k; j >= i * k; j--) {
                 int tmpSum = getKNumsSum(nums, k, j);
                 int tmpMax = 0;
+                int tmpMaxIdx = 0;
 
                 for (int m = j + k; m <= len - (offset - 1) * k; m++) {
                     if (dp[i + 1][m] > tmpMax) {
                         tmpMax = dp[i + 1][m];
+                        tmpMaxIdx = m;
                     }
                 }
 
                 tmpSum += tmpMax;
 
-                if (tmpSum > dp[i][j + 1]) {
+                if (i == NUM_SUBARRAYS - 2) { // only record for 2nd row
+                    lastRowIdx[j] = tmpMaxIdx;
                     dp[i][j] = tmpSum;
-                    res[i] = j;
-                    maxIdx = j;
-                } else {
-                    dp[i][j] = dp[i][j + 1];
-                    res[i] = maxIdx;
+                } else { // 1st row
+                    if (tmpSum >= thisRowMax) {
+                        thisRowMax = tmpSum;
+                        res[NUM_SUBARRAYS - 3] = j;
+                        res[NUM_SUBARRAYS - 2] = tmpMaxIdx;
+                        res[NUM_SUBARRAYS - 1] = lastRowIdx[tmpMaxIdx];
+                    }
                 }
             }
         }
