@@ -124,6 +124,70 @@ public class MaximumSumOfThreeNonOverlappingSubarrays {
         return res;
     }
 
+    /**
+     * Runtime: 381 ms, faster than 5.00% of Java online submissions for Maximum Sum of 3 Non-Overlapping Subarrays.
+     * Memory Usage: 43.5 MB, less than 5.88% of Java online submissions for Maximum Sum of 3 Non-Overlapping Subarrays.
+     *
+     * @param nums
+     * @param k
+     * @return
+     */
+    private static int[] solveV3(int[] nums, int k) {
+        int[] res = new int[NUM_SUBARRAYS];
+        int len = nums.length;
+        int[][] dp = new int[NUM_SUBARRAYS][len];
+        int[] lastRowIdx = new int[len]; // record last row index connected with 2nd row to form tmp max sum
+        int[] subArrSum = new int[len];
+        int tmpSum = getKNumsSum(nums, k, len - k);
+        for (int i = len - k; i >= (NUM_SUBARRAYS - 1) * k; i--) { // last row
+            if (i < len - k) {
+                tmpSum += (nums[i] - nums[i + k]);
+            }
+            dp[NUM_SUBARRAYS - 1][i] = tmpSum;
+            subArrSum[i] = tmpSum;
+        }
+        for (int i = NUM_SUBARRAYS - 2; i >= 0; i--) {
+            int offset = NUM_SUBARRAYS - i;
+            int thisRowMax = 0;
+            if (subArrSum[len - offset * k] > 0) {
+                tmpSum = subArrSum[len - offset * k];
+            } else {
+                tmpSum = getKNumsSum(nums, k, len - offset * k);
+            }
+            for (int j = len - offset * k; j >= i * k; j--) {
+                if (j < len - offset * k) {
+                    tmpSum += (nums[j] - nums[j + k]);
+                    subArrSum[j] = tmpSum;
+                }
+                int tmpMax = 0;
+                int tmpMaxIdx = 0;
+
+                for (int m = j + k; m <= len - (offset - 1) * k; m++) {
+                    if (dp[i + 1][m] > tmpMax) {
+                        tmpMax = dp[i + 1][m];
+                        tmpMaxIdx = m;
+                    }
+                }
+
+                int sumThisAndNextRow = tmpSum + tmpMax;
+
+                if (i == NUM_SUBARRAYS - 2) { // only record for 2nd row
+                    lastRowIdx[j] = tmpMaxIdx;
+                    dp[i][j] = sumThisAndNextRow;
+                } else { // 1st row
+                    if (sumThisAndNextRow >= thisRowMax) {
+                        thisRowMax = sumThisAndNextRow;
+                        res[0] = j;
+                        res[1] = tmpMaxIdx;
+                        res[2] = lastRowIdx[tmpMaxIdx];
+                    }
+                }
+            }
+        }
+
+        return res;
+    }
+
     private static int getKNumsSum(int[] nums, int k, int idx) {
         int sum = 0;
         for (int j = 0; j < k; j++) {
