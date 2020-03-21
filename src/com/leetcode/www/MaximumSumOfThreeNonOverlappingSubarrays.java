@@ -209,7 +209,7 @@ public class MaximumSumOfThreeNonOverlappingSubarrays {
      * @return
      */
     public int[] maxSumOfThreeSubarraysV2(int[] nums, int K) {
-        //W is an array of sums of windows
+        // W is an array of sums of windows (trick: reuse this array for all interval sum)
         int[] W = new int[nums.length - K + 1];
         int sum = 0;
         for (int i = 0; i < nums.length; i++) {
@@ -218,7 +218,7 @@ public class MaximumSumOfThreeNonOverlappingSubarrays {
             if (i >= K-1) W[i-K+1] = sum;
         }
 
-        int[] left = new int[W.length];
+        int[] left = new int[W.length]; // max subarray sum from left side (same as first row calculation in line 113)
         int best = 0;
         for (int i = 0; i < W.length; i++) {
             if (W[i] > W[best]) best = i;
@@ -227,7 +227,7 @@ public class MaximumSumOfThreeNonOverlappingSubarrays {
 
         int[] right = new int[W.length];
         best = W.length - 1;
-        for (int i = W.length - 1; i >= 0; i--) {
+        for (int i = W.length - 1; i >= 0; i--) { // max subarray sum from right side (same as last row in line 89)
             if (W[i] >= W[best]) best = i;
             right[i] = best;
         }
