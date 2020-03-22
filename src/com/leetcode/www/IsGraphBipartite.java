@@ -9,6 +9,65 @@ public class IsGraphBipartite {
 
         for (int i = 0; i < row; i++) {
             int col = graph[i].length;
+            int index = 0;
+            boolean shouldBeBlue = true;
+            for (int j = 0; j < col; j++) {
+                int curIdx = graph[i][j];
+                if (blue.contains(curIdx)) {
+                    index = curIdx;
+                } else if (red.contains(curIdx)) {
+                    shouldBeBlue = false;
+                    index = curIdx;
+                }
+                break;
+            }
+
+            if (!solve(index, red, blue, shouldBeBlue, col)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean solve(int index, Set<Integer> red, Set<Integer> blue, boolean shouldBeBlue, int len) {
+        if (index < 0 || index == len) {
+            return true;
+        }
+        if (blue.contains(index)) {
+            if (shouldBeBlue) {
+                return true;
+            }
+        } else if (red.contains(index)) {
+            if (!shouldBeBlue) {
+                return true;
+            }
+        }
+
+        if (shouldBeBlue) {
+            if (red.contains(index)) {
+                return false;
+            } else {
+                blue.add(index);
+            }
+        } else {
+            if (blue.contains(index)) {
+                return false;
+            } else {
+                red.add(index);
+            }
+        }
+
+        return solve(index - 1, red, blue, !shouldBeBlue, len) &&
+                solve(index + 1, red, blue, !shouldBeBlue, len);
+    }
+
+    public boolean isBipartiteV1(int[][] graph) {
+        Set<Integer> blue = new HashSet<>();
+        Set<Integer> red = new HashSet<>();
+        int row = graph.length;
+
+        for (int i = 0; i < row; i++) {
+            int col = graph[i].length;
             for (int j = 0; j < col; j++) {
                 boolean shouldBeBlue = (j % 2 == 0);
                 int num = graph[i][j];
