@@ -9,6 +9,9 @@ public class IsGraphBipartite {
 
         for (int i = 0; i < row; i++) {
             int col = graph[i].length;
+            if (col == 1) {
+                continue;
+            }
             int index = 0;
             boolean shouldBeBlue = true;
             Set<Integer> visited = new HashSet<>();
