@@ -3,6 +3,13 @@ package com.leetcode.www;
 import java.util.*;
 
 public class AlienDictionary { // LC 269
+    /**
+     * Runtime: 13 ms, faster than 12.55% of Java online submissions for Alien Dictionary.
+     * Memory Usage: 39.2 MB, less than 5.41% of Java online submissions for Alien Dictionary.
+     *
+     * @param words
+     * @return
+     */
     public String alienOrder(String[] words) { // beats 54.90%
         Map<Character, Set<Character>> map = new HashMap<>();
         Map<Character, Integer> degree = new HashMap<>();
