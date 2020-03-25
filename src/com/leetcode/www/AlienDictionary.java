@@ -20,6 +20,7 @@ public class AlienDictionary { // LC 269
             String cur = words[i];
             String next = words[i + 1];
             int length = Math.min(cur.length(), next.length());
+            boolean allSame = true;
             for (int j = 0; j < length; j++) {
                 char c1 = cur.charAt(j);
                 char c2 = next.charAt(j);
@@ -33,8 +34,12 @@ public class AlienDictionary { // LC 269
                         map.put(c1, set);
                         degree.put(c2, degree.get(c2) + 1);
                     }
+                    allSame = false;
                     break;
                 }
+            }
+            if (allSame && cur.length() > next.length()) { // handle invalid test case ["abc", "ab"], return ""
+                return "";
             }
         }
         Queue<Character> q = new LinkedList<>();
