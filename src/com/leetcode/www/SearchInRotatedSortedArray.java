@@ -4,6 +4,14 @@ package com.leetcode.www;
  * Created by liyao on 6/15/17.
  */
 public class SearchInRotatedSortedArray { // LC 81
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Search in Rotated Sorted Array.
+     * Memory Usage: 38.1 MB, less than 46.54% of Java online submissions for Search in Rotated Sorted Array.
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
     public boolean search(int[] nums, int target) { // beats 11.68%
         int start = 0, end = nums.length - 1, mid = -1;
         while(start <= end) {
