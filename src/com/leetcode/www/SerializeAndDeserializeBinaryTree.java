@@ -1,4 +1,5 @@
-package com.leetcode.www; /**
+package com.leetcode.www;
+/**
  * Created by liyao on 6/20/17.
  */
 
@@ -67,7 +68,7 @@ public class SerializeAndDeserializeBinaryTree { // LC 297
         int i = 1;
         while (!queue.isEmpty()) {
             TreeNode t = queue.poll();
-            if (t == null) {
+            if (t == null) { // no need to process left and right nodes for null node
                 continue;
             } else {
                 t.left = getNode(strs[i]);
