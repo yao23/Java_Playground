@@ -10,6 +10,14 @@ public class WordBreak { // LC 139
         return check(s, wordDict);
     }
 
+    /**
+     * Runtime: 8 ms, faster than 35.32% of Java online submissions for Word Break.
+     * Memory Usage: 39.8 MB, less than 5.08% of Java online submissions for Word Break.
+     *
+     * @param s
+     * @param wordDict
+     * @return
+     */
     private boolean check(String s, List<String> wordDict) {
         if (s.equals("")) {
             return true;
