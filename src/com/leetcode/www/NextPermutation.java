@@ -1,6 +1,12 @@
 package com.leetcode.www;
 
 public class NextPermutation { // LC 31
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Next Permutation.
+     * Memory Usage: 39.3 MB, less than 50.00% of Java online submissions for Next Permutation.
+     *
+     * @param nums
+     */
     public void nextPermutation(int[] nums) { // beasts 40.19%
         int index = -1;
         for (int i = nums.length - 1; i > 0; i--) {
