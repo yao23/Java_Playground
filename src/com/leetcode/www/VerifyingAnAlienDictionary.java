@@ -1,4 +1,13 @@
 public class VerifyingAnAlienDictionary {
+    /**
+     * Time Complexity: O(C), where C is the total content of words.
+     *
+     * Space Complexity: O(1).
+     *
+     * @param words
+     * @param order
+     * @return
+     */
     public boolean isAlienSorted(String[] words, String order) {
         int[] index = new int[26];
         for (int i = 0; i < order.length(); ++i)
