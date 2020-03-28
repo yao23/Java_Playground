@@ -47,6 +47,12 @@ public class NextPermutation { // LC 31
         num[n] = tmp;
     }
 
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Next Permutation.
+     * Memory Usage: 40.2 MB, less than 47.00% of Java online submissions for Next Permutation.
+     *
+     * @param nums
+     */
     public void nextPermutationV0(int[] nums) { // beats 57.12%
         if (nums == null || nums.length <= 1) {
             return;
