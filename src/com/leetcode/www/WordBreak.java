@@ -11,6 +11,32 @@ public class WordBreak { // LC 139
     }
 
     /**
+     * Runtime: 2 ms, faster than 92.84% of Java online submissions for Word Break.
+     * Memory Usage: 37.9 MB, less than 22.47% of Java online submissions for Word Break.
+     *
+     * @param s
+     * @param dict
+     * @return
+     */
+    private boolean check(String s, List<String> dict) {
+        boolean[] f = new boolean[s.length() + 1];
+        f[0] = true;
+
+        for(int i = 1; i <= s.length(); i++){
+            for (String str: dict) {
+                if (str.length() <= i) {
+                    if (f[i - str.length()] && s.substring(i - str.length(), i).equals(str)) {
+                        f[i] = true;
+                        break;
+                    }
+                }
+            }
+        }
+
+        return f[s.length()];
+    }
+
+    /**
      * Runtime: 8 ms, faster than 35.32% of Java online submissions for Word Break.
      * Memory Usage: 39.8 MB, less than 5.08% of Java online submissions for Word Break.
      *
@@ -18,7 +44,7 @@ public class WordBreak { // LC 139
      * @param wordDict
      * @return
      */
-    private boolean check(String s, List<String> wordDict) {
+    private boolean checkV2(String s, List<String> wordDict) {
         if (s.equals("")) {
             return true;
         } else {
@@ -39,24 +65,6 @@ public class WordBreak { // LC 139
 
             return result[s.length()];
         }
-    }
-
-    private boolean checkV2(String s, List<String> dict) {
-        boolean[] f = new boolean[s.length() + 1];
-        f[0] = true;
-
-        for(int i = 1; i <= s.length(); i++){
-            for (String str: dict) {
-                if (str.length() <= i) {
-                    if (f[i - str.length()] && s.substring(i - str.length(), i).equals(str)) {
-                        f[i] = true;
-                        break;
-                    }
-                }
-            }
-        }
-
-        return f[s.length()];
     }
 
     private boolean checkV1(String s, List<String> wordDict, Map<String, Boolean> map) { // Time Limit Exceeded for test case 5
