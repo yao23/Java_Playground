@@ -1,8 +1,10 @@
 public class VerifyingAnAlienDictionary {
     /**
      * Time Complexity: O(C), where C is the total content of words.
-     *
      * Space Complexity: O(1).
+     *
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Verifying an Alien Dictionary.
+     * Memory Usage: 38 MB, less than 15.38% of Java online submissions for Verifying an Alien Dictionary.
      *
      * @param words
      * @param order
