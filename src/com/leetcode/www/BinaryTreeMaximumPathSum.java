@@ -19,6 +19,13 @@ public class BinaryTreeMaximumPathSum { // LC 124
         }
     }
 
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Binary Tree Maximum Path Sum.
+     * Memory Usage: 41.3 MB, less than 9.52% of Java online submissions for Binary Tree Maximum Path Sum.
+     *
+     * @param root
+     * @return
+     */
     public int maxPathSum(TreeNode root) {
         if (root == null) {
             return Integer.MIN_VALUE;
