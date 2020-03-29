@@ -46,6 +46,45 @@ public class KthLargestElementInAnArray { // LC 215
             arr[i] ^= arr[j];
         }
     }
+
+    /**
+     * Runtime: 7 ms, faster than 28.18% of Java online submissions for Kth Largest Element in an Array.
+     * Memory Usage: 41.3 MB, less than 5.18% of Java online submissions for Kth Largest Element in an Array.
+     *
+     * @param nums
+     * @param k
+     * @return
+     */
+    public int findKthLargestV0(int[] nums, int k) {
+        int l = 0, r = nums.length - 1;
+        while (l < r) {
+            int idx = pivotSort(nums, l, r);
+            if (idx == k - 1) {
+                return nums[idx];
+            } else if (idx < k - 1) {
+                l = idx + 1;
+            } else {
+                r = idx - 1;
+            }
+        }
+        return nums[l];
+    }
+
+    private int pivotSort(int[] nums, int l, int r) {
+        int pivot = nums[l];
+        while (l < r) {
+            while (l < r && nums[r] < pivot) {
+                r--;
+            }
+            nums[l] = nums[r];
+            while (l < r && nums[l] >= pivot) {
+                l++;
+            }
+            nums[r] = nums[l];
+        }
+        nums[l] = pivot;
+        return l;
+    }
 }
 
 // [3,2,1,5,6,4] and k = 2, return 5.
