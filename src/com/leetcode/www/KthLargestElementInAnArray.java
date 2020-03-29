@@ -1,6 +1,14 @@
 package com.leetcode.www;
 
 public class KthLargestElementInAnArray { // LC 215
+    /**
+     * Runtime: 11 ms, faster than 21.33% of Java online submissions for Kth Largest Element in an Array.
+     * Memory Usage: 40.6 MB, less than 5.18% of Java online submissions for Kth Largest Element in an Array.
+     *
+     * @param nums
+     * @param k
+     * @return
+     */
     public int findKthLargest(int[] nums, int k) {
         if (nums == null || nums.length < k) {
             return Integer.MIN_VALUE;
