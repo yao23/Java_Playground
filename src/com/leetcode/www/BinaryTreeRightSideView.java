@@ -71,6 +71,9 @@ public class BinaryTreeRightSideView { // LC 199
      * 1. Each depth of the tree only select one node.
      * 2. View depth is current size of result list.
      *
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Binary Tree Right Side View.
+     * Memory Usage: 38.3 MB, less than 5.88% of Java online submissions for Binary Tree Right Side View.
+     *
      * @param root
      * @return
      */
