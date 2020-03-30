@@ -5,6 +5,9 @@ public class MinimumRemoveToMakeValidParentheses {
      * Runtime: 21 ms, faster than 29.68% of Java online submissions for Minimum Remove to Make Valid Parentheses.
      * Memory Usage: 40.8 MB, less than 100.00% of Java online submissions for Minimum Remove to Make Valid Parentheses.
      *
+     * Time complexity : O(n), where nn is the length of the input string.
+     * Space complexity : O(n), where nn is the length of the input string.
+     *
      * @param s
      * @return
      */
