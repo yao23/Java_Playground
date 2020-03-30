@@ -35,4 +35,37 @@ public class MinimumRemoveToMakeValidParentheses {
         }
         return sb.toString();
     }
+
+    /**
+     * Runtime: 22 ms, faster than 23.97% of Java online submissions for Minimum Remove to Make Valid Parentheses.
+     * Memory Usage: 40.1 MB, less than 100.00% of Java online submissions for Minimum Remove to Make Valid Parentheses.
+     *
+     * Time complexity : O(n), where nn is the length of the input string.
+     * Space complexity : O(n), where nn is the length of the input string.
+     *
+     * @param s
+     * @return
+     */
+    public String minRemoveToMakeValidV0(String s) {
+        StringBuilder result = removeInvalidClosing(s, '(', ')');
+        result = removeInvalidClosing(result.reverse(), ')', '(');
+        return result.reverse().toString();
+    }
+
+
+    private StringBuilder removeInvalidClosing(CharSequence string, char open, char close) {
+        StringBuilder sb = new StringBuilder();
+        int balance = 0;
+        for (int i = 0; i < string.length(); i++) {
+            char c = string.charAt(i);
+            if (c == open) {
+                balance++;
+            } if (c == close) {
+                if (balance == 0) continue;
+                balance--;
+            }
+            sb.append(c);
+        }
+        return sb;
+    }
 }
