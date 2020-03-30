@@ -37,6 +37,45 @@ public class MinimumRemoveToMakeValidParentheses {
     }
 
     /**
+     * Runtime: 15 ms, faster than 78.86% of Java online submissions for Minimum Remove to Make Valid Parentheses.
+     * Memory Usage: 42.4 MB, less than 100.00% of Java online submissions for Minimum Remove to Make Valid Parentheses.
+     *
+     * @param s
+     * @return
+     */
+    public String minRemoveToMakeValidV1(String s) {
+        // Parse 1: Remove all invalid ")"
+        StringBuilder sb = new StringBuilder();
+        int openSeen = 0;
+        int balance = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '(') {
+                openSeen++;
+                balance++;
+            } if (c == ')') {
+                if (balance == 0) continue;
+                balance--;
+            }
+            sb.append(c);
+        }
+
+        // Parse 2: Remove the rightmost "("
+        StringBuilder result = new StringBuilder();
+        int openToKeep = openSeen - balance;
+        for (int i = 0; i < sb.length(); i++) {
+            char c = sb.charAt(i);
+            if (c == '(') {
+                openToKeep--;
+                if (openToKeep < 0) continue;
+            }
+            result.append(c);
+        }
+
+        return result.toString();
+    }
+
+    /**
      * Runtime: 22 ms, faster than 23.97% of Java online submissions for Minimum Remove to Make Valid Parentheses.
      * Memory Usage: 40.1 MB, less than 100.00% of Java online submissions for Minimum Remove to Make Valid Parentheses.
      *
@@ -51,7 +90,6 @@ public class MinimumRemoveToMakeValidParentheses {
         result = removeInvalidClosing(result.reverse(), ')', '(');
         return result.reverse().toString();
     }
-
 
     private StringBuilder removeInvalidClosing(CharSequence string, char open, char close) {
         StringBuilder sb = new StringBuilder();
