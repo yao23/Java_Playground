@@ -74,6 +74,11 @@ public class BinaryTreeRightSideView { // LC 199
      * Runtime: 0 ms, faster than 100.00% of Java online submissions for Binary Tree Right Side View.
      * Memory Usage: 38.3 MB, less than 5.88% of Java online submissions for Binary Tree Right Side View.
      *
+     * line 95 to 97 handling following case
+     * Input: [1,2,3,4]
+     * Output: [1,3]
+     * Expected: [1,3,4]
+     *
      * @param root
      * @return
      */
