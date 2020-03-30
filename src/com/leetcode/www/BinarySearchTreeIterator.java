@@ -8,6 +8,12 @@ import java.util.ArrayDeque;
 public class BinarySearchTreeIterator { // LC 173
     private Deque<TreeNode> stack;
 
+    /**
+     * Runtime: 15 ms, faster than 98.62% of Java online submissions for Binary Search Tree Iterator.
+     * Memory Usage: 44.8 MB, less than 100.00% of Java online submissions for Binary Search Tree Iterator.
+     *
+     * @param root
+     */
     public BinarySearchTreeIterator(TreeNode root) {
         stack = new ArrayDeque<TreeNode>();
 
