@@ -1,10 +1,12 @@
 package com.leetcode.www;
 
+import java.util.PriorityQueue;
+
 public class KthLargestElementInAnArray { // LC 215
     /**
      * Runtime: 11 ms, faster than 21.33% of Java online submissions for Kth Largest Element in an Array.
      * Memory Usage: 40.6 MB, less than 5.18% of Java online submissions for Kth Largest Element in an Array.
-     *
+     *  a
      * @param nums
      * @param k
      * @return
@@ -92,6 +94,30 @@ public class KthLargestElementInAnArray { // LC 215
         }
         nums[l] = pivot;
         return l;
+    }
+
+    /**
+     * Runtime: 4 ms, faster than 61.01% of Java online submissions for Kth Largest Element in an Array.
+     * Memory Usage: 40.1 MB, less than 5.18% of Java online submissions for Kth Largest Element in an Array.
+     *
+     * @param nums
+     * @param k
+     * @return
+     */
+    public int findKthLargestV2(int[] nums, int k) {
+        // init heap 'the smallest element first'
+        PriorityQueue<Integer> heap =
+                new PriorityQueue<Integer>((n1, n2) -> n1 - n2);
+
+        // keep k largest elements in the heap
+        for (int n: nums) {
+            heap.add(n);
+            if (heap.size() > k)
+                heap.poll();
+        }
+
+        // output
+        return heap.poll();
     }
 }
 
