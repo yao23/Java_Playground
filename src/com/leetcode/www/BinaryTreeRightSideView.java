@@ -6,6 +6,13 @@ import java.util.List;
 import java.util.Queue;
 
 public class BinaryTreeRightSideView { // LC 199
+    /**
+     * Runtime: 1 ms, faster than 75.35% of Java online submissions for Binary Tree Right Side View.
+     * Memory Usage: 38.8 MB, less than 5.88% of Java online submissions for Binary Tree Right Side View.
+     *
+     * @param root
+     * @return
+     */
     // Divide and Conquer
     public List<Integer> rightSideView(TreeNode root) { // beats 22.08%
         if (root == null) {
