@@ -12,6 +12,9 @@ public class ValidPalindrome { // LC 125
     /**
      * simply build an array that map all possible char into integer(if not alphanumeric,mark it as zero)
      * this will help to speed up the process a lot.
+     *
+     * Runtime: 1 ms, faster than 100.00% of Java online submissions for Valid Palindrome.
+     * Memory Usage: 39.9 MB, less than 22.32% of Java online submissions for Valid Palindrome.
      */
     private static final char[]charMap = new char[256];
     static{
