@@ -57,9 +57,11 @@ public class ReorganizeString { // 767
         PriorityQueue<MultiChar> pq = new PriorityQueue<MultiChar>((a, b) ->
                 a.count == b.count ? a.letter - b.letter : b.count - a.count);
 
-        for (int i = 0; i < 26; ++i) if (count[i] > 0) {
-            if (count[i] > (N + 1) / 2) return "";
-            pq.add(new MultiChar(count[i], (char) ('a' + i)));
+        for (int i = 0; i < 26; ++i) {
+            if (count[i] > 0) {
+                if (count[i] > (N + 1) / 2) return "";
+                pq.add(new MultiChar(count[i], (char) ('a' + i)));
+            }
         }
 
         StringBuilder ans = new StringBuilder();
@@ -70,7 +72,7 @@ public class ReorganizeString { // 767
             if (ans.length() == 0 || mc1.letter != ans.charAt(ans.length() - 1)) {
                 ans.append(mc1.letter);
                 ans.append(mc2.letter);
-            } else {
+            } else { // only happens when count exceeds N/2 and it will return "" then
                 ans.append(mc2.letter);
                 ans.append(mc1.letter);
             }*/
