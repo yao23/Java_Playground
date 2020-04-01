@@ -8,6 +8,9 @@ public class FindAllAnagramsInAString { // 438
      * Runtime: 66 ms, faster than 22.38% of Java online submissions for Find All Anagrams in a String.
      * Memory Usage: 42 MB, less than 6.00% of Java online submissions for Find All Anagrams in a String.
      *
+     * Time complexity: O(N_s + N_p) since it's one pass along both strings.
+     * Space complexity: O(1), because pCount and sCount contain not more than 26 elements.
+     *
      * @param s
      * @param p
      * @return
@@ -37,7 +40,7 @@ public class FindAllAnagramsInAString { // 438
             } else {
                 sCount.put(ch, 1);
             }
-            // remove one letter from the left side of the window
+            // remove one letter from the left side of the window and update sCount
             if (i >= np) {
                 ch = s.charAt(i - np);
                 if (sCount.get(ch) == 1) {
