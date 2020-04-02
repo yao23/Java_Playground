@@ -38,7 +38,7 @@ public class AccountsMerge { // 721
                 Stack<String> stack = new Stack<>();
                 stack.push(email);
                 List<String> component = new ArrayList<>();
-                while (!stack.empty()) {
+                while (!stack.empty()) { // DFS
                     String node = stack.pop();
                     component.add(node);
                     for (String nei: graph.get(node)) {
@@ -54,6 +54,65 @@ public class AccountsMerge { // 721
             }
         }
         return ans;
+    }
+
+    /**
+     * Runtime: 32 ms, faster than 78.25% of Java online submissions for Accounts Merge.
+     * Memory Usage: 44 MB, less than 100.00% of Java online submissions for Accounts Merge.
+     *
+     * Time Complexity: O(AlogA), where A=∑a_i, and a_i is the length of accounts[i].
+     * If we used union-by-rank, this complexity improves to O(Aα(A))≈O(A), where α(A) is the Inverse-Ackermann function.
+     *
+     * Space Complexity: O(A), the space used by our DSU structure.
+     * @param accounts
+     * @return
+     */
+    public List<List<String>> accountsMergeV1(List<List<String>> accounts) {
+        DSU dsu = new DSU();
+        Map<String, String> emailToName = new HashMap<>();
+        Map<String, Integer> emailToID = new HashMap<>();
+        int id = 0;
+        for (List<String> account: accounts) {
+            String name = "";
+            for (String email: account) {
+                if (name.equals("")) {
+                    name = email;
+                    continue;
+                }
+                emailToName.put(email, name);
+                if (!emailToID.containsKey(email)) {
+                    emailToID.put(email, id++);
+                }
+                dsu.union(emailToID.get(account.get(1)), emailToID.get(email));
+            }
+        }
+
+        Map<Integer, List<String>> ans = new HashMap<>();
+        for (String email: emailToName.keySet()) {
+            int index = dsu.find(emailToID.get(email));
+            ans.computeIfAbsent(index, x-> new ArrayList<>()).add(email);
+        }
+        for (List<String> component: ans.values()) {
+            Collections.sort(component);
+            component.add(0, emailToName.get(component.get(0)));
+        }
+        return new ArrayList<>(ans.values());
+    }
+}
+
+class DSU {
+    int[] parent;
+    public DSU() {
+        parent = new int[10001];
+        for (int i = 0; i <= 10000; ++i)
+            parent[i] = i;
+    }
+    public int find(int x) {
+        if (parent[x] != x) parent[x] = find(parent[x]);
+        return parent[x];
+    }
+    public void union(int x, int y) {
+        parent[find(x)] = find(y);
     }
 }
 
