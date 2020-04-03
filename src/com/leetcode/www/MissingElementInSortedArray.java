@@ -21,49 +21,45 @@ public class MissingElementInSortedArray { // 1060
     }
 
     /**
-     * Wrong test case
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Missing Element in Sorted Array.
+     * Memory Usage: 46.6 MB, less than 100.00% of Java online submissions for Missing Element in Sorted Array.
+     *
+     * Time complexity: O(logN) since it's a binary search algorithm in the worst case when the missing number is
+     * less than the last element of the array.
+     *
+     * Space complexity : O(1) since it's a constant space solution.
      *
      * @param nums
      * @param k
      * @return
      */
     public int missingElementV1(int[] nums, int k) {
-        int len = nums.length;
-        int l = 0, r = len - 1;
-        while (l <= r) {
-            int m = (r - l) / 2 + l;
-            int diff = 0, idxDiff = 0;
-            if (m > l) {
-                diff = nums[m] - nums[l] - 1;
-                idxDiff = m - l;
-            } else {
-                if (l == 0) {
-                    return nums[l] + k;
-                } else {
-                    diff = nums[l] - nums[l - 1] - 1;
-                    idxDiff = 1;
-                }
-            }
+        int n = nums.length;
+        // If kth missing number is larger than
+        // the last element of the array
+        if (k > missing(n - 1, nums))
+            return nums[n - 1] + k - missing(n - 1, nums);
 
-            if (diff >= k) {
-                if (idxDiff == 1) {
-                    if (m > l) {
-                        return nums[l] + k;
-                    } else {
-                        return nums[l - 1] + k;
-                    }
-                } else {
-                    r = m - 1;
-                }
-            } else {
-                if (idxDiff > 1) {
-                    diff -= (idxDiff - 1);
-                }
-                k -= diff;
-                l = m + 1;
-            }
+        int left = 0, right = n - 1, mid;
+        // find left = right index such that
+        // missing(left - 1) < k <= missing(left)
+        while (left != right) {
+            mid = left + (right - left) / 2;
 
+            if (missing(mid, nums) < k) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
         }
-        return nums[len - 1] + k;
+
+        // kth missing number is greater than nums[idx - 1]
+        // and less than nums[idx]
+        return nums[left - 1] + k - missing(left - 1, nums);
+    }
+
+    // Return how many numbers are missing until nums[idx]
+    private int missing(int idx, int[] nums) {
+        return nums[idx] - nums[0] - idx;
     }
 }
