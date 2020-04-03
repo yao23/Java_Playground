@@ -19,4 +19,51 @@ public class MissingElementInSortedArray { // 1060
         }
         return nums[len - 1] + k;
     }
+
+    /**
+     * Wrong test case
+     *
+     * @param nums
+     * @param k
+     * @return
+     */
+    public int missingElementV1(int[] nums, int k) {
+        int len = nums.length;
+        int l = 0, r = len - 1;
+        while (l <= r) {
+            int m = (r - l) / 2 + l;
+            int diff = 0, idxDiff = 0;
+            if (m > l) {
+                diff = nums[m] - nums[l] - 1;
+                idxDiff = m - l;
+            } else {
+                if (l == 0) {
+                    return nums[l] + k;
+                } else {
+                    diff = nums[l] - nums[l - 1] - 1;
+                    idxDiff = 1;
+                }
+            }
+
+            if (diff >= k) {
+                if (idxDiff == 1) {
+                    if (m > l) {
+                        return nums[l] + k;
+                    } else {
+                        return nums[l - 1] + k;
+                    }
+                } else {
+                    r = m - 1;
+                }
+            } else {
+                if (idxDiff > 1) {
+                    diff -= (idxDiff - 1);
+                }
+                k -= diff;
+                l = m + 1;
+            }
+
+        }
+        return nums[len - 1] + k;
+    }
 }
