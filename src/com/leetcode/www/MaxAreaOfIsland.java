@@ -1,6 +1,6 @@
 import java.util.Stack;
 
-public class MaxAreaOfIsland {
+public class MaxAreaOfIsland { // 695
     /**
      * Runtime: 6 ms, faster than 7.73% of Java online submissions for Max Area of Island.
      * Memory Usage: 46.3 MB, less than 7.41% of Java online submissions for Max Area of Island.
