@@ -41,7 +41,9 @@ public class ESAbATAd {
             i++;
         }
 
-        return new String(c);
+        String res = new String(c);
+        System.out.println(res);
+        return scanner.nextLine().equals("Y") ? res : "";
     }
 
     private static String solve20(Scanner scanner, int bn) {
@@ -62,7 +64,9 @@ public class ESAbATAd {
             i++;
         }
 
-        return new String(c);
+        String res = new String(c);
+        System.out.println(res);
+        return scanner.nextLine().equals("Y") ? res : "";
     }
 
     private static String solve30(Scanner scanner, int bn) {
@@ -86,6 +90,8 @@ public class ESAbATAd {
             i++;
         }
 
-        return new String(c);
+        String res = new String(c);
+        System.out.println(res);
+        return scanner.nextLine().equals("Y") ? res : "";
     }
 }
