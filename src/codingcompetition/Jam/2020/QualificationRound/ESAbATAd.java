@@ -25,7 +25,7 @@ public class ESAbATAd {
         } else {
             res = solve30(scanner, bn);
         }
-        System.out.println("Case #" + tc + ": " + res);
+//        System.out.println("Case #" + tc + ": " + res);
     }
 
     private static String solve10(Scanner scanner, int bn) {
