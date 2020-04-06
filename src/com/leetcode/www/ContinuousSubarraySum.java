@@ -1,12 +1,35 @@
 public class ContinuousSubarraySum {
     /**
+     * Runtime: 29 ms, faster than 5.11% of Java online submissions for Continuous Subarray Sum.
+     * Memory Usage: 53 MB, less than 5.88% of Java online submissions for Continuous Subarray Sum.
+     *
+     * @param nums
+     * @param k
+     * @return
+     */
+    public boolean checkSubarraySumV2(int[] nums, int k) {
+        int[] sum = new int[nums.length];
+        sum[0] = nums[0];
+        for (int i = 1; i < nums.length; i++)
+            sum[i] = sum[i - 1] + nums[i]; // sum[i] - sum from index 0 to i
+        for (int start = 0; start < nums.length - 1; start++) {
+            for (int end = start + 1; end < nums.length; end++) {
+                int summ = sum[end] - sum[start] + nums[start];
+                if (summ == k || (k != 0 && summ % k == 0))
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Memory Limit Exceeded
      *
      * @param nums
      * @param k
      * @return
      */
-    public boolean checkSubarraySum(int[] nums, int k) {
+    public boolean checkSubarraySumV1(int[] nums, int k) {
         int n = nums.length;
         if (n == 0 && k != 0) {
             return false;
