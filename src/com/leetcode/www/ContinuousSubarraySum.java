@@ -3,6 +3,9 @@ public class ContinuousSubarraySum {
      * Runtime: 29 ms, faster than 5.11% of Java online submissions for Continuous Subarray Sum.
      * Memory Usage: 53 MB, less than 5.88% of Java online submissions for Continuous Subarray Sum.
      *
+     * Time complexity : O(n^2). Two for loops are used for considering every subarray possible.
+     * Space complexity : O(n). sum array of size nn is used.
+     *
      * @param nums
      * @param k
      * @return
