@@ -1,4 +1,34 @@
+import java.util.HashMap;
+
 public class ContinuousSubarraySum {
+    /**
+     * Runtime: 2 ms, faster than 99.52% of Java online submissions for Continuous Subarray Sum.
+     * Memory Usage: 40.1 MB, less than 88.24% of Java online submissions for Continuous Subarray Sum.
+     *
+     * Time complexity : O(n). Only one traversal of the array nums is done.
+     * Space complexity : O(min(n,k)). The HashMap can contain upto min(n,k) different pairings.
+     *
+     * @param nums
+     * @param k
+     * @return
+     */
+    public boolean checkSubarraySum(int[] nums, int k) {
+        int sum = 0;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        map.put(0, -1);
+        for (int i = 0; i < nums.length; i++) {
+            sum += nums[i];
+            if (k != 0)
+                sum = sum % k;
+            if (map.containsKey(sum)) {
+                if (i - map.get(sum) > 1)
+                    return true;
+            } else
+                map.put(sum, i);
+        }
+        return false;
+    }
+
     /**
      * Runtime: 29 ms, faster than 5.11% of Java online submissions for Continuous Subarray Sum.
      * Memory Usage: 53 MB, less than 5.88% of Java online submissions for Continuous Subarray Sum.
