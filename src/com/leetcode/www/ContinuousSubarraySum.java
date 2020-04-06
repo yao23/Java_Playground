@@ -21,7 +21,7 @@ public class ContinuousSubarraySum {
             if (k != 0) {
                 sum = sum % k;
             }
-            if (map.containsKey(sum)) {
+            if (map.containsKey(sum)) { // pass several numbers whose sum is multiple of k so that meet same previous sum
                 if (i - map.get(sum) > 1) {
                     return true;
                 }
