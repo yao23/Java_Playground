@@ -2,6 +2,44 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class GoatLatin {
+    /**
+     * Runtime: 4 ms, faster than 49.96% of Java online submissions for Goat Latin.
+     * Memory Usage: 39.5 MB, less than 6.67% of Java online submissions for Goat Latin.
+     *
+     * Time Complexity: O(N^2), where N is the length of S. This represents the complexity of rotating the word and
+     * adding extra "a" characters.
+     *
+     * Space Complexity: O(N^2), the space added to the answer by adding extra "a" characters.
+     *
+     * @param S
+     * @return
+     */
+    public String toGoatLatinV1(String S) {
+        Set<Character> vowel = new HashSet();
+        for (char c: new char[]{'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'})
+            vowel.add(c);
+
+        int t = 1;
+        StringBuilder ans = new StringBuilder();
+        for (String word: S.split(" ")) {
+            char first = word.charAt(0);
+            if (vowel.contains(first)) {
+                ans.append(word);
+            } else {
+                ans.append(word.substring(1));
+                ans.append(word.substring(0, 1));
+            }
+            ans.append("ma");
+            for (int i = 0; i < t; i++)
+                ans.append("a");
+            t++;
+            ans.append(" ");
+        }
+
+        ans.deleteCharAt(ans.length() - 1);
+        return ans.toString();
+    }
+
     private static char[] vowels = new char[]{'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
 
     /**
