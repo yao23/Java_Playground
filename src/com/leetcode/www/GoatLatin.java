@@ -1,7 +1,7 @@
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class GoatLatin {
+public class GoatLatin { // 824
     /**
      * Runtime: 4 ms, faster than 49.96% of Java online submissions for Goat Latin.
      * Memory Usage: 39.5 MB, less than 6.67% of Java online submissions for Goat Latin.
