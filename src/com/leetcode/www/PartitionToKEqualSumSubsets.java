@@ -48,6 +48,34 @@ public class PartitionToKEqualSumSubsets {
      * Runtime: 5 ms, faster than 44.27% of Java online submissions for Partition to K Equal Sum Subsets.
      * Memory Usage: 39.7 MB, less than 9.30% of Java online submissions for Partition to K Equal Sum Subsets.
      *
+     * Intuition and Algorithm
+     *
+     * As in Approach #1, we investigate methods of exhaustive search, and find target = sum(nums) / k in the same way.
+     *
+     * Let used have the i-th bit set if and only if nums[i] has already been used. Our goal is to use nums in some order
+     * so that placing them into groups in that order will be valid. search(used, ...) will answer the question: can we
+     * partition unused elements of nums[i] appropriately?
+     *
+     * This will depend on todo, the sum of the remaining unused elements, not crossing multiples of target within one
+     * number. If for example our target is 10, and our elements to be placed in order are [6, 5, 5, 4], this would not
+     * work as 6 + 5 "crosses" 10 prematurely.
+     *
+     * If we could choose the order, then after placing 5, our unused elements are [4, 5, 6]. Using 6 would make todo
+     * go from 15 to 9, which crosses 10 - something unwanted. However, we could use 5 since todo goes from 15 to 10;
+     * then later we could use 4 and 6 as those placements do not cross.
+     *
+     * It turns out the maximum value that can be chosen so as to not cross a multiple of target,
+     * is targ = (todo - 1) % target + 1. This is essentially todo % target, plus target if that would be zero.
+     *
+     * Now for each unused number that doesn't cross, we'll search on that state, and we'll return true if any of those
+     * searches are true.
+     *
+     * Notice that the state todo depends only on the state used, so when memoizing our search, we only need to make
+     * lookups by used.
+     *
+     * In the solutions below, we present both a top-down dynamic programming solution, and a bottom-up one.
+     * The bottom-up solution uses a different notion of state.
+     *
      * @param nums
      * @param k
      * @return
