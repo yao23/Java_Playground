@@ -43,6 +43,82 @@ public class PartitionToKEqualSumSubsets {
         }
         return false;
     }
+
+    /**
+     * Runtime: 5 ms, faster than 44.27% of Java online submissions for Partition to K Equal Sum Subsets.
+     * Memory Usage: 39.7 MB, less than 9.30% of Java online submissions for Partition to K Equal Sum Subsets.
+     *
+     * @param nums
+     * @param k
+     * @return
+     */
+    public boolean canPartitionKSubsetsV1(int[] nums, int k) {
+        int sum = Arrays.stream(nums).sum();
+        if (sum % k > 0) return false;
+
+        Result[] memo = new Result[1 << nums.length];
+        memo[(1 << nums.length) - 1] = Result.TRUE;
+        return search(0, sum, memo, nums, sum / k);
+    }
+
+    private boolean search(int used, int todo, Result[] memo, int[] nums, int target) {
+        if (memo[used] == null) {
+            memo[used] = Result.FALSE;
+            int targ = (todo - 1) % target + 1;
+            for (int i = 0; i < nums.length; i++) {
+                if ((((used >> i) & 1) == 0) && nums[i] <= targ) {
+                    if (search(used | (1<<i), todo - nums[i], memo, nums, target)) {
+                        memo[used] = Result.TRUE;
+                        break;
+                    }
+                }
+            }
+        }
+        return memo[used] == Result.TRUE;
+    }
+
+    enum Result { TRUE, FALSE }
+
+    /**
+     * Runtime: 27 ms, faster than 22.28% of Java online submissions for Partition to K Equal Sum Subsets.
+     * Memory Usage: 39.4 MB, less than 9.30% of Java online submissions for Partition to K Equal Sum Subsets.
+     *
+     * Time Complexity: O(N * 2^N), where NN is the length of nums. There are 2^N states of used (or state in our
+     * bottom-up variant), and each state performs O(N) work searching through nums.
+     *
+     * Space Complexity: O(2^N), the space used by memo (or dp, total in our bottom-up variant).
+     *
+     * @param nums
+     * @param k
+     * @return
+     */
+    public boolean canPartitionKSubsetsV2(int[] nums, int k) {
+        int N = nums.length;
+        Arrays.sort(nums);
+        int sum = Arrays.stream(nums).sum();
+        int target = sum / k;
+        if (sum % k > 0 || nums[N - 1] > target) return false;
+
+        boolean[] dp = new boolean[1 << N];
+        dp[0] = true;
+        int[] total = new int[1 << N];
+
+        for (int state = 0; state < (1 << N); state++) {
+            if (!dp[state]) continue;
+            for (int i = 0; i < N; i++) {
+                int future = state | (1 << i);
+                if (state != future && !dp[future]) {
+                    if (nums[i] <= target - (total[state] % target)) {
+                        dp[future] = true;
+                        total[future] = total[state] + nums[i];
+                    } else {
+                        break;
+                    }
+                }
+            }
+        }
+        return dp[(1 << N) - 1];
+    }
 }
 
 /**
