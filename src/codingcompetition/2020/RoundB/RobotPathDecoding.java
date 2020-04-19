@@ -61,7 +61,12 @@ public class Solution {
         } else if (x < 0) {
             return x + modNum;
         } else {
-            return x % modNum;
+            int tmp = x % modNum;
+            if (tmp == 0) {
+                return modNum;
+            } else {
+                return tmp;
+            }
         }
     }
 }
