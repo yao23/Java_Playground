@@ -1,2 +1,2 @@
-public class BackspaceStringCompare { // 844
+public class BackspaceStringCompare { // 844 [Google]
 }
