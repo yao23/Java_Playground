@@ -70,6 +70,7 @@ public class NetworkDelayTime { // 743 [Google]
      * Runtime: 19 ms, faster than 61.01% of Java online submissions for Network Delay Time.
      * Memory Usage: 42.8 MB, less than 92.86% of Java online submissions for Network Delay Time.
      *
+     * Test case: [[1,2,1],[1,3,4],[2,3,2]], 3, 1
      * @param times
      * @param N
      * @param K
@@ -84,7 +85,7 @@ public class NetworkDelayTime { // 743 [Google]
             graph.get(edge[0]).add(new int[]{edge[1], edge[2]});
         }
         PriorityQueue<int[]> heap = new PriorityQueue<>(
-                Comparator.comparingInt(info -> info[0]));
+                Comparator.comparingInt(info -> info[0])); // ascending order by delay
         heap.offer(new int[]{0, K});
 
         Map<Integer, Integer> dist = new HashMap<>();
@@ -92,7 +93,7 @@ public class NetworkDelayTime { // 743 [Google]
         while (!heap.isEmpty()) {
             int[] info = heap.poll();
             int d = info[0], node = info[1];
-            if (dist.containsKey(node)) {
+            if (dist.containsKey(node)) { // process (3, 4) after (3, 3)  in Test case in above doc
                 continue;
             }
             dist.put(node, d);
