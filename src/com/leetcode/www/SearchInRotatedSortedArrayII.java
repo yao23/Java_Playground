@@ -1,4 +1,12 @@
 public class SearchInRotatedSortedArrayII { // LC 81
+    /**
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Search in Rotated Sorted Array II.
+     * Memory Usage: 39.3 MB, less than 56.34% of Java online submissions for Search in Rotated Sorted Array II.
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
     public boolean search(int[] nums, int target) {
         int start = 0;
         int end = nums.length - 1;
