@@ -1,6 +1,13 @@
 package com.leetcode.www;
 
 public class ProductOfArrayExceptSelf { // LC 238
+    /**
+     * Runtime: 1 ms, faster than 100.00% of Java online submissions for Product of Array Except Self.
+     * Memory Usage: 48 MB, less than 5.51% of Java online submissions for Product of Array Except Self.
+     *
+     * @param nums
+     * @return
+     */
     public int[] productExceptSelf(int[] nums) { // beats 27.57%
         int[] result = new int[nums.length];
         for (int i = 0; i < result.length; i++) {
