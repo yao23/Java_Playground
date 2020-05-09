@@ -3,7 +3,7 @@ package com.leetcode.www;
 /**
  * Created by liyao on 6/15/17.
  */
-public class SearchInRotatedSortedArray { // LC 81
+public class SearchInRotatedSortedArray { // LC 33 (Facebook)
     /**
      * Runtime: 0 ms, faster than 100.00% of Java online submissions for Search in Rotated Sorted Array.
      * Memory Usage: 38.1 MB, less than 46.54% of Java online submissions for Search in Rotated Sorted Array.
@@ -19,24 +19,24 @@ public class SearchInRotatedSortedArray { // LC 81
             if (nums[mid] == target) {
                 return true;
             }
-            //If we know for sure right side is sorted or left side is unsorted
             if (nums[mid] < nums[end] || nums[mid] < nums[start]) {
+                // If we know for sure right side is sorted or left side is unsorted
                 if (target > nums[mid] && target <= nums[end]) {
                     start = mid + 1;
                 } else {
                     end = mid - 1;
                 }
-                //If we know for sure left side is sorted or right side is unsorted
             } else if (nums[mid] > nums[start] || nums[mid] > nums[end]) {
+                // If we know for sure left side is sorted or right side is unsorted
                 if (target < nums[mid] && target >= nums[start]) {
                     end = mid - 1;
                 } else {
                     start = mid + 1;
                 }
-                //If we get here, that means nums[start] == nums[mid] == nums[end], then shifting out
-                //any of the two sides won't change the result but can help remove duplicate from
-                //consideration, here we just use end-- but left++ works too
             } else {
+                // If we get here, that means nums[start] == nums[mid] == nums[end], then shifting out
+                // any of the two sides won't change the result but can help remove duplicate from
+                // consideration, here we just use end-- but left++ works too
                 end--;
             }
         }
