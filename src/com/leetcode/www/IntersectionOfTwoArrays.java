@@ -2,6 +2,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class IntersectionOfTwoArrays { // LC 349 (FB)
+    /**
+     * Runtime: 2 ms, faster than 99.35% of Java online submissions for Intersection of Two Arrays.
+     * Memory Usage: 39.4 MB, less than 6.75% of Java online submissions for Intersection of Two Arrays.
+     *
+     * @param nums1
+     * @param nums2
+     * @return
+     */
     public int[] intersection(int[] nums1, int[] nums2) {
         int len1 = nums1.length, len2 = nums2.length;
         Set<Integer> res;
@@ -17,27 +25,20 @@ public class IntersectionOfTwoArrays { // LC 349 (FB)
             i++;
         }
         return resArr;
-        // return Arrays.stream(list).mapToInt(i->i).toArray();
-
-        // return list.stream().toArray(Integer[]::new);
     }
 
-    /**
-     * Not work for test case 1
-     *
-     * @param nums1
-     * @param nums2
-     * @return
-     */
     private Set<Integer> getIntersection(int[] nums1, int[] nums2) {
-        Set<Integer> set = new HashSet<>();
+        Set<Integer> set1 = new HashSet<>();
+        Set<Integer> set2 = new HashSet<>();
         Set<Integer> res = new HashSet<>();
-        for (int i = 0; i < nums1.length; i++) {
-            set.add(nums1[i]);
+        for (int value : nums1) {
+            set1.add(value);
         }
-        for (int i = 0; i < nums2.length; i++) {
-            if (!set.add(nums2[i])) {
-                res.add(nums2[i]);
+        for (int cur : nums2) {
+            if (set2.add(cur)) {
+                if (!set1.add(cur)) {
+                    res.add(cur);
+                }
             }
         }
         return res;
