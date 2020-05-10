@@ -71,6 +71,60 @@ public class IntersectionOfTwoArrays { // LC 349 (FB)
         for (int s : set1) output[idx++] = s;
         return output;
     }
+
+    /**
+     * https://leetcode.com/problems/intersection-of-two-arrays/solution/
+     *
+     * Facebook interview - O(n) time and O(1) space (the resulting array of intersections is not taken into consideration)
+     * You are told the lists are sorted.
+     *
+     * Cases to take into consideration include:
+     * duplicates, negative values, single value lists, 0's, and empty list arguments.
+     * Other considerations might include sparse arrays.
+     *
+     * @param nums1
+     * @param nums2
+     * @return
+     */
+    public int[] intersectionV2(int[] nums1, int[] nums2) {
+        Set<Integer> set;
+        if (nums1.length <= nums2.length) {
+            set = getIntersectionWithoutSet(nums1, nums2);
+        } else {
+            set = getIntersectionWithoutSet(nums2, nums1);
+        }
+
+        int [] res = new int[set.size()];
+        int idx = 0;
+        for (int s : set) {
+            res[idx++] = s;
+        }
+        return res;
+    }
+
+    private Set<Integer> getIntersectionWithoutSet(int[] nums1, int[] nums2) {
+        int len1 = nums1.length, len2 = nums2.length;
+        Set<Integer> set = new HashSet<>();
+        int p1 = 0, p2 = 0;
+        while (p1 < len1 && p2 < len2) {
+            while (p1 + 1 < len1 && nums1[p1 + 1] == nums1[p1]) {
+                p1++;
+            }
+            while (p2 + 1 < len2 && nums2[p2 + 1] == nums2[p2]) {
+                p2++;
+            }
+            if (nums1[p1] == nums2[p2]) {
+                set.add(nums1[p1]);
+                p1++;
+                p2++;
+            } else if (nums1[p1] < nums2[p2]) {
+                p1++;
+            } else {
+                p2++;
+            }
+        }
+        return set;
+    }
 }
 
 // Input: nums1 = [1,2,2,1], nums2 = [2,2]
