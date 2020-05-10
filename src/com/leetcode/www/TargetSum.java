@@ -135,4 +135,41 @@ public class TargetSum { // LC 494 (FB)
             return S > 1000 ? 0 : dp[nums.length - 1][S + 1000];
         }
     }
+
+    public class SolutionV3 {
+        /**
+         * 1D Dynamic Programming
+         * If we look closely at the last solution, we can observe that for the evaluation of the current row of dp,
+         * only the values of the last row of dp are needed. Thus, we can save some space by using a 1D DP array
+         * instead of a 2-D DP array. The only difference that needs to be made is that now the same dp array will be
+         * updated for every row traversed.
+         *
+         * Time complexity : O(l.n). The entire nums array is traversed ll times. n refers to the size of nums array.
+         * l refers to the range of sum possible.
+         * Space complexity : O(n). dp array of size nn is used.
+         *
+         * Runtime: 28 ms, faster than 57.49% of Java online submissions for Target Sum.
+         * Memory Usage: 51.3 MB, less than 6.00% of Java online submissions for Target Sum.
+         *
+         * @param nums
+         * @param S
+         * @return
+         */
+        public int findTargetSumWays(int[] nums, int S) {
+            int[] dp = new int[2001];
+            dp[nums[0] + 1000] = 1;
+            dp[-nums[0] + 1000] += 1;
+            for (int i = 1; i < nums.length; i++) {
+                int[] next = new int[2001];
+                for (int sum = -1000; sum <= 1000; sum++) {
+                    if (dp[sum + 1000] > 0) {
+                        next[sum + nums[i] + 1000] += dp[sum + 1000];
+                        next[sum - nums[i] + 1000] += dp[sum + 1000];
+                    }
+                }
+                dp = next;
+            }
+            return S > 1000 ? 0 : dp[S + 1000];
+        }
+    }
 }
