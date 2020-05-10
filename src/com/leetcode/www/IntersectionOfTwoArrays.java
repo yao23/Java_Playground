@@ -43,6 +43,34 @@ public class IntersectionOfTwoArrays { // LC 349 (FB)
         }
         return res;
     }
+
+    /**
+     * Built-in Set Intersection
+     *
+     * Time complexity : O(n+m) in the average case and O(n×m) in the worst case when load factor is high enough.
+     *
+     * Space complexity : O(n+m) in the worst case when all elements in the arrays are different.
+     *
+     * Runtime: 2 ms, faster than 99.35% of Java online submissions for Intersection of Two Arrays.
+     * Memory Usage: 40.1 MB, less than 6.75% of Java online submissions for Intersection of Two Arrays.
+     *
+     * @param nums1
+     * @param nums2
+     * @return
+     */
+    public int[] intersectionV1(int[] nums1, int[] nums2) {
+        HashSet<Integer> set1 = new HashSet<Integer>();
+        for (Integer n : nums1) set1.add(n);
+        HashSet<Integer> set2 = new HashSet<Integer>();
+        for (Integer n : nums2) set2.add(n);
+
+        set1.retainAll(set2);
+
+        int [] output = new int[set1.size()];
+        int idx = 0;
+        for (int s : set1) output[idx++] = s;
+        return output;
+    }
 }
 
 // Input: nums1 = [1,2,2,1], nums2 = [2,2]
