@@ -3,7 +3,7 @@ package com.leetcode.www;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExpressionAddOperators { // LC 282 (Facebook)
+public class ExpressionAddOperators { // LC 282 (FB)
     /**
      * Backtrace
      *     1. overflow: we use a long type once it is larger than Integer.MAX_VALUE or minimum, we get over it.
