@@ -3,11 +3,20 @@ package com.leetcode.www;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExpressionAddOperators { // LC 282
-    //  Backtrace
-    //    1. overflow: we use a long type once it is larger than Integer.MAX_VALUE or minimum, we get over it.
-    //    2. 0 sequence: because we can't have numbers with multiple digits started with zero, we have to deal with it too.
-    //    3. a little trick is that we should save the value that is to be multiplied in the next recursion.
+public class ExpressionAddOperators { // LC 282 (Facebook)
+    /**
+     * Backtrace
+     *     1. overflow: we use a long type once it is larger than Integer.MAX_VALUE or minimum, we get over it.
+     *     2. 0 sequence: because we can't have numbers with multiple digits started with zero, we have to deal with it too.
+     *     3. a little trick is that we should save the value that is to be multiplied in the next recursion.
+     *
+     * Runtime: 91 ms, faster than 59.21% of Java online submissions for Expression Add Operators.
+     * Memory Usage: 40.5 MB, less than 78.38% of Java online submissions for Expression Add Operators.
+     *
+     * @param num
+     * @param target
+     * @return
+     */
     public List<String> addOperators(String num, int target) { // beats 68.98%
         List<String> res = new ArrayList<>();
 
