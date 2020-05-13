@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class AccountsMerge { // 721
+public class AccountsMerge { // 721 (Facebook)
     /**
      * Runtime: 33 ms, faster than 71.47% of Java online submissions for Accounts Merge.
      * Memory Usage: 44.3 MB, less than 100.00% of Java online submissions for Accounts Merge.
