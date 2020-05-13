@@ -4,7 +4,7 @@ package com.leetcode.www;
  * Created by liyao on 7/18/17.
  */
 
-public class AddAndSearchWord { // LC 211
+public class AddAndSearchWord { // LC 211 (Facebook)
     /**
      * Runtime: 90 ms, faster than 48.43% of Java online submissions for Add and Search Word - Data structure design.
      * Memory Usage: 59.5 MB, less than 40.50% of Java online submissions for Add and Search Word - Data structure design.
@@ -45,7 +45,7 @@ public class AddAndSearchWord { // LC 211
                 return node.children[chs[k] - 'a'] != null && match(chs, k + 1, node.children[chs[k] - 'a']);
             } else {
                 for (int i = 0; i < node.children.length; i++) {
-                    if (node.children[i] != null) {
+                    if (node.children[i] != null) { // match any child
                         if (match(chs, k + 1, node.children[i])) {
                             return true;
                         }
@@ -55,7 +55,8 @@ public class AddAndSearchWord { // LC 211
             return false;
         }
 
-        // ["WordDictionary","addWord","addWord","addWord","search","search","search","search"],[[],["bad"],["dad"],["mad"],["pad"],["bad"],[".ad"],["b.."]] => [null,null,null,null,false,true,true,true]
+        // ["WordDictionary","addWord","addWord","addWord","search","search","search","search"],
+        // [[],["bad"],["dad"],["mad"],["pad"],["bad"],[".ad"],["b.."]] => [null,null,null,null,false,true,true,true]
 
         // beats 87.36%
 
