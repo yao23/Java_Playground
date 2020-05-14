@@ -1,6 +1,6 @@
 package com.leetcode.www;
 
-public class AddBinary { // LC 67
+public class AddBinary { // LC 67 (Facebook)
     /**
      * Runtime: 2 ms, faster than 53.06% of Java online submissions for Add Binary.
      * Memory Usage: 35.1 MB, less than 59.55% of Java online submissions for Add Binary.
