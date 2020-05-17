@@ -2,8 +2,10 @@ package com.leetcode.www;
 
 import java.util.*;
 
-public class AlienDictionary { // LC 269
+public class AlienDictionary { // LC 269 (Facebook)
     /**
+     * Topological Sort
+     *
      * Runtime: 13 ms, faster than 12.55% of Java online submissions for Alien Dictionary.
      * Memory Usage: 39.2 MB, less than 5.41% of Java online submissions for Alien Dictionary.
      *
@@ -23,7 +25,7 @@ public class AlienDictionary { // LC 269
                 degree.put(c, 0);
             }
         }
-        for (int i = 0; i < words.length - 1; i++) {
+        for (int i = 0; i < words.length - 1; i++) { // construct graph
             String cur = words[i];
             String next = words[i + 1];
             int length = Math.min(cur.length(), next.length());
@@ -50,12 +52,12 @@ public class AlienDictionary { // LC 269
             }
         }
         Queue<Character> q = new LinkedList<>();
-        for (char c: degree.keySet()) {
+        for (char c: degree.keySet()) { // start from zero degree
             if (degree.get(c) == 0) {
                 q.add(c);
             }
         }
-        while (!q.isEmpty()) {
+        while (!q.isEmpty()) { // BFS
             char c = q.remove();
             result += c;
             if (map.containsKey(c)) {
@@ -67,7 +69,7 @@ public class AlienDictionary { // LC 269
                 }
             }
         }
-        if (result.length()!= degree.size()) {
+        if (result.length() != degree.size()) { // maybe less (island)
             return "";
         } else {
             return result;
