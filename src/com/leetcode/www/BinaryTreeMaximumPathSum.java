@@ -1,17 +1,19 @@
 package com.leetcode.www;
 
+import com.leetcode.www.TreeNode;
+
 /**
  * Created by liyao on 6/14/17.
  */
-public class BinaryTreeMaximumPathSum { // LC 124
+public class BinaryTreeMaximumPathSum { // LC 124 (Facebook)
     private int helper(TreeNode root, int[] result) {
         if (root == null) {
             return 0;
         } else {
             int left = helper(root.left, result);
             int right = helper(root.right, result);
-            int single = Math.max(root.val, root.val + Math.max(left,right));
-            int max = Math.max(single, root.val + left + right);
+            int single = Math.max(root.val, root.val + Math.max(left,right)); // single or one half
+            int max = Math.max(single, root.val + left + right); // single or arch
             if (max > result[0]) {
                 result[0] = max;
             }
