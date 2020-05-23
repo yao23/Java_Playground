@@ -1,6 +1,6 @@
 import java.util.HashMap;
 
-public class ContinuousSubarraySum { // 523
+public class ContinuousSubarraySum { // LC 523 (Facebook) vs 560 SubarraySumEqualsK
     /**
      * Runtime: 2 ms, faster than 99.52% of Java online submissions for Continuous Subarray Sum.
      * Memory Usage: 40.1 MB, less than 88.24% of Java online submissions for Continuous Subarray Sum.
