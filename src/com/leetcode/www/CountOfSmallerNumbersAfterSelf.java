@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CountOfSmallerNumbersAfterSelf { // LC 315
+public class CountOfSmallerNumbersAfterSelf { // LC 315 [Google]
     /**
      * 1. Construct Binary Search Tree
      * 2. Calculate smaller numbers while constructing
