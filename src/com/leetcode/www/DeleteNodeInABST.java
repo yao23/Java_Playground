@@ -1,6 +1,6 @@
 package com.leetcode.www;
 
-public class DeleteNodeInABST { // LC 450
+public class DeleteNodeInABST { // LC 450 (FB)
     public TreeNode deleteNode(TreeNode root, int key) {
         if (root == null) {
             return root;
