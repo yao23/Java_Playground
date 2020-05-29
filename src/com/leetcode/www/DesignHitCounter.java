@@ -3,7 +3,7 @@ package com.leetcode.www;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class DesignHitCounter { // LC 362
+public class DesignHitCounter { // LC 362 [Google]
     /**
      * Your HitCounter object will be instantiated and called as such:
      * HitCounter obj = new HitCounter();
