@@ -3,7 +3,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-public class DesignSearchAutocompleteSystem { // 642
+public class DesignSearchAutocompleteSystem { // 642 [Google]
     class Node {
         String sentence;
         int times;
