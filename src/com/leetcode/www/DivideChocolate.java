@@ -1,4 +1,4 @@
-public class DivideChocolate { // 1231
+public class DivideChocolate { // 1231 [Google]
     /**
      * https://leetcode.com/problems/divide-chocolate/discuss/556374/Faster-than-50-JAVA
      */
