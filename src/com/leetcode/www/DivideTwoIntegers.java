@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
-public class DivideTwoIntegers { // LC 29
+public class DivideTwoIntegers { // LC 29 (Facebook)
     /**
      * bit operation left shift as multiplication, right shift as division
      *
