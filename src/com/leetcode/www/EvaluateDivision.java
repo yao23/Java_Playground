@@ -3,7 +3,7 @@ package com.leetcode.www; /**
  */
 import java.util.*;
 
-public class EvaluateDivision { // LC 399
+public class EvaluateDivision { // LC 399 [Google]
     public double[] calcEquation(String[][] equations, double[] values, String[][] queries) {
         HashMap<String, ArrayList<String>> pairs = new HashMap<>();
         HashMap<String, ArrayList<Double>> valuesPair = new HashMap<>();
