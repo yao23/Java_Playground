@@ -3,7 +3,7 @@ package com.leetcode.www;
 import java.util.List;
 import java.util.Stack;
 
-public class ExclusiveTimeOfFunctions { // LC 636
+public class ExclusiveTimeOfFunctions { // LC 636 (Facebook)
     /**
      * Runtime: 14 ms, faster than 95.85% of Java online submissions for Exclusive Time of Functions.
      * Memory Usage: 37.7 MB, less than 98.70% of Java online submissions for Exclusive Time of Functions.
