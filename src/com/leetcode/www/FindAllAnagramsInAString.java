@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class FindAllAnagramsInAString { // 438
+public class FindAllAnagramsInAString { // 438 (Facebook, FB)
     /**
      * Runtime: 5 ms, faster than 94.54% of Java online submissions for Find All Anagrams in a String.
      * Memory Usage: 40.6 MB, less than 12.00% of Java online submissions for Find All Anagrams in a String.
@@ -14,7 +14,7 @@ public class FindAllAnagramsInAString { // 438
      */
     public List<Integer> findAnagramsV1(String s, String p) {
         int ns = s.length(), np = p.length();
-        if (ns < np) return new ArrayList();
+        if (ns < np) return new ArrayList<>();
 
         int [] pCount = new int[26];
         int [] sCount = new int[26];
@@ -23,7 +23,7 @@ public class FindAllAnagramsInAString { // 438
             pCount[(ch - 'a')]++;
         }
 
-        List<Integer> output = new ArrayList();
+        List<Integer> output = new ArrayList<>();
         // sliding window on the string s
         for (int i = 0; i < ns; ++i) {
             // add one more letter on the right side of the window
