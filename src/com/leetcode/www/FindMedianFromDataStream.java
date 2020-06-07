@@ -8,7 +8,7 @@ import java.util.ArrayDeque;
 import java.util.Collections;
 import java.util.PriorityQueue;
 
-public class FindMedianFromDataStream { // LC 295
+public class FindMedianFromDataStream { // LC 295 [Google]
     public class MedianFinder { // class MedianFinder in LC
         private PriorityQueue<Integer> minQueue; // right half
         private PriorityQueue<Integer> maxQueue; // left half
