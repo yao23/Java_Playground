@@ -3,11 +3,18 @@ package com.leetcode.www;
 /**
  * Created by liyao on 6/18/17.
  */
-public class FirstBadVersion { // LC 278
+public class FirstBadVersion { // LC 278 (Facebook)
     private boolean isBadVersion(int version) {
         return false; // not correct, should be given in problem and temp return value to avoid error without return value
     }
 
+    /**
+     * Runtime: 13 ms, faster than 37.11% of Java online submissions for First Bad Version.
+     * Memory Usage: 36.3 MB, less than 5.63% of Java online submissions for First Bad Version.
+     *
+     * @param n
+     * @return
+     */
     public int firstBadVersion(int n) {
         if (n == 0) {
             return 0;
