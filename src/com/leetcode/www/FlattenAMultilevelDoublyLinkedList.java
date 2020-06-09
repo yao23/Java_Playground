@@ -1,7 +1,7 @@
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class FlattenAMultilevelDoublyLinkedList { // 430
+public class FlattenAMultilevelDoublyLinkedList { // 430 [Google]
     /**
      * DFS by Recursion
      *
