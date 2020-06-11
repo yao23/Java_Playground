@@ -1,7 +1,7 @@
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class GoatLatin { // 824
+public class GoatLatin { // LC 824 (Facebook)
     /**
      * Runtime: 4 ms, faster than 49.96% of Java online submissions for Goat Latin.
      * Memory Usage: 39.5 MB, less than 6.67% of Java online submissions for Goat Latin.
@@ -15,7 +15,7 @@ public class GoatLatin { // 824
      * @return
      */
     public String toGoatLatinV1(String S) {
-        Set<Character> vowel = new HashSet();
+        Set<Character> vowel = new HashSet<>();
         for (char c: new char[]{'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'})
             vowel.add(c);
 
