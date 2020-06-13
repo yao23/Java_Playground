@@ -1,2 +1,2 @@
-public class HandOfStraights { // 846
+public class HandOfStraights { // 846 [Google]
 }
