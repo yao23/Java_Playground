@@ -3,7 +3,7 @@ package com.leetcode.www;
 import java.util.ArrayList;
 import java.util.List;
 
-public class IntervalListIntersections { // 986
+public class IntervalListIntersections { // 986 (Facebook)
     /**
      * Runtime: 3 ms, faster than 73.31% of Java online submissions for Interval List Intersections.
      * Memory Usage: 40.4 MB, less than 97.30% of Java online submissions for Interval List Intersections.
