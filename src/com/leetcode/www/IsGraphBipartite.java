@@ -3,7 +3,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Stack;
 
-public class IsGraphBipartite {
+public class IsGraphBipartite { // LC 785 (FB)
     /**
      * Runtime: 1 ms, faster than 69.95% of Java online submissions for Is Graph Bipartite?.
      * Memory Usage: 42.4 MB, less than 65.85% of Java online submissions for Is Graph Bipartite?.
@@ -23,7 +23,7 @@ public class IsGraphBipartite {
 
         for (int start = 0; start < n; ++start) {
             if (color[start] == -1) {
-                Stack<Integer> stack = new Stack();
+                Stack<Integer> stack = new Stack<>();
                 stack.push(start);
                 color[start] = 0;
 
