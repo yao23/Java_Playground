@@ -3,7 +3,7 @@ package com.leetcode.www;
 import java.util.Arrays;
 import java.util.PriorityQueue;
 
-public class KClosestPointsToOrigin { // LC 973
+public class KClosestPointsToOrigin { // LC 973 (Facebook)
     /**
      * Runtime: 4 ms, faster than 99.63% of Java online submissions for K Closest Points to Origin.
      * Memory Usage: 51.5 MB, less than 98.98% of Java online submissions for K Closest Points to Origin.
