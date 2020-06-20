@@ -4,7 +4,7 @@ package com.leetcode.www; /**
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoggerRateLimiter { // LC 359
+public class LoggerRateLimiter { // LC 359 [Google]
 
     public class Logger {
 
