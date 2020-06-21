@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LongestStringChain { // 1048
+public class LongestStringChain { // 1048 [Google]
     /**
      * DP HashMap Solution
      *
