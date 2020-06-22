@@ -3,7 +3,7 @@ package com.leetcode.www;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LongestSubstringWithAtMostKDistinctCharacters { // LC 340
+public class LongestSubstringWithAtMostKDistinctCharacters { // LC 340 (Facebook)
     private static Map<Character, Integer> map = new HashMap<>();
     private static int counter = 0;
 
