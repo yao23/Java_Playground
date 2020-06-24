@@ -1,6 +1,6 @@
 package com.leetcode.www;
 
-public class MaximalSquare { // LC 221
+public class MaximalSquare { // LC 221 [Google]
     public int maximalSquare(char[][] matrix) { // beats 16.31%
         if (matrix.length == 0) {
             return 0;
