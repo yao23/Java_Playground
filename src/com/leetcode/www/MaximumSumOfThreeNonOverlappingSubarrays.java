@@ -2,7 +2,7 @@ package com.leetcode.www;
 
 import java.util.Arrays;
 
-public class MaximumSumOfThreeNonOverlappingSubarrays {
+public class MaximumSumOfThreeNonOverlappingSubarrays { // LC 689 (Facebook)
     private static final int NUM_SUBARRAYS = 3;
     private static int max = 0;
     private static int[] resultArr = new int[NUM_SUBARRAYS];
@@ -63,7 +63,8 @@ public class MaximumSumOfThreeNonOverlappingSubarrays {
                 // input: 1   2   1  2  6  7  5  1
                 // m:     23  -1 20 20 19 12  6 -1
                 // m is memorization for speedup
-                // m[4] should be 19 (6 + 7 + 5 + 1) as non-last subarray [0, 1, 4, 5, 6, 7] not 13 (6 + 7) as last subarray [0, 1, 2, 3, 4, 5]
+                // m[4] should be 19 (6 + 7 + 5 + 1) as non-last subarray [0, 1, 4, 5, 6, 7] not 13 (6 + 7)
+                // as last subarray [0, 1, 2, 3, 4, 5]
                 if (nums.length - depth < 2 * k || resIdx < NUM_SUBARRAYS - 1) {
                     m[depth] = curMax;
                 }
