@@ -4,7 +4,7 @@ package com.leetcode.www;
  */
 import java.util.*;
 
-public class MergeIntervals { // LC 56
+public class MergeIntervals { // LC 56 (Facebook)
     /**
      * Runtime: 5 ms, faster than 91.84% of Java online submissions for Merge Intervals.
      * Memory Usage: 42.1 MB, less than 49.28% of Java online submissions for Merge Intervals.
