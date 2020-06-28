@@ -3,7 +3,7 @@ package com.leetcode.www;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-public class MergeKSortedLists { // LC 23
+public class MergeKSortedLists { // LC 23 (Facebook)
     public ListNode mergeKLists(ListNode[] lists) { // beats 53.73%
         if (lists == null || lists.length == 0) {
             return null;
