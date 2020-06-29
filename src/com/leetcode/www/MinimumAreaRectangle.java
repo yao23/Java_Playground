@@ -1,2 +1,2 @@
-public class MinimumAreaRectangle { // 939
+public class MinimumAreaRectangle { // 939 [Google]
 }
