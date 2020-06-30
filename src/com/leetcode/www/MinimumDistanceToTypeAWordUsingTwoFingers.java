@@ -1,2 +1,2 @@
-public class MinimumDistanceToTypeAWordUsingTwoFingers { // 1320
+public class MinimumDistanceToTypeAWordUsingTwoFingers { // 1320 [Google]
 }
