@@ -1,4 +1,4 @@
-public class MinimumDominoRotationsForEqualRow { // 1007
+public class MinimumDominoRotationsForEqualRow { // 1007 [Google]
     /**
      * Time complexity : O(N) since here one iterates over the arrays not more than two times.
      * Space complexity : O(1) since it's a constant space solution.
