@@ -1,6 +1,6 @@
 package com.leetcode.www;
 
-public class MinimumWindowSubstring { // LC 76
+public class MinimumWindowSubstring { // LC 76 [Google, Facebook]
     public String minWindow(String s, String t) {
         if (s == null || t == null || s.length() == 0 || t.length() == 0 || t.length() > s.length()) {
             return "";
@@ -14,15 +14,15 @@ public class MinimumWindowSubstring { // LC 76
 
         char[] chS = s.toCharArray();
         while (end < chS.length) {
-            if (map[chS[end++]]-- > 0) {
+            if (map[chS[end++]]-- > 0) { // char in both s and t
                 count--;
             }
-            while (count == 0) {
+            while (count == 0) { // find t in s
                 if (end - start < minLen) {
                     startIdx = start;
                     minLen = end - start;
                 }
-                if (map[chS[start++]]++ == 0) {
+                if (map[chS[start++]]++ == 0) { // start char in both s and t
                     count++;
                 }
             }
