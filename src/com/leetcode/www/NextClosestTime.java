@@ -1,7 +1,7 @@
 import java.util.HashSet;
 import java.util.Set;
 
-public class NextClosestTime { // 681
+public class NextClosestTime { // 681 [Google]
     /**
      * Approach #1: Simulation [Accepted]
      * Intuition and Algorithm
