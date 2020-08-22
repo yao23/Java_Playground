@@ -1,6 +1,6 @@
 package com.leetcode.www;
 
-public class NextPermutation { // LC 31
+public class NextPermutation { // LC 31 (Facebook)
     /**
      * Runtime: 0 ms, faster than 100.00% of Java online submissions for Next Permutation.
      * Memory Usage: 39.3 MB, less than 50.00% of Java online submissions for Next Permutation.
