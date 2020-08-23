@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class NumberOfSubmatricesThatSumToTarget { // 1074
+public class NumberOfSubmatricesThatSumToTarget { // 1074 [Google]
     /**
      * Number of Subarrays that Sum to Target: Horizontal 1D Prefix Sum
      *
