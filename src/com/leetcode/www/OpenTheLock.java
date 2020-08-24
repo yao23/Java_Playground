@@ -3,7 +3,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
 
-public class OpenTheLock { // 752
+public class OpenTheLock { // 752 [Google]
     /**
      * BFS
      * Time Complexity: O(N^2 * {A}^N + D) where A is the number of digits in our alphabet, N is the number of digits
