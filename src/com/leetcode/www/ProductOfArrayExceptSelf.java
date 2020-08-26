@@ -1,6 +1,6 @@
 package com.leetcode.www;
 
-public class ProductOfArrayExceptSelf { // LC 238
+public class ProductOfArrayExceptSelf { // LC 238  (Facebook, FB)
     /**
      * Runtime: 1 ms, faster than 100.00% of Java online submissions for Product of Array Except Self.
      * Memory Usage: 48 MB, less than 5.51% of Java online submissions for Product of Array Except Self.
