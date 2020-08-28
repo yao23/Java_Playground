@@ -1,6 +1,6 @@
 import com.leetcode.www.TreeNode;
 
-public class RangeSumOfBST { // 938
+public class RangeSumOfBST { // 938 (FB)
     /**
      * Runtime: 0 ms, faster than 100.00% of Java online submissions for Range Sum of BST.
      * Memory Usage: 46.9 MB, less than 94.77% of Java online submissions for Range Sum of BST.
