@@ -2,7 +2,7 @@ package com.leetcode.www;
 
 import java.util.*;
 
-public class RemoveInvalidParentheses { // LC 301
+public class RemoveInvalidParentheses { // LC 301 (Facebook)
     /**
      * We all know how to check a string of parentheses is valid using a stack. Or even simpler use a counter.
      * The counter will increase when it is ‘(‘ and decrease when it is ‘)’. Whenever the counter is negative, we have
