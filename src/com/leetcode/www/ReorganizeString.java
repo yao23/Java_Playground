@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.PriorityQueue;
 
-public class ReorganizeString { // 767
+public class ReorganizeString { // 767 (Facebook)
     /**
      * Runtime: 1 ms, faster than 83.16% of Java online submissions for Reorganize String.
      * Memory Usage: 37.8 MB, less than 7.14% of Java online submissions for Reorganize String.
