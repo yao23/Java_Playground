@@ -3,7 +3,7 @@ package com.leetcode.www;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class ShortestDistanceFromAllBuildings { // LC 317
+public class ShortestDistanceFromAllBuildings { // LC 317 [Google]
     /**
      *
      * Runtime: 38 ms, faster than 44.96% of Java online submissions for Shortest Distance from All Buildings.
