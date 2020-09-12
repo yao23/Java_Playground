@@ -1,6 +1,6 @@
 package com.leetcode.www;
 
-public class SparseMatrixMultiplication { // LC 311
+public class SparseMatrixMultiplication { // LC 311 (Facebook)
     public int[][] multiply(int[][] A, int[][] B) { // beats 84.43%
         int m = A.length, n = A[0].length, nB = B[0].length;
         int[][] C = new int[m][nB];
