@@ -3,7 +3,7 @@ package com.leetcode.www;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SubarraySumEqualsK { // LC 560
+public class SubarraySumEqualsK { // LC 560 (Facebook)
     /**
      * Runtime: 15 ms, faster than 69.95% of Java online submissions for Subarray Sum Equals K.
      * Memory Usage: 38.3 MB, less than 98.95% of Java online submissions for Subarray Sum Equals K.
@@ -44,7 +44,7 @@ public class SubarraySumEqualsK { // LC 560
         preSumFreq.put(0, 1);
         for (int i = 0; i < nums.length; i++) {
             sum += nums[i];
-            count += preSumFreq.getOrDefault(sum - k, 0);
+            count += preSumFreq.getOrDefault(sum - k, 0); // pass a subarray with sum as k
             preSumFreq.put(sum, preSumFreq.getOrDefault(sum,0) + 1);
         }
         return count;
