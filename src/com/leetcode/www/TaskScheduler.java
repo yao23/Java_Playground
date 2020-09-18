@@ -1,6 +1,32 @@
 import java.util.*;
 
-public class TaskScheduler { // 621
+public class TaskScheduler { // 621 (Facebook)
+    /**
+     * Runtime: 2 ms, faster than 99.59% of Java online submissions for Task Scheduler.
+     * Memory Usage: 41.6 MB, less than 5.88% of Java online submissions for Task Scheduler.
+     *
+     * Time complexity : O(n). We iterate over tasks array only once. (O(n)).
+     * Sorting tasks array of length nn takes O(26log(26))=O(1) time. After this, only one iteration over 26 elements
+     * of map is done (O(1)).
+     *
+     * Space complexity : O(1). map array of constant size(26) is used.
+     *
+     * @param tasks
+     * @param n
+     * @return
+     */
+    public int leastIntervalV2(char[] tasks, int n) {
+        int[] map = new int[26];
+        for (char c: tasks)
+            map[c - 'A']++;
+        Arrays.sort(map);
+        int max_val = map[25] - 1, idle_slots = max_val * n;
+        for (int i = 24; i >= 0 && map[i] > 0; i--) {
+            idle_slots -= Math.min(map[i], max_val);
+        }
+        return idle_slots > 0 ? idle_slots + tasks.length : tasks.length;
+    }
+
     /**
      * Runtime: 5 ms, faster than 62.94% of Java online submissions for Task Scheduler.
      * Memory Usage: 41.4 MB, less than 5.88% of Java online submissions for Task Scheduler.
@@ -74,31 +100,5 @@ public class TaskScheduler { // 621
                 queue.add(l);
         }
         return time;
-    }
-
-    /**
-     * Runtime: 2 ms, faster than 99.59% of Java online submissions for Task Scheduler.
-     * Memory Usage: 41.6 MB, less than 5.88% of Java online submissions for Task Scheduler.
-     *
-     * Time complexity : O(n). We iterate over tasks array only once. (O(n)).
-     * Sorting tasks array of length nn takes O(26log(26))=O(1) time. After this, only one iteration over 26 elements
-     * of map is done (O(1)).
-     *
-     * Space complexity : O(1). map array of constant size(26) is used.
-     *
-     * @param tasks
-     * @param n
-     * @return
-     */
-    public int leastIntervalV2(char[] tasks, int n) {
-        int[] map = new int[26];
-        for (char c: tasks)
-            map[c - 'A']++;
-        Arrays.sort(map);
-        int max_val = map[25] - 1, idle_slots = max_val * n;
-        for (int i = 24; i >= 0 && map[i] > 0; i--) {
-            idle_slots -= Math.min(map[i], max_val);
-        }
-        return idle_slots > 0 ? idle_slots + tasks.length : tasks.length;
     }
 }
