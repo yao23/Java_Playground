@@ -3,7 +3,7 @@ package com.leetcode.www;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TwentyFourGame { // LC 679
+public class TwentyFourGame { // LC 679 [Google]
     /**
      * Runtime: 9 ms, faster than 76.91% of Java online submissions for 24 Game.
      * Memory Usage: 35 MB, less than 99.92% of Java online submissions for 24 Game.
