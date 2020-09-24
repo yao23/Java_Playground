@@ -1,6 +1,6 @@
 package com.leetcode.www;
 
-public class ValidNumber { // LC 65
+public class ValidNumber { // LC 65 (Facebook)
     /**
      *
      * @param s
