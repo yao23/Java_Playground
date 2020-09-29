@@ -6,10 +6,11 @@ import java.util.Deque;
 /**
  * -1 - A wall or an obstacle.
  * 0 - A gate.
- * INF - Infinity means an empty room. We use the value 231 - 1 = 2147483647 to represent INF as you may assume that the distance to a gate is less than 2147483647.
+ * INF - Infinity means an empty room. We use the value 2^31 - 1 = 2147483647 to represent INF as you may assume that
+ * the distance to a gate is less than 2147483647.
  */
 
-public class WallsAndGates { // LC 286
+public class WallsAndGates { // LC 286 (Facebook)
 
     public void wallsAndGates(int[][] rooms) { // beats 19.89%
         if (checkCornerCase(rooms)) {
@@ -19,7 +20,7 @@ public class WallsAndGates { // LC 286
         for (int i = 0; i < rooms.length; i++) {
             for (int j = 0; j < rooms[0].length; j++) {
                 if (rooms[i][j] == 0) { // gates only (sparse in matrix, much less than rooms)
-                    queue.offer(new int[]{i,j});
+                    queue.offer(new int[]{i, j});
                 }
             }
         }
