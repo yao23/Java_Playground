@@ -6,7 +6,15 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
-public class WordBreakII { // LC 140
+public class WordBreakII { // LC 140 (Facebook, FB)
+    /**
+     * Runtime: 8 ms, faster than 78.26% of Java online submissions for Word Break II.
+     * Memory Usage: 39.4 MB, less than 32.79% of Java online submissions for Word Break II.
+     *
+     * @param s
+     * @param wordDict
+     * @return
+     */
     public List<String> wordBreak(String s, List<String> wordDict) {
         return DFS(s, wordDict, new HashMap<String, LinkedList<String>>());
     }
