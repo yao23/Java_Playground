@@ -5,11 +5,13 @@ public class AddBinary { // LC 67 (Facebook)
      * Runtime: 2 ms, faster than 53.06% of Java online submissions for Add Binary.
      * Memory Usage: 35.1 MB, less than 59.55% of Java online submissions for Add Binary.
      *
+     * beats 27.70%
+     *
      * @param a
      * @param b
      * @return
      */
-    public String addBinary(String a, String b) { // beats 27.70%
+    public String addBinary(String a, String b) {
         if (a == null || a.equals("")) {
             return b;
         }
