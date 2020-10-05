@@ -20,7 +20,14 @@ public class AddStrings { // LC 415 (Facebook)
         return sb.reverse().toString();
     }
 
-    public String addStringsV0(String num1, String num2) { // beats 33.20%
+    /**
+     * beats 33.20%
+     *
+     * @param num1
+     * @param num2
+     * @return
+     */
+    public String addStringsV0(String num1, String num2) {
         if (num1 == null || num2 == null) {
             return null;
         }
