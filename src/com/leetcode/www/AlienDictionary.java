@@ -9,10 +9,12 @@ public class AlienDictionary { // LC 269 (Facebook)
      * Runtime: 13 ms, faster than 12.55% of Java online submissions for Alien Dictionary.
      * Memory Usage: 39.2 MB, less than 5.41% of Java online submissions for Alien Dictionary.
      *
+     * beats 54.90%
+     *
      * @param words
      * @return
      */
-    public String alienOrder(String[] words) { // beats 54.90%
+    public String alienOrder(String[] words) {
         Map<Character, Set<Character>> map = new HashMap<>();
         Map<Character, Integer> degree = new HashMap<>();
         String result = "";
