@@ -78,7 +78,13 @@ public class AlienDictionary { // LC 269 (Facebook)
         }
     }
 
-    public String alienOrderV0(String[] words) { // beats 54.90%
+    /**
+     * beats 54.90%
+     *
+     * @param words
+     * @return
+     */
+    public String alienOrderV0(String[] words) {
         int len = words.length;
         if (len == 0) {
             return "";
