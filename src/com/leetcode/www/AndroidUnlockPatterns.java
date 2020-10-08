@@ -4,7 +4,14 @@ public class AndroidUnlockPatterns { // LC 351
     private int[][] skipTable = new int[10][10];
     private boolean[] visited = new boolean[10];
 
-    public int numberOfPatterns(int m, int n) { // beats 54.25%
+    /**
+     * beats 54.25%
+     *
+     * @param m
+     * @param n
+     * @return
+     */
+    public int numberOfPatterns(int m, int n) {
         initSkipTable();
 
         int res = 0;
