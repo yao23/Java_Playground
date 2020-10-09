@@ -47,7 +47,14 @@ public class AndroidUnlockPatterns { // LC 351
         }
     }
 
-    public int numberOfPatternsV0(int m, int n) { // not working for test case 3 (res: 2017, expected: 2009), passed 3/24
+    /**
+     * not working for test case 3 (res: 2017, expected: 2009), passed 3/24
+     *
+     * @param m
+     * @param n
+     * @return
+     */
+    public int numberOfPatternsV0(int m, int n) {
         initSkipTable();
 
         int res = 0;
