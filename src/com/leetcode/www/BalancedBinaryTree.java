@@ -1,7 +1,12 @@
 package com.leetcode.www;
 
 public class BalancedBinaryTree { // LC 110
-    public boolean isBalanced(TreeNode root) { // beats 63.97%
+    /**
+     * beats 63.97%
+     * @param root
+     * @return
+     */
+    public boolean isBalanced(TreeNode root) {
         if (root == null) {
             return true;
         }
