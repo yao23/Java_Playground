@@ -31,7 +31,13 @@ public class BalancedBinaryTree { // LC 110
         return Math.max(leftHeight, rightHeight) + 1;
     }
 
-    public boolean isBalancedV0(TreeNode root) { // beats 5.02%
+    /**
+     * beats 5.02%
+     *
+     * @param root
+     * @return
+     */
+    public boolean isBalancedV0(TreeNode root) {
         if (root == null) {
             return true;
         }
