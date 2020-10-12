@@ -102,7 +102,12 @@ public class BasicCalculator { // LC 224
         return operands.pop();
     }
 
-    public int calculateV0(String s) { // not working for test case 4 (1st '+' and NullPointerException due to 2nd poll() for valStack)
+    /**
+     * not working for test case 4 (1st '+' and NullPointerException due to 2nd poll() for valStack)
+     * @param s
+     * @return
+     */
+    public int calculateV0(String s) {
         Deque<Integer> valStack = new LinkedList<>(); // numbers
         Deque<Character> opStack = new LinkedList<>(); // operators
         char[] tokens = s.toCharArray();
