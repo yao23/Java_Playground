@@ -104,6 +104,7 @@ public class BasicCalculator { // LC 224
 
     /**
      * not working for test case 4 (1st '+' and NullPointerException due to 2nd poll() for valStack)
+     *
      * @param s
      * @return
      */
