@@ -4,7 +4,13 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class BasicCalculatorII { // LC 227
-    public int calculate(String s) { // beats 97.05%
+    /**
+     * beats 97.05%
+     *
+     * @param s
+     * @return
+     */
+    public int calculate(String s) {
         if (s.length() == 0) {
             return 0;
         }
