@@ -45,7 +45,13 @@ public class BasicCalculatorII { // LC 227
         return sum;
     }
 
-    public int calculateV0(String s) { // beats 53.99%
+    /**
+     * beats 53.99%
+     *
+     * @param s
+     * @return
+     */
+    public int calculateV0(String s) {
         int len;
         if (s == null || (len = s.length()) == 0) {
             return 0;
