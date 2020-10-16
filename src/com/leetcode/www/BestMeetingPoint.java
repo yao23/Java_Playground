@@ -3,7 +3,13 @@ package com.leetcode.www;
 import java.util.*;
 
 public class BestMeetingPoint { // LC 296
-    public int minTotalDistance(int[][] grid) { // beats 55.32%
+    /**
+     * beats 55.32%
+     *
+     * @param grid
+     * @return
+     */
+    public int minTotalDistance(int[][] grid) {
         int row = grid.length;
         int col = grid[0].length;
 
