@@ -54,8 +54,10 @@ public class BestMeetingPoint { // LC 296
 
      * The neat total += Z[hi--] - Z[lo++]-style summing is from larrywang2014's solution (above 1st).
      * Originally I used total += abs(Z[i] - median)-style.
+     *
+     * beats 88.66%
      */
-    public int minTotalDistanceV2(int[][] grid) { // beats 88.66%
+    public int minTotalDistanceV2(int[][] grid) {
         int row = grid.length, col = grid[0].length;
         int total = 0, Z[] = new int[row*col];
         for (int dim = 0; dim < 2; ++dim) {
