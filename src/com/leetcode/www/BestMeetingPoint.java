@@ -92,8 +92,10 @@ public class BestMeetingPoint { // LC 296
      * @return
      *
      * BucketSort-ish. Count how many people live in each row and each column. Only O(m+n) space.
+     *
+     * beats 96.76
      */
-    public int minTotalDistanceV1(int[][] grid) { // beats 96.76
+    public int minTotalDistanceV1(int[][] grid) {
         int row = grid.length, col = grid[0].length;
         int[] rowArr = new int[row], colArr = new int[col];
         for (int i = 0; i < row; ++i) {
