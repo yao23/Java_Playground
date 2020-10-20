@@ -127,11 +127,13 @@ public class BestMeetingPoint { // LC 296
     /**
      * My original solution (TLE for test case 3, pass 56/57)
      * similar problem: LC 317, Shortest Distance from All Buildings
+     *
+     * TLE for test case 3 (pass 56/57)
      */
     private int[] dx = new int[]{-1, 1, 0, 0};
     private int[] dy = new int[]{0, 0, -1, 1};
 
-    public int minTotalDistanceV0(int[][] grid) { // TLE for test case 3 (pass 56/57)
+    public int minTotalDistanceV0(int[][] grid) {
         if (grid.length == 0 || grid[0].length == 0) {
             return 0;
         }
