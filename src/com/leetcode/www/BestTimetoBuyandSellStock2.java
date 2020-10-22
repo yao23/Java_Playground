@@ -1,6 +1,12 @@
 package com.leetcode.www;
 
 public class BestTimetoBuyandSellStock2 { // LC 122
+	/**
+	 * beats 61.89%
+	 *
+	 * @param prices
+	 * @return
+	 */
 	public static int maxProfit(int[] prices) {
 		if (prices.length == 0) {
 			return 0;
@@ -18,6 +24,4 @@ public class BestTimetoBuyandSellStock2 { // LC 122
 		int[] prices = {1, 5, 3, 2, 6};
 		System.out.println("Max Profit: " + maxProfit(prices));		
 	}
-
-	// beats 61.89%
 }
