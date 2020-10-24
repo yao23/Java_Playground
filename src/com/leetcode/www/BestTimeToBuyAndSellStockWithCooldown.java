@@ -46,7 +46,13 @@ public class BestTimeToBuyAndSellStockWithCooldown { // LC 309
         return Math.max(s0[(prices.length - 1) % 2], s2[(prices.length - 1) % 2]);
     }
 
-    public int maxProfitV0(int[] prices) { // beats 20.41%
+    /**
+     * beats 20.41%
+     *
+     * @param prices
+     * @return
+     */
+    public int maxProfitV0(int[] prices) {
         int sell = 0, prev_sell = 0, buy = Integer.MIN_VALUE, prev_buy;
         for (int price : prices) {
             prev_buy = buy;
