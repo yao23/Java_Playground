@@ -4,10 +4,12 @@ public class BestTimeToBuyAndSellStockWithCooldown { // LC 309
     /**
      * https://discuss.leetcode.com/topic/31015/very-easy-to-understand-one-pass-o-n-solution-with-no-extra-space/2
      *
+     * beats 93.05%
+     *
      * @param prices
      * @return
      */
-    public int maxProfit(int[] prices) { // beats 93.05%
+    public int maxProfit(int[] prices) {
         if (prices.length<2) return 0;
         int buy = -prices[0], sell = 0, cooldown = 0;
         for(int i=1; i<prices.length; i++) {
