@@ -24,11 +24,13 @@ public class BestTimeToBuyAndSellStockWithCooldown { // LC 309
     /**
      * https://discuss.leetcode.com/topic/32836/o-n-java-solution-3ms/2
      *
+     * beats 43.43%
+     *
      * @param prices
      * @return
      */
     // DP
-    public int maxProfitV1(int[] prices) { // beats 43.43%
+    public int maxProfitV1(int[] prices) {
         if (prices == null || prices.length < 2)  {
             return 0;
         }
