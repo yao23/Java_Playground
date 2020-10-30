@@ -14,6 +14,8 @@ public class BinaryTreeLevelOrderTraversal { // LC 102
      *
      * beats 11.00%
      *
+     * [3,9,20,null,null,15,7] => [[3],[9,20],[15,7]]
+     *
      * @param root
      * @return
      */
@@ -49,6 +51,4 @@ public class BinaryTreeLevelOrderTraversal { // LC 102
 
         return result;
     }
-
-    // [3,9,20,null,null,15,7] => [[3],[9,20],[15,7]]
 }
