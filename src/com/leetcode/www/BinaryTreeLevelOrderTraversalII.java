@@ -9,6 +9,7 @@ public class BinaryTreeLevelOrderTraversalII { // LC 107
      * Runtime: 1 ms, faster than 88.64% of Java online submissions for Binary Tree Level Order Traversal II.
      * Memory Usage: 35.7 MB, less than 97.49% of Java online submissions for Binary Tree Level Order Traversal II.
      *
+     * beats 23.97%
      * @param root
      * @return
      */
@@ -47,6 +48,4 @@ public class BinaryTreeLevelOrderTraversalII { // LC 107
     }
 
     // [3,9,20,null,null,15,7] => [[15,7],[9,20],[3]]
-
-    // beats 23.97%
 }
