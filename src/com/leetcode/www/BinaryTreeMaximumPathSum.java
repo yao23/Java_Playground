@@ -44,6 +44,4 @@ public class BinaryTreeMaximumPathSum { // LC 124 (Facebook)
         helper(root, result);
         return result[0];
     }
-
-
 }
