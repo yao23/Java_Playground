@@ -7,6 +7,8 @@ public class BinaryTreePostorderTraversal { // LC 145
      * Runtime: 1 ms, faster than 49.35% of Java online submissions for Binary Tree Postorder Traversal.
      * Memory Usage: 34 MB, less than 98.78% of Java online submissions for Binary Tree Postorder Traversal.
      *
+     * beats 45.67%
+     *
      * @param root
      * @return
      */
@@ -32,5 +34,3 @@ public class BinaryTreePostorderTraversal { // LC 145
         return res;
     }
 }
-
-// beats 45.67%
