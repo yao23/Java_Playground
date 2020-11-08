@@ -6,6 +6,12 @@ import java.util.Deque;
 import java.util.List;
 
 public class BinaryTreePreorderTraversal { // LC 144
+    /**
+     * beats 23.32%
+     *
+     * @param root
+     * @return
+     */
     public List<Integer> preorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
         if (root == null) {
@@ -28,5 +34,3 @@ public class BinaryTreePreorderTraversal { // LC 144
         return res;
     }
 }
-
-// beats 23.32%
