@@ -80,10 +80,12 @@ public class BinaryTreeRightSideView { // LC 199 (Facebook)
      * Output: [1,3]
      * Expected: [1,3,4]
      *
+     * beats 22.08%
+     *
      * @param root
      * @return
      */
-    public List<Integer> rightSideViewV0(TreeNode root) { // beats 22.08%
+    public List<Integer> rightSideViewV0(TreeNode root) {
         List<Integer> result = new ArrayList<>();
         rightView(root, result, 0);
         return result;
