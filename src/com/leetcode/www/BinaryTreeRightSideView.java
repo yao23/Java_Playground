@@ -101,6 +101,5 @@ public class BinaryTreeRightSideView { // LC 199 (Facebook)
 
         rightView(curr.right, result, currDepth + 1);
         rightView(curr.left, result, currDepth + 1);
-
     }
 }
