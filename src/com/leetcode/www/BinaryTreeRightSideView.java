@@ -37,10 +37,11 @@ public class BinaryTreeRightSideView { // LC 199 (Facebook)
      * Runtime: 1 ms, faster than 75.35% of Java online submissions for Binary Tree Right Side View.
      * Memory Usage: 38.2 MB, less than 5.88% of Java online submissions for Binary Tree Right Side View.
      *
+     * BFS, reverse level traversal
+     *
      * @param root
      * @return
      */
-    // BFS, reverse level traversal
     public List<Integer> rightSideViewV1(TreeNode root) { // beats 22.08%
         List<Integer> result = new ArrayList<>();
         Queue<TreeNode> queue = new LinkedList<>();
