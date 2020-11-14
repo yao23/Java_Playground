@@ -12,11 +12,12 @@ public class BinaryTreeRightSideView { // LC 199 (Facebook)
      * Memory Usage: 38.8 MB, less than 5.88% of Java online submissions for Binary Tree Right Side View.
      *
      * Divide and Conquer
+     * beats 22.08%
      *
      * @param root
      * @return
      */
-    public List<Integer> rightSideView(TreeNode root) { // beats 22.08%
+    public List<Integer> rightSideView(TreeNode root) {
         if (root == null) {
             return new ArrayList<>();
         }
