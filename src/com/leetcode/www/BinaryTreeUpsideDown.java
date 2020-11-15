@@ -1,7 +1,12 @@
 package com.leetcode.www;
 
 public class BinaryTreeUpsideDown { // LC 156
-    // recursively to process left subtree
+    /**
+     * recursively to process left subtree
+     *
+     * @param root
+     * @return
+     */
     public TreeNode upsideDownBinaryTree(TreeNode root) { // beats 48.04%
         if (root == null) {
             return root;
