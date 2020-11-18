@@ -33,10 +33,12 @@ public class BinaryTreeUpsideDown { // LC 156
     /**
      * iterative solution, easier to understand
      *
+     * beats 48.04%
+     *
      * @param root
      * @return
      */
-    public TreeNode upsideDownBinaryTreeV1(TreeNode root) { // beats 48.04%
+    public TreeNode upsideDownBinaryTreeV1(TreeNode root) {
         if (root == null) {
             return root;
         } else {
