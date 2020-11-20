@@ -60,11 +60,13 @@ public class BinaryTreeUpsideDown { // LC 156
     /**
      * post order to level order traversal
      *
+     * not working, failed at test case 3
+     *
      * @param root
      * @return
      */
     private TreeNode out = null;
-    public TreeNode UpsideDownBinaryTreeV2(TreeNode root) { // not working, failed at test case 3
+    public TreeNode UpsideDownBinaryTreeV2(TreeNode root) {
         TreeNode dummy = new TreeNode(0);
         dummy.left = new TreeNode(0);
         out = dummy;
