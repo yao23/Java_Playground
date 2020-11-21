@@ -6,6 +6,8 @@ public class BinaryTreeUpsideDown { // LC 156
      *
      * beats 48.04%
      *
+     * [] => []
+     *
      * @param root
      * @return
      */
@@ -98,6 +100,5 @@ public class BinaryTreeUpsideDown { // LC 156
     }
 }
 
-// [] => []
 // [1,2,3,4,5] => [4,5,2,#,#,3,1]
 // [1,2] => [2,null,1]
