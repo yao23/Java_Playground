@@ -64,10 +64,12 @@ public class BinaryTreeZigzagLevelOrderTraversal { // LC 103
      * Runtime: 1 ms, faster than 75.92% of Java online submissions for Binary Tree Zigzag Level Order Traversal.
      * Memory Usage: 35.2 MB, less than 97.50% of Java online submissions for Binary Tree Zigzag Level Order Traversal.
      *
+     * beats 38.80%
+     *
      * @param root
      * @return
      */
-    public List<List<Integer>> zigzagLevelOrderV1(TreeNode root) { // beats 38.80%
+    public List<List<Integer>> zigzagLevelOrderV1(TreeNode root) {
         List<List<Integer>> result = new ArrayList<>();
         if (root == null) {
             return result;
