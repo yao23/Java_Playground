@@ -115,6 +115,8 @@ public class BinaryTreeZigzagLevelOrderTraversal { // LC 103
     /**
      * not working
      *
+     * [3,9,20,null,null,15,7] => [[3],[20,9],[15,7]]
+     *
      * @param root
      * @return
      */
@@ -166,6 +168,4 @@ public class BinaryTreeZigzagLevelOrderTraversal { // LC 103
             return result;
         }
     }
-
-    // [3,9,20,null,null,15,7] => [[3],[20,9],[15,7]]
 }
