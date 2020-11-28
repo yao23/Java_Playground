@@ -10,7 +10,13 @@ public class BinaryWatch { // LC 401
     private int totalMinute = 59;
     private int[] time = new int[] {1, 2, 4, 8, 16, 32, 1, 2, 4, 8};
 
-    public List<String> readBinaryWatch(int num) { // 54.57%
+    /**
+     * 54.57%
+     *
+     * @param num
+     * @return
+     */
+    public List<String> readBinaryWatch(int num) {
         List<String> res = new ArrayList<>();
         if (num == 0) {
             res.add("0:00");
