@@ -60,7 +60,13 @@ public class BinaryWatch { // LC 401
         }
     }
 
-    public List<String> readBinaryWatchV1(int num) { // beats 25.93%
+    /**
+     * beats 25.93%
+     *
+     * @param num
+     * @return
+     */
+    public List<String> readBinaryWatchV1(int num) {
         List<String> times = new ArrayList<>();
         for (int h = 0; h < 12; h++) {
             for (int m = 0; m < 60; m++) {
