@@ -63,6 +63,9 @@ public class BinaryWatch { // LC 401
     /**
      * beats 25.93%
      *
+     * n = 0
+     * ["0:00"]
+     *
      * @param num
      * @return
      */
@@ -78,9 +81,6 @@ public class BinaryWatch { // LC 401
         return times;
     }
 }
-
-// n = 0
-// ["0:00"]
 
 // Input: n = 1
 // Return: ["1:00", "2:00", "4:00", "8:00", "0:01", "0:02", "0:04", "0:08", "0:16", "0:32"]
