@@ -1,7 +1,13 @@
 package com.leetcode.www;
 
 public class BurstBalloons { // LC 312
-    public int maxCoins(int[] nums) { // beats 94.12% (Memorized Search)
+    /**
+     * beats 94.12% (Memorized Search)
+     *
+     * @param nums
+     * @return
+     */
+    public int maxCoins(int[] nums) {
         int len = nums.length;
         if (len == 0) {
             return 0;
