@@ -45,7 +45,13 @@ public class BurstBalloons { // LC 312
         return ans;
     }
 
-    public int maxCoinsV0(int[] nums) { // beats 53.06% (DP)
+    /**
+     * beats 53.06% (DP)
+     *
+     * @param nums
+     * @return
+     */
+    public int maxCoinsV0(int[] nums) {
         int len = nums.length;
         if (len == 0) {
             return 0;
