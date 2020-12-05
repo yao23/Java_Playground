@@ -1,7 +1,13 @@
 package com.leetcode.www;
 
 public class Candy { // LC 135
-    public int candy(int[] ratings) { // beats 67.13% (1 pass, greedy), time: O(n), space: O(1)
+    /**
+     * beats 67.13% (1 pass, greedy), time: O(n), space: O(1)
+     *
+     * @param ratings
+     * @return
+     */
+    public int candy(int[] ratings) {
         if (ratings == null || ratings.length == 0) {
             return -1;
         }
