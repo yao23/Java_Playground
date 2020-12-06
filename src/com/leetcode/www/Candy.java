@@ -48,7 +48,13 @@ public class Candy { // LC 135
         return sum;
     }
 
-    public int candyV0(int[] ratings) { // beats 26.73% (2 passes), time: O(n), space: O(n)
+    /**
+     * beats 26.73% (2 passes), time: O(n), space: O(n)
+     *
+     * @param ratings
+     * @return
+     */
+    public int candyV0(int[] ratings) {
         if (ratings == null || ratings.length == 0) {
             return -1;
         }
