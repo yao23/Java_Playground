@@ -53,6 +53,7 @@ public class Candy { // LC 135
      *
      * [0] => 1
      * [0,4,5,5,2,1,0,0] => 17
+     * [2,3,2] => 4
      *
      * @param ratings
      * @return
@@ -94,5 +95,3 @@ public class Candy { // LC 135
         return sum;
     }
 }
-
-// [2,3,2] => 4
