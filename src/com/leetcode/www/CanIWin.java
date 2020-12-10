@@ -4,7 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CanIWin { // LC 464
-    // https://discuss.leetcode.com/topic/68773/java-solution
+    /**
+     * https://discuss.leetcode.com/topic/68773/java-solution
+     *
+     * @param n
+     * @param total
+     * @return
+     */
     public boolean canIWin(int n, int total) { // beats 98.05%
         if (total <= 1) {
             return true;
