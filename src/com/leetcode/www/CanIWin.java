@@ -7,11 +7,13 @@ public class CanIWin { // LC 464
     /**
      * https://discuss.leetcode.com/topic/68773/java-solution
      *
+     * beats 98.05%
+     *
      * @param n
      * @param total
      * @return
      */
-    public boolean canIWin(int n, int total) { // beats 98.05%
+    public boolean canIWin(int n, int total) {
         if (total <= 1) {
             return true;
         }
