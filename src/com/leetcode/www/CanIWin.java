@@ -55,11 +55,13 @@ public class CanIWin { // LC 464
     /**
      * https://discuss.leetcode.com/topic/68896/java-solution-using-hashmap-with-detailed-explanation/2
      *
+     * beats 71.26%
+     *
      * @param maxChoosableInteger
      * @param desiredTotal
      * @return
      */
-    public boolean canIWinV1(int maxChoosableInteger, int desiredTotal) { // beats 71.26%
+    public boolean canIWinV1(int maxChoosableInteger, int desiredTotal) {
         int sum = (1+maxChoosableInteger)*maxChoosableInteger/2;
         if(sum < desiredTotal) return false;
         if(desiredTotal <= 0) return true;
