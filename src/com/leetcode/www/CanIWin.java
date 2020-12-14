@@ -93,7 +93,12 @@ public class CanIWin { // LC 464
         return map.get(key);
     }
 
-    // transfer boolean[] to an Integer
+    /**
+     * transfer boolean[] to an Integer
+     *
+     * @param used
+     * @return
+     */
     private int format(boolean[] used){
         int num = 0;
         for(boolean b: used){
