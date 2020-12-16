@@ -111,9 +111,11 @@ public class CanIWin { // LC 464
     /**
      * https://discuss.leetcode.com/topic/68792/java-easy-strightforward-solution-with-explanation
      *
+     * beats 22.78%
+     *
      */
     Map<Integer, Boolean> set[];
-    public boolean canIWinV0(int maxChoosableInteger, int desiredTotal) { // beats 22.78%
+    public boolean canIWinV0(int maxChoosableInteger, int desiredTotal) {
         if (maxChoosableInteger >= desiredTotal) {
             return true;
         }
