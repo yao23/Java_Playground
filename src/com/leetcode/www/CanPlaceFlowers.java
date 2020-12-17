@@ -1,7 +1,14 @@
 package com.leetcode.www;
 
 public class CanPlaceFlowers { // LC 605
-    public boolean canPlaceFlowers(int[] flowerbed, int n) { // beats 86.77%
+    /**
+     * beats 86.77%
+     *
+     * @param flowerbed
+     * @param n
+     * @return
+     */
+    public boolean canPlaceFlowers(int[] flowerbed, int n) {
         int i = 0, count = 0;
         while (i < flowerbed.length) {
             if (flowerbed[i] == 0 && (i == 0 || flowerbed[i - 1] == 0)
