@@ -24,11 +24,10 @@ public class CanPlaceFlowers { // LC 605
         return false;
     }
 
-    // DP
-
     /**
      * beats 0.57%
      *
+     * DP
      * A Java DP solution runs on
      * K: number of flowers to plant
      * N: length of flower bed
