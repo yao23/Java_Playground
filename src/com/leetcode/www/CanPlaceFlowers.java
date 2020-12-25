@@ -34,13 +34,13 @@ public class CanPlaceFlowers { // LC 605
      * O(K) space, O(NK) time
      *
      * dp[i][j]: can put j flowers in first i place, i, j starting from 1
+     * dp[i][j] =
      *
      * @param flowerbed
      * @param n
      * @return
      */
     public boolean canPlaceFlowersV2(int[] flowerbed, int n) {
-        //dp[i][j] =
         //          dp[i-1][j] || dp[i-2][j-1], if flower[i] == 0
         //          dp[i-2][j], if flower[i] == 1
 
