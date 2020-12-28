@@ -42,9 +42,7 @@ public class CanPlaceFlowers { // LC 605
      * @return
      */
     public boolean canPlaceFlowersV2(int[] flowerbed, int n) {
-
-        // nothing to plant
-        if (n == 0) {
+        if (n == 0) { // nothing to plant
             return true;
         }
 
