@@ -46,8 +46,7 @@ public class CanPlaceFlowers { // LC 605
             return true;
         }
 
-        //no place to plant
-        if (flowerbed.length == 0) {
+        if (flowerbed.length == 0) { // no place to plant
             return false;
         }
 
