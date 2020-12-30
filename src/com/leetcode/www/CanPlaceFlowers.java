@@ -53,8 +53,7 @@ public class CanPlaceFlowers { // LC 605
         boolean[][] dp = new boolean[3][n + 1];
         dp[0][0] = true;
 
-        // init: first j flowers put into non-space
-        for (int j = 1; j <= n; j++) {
+        for (int j = 1; j <= n; j++) { // init: first j flowers put into non-space
             dp[0][j] = false;
         }
 
