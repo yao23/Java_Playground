@@ -57,8 +57,7 @@ public class CanPlaceFlowers { // LC 605
             dp[0][j] = false;
         }
 
-        // init: first j flowers put into first space
-        for (int j = 1; j <= n; j++) {
+        for (int j = 1; j <= n; j++) { // init: first j flowers put into first space
             dp[1][j] = j == 1 && flowerbed[j - 1] == 0;
         }
 
