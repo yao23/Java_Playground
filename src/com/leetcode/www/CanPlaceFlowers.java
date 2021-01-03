@@ -65,8 +65,7 @@ public class CanPlaceFlowers { // LC 605
             dp[i][0] = true;
         }
 
-        //dp
-        for (int i = 2; i <= flowerbed.length; i++) {
+        for (int i = 2; i <= flowerbed.length; i++) { // dp
             for (int j = 1; j <= n; j++) {
                 if (flowerbed[i - 1] == 0) {
                     dp[i % 3][j] = dp[(i - 1) % 3][j] || dp[(i - 2) % 3][j - 1] && flowerbed[i - 2] == 0;
