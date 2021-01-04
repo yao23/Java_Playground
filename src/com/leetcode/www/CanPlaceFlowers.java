@@ -80,7 +80,13 @@ public class CanPlaceFlowers { // LC 605
         return dp[flowerbed.length % 3][n];
     }
 
-    // greedy
+    /**
+     * greedy
+     *
+     * @param flowerbed
+     * @param n
+     * @return
+     */
     public boolean canPlaceFlowersV1(int[] flowerbed, int n) { // beats 12.95%
         int count = 0;
         for (int i = 0; i < flowerbed.length && count < n; i++) {
