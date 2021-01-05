@@ -83,11 +83,13 @@ public class CanPlaceFlowers { // LC 605
     /**
      * greedy
      *
+     * beats 12.95%
+     *
      * @param flowerbed
      * @param n
      * @return
      */
-    public boolean canPlaceFlowersV1(int[] flowerbed, int n) { // beats 12.95%
+    public boolean canPlaceFlowersV1(int[] flowerbed, int n) {
         int count = 0;
         for (int i = 0; i < flowerbed.length && count < n; i++) {
             if (flowerbed[i] == 0) {
