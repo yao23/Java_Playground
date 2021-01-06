@@ -106,7 +106,14 @@ public class CanPlaceFlowers { // LC 605
         return count == n;
     }
 
-    public boolean canPlaceFlowersV0(int[] flowerbed, int n) { // beats 20.42%
+    /**
+     * beats 20.42%
+     *
+     * @param flowerbed
+     * @param n
+     * @return
+     */
+    public boolean canPlaceFlowersV0(int[] flowerbed, int n) {
         int len = flowerbed.length;
         for (int i = 0; i < len && n > 0; i++) {
             if (isValid(flowerbed, i)) {
