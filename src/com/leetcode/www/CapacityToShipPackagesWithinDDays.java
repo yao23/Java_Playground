@@ -1,2 +1,5 @@
-public class CapacityToShipPackagesWithinDDays { // 1011 [Google]
+public class CapacityToShipPackagesWithinDDays {
+    /**
+     * 1011 [Google]
+     */
 }
