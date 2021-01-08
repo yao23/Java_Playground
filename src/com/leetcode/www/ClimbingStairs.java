@@ -54,6 +54,12 @@ public class ClimbingStairs { // LC 70
         }
     }
 
+    /**
+     * 1 => 1
+     *
+     * @param n
+     * @return
+     */
     private int climb(int n) { // Time Limit Exceeded for n = 44
         if (n <= 2) {
             return n;
@@ -62,7 +68,6 @@ public class ClimbingStairs { // LC 70
         }
     }
 
-    // 1 => 1
     // 2 => 2
     // 3 => 3
     // 4 => 5
