@@ -57,6 +57,7 @@ public class ClimbingStairs { // LC 70
     /**
      * 1 => 1
      * 2 => 2
+     * 3 => 3
      *
      * @param n
      * @return
@@ -70,7 +71,6 @@ public class ClimbingStairs { // LC 70
     }
 
 
-    // 3 => 3
     // 4 => 5
     // 5 => 8
     // 44 => 1134903170
