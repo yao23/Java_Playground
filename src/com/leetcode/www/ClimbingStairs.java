@@ -60,6 +60,7 @@ public class ClimbingStairs { // LC 70
      * 3 => 3
      * 4 => 5
      * 5 => 8
+     * 44 => 1134903170
      *
      * @param n
      * @return
@@ -71,9 +72,6 @@ public class ClimbingStairs { // LC 70
             return climb(n - 1) + climb(n - 2);
         }
     }
-
-
-    // 44 => 1134903170
 
     // beats 12.92%
 }
