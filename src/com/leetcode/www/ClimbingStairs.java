@@ -74,5 +74,4 @@ public class ClimbingStairs { // LC 70
             return climb(n - 1) + climb(n - 2);
         }
     }
-
 }
