@@ -77,8 +77,7 @@ public class CloneGraph { // LC 133 - Graph traversal (DFS/BFS + HashMap)
         return map.get(node);
     }
 
-    // Definition for a Node.
-    class Node {
+    class Node { // Definition for a Node.
         public int val;
         public List<Node> neighbors;
 
