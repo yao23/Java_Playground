@@ -37,7 +37,14 @@ public class CoinChange { // LC 322
         }
     }
 
-    public int coinChangeV0(int[] coins, int amount) { // TLE for [3,7,405,436], 8839
+    /**
+     * TLE for [3,7,405,436], 8839
+     *
+     * @param coins
+     * @param amount
+     * @return
+     */
+    public int coinChangeV0(int[] coins, int amount) {
         int[] result = new int[] { Integer.MAX_VALUE};
         Arrays.sort(coins);
         helper(coins, amount, 0, new ArrayList<Integer>(), result);
