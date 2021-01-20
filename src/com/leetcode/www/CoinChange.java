@@ -12,6 +12,7 @@ public class CoinChange { // LC 322
      * Runtime: 10 ms, faster than 84.43% of Java online submissions for Coin Change.
      * Memory Usage: 34.8 MB, less than 99.99% of Java online submissions for Coin Change.
      *
+     * [1], 0 => 0
      * @param coins
      * @param amount
      * @return
@@ -67,7 +68,7 @@ public class CoinChange { // LC 322
         }
     }
 
-    // [1], 0 => 0
+
     // [1,2,5], 11 => 3 (5 + 5 + 1)
     // [3,7,405,436], 8839 => 25
 
