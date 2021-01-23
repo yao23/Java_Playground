@@ -15,6 +15,7 @@ public class CoinChange { // LC 322
      * [1], 0 => 0
      * [1,2,5], 11 => 3 (5 + 5 + 1)
      * [3,7,405,436], 8839 => 25
+     * beats 70.94%
      * @param coins
      * @param amount
      * @return
@@ -74,5 +75,5 @@ public class CoinChange { // LC 322
 
 
 
-    // beats 70.94%
+
 }
