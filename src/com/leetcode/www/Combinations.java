@@ -10,6 +10,7 @@ public class Combinations { // LC 77
      *
      * n = 4 and k = 2,
      * [ [2,4], [3,4], [2,3], [1,2], [1,3], [1,4]]
+     *
      * @param n
      * @param k
      * @return
