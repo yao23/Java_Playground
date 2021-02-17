@@ -7,7 +7,7 @@ import java.util.List;
 public class CombinationSum { // LC 39
     /**
      * [2, 3, 6, 7], 7 => [[7],[2, 2, 3]]
-     *
+     * beats 58.30%
      * @param candidates
      * @param target
      * @return
@@ -36,4 +36,3 @@ public class CombinationSum { // LC 39
 
 
 
-// beats 58.30%
