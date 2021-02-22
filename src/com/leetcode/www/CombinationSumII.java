@@ -5,6 +5,12 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CombinationSumII { // LC 40
+    /**
+     * [10, 1, 2, 7, 6, 1, 5], 8 => [[1, 7],[1, 2, 5],[2, 6],[1, 1, 6]]
+     * @param candidates
+     * @param target
+     * @return
+     */
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         List<List<Integer>> res = new ArrayList<>();
         Arrays.sort(candidates);
@@ -30,6 +36,6 @@ public class CombinationSumII { // LC 40
     }
 }
 
-// [10, 1, 2, 7, 6, 1, 5], 8 => [[1, 7],[1, 2, 5],[2, 6],[1, 1, 6]]
+
 
 // beats 66.82%
