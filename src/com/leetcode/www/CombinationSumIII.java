@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CombinationSumIII { // LC 216
+    /**
+     * // k = 3, n = 7 => [[1,2,4]]
+     * @param k
+     * @param n
+     * @return
+     */
     public List<List<Integer>> combinationSum3(int k, int n) {
         List<List<Integer>> res = new ArrayList<>();
         helper(res, new ArrayList<>(), 1, n, k);
@@ -26,7 +32,7 @@ public class CombinationSumIII { // LC 216
     }
 }
 
-// k = 3, n = 7 => [[1,2,4]]
+
 // k = 3, n = 9 => [[1,2,6], [1,3,5], [2,3,4]]
 
 // beats 47.84%
