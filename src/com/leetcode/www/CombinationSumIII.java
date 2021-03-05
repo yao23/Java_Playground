@@ -5,7 +5,7 @@ import java.util.List;
 
 public class CombinationSumIII { // LC 216
     /**
-     * / k = 3, n = 7 => [[1,2,4]]
+     *  k = 3, n = 7 => [[1,2,4]]
      * @param k
      * @param n
      * @return
