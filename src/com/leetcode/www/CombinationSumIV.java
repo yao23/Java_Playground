@@ -3,6 +3,12 @@ package com.leetcode.www;
 import java.util.Arrays;
 
 public class CombinationSumIV { // LC 377
+    /**
+     * // nums = [1, 2, 3], target = 4 => 7
+     * @param nums
+     * @param target
+     * @return
+     */
     public int combinationSum4(int[] nums, int target) { // recursion
         int[] count = new int[target + 1];
         Arrays.fill(count, -1);
@@ -39,7 +45,7 @@ public class CombinationSumIV { // LC 377
     }
 }
 
-// nums = [1, 2, 3], target = 4 => 7
+
 // (1, 1, 1, 1)
 // (1, 1, 2)
 // (1, 2, 1)
