@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class CombinationSumIV { // LC 377
     /**
-     *  nums = [1, 2, 3], target = 4 => 7
+     * nums = [1, 2, 3], target = 4 => 7
      * @param nums
      * @param target
      * @return
