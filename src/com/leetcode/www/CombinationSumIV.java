@@ -6,7 +6,7 @@ public class CombinationSumIV { // LC 377
     /**
      * nums = [1, 2, 3], target = 4 => 7
      * (1, 1, 1, 1)
-     *  (1, 1, 2)
+     * (1, 1, 2)
      * @param nums
      * @param target
      * @return
