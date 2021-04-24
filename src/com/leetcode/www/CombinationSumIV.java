@@ -12,7 +12,7 @@ public class CombinationSumIV { // LC 377
      * (2, 1, 1)
      * (2, 2)
      * (3, 1)
-     * / beats 84.97%
+     *  beats 84.97%
      *
      * @param nums
      * @param target
