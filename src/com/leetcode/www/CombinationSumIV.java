@@ -39,7 +39,13 @@ public class CombinationSumIV { // LC 377
         return res;
     }
 
-    public int combinationSum4V1(int[] nums, int target) { // iterative, beats 32.91%
+    /**
+     * // iterative, beats 32.91%
+     * @param nums
+     * @param target
+     * @return
+     */
+    public int combinationSum4V1(int[] nums, int target) {
         int[] count = new int[target + 1];
         count[0] = 1;
         for (int i = 1; i < count.length; i++) {
