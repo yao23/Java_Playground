@@ -4,7 +4,7 @@ public class CompareVersionNumbers { // LC 165
     /**
      * Runtime: 0 ms, faster than 100.00% of Java online submissions for Compare Version Numbers.
      * Memory Usage: 33.3 MB, less than 64.51% of Java online submissions for Compare Version Numbers.
-     * / "1", "0" => 1
+     *  "1", "0" => 1
      * @param version1
      * @param version2
      * @return
