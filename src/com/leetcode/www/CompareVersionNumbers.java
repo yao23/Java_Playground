@@ -6,12 +6,12 @@ public class CompareVersionNumbers { // LC 165
      * Memory Usage: 33.3 MB, less than 64.51% of Java online submissions for Compare Version Numbers.
      *
      * "1", "0" => 1
-     *
+     * beats 96.33%
      * @param version1
      * @param version2
      * @return
      */
-    public int compareVersion(String version1, String version2) { // beats 96.33%
+    public int compareVersion(String version1, String version2) {
         int temp1 = 0, temp2 = 0;
         int len1 = version1.length(), len2 = version2.length();
         int i = 0, j = 0;
