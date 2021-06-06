@@ -42,6 +42,7 @@ public class CompareVersionNumbers { // LC 165
      * Memory Usage: 33.4 MB, less than 63.19% of Java online submissions for Compare Version Numbers.
      *
      * beats 11.74%
+     *
      * @param version1
      * @param version2
      * @return
