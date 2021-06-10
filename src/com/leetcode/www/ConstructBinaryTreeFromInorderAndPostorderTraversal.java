@@ -5,12 +5,12 @@ import java.util.Map;
 
 public class ConstructBinaryTreeFromInorderAndPostorderTraversal { // LC 106
     /**
-     *
+     *// beats 96.19%
      * @param inorder
      * @param postorder
      * @return
      */
-    public TreeNode buildTree(int[] inorder, int[] postorder) { // beats 96.19%
+    public TreeNode buildTree(int[] inorder, int[] postorder) {
         if (postorder == null || inorder == null || postorder.length != inorder.length) {
             return null;
         }
