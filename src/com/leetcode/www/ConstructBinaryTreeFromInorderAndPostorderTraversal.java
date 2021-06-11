@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class ConstructBinaryTreeFromInorderAndPostorderTraversal { // LC 106
     /**
-     */ beats 96.19%
+     * beats 96.19%
      * @param inorder
      * @param postorder
      * @return
