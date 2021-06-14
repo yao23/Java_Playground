@@ -41,6 +41,12 @@ public class ConstructBinaryTreeFromInorderAndPostorderTraversal { // LC 106
         return root;
     }
 
+    /**
+     *
+     * @param inorder
+     * @param postorder
+     * @return
+     */
     public TreeNode buildTreeV0(int[] inorder, int[] postorder) { // beats 69.25%
         if (postorder == null || inorder == null || postorder.length != inorder.length) {
             return null;
