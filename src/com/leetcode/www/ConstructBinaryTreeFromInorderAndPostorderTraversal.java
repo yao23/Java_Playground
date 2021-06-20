@@ -43,6 +43,7 @@ public class ConstructBinaryTreeFromInorderAndPostorderTraversal { // LC 106
 
     /**
      * beats 69.25%
+     *
      * @param inorder
      * @param postorder
      * @return
