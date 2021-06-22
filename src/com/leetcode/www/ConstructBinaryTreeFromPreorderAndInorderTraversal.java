@@ -4,7 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ConstructBinaryTreeFromPreorderAndInorderTraversal { // LC 105
-    public TreeNode buildTree(int[] preorder, int[] inorder) { // beats 97.86%
+    /**
+     * // beats 97.86%
+     * @param preorder
+     * @param inorder
+     * @return
+     */
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
         // Preorder: Traverse and construct the tree
         // Inorder: Check leftmost boundary
         int[] curIn = {0};
