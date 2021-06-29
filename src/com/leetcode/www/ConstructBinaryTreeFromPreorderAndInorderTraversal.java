@@ -6,7 +6,7 @@ import java.util.Map;
 public class ConstructBinaryTreeFromPreorderAndInorderTraversal { // LC 105
     /**
      * beats 97.86%
-     * / [],[] => []
+     *  [],[] => []
      *
      * @param preorder
      * @param inorder
