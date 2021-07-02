@@ -34,7 +34,13 @@ public class ConstructBinaryTreeFromPreorderAndInorderTraversal { // LC 105
         return root;
     }
 
-    public TreeNode buildTreeV0(int[] preorder, int[] inorder) { // beats 82.18%
+    /**
+     *  // beats 82.18%
+     * @param preorder
+     * @param inorder
+     * @return
+     */
+    public TreeNode buildTreeV0(int[] preorder, int[] inorder) {
         if (preorder == null || inorder == null || preorder.length != inorder.length) {
             return null;
         }
