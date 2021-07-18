@@ -1,7 +1,7 @@
 package com.leetcode.www;
 
 /**
- *  Definition for a QuadTree node.
+ * Definition for a QuadTree node.
  */
 class Node {
     public boolean val;
