@@ -4,7 +4,12 @@ package com.leetcode.www;
  * Created by liyao on 6/10/17.
  */
 public class ContainerWithMostWater { // LC 11
-    public int maxArea(int[] height) { // optimal solution
+    /**
+     * // optimal solution
+     * @param height
+     * @return
+     */
+    public int maxArea(int[] height) {
         int result = 0;
         int left = 0, right = height.length - 1;
 
