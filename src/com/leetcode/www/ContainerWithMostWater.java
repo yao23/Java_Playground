@@ -31,7 +31,12 @@ public class ContainerWithMostWater { // LC 11
         return result;
     }
 
-    public int maxAreaV0(int[] height) { // Time Limit Exceeded
+    /**
+     * // Time Limit Exceeded
+     * @param height
+     * @return
+     */
+    public int maxAreaV0(int[] height) {
         int result = 0;
         int len = height.length;
 
