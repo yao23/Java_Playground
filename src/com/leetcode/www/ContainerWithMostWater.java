@@ -12,6 +12,7 @@ public class ContainerWithMostWater { // LC 11
      * [3,2,1,3] => 9
      *
      * beats 33.22%
+     *
      * @param height
      * @return
      */
