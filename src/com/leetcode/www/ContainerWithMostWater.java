@@ -59,5 +59,4 @@ public class ContainerWithMostWater { // LC 11
 
         return result;
     }
-
 }
