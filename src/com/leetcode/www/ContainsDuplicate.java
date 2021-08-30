@@ -6,6 +6,7 @@ import java.util.Set;
 public class ContainsDuplicate { // LC 217
     /**
      * beats 68.65%
+     *
      * @param nums
      * @return
      */
