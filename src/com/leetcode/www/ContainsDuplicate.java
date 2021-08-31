@@ -20,7 +20,12 @@ public class ContainsDuplicate { // LC 217
         return false;
     }
 
-    public boolean containsDuplicateV0(int[] nums) { // beats 27.96%
+    /**
+     * // beats 27.96%
+     * @param nums
+     * @return
+     */
+    public boolean containsDuplicateV0(int[] nums) {
         Set<Integer> set = new HashSet<>();
         for (int i = 0; i < nums.length; i++) {
             if (set.contains(nums[i])) {
