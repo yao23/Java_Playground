@@ -22,6 +22,7 @@ public class ContainsDuplicate { // LC 217
 
     /**
      * beats 27.96%
+     *
      * @param nums
      * @return
      */
