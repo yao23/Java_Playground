@@ -6,7 +6,13 @@ import java.util.Map;
 import java.util.Set;
 
 public class ContainsDuplicateII { // LC 219
-    public boolean containsNearbyDuplicate(int[] nums, int k) { // beats 93.93%
+    /**
+     *  // beats 93.93%
+     * @param nums
+     * @param k
+     * @return
+     */
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
         Set<Integer> set = new HashSet<>();
         for (int i = 0; i < nums.length; i++) {
             if (i > k) {
