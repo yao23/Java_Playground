@@ -26,7 +26,13 @@ public class ContainsDuplicateII { // LC 219
         return false;
     }
 
-    public boolean containsNearbyDuplicateV0(int[] nums, int k) { // beats 39.90%
+    /**
+     *  // beats 39.90%
+     * @param nums
+     * @param k
+     * @return
+     */
+    public boolean containsNearbyDuplicateV0(int[] nums, int k) {
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             if (map.containsKey(nums[i])) {
