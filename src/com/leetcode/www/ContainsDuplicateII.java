@@ -8,7 +8,7 @@ import java.util.Set;
 public class ContainsDuplicateII { // LC 219
     /**
      * beats 93.93%
-     */ [], 0 => false
+     * [], 0 => false
      * @param nums
      * @param k
      * @return
