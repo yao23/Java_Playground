@@ -18,12 +18,13 @@ public class ContainsDuplicateIII { // LC 220
      * possible bucket size, i.e. t and t + 1. We just choose it to be t and a bucket mapping to be num / t.
      * Another complication is that negative ints are allowed. A simple num / t just shrinks everything towards 0.
      * Therefore, we can just reposition every element to start from Integer.MIN_VALUE.
+     * // beats 84.42%
      * @param nums
      * @param k
      * @param t
      * @return
      */
-    public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) { // beats 84.42%
+    public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
         if (k < 1 || t < 0) return false;
         Map<Long, Long> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
