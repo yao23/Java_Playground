@@ -18,6 +18,7 @@ public class ContainsDuplicateIII { // LC 220
      * possible bucket size, i.e. t and t + 1. We just choose it to be t and a bucket mapping to be num / t.
      * Another complication is that negative ints are allowed. A simple num / t just shrinks everything towards 0.
      * Therefore, we can just reposition every element to start from Integer.MIN_VALUE.
+     *
      *  beats 84.42%
      *
      * @param nums
