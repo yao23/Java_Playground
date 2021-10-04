@@ -19,6 +19,7 @@ public class ContainsDuplicateIII { // LC 220
      * Another complication is that negative ints are allowed. A simple num / t just shrinks everything towards 0.
      * Therefore, we can just reposition every element to start from Integer.MIN_VALUE.
      *
+     * // [], 0, 0 => false
      * beats 84.42%
      *
      * @param nums
@@ -74,6 +75,6 @@ public class ContainsDuplicateIII { // LC 220
     }
 }
 
-// [], 0, 0 => false
+
 // [-2147483648,-2147483647], 3, 3 => true
 // [-1, 2147483647], 1, 2147483647 => false
