@@ -20,6 +20,7 @@ public class ContainsDuplicateIII { // LC 220
      * Therefore, we can just reposition every element to start from Integer.MIN_VALUE.
      *
      * [], 0, 0 => false
+     *
      * beats 84.42%
      *
      * @param nums
