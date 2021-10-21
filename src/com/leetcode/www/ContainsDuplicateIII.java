@@ -50,7 +50,14 @@ public class ContainsDuplicateIII { // LC 220
         return false;
     }
 
-    public boolean containsNearbyAlmostDuplicateV0(int[] nums, int k, int t) { // beats 70.46%
+    /**
+     * // beats 70.46%
+     * @param nums
+     * @param k
+     * @param t
+     * @return
+     */
+    public boolean containsNearbyAlmostDuplicateV0(int[] nums, int k, int t) {
         if (t < 0) return false;
         Map<Long, Long> d = new HashMap<>();
         long w = (long)t + 1;
