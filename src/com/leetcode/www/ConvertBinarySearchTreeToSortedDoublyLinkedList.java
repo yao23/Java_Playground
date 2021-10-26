@@ -175,7 +175,13 @@ public class ConvertBinarySearchTreeToSortedDoublyLinkedList { // LC 426 (Facebo
 
         return connect(connect(leftHead, root), rightHead);
     }
-    // list1 and list2 must be circular doubly linked list
+
+    /**
+     * // list1 and list2 must be circular doubly linked list
+     * @param list1
+     * @param list2
+     * @return
+     */
     private TreeNode connect(TreeNode list1, TreeNode list2) {
         if (list2 == null) {
             return list1;
