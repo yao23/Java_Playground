@@ -178,6 +178,7 @@ public class ConvertBinarySearchTreeToSortedDoublyLinkedList { // LC 426 (Facebo
 
     /**
      *  list1 and list2 must be circular doubly linked list
+     *
      * @param list1
      * @param list2
      * @return
