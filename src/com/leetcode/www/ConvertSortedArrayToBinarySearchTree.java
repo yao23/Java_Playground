@@ -3,10 +3,18 @@ package com.leetcode.www;
 import java.util.Deque;
 import java.util.LinkedList;
 
-public class ConvertSortedArrayToBinarySearchTree { // LC 108
+public class ConvertSortedArrayToBinarySearchTree {
     public TreeNode sortedArrayToBST(int[] num) { // beats 11.10% (recursive)
         return generateBST(num, 0, num.length-1);
     }
+
+    /**
+     *  // LC 108
+     * @param num
+     * @param start
+     * @param end
+     * @return
+     */
     private TreeNode generateBST(int[] num, int start, int end) {
         if (end < start) {
             return null;
