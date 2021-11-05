@@ -27,7 +27,12 @@ public class ConvertSortedArrayToBinarySearchTree {
         return root;
     }
 
-    public TreeNode sortedArrayToBSTV0(int[] nums) { // beats 1.40% (iterative)
+    /**
+     * // beats 1.40% (iterative)
+     * @param nums
+     * @return
+     */
+    public TreeNode sortedArrayToBSTV0(int[] nums) {
         int len = nums.length;
         if (len == 0) {
             return null;
