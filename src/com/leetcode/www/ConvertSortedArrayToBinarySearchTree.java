@@ -28,7 +28,7 @@ public class ConvertSortedArrayToBinarySearchTree {
     }
 
     /**
-     * // beats 1.40% (iterative)
+     * / beats 1.40% (iterative)
      * @param nums
      * @return
      */
