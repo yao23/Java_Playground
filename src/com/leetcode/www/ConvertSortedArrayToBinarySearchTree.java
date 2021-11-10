@@ -10,7 +10,7 @@ public class ConvertSortedArrayToBinarySearchTree {
 
     /**
      * LC 108
-     *
+     *// [] => null
      * @param num
      * @param start
      * @param end
@@ -69,4 +69,3 @@ public class ConvertSortedArrayToBinarySearchTree {
     }
 }
 
-// [] => null
