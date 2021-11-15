@@ -69,4 +69,3 @@ public class ConvertSortedArrayToBinarySearchTree {
         return head;
     }
 }
-
