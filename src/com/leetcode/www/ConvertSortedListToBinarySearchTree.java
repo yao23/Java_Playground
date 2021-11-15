@@ -3,7 +3,12 @@ package com.leetcode.www;
 public class ConvertSortedListToBinarySearchTree { // LC 109
     private static ListNode curNode;
 
-    public TreeNode sortedListToBST(ListNode head) { // beats 47.53%
+    /**
+     * // beats 47.53%
+     * @param head
+     * @return
+     */
+    public TreeNode sortedListToBST(ListNode head) {
         if (head == null) {
             return null;
         }
