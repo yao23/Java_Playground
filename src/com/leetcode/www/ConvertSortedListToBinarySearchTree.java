@@ -66,8 +66,12 @@ public class ConvertSortedListToBinarySearchTree { // LC 109
         return root;
     }
 
-
-    public TreeNode sortedListToBSTV0(ListNode head) { // beats 47.53%
+    /**
+     * // beats 47.53%
+     * @param head
+     * @return
+     */
+    public TreeNode sortedListToBSTV0(ListNode head) {
         if (head == null) {
             return null;
         }
