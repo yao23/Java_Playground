@@ -78,6 +78,7 @@ public class ConvertSortedListToBinarySearchTree { // LC 109
         }
         return toBST(head,null);
     }
+
     private TreeNode toBST(ListNode head, ListNode tail){
         ListNode slow = head;
         ListNode fast = head;
