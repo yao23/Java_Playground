@@ -57,6 +57,7 @@ public class CopyListWithRandomPointer { // LC 138
 
         return newHead;
     }
+
     private RandomListNode processSingleNode(RandomListNode head) {
         if (head.next == null) {
             RandomListNode newHead = new RandomListNode(head.label);
