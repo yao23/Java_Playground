@@ -72,7 +72,12 @@ public class CopyListWithRandomPointer { // LC 138
         }
     }
 
-    public RandomListNode copyRandomList(RandomListNode head) { // without hashmap, beats 72.33%
+    /**
+     * // without hashmap, beats 72.33%
+     * @param head
+     * @return
+     */
+    public RandomListNode copyRandomList(RandomListNode head) {
         if (head == null) {
             return null;
         }
