@@ -73,7 +73,7 @@ public class CopyListWithRandomPointer { // LC 138
     }
 
     /**
-     * / without hashmap, beats 72.33%
+     *  without hashmap, beats 72.33%
      *
      * @param head
      * @return
