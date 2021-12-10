@@ -181,6 +181,10 @@ public class CopyListWithRandomPointer { // LC 138
      *
      * https://leetcode.com/problems/copy-list-with-random-pointer/discuss/295385/clean-java-O(n)-solution-with-3-times-loop
      *
+
+     // {-1,1,#,#}
+
+     // beats 25.53%
      * @param head
      * @return
      */
@@ -216,10 +220,6 @@ public class CopyListWithRandomPointer { // LC 138
         }
         return newHead;
     }
-
-    // {-1,1,#,#}
-
-    // beats 25.53%
 }
 
 class RandomListNode {
