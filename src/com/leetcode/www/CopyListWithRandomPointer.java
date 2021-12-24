@@ -183,7 +183,7 @@ public class CopyListWithRandomPointer { // LC 138
      *
      * {-1,1,#,#}
      *
-     *  beats 25.53%
+     * beats 25.53%
      *
      * @param head
      * @return
