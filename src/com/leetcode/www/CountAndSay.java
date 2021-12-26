@@ -3,6 +3,7 @@ package com.leetcode.www;
 public class CountAndSay { // LC 38
     /**
      *  // beats 14.84%
+     *
      * @param n
      * @return
      */
