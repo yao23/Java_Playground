@@ -3,7 +3,8 @@ package com.leetcode.www;
 public class CountAndSay { // LC 38
     /**
      * beats 14.84%
-     *  *  1.     1
+     *
+     * *  1.     1
      *  *  2.     11
      *  *  3.     21
      *  *  4.     1211
