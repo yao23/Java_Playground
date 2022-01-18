@@ -10,7 +10,7 @@ public class CountAndSay { // LC 38
      *  4.     1211
      *  5.     111221
      *
-     *    1 is read off as "one 1" or 11.
+     *   1 is read off as "one 1" or 11.
      *  *  11 is read off as "two 1s" or 21.
      *  *  21 is read off as "one 2, then one 1" or 1211.
      *
