@@ -24,6 +24,7 @@ public class CountAndSay { // LC 38
         }
         return result;
     }
+
     private String countAndCreate(String result) {
         String tmp = "";
         int last = 0, len = result.length();
