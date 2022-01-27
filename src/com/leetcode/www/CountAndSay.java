@@ -34,7 +34,7 @@ public class CountAndSay { // LC 38
                 last = i;
             }
         }
-        if ( last < len ) {
+        if (last < len ) {
             tmp = tmp + (len - last) + result.charAt(last);
         }
         return tmp;
