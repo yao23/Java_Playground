@@ -46,8 +46,10 @@ public class CountAndSay { // LC 38
      * @return
      *
      * https://discuss.leetcode.com/topic/2309/show-an-answer-in-java
+     *
+     *  // beats 54.56%
      */
-    public String countAndSayV0(int n) { // beats 54.56%
+    public String countAndSayV0(int n) {
         StringBuilder curr = new StringBuilder("1");
         StringBuilder prev;
         int count;
