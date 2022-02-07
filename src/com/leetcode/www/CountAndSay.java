@@ -74,4 +74,3 @@ public class CountAndSay { // LC 38
         return curr.toString();
     }
 }
-
