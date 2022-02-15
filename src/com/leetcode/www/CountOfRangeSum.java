@@ -5,7 +5,7 @@ public class CountOfRangeSum { // LC 327
     /**
       * Recall count smaller number after self where we encountered the problem
 
-       * count[i] = count of nums[j] - nums[i] < 0 with j > i
+      * count[i] = count of nums[j] - nums[i] < 0 with j > i
       * Here, after we did the preprocess, we need to solve the problem
 
      count[i] = count of a <= S[j] - S[i] <= b with j > i
