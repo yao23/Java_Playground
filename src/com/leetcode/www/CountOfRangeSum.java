@@ -8,7 +8,7 @@ public class CountOfRangeSum { // LC 327
       * count[i] = count of nums[j] - nums[i] < 0 with j > i
       * Here, after we did the preprocess, we need to solve the problem
 
-     count[i] = count of a <= S[j] - S[i] <= b with j > i
+      * count[i] = count of a <= S[j] - S[i] <= b with j > i
      ans = sum(count[:])
      Therefore the two problems are almost the same. We can use the same technique used in that problem to solve this problem. One solution is merge sort based; another one is Balanced BST based. The time complexity are both O(n log n).
 
