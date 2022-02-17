@@ -9,7 +9,7 @@ public class CountOfRangeSum { // LC 327
       * Here, after we did the preprocess, we need to solve the problem
 
       * count[i] = count of a <= S[j] - S[i] <= b with j > i
-     ans = sum(count[:])
+      * ans = sum(count[:])
      Therefore the two problems are almost the same. We can use the same technique used in that problem to solve this problem. One solution is merge sort based; another one is Balanced BST based. The time complexity are both O(n log n).
 
      The merge sort based solution counts the answer while doing the merge. During the merge stage, we have already sorted the left half [start, mid) and right half [mid, end). We then iterate through the left half with index i. For each i, we need to find two indices k and j in the right half where
