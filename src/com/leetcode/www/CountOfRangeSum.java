@@ -16,7 +16,7 @@ public class CountOfRangeSum { // LC 327
 
       * j is the first index satisfy sums[j] - sums[i] > upper and
       * k is the first index satisfy sums[k] - sums[i] >= lower.
-     Then the number of sums in [lower, upper] is j-k. We also use another index t to copy the elements satisfy sums[t] < sums[i] to a cache in order to complete the merge sort.
+      * Then the number of sums in [lower, upper] is j-k. We also use another index t to copy the elements satisfy sums[t] < sums[i] to a cache in order to complete the merge sort.
 
      Despite the nested loops, the time complexity of the "merge & count" stage is still linear. Because the indices k, j, t will only increase but not decrease, each of them will only traversal the right half once at most. The total time complexity of this divide and conquer solution is then O(n log n).
 
