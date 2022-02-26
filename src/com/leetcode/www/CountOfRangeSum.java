@@ -21,6 +21,7 @@ public class CountOfRangeSum { // LC 327
       * Despite the nested loops, the time complexity of the "merge & count" stage is still linear. Because the indices k, j, t will only increase but not decrease, each of them will only traversal the right half once at most. The total time complexity of this divide and conquer solution is then O(n log n).
 
       * One other concern is that the sums may overflow integer. So we use long instead.
+      *
       * // beats 66.49%
      */
     public static int countRangeSum(int[] nums, int lower, int upper) {
