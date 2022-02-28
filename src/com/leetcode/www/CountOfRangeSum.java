@@ -22,7 +22,7 @@ public class CountOfRangeSum { // LC 327
 
       * One other concern is that the sums may overflow integer. So we use long instead.
       *
-      * // beats 66.49%
+      * / beats 66.49%
      */
     public static int countRangeSum(int[] nums, int lower, int upper) {
         int n = nums.length;
