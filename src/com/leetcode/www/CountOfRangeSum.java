@@ -1,7 +1,6 @@
 package com.leetcode.www;
 
 public class CountOfRangeSum { // LC 327
-
     /**
       * Recall count smaller number after self where we encountered the problem
 
