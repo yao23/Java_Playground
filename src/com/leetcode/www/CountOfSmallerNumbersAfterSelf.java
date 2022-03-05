@@ -12,7 +12,7 @@ public class CountOfSmallerNumbersAfterSelf { // LC 315 [Google]
      * Binary Search Tree is ordered, have smaller in left and larger in right
      *
      *
-     // [5,2,6,1] => [2, 1, 1, 0]
+     * // [5,2,6,1] => [2, 1, 1, 0]
      // [] => []
      // [5,7,2,2,6,1] => [3,4,1,1,1,0]
 
