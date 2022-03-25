@@ -3,7 +3,12 @@ package com.leetcode.www;
 import java.util.BitSet;
 
 public class CountPrimes { // LC 204
-    public int countPrimes(int n) { // beats 97.01%
+    /**
+     *  // beats 97.01%
+     * @param n
+     * @return
+     */
+    public int countPrimes(int n) {
         if (n < 3) {
             return 0;
         }
