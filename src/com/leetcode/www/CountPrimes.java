@@ -4,7 +4,7 @@ import java.util.BitSet;
 
 public class CountPrimes { // LC 204
     /**
-     *   beats 97.01%
+     *  beats 97.01%
      *
      * @param n
      * @return
