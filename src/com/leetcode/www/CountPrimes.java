@@ -32,7 +32,12 @@ public class CountPrimes { // LC 204
         return count;
     }
 
-    public int countPrimesV3(int n) { // beats 96.72%
+    /**
+     *  // beats 96.72%
+     * @param n
+     * @return
+     */
+    public int countPrimesV3(int n) {
         if (n <= 2) {
             return 0;
         }
