@@ -64,7 +64,10 @@ public class CountPrimes { // LC 204
         return c;
     }
 
-    public int countPrimesV2(int n) { // beats 78.11%
+    /**
+     *  // beats 78.11%
+     */
+    public int countPrimesV2(int n) {
         BitSet bs = new BitSet(n);
         bs.set(0);
         bs.set(1);
