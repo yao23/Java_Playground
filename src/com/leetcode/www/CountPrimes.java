@@ -67,7 +67,7 @@ public class CountPrimes { // LC 204
     /**
      *  beats 78.11%
      *
-     *   @param n
+     *  @param n
      *   @return
      */
     public int countPrimesV2(int n) {
