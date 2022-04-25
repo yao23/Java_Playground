@@ -91,7 +91,7 @@ public class CountPrimes { // LC 204
     }
 
     /**
-     *   // Sieve of Eratosthenes algorithm
+     *   / Sieve of Eratosthenes algorithm
      *
      * In the boolean array m, m[n] means the number n. Thus for each time, if m[n] is a prime, we need to delete all
      * the multiple of m[n]. And finally, the remaining numbers are primes.
