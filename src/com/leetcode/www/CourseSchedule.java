@@ -9,6 +9,18 @@ public class CourseSchedule { // LC 207
      * Runtime: 11 ms, faster than 50.60% of Java online submissions for Course Schedule.
      * Memory Usage: 45.3 MB, less than 79.84% of Java online submissions for Course Schedule.
      *
+     // 2, [[1,0]] => true
+     // 2, [[0,1],[1,0]] => false
+     // 3, [[1,0],[2,1]] => true
+     // 3, [[2,0],[2,1]] => true
+     // 3, [[0,1],[0,2],[1,2]] => true
+     // 4, [[3,0],[0,1]] => true
+     // 4, [[1,0],[2,1],[3,2],[1,3]] => false
+     // 4, [[0,1],[1,2],[0,3],[3,0]] => false
+     // 6, [[1,0],[2,0],[3,0],[4,1],[4,2],[4,3],[5,2],[5,3]] => true // Line 39: java.lang.NullPointerException, fixed by null check
+
+     // beats 50.15%
+     *
      * @param numCourses
      * @param prerequisites
      * @return
@@ -250,16 +262,4 @@ public class CourseSchedule { // LC 207
         }
         return result;
     }
-
-    // 2, [[1,0]] => true
-    // 2, [[0,1],[1,0]] => false
-    // 3, [[1,0],[2,1]] => true
-    // 3, [[2,0],[2,1]] => true
-    // 3, [[0,1],[0,2],[1,2]] => true
-    // 4, [[3,0],[0,1]] => true
-    // 4, [[1,0],[2,1],[3,2],[1,3]] => false
-    // 4, [[0,1],[1,2],[0,3],[3,0]] => false
-    // 6, [[1,0],[2,0],[3,0],[4,1],[4,2],[4,3],[5,2],[5,3]] => true // Line 39: java.lang.NullPointerException, fixed by null check
-
-    // beats 50.15%
 }
