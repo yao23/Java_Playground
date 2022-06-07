@@ -15,7 +15,7 @@ public class CourseSchedule { // LC 207
      * 3, [[2,0],[2,1]] => true
      * 3, [[0,1],[0,2],[1,2]] => true
      * 4, [[3,0],[0,1]] => true
-      4, [[1,0],[2,1],[3,2],[1,3]] => false
+     * 4, [[1,0],[2,1],[3,2],[1,3]] => false
      // 4, [[0,1],[1,2],[0,3],[3,0]] => false
      // 6, [[1,0],[2,0],[3,0],[4,1],[4,2],[4,3],[5,2],[5,3]] => true // Line 39: java.lang.NullPointerException, fixed by null check
 
