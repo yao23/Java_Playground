@@ -161,7 +161,7 @@ public class CourseSchedule { // LC 207
      * @param zeroDegreeElement
      *
      * didn't add void case (some course info has not been provided (default in-degree as 0) as 2 in test case 6)
-     *  didn't figure out the way to process zero in-degree nodes
+     * didn't figure out the way to process zero in-degree nodes
      */
     private void processNeighborsV0(Queue<Integer> zeroDegreeNeighbors, Map<Integer, Integer> elementDegrees, Map<Integer, Set<Integer>> elementNeighbors, Set<Integer> zeroDegreeElement) {
         while (!zeroDegreeNeighbors.isEmpty()) {
