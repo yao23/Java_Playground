@@ -10,7 +10,7 @@ public class CourseScheduleII { // LC 210
      * Memory Usage: 45.8 MB, less than 85.70% of Java online submissions for Course Schedule II.
      *
      *
-     // 1, [] => [0]
+     * // 1, [] => [0]
      // 2, [] => [1,0]
      // 2, [[1,0]] => [0,1]
      // 2, [[0,1],[1,0]] => []
