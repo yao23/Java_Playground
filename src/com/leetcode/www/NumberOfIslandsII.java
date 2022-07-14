@@ -94,6 +94,17 @@ public class NumberOfIslandsII { // LC 305
         public boolean isConnected(int p, int q) {
             return find(p) == find(q);
         }
+
+        public void union2(int p, int q) { // quick union
+            int i = find(p);
+            int j = find(q);
+            if (i == j) {
+                return;
+            } else {
+                id[i] = id[j];
+                // count--
+            }
+        }
     }
 }
 
