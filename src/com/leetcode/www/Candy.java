@@ -22,9 +22,9 @@ public class Candy { // LC 135
             } else {
                 // check descending sequence before
                 if (down > 0) {
-                    // step 1: add from 1 to down
+                    // step 1: add from 1 to down (sum of descending sequence)
                     sum += (down * (down + 1) / 2); // 1 + 2 + ... + down
-                    // step 2: add enough on prev
+                    // step 2: add enough on prev (diff = down + 1 - pre)
                     if (down >= pre) {
                         sum += (down - pre + 1);
                     }
