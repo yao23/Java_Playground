@@ -20,7 +20,7 @@ public class InterleavingString { // LC 97
             matrix[0][i] = matrix[0][i - 1] && (s2.charAt(i  - 1) == s3.charAt(i - 1));
         }
 
-        for (int i = 1; i < matrix.length; i++) {
+        for (int i = 1; i < matrix.length; i++) { // matrix filling => DP
             for (int j = 1; j < matrix[0].length; j++) {
                 matrix[i][j] = (matrix[i - 1][j] && (s1.charAt(i - 1) == s3.charAt(i + j - 1))) ||
                         (matrix[i][j - 1] && (s2.charAt(j - 1) == s3.charAt(i + j - 1)));
@@ -43,6 +43,17 @@ public class InterleavingString { // LC 97
         return dfsHelper(s1.toCharArray(), s2.toCharArray(), s3.toCharArray(), 0, 0, 0, valid);
     }
 
+    /**
+     * Walk down or right => Recursion / Backtracking
+     * @param c1
+     * @param c2
+     * @param c3
+     * @param i
+     * @param j
+     * @param k
+     * @param valid
+     * @return
+     */
     private boolean dfsHelper(char[] c1, char[] c2, char[] c3, int i, int j, int k, int[][] valid) {
         if (valid[i][j] != 0) {
             return valid[i][j] == 1;
