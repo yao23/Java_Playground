@@ -58,6 +58,46 @@ public class UniqueBinarySearchTreesII { // LC 95
 
         return roots;
     }
+
+    public static List<TreeNode> build(int n) { // Y's latest trial, not verified yet
+        if (n == 0) return null;
+        List<TreeNode> list = new ArrayList<TreeNode>();
+        if (n == 1) {
+            TreeNode node = new TreeNode(n);
+            list.add(node);
+            return list;
+        }
+
+        for (int i = 0; i < n; i++) {
+            List<TreeNode> left = build(i);
+            List<TreeNode> right = build(n - 1 - i);
+            if (left != null && right != null) {
+                for (TreeNode l : left) {
+                    for (TreeNode r : right) {
+                        TreeNode root = new TreeNode(i + 1);
+                        root.left = l;
+                        root.right = r;
+                        list.add(root);
+                    }
+                }
+            } else if (left == null) {
+                for (TreeNode r : right) {
+                    TreeNode root = new TreeNode(i + 1);
+                    root.left = null;
+                    root.right = r;
+                    list.add(root);
+                }
+            } else if (right == null) {
+                for (TreeNode l : left) {
+                    TreeNode root = new TreeNode(i + 1);
+                    root.left = l;
+                    root.right = null;
+                    list.add(root);
+                }
+            }
+        }
+        return list;
+    }
 }
 
 /**
