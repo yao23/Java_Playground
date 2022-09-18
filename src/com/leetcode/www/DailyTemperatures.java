@@ -7,7 +7,7 @@ public class DailyTemperatures { // LC 739
      * Runtime: 40 ms, faster than 75.60% of Java online submissions for Daily Temperatures.
      * Memory Usage: 43.2 MB, less than 84.46% of Java online submissions for Daily Temperatures.
      *
-     *   // T = [73, 74, 75, 71, 69, 72, 76, 73] => [1, 1, 4, 2, 1, 1, 0, 0]
+     *   / T = [73, 74, 75, 71, 69, 72, 76, 73] => [1, 1, 4, 2, 1, 1, 0, 0]
      *
      * https://leetcode.com/problems/daily-temperatures/discuss/293703/O(N)-Java-momentonos-increasing-stack-solution
      *
