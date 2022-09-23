@@ -54,5 +54,4 @@ public class DailyTemperatures { // LC 739
         }
         return ans;
     }
-
 }
