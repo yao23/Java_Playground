@@ -1,6 +1,15 @@
 package com.leetcode.www;
 
 public class DecodeWays {
+    /**
+     *
+     // "" => 0
+     // "0" => 0
+     // "1" => 1 ('A')
+     // "12" => 2 ('AB' or 'L')
+     * @param s
+     * @return
+     */
     public int numDecodings(String s) { // beats 54.66%
         int len = s.length();
         if (0 == len || s.charAt(0) == '0') {
@@ -54,8 +63,3 @@ public class DecodeWays {
         return dp[n];
     }
 }
-
-// "" => 0
-// "0" => 0
-// "1" => 1 ('A')
-// "12" => 2 ('AB' or 'L')
