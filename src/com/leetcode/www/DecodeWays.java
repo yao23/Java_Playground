@@ -5,7 +5,7 @@ public class DecodeWays {
      *
      * "" => 0
      * "0" => 0
-     * / "1" => 1 ('A')
+     *  "1" => 1 ('A')
      * // "12" => 2 ('AB' or 'L')
      * @param s
      * @return
