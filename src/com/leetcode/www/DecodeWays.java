@@ -42,7 +42,12 @@ public class DecodeWays {
         return dp[len];
     }
 
-    public int numDecodingsV0(String s) { // beats 6.01%
+    /**
+     * // beats 6.01%
+     * @param s
+     * @return
+     */
+    public int numDecodingsV0(String s) {
         if (s == null || s.length() == 0) {
             return 0;
         }
