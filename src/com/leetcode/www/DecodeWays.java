@@ -43,7 +43,7 @@ public class DecodeWays {
     }
 
     /**
-     * // beats 6.01%
+     * / beats 6.01%
      *
      * @param s
      * @return
