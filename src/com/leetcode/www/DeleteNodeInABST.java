@@ -1,6 +1,15 @@
 package com.leetcode.www;
 
 public class DeleteNodeInABST { // LC 450 (FB)
+    /**
+     *
+
+     // root = [5,3,6,2,4,null,7], key = 3 => [5,4,6,2,null,null,7] ([5,2,6,null,4,null,7])
+     // beats 60.00%
+     * @param root
+     * @param key
+     * @return
+     */
     public TreeNode deleteNode(TreeNode root, int key) {
         if (root == null) {
             return root;
@@ -31,6 +40,3 @@ public class DeleteNodeInABST { // LC 450 (FB)
         return node;
     }
 }
-
-// root = [5,3,6,2,4,null,7], key = 3 => [5,4,6,2,null,null,7] ([5,2,6,null,4,null,7])
-// beats 60.00%
