@@ -3,7 +3,6 @@ package com.leetcode.www;
 /**
  * Created by liyao on 7/17/17.
  *
- *
  * // ["StringIterator","next","next","next","next","next","next","hasNext","next","hasNext"]
  * // [["L1e2t1C1o1d1e1"],[],[],[],[],[],[],[],[],[]]
  * // => [null,'L','e','e','t','C','o',true,'d',true]
