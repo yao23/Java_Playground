@@ -11,14 +11,15 @@ package com.leetcode.www;
  * [["x6"],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]]
  * => [null,'x','x','x',true,'x','x','x',' ',' ',' ',' ',false,' ',' ',' ',' ',' ',false,' ',' ',' ',' ',' ',false,' ',' ',' ',' ',false,' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',false,' ',false,' ',' ',' ',' ',' ',' ',false,' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',false,' ',' ',' ',false,' ',' ',false,' ',' ',' ',' ',' ']
 
- * beats 83.25
- */
-
-/**
  * Your StringIterator object will be instantiated and called as such:
  * StringIterator obj = new StringIterator(compressedString);
  * char param_1 = obj.next();
  * boolean param_2 = obj.hasNext();
+ * beats 83.25
+ */
+
+/**
+
  */
 public class DesignCompressedStringIterator { // LC 604
     class StringIterator {
