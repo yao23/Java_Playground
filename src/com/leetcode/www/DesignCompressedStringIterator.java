@@ -19,7 +19,6 @@ package com.leetcode.www;
  */
 
 /**
-
  */
 public class DesignCompressedStringIterator { // LC 604
     class StringIterator {
