@@ -18,8 +18,6 @@ package com.leetcode.www;
  * beats 83.25
  */
 
-/**
- */
 public class DesignCompressedStringIterator { // LC 604
     class StringIterator {
         private int curIdx;
