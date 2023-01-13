@@ -14,6 +14,11 @@ public class DesignHitCounter { // LC 362 [Google]
      * basic ideal is using buckets. 1 bucket for every second because we only need to keep the recent hits info for 300
      * seconds. hit[] array is wrapped around by mod operation. Each hit bucket is associated with times[] bucket which
      * record current time. If it is not current time, it means it is 300s or 600s... ago and need to reset to 1.
+     *
+     *
+     // ["HitCounter","hit","hit","hit","getHits","hit","getHits","getHits"]
+     // [[],[1],[2],[3],[4],[300],[300],[301]]
+     // [null,null,null,null,3,null,4,3]
      */
     class HitCounter { // beats 80.30%
         private int[] times;
@@ -236,6 +241,3 @@ public class DesignHitCounter { // LC 362 [Google]
         }
     }
 }
-// ["HitCounter","hit","hit","hit","getHits","hit","getHits","getHits"]
-// [[],[1],[2],[3],[4],[300],[300],[301]]
-// [null,null,null,null,3,null,4,3]
