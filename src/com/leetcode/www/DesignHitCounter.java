@@ -15,7 +15,6 @@ public class DesignHitCounter { // LC 362 [Google]
      * seconds. hit[] array is wrapped around by mod operation. Each hit bucket is associated with times[] bucket which
      * record current time. If it is not current time, it means it is 300s or 600s... ago and need to reset to 1.
      *
-     *
      * ["HitCounter","hit","hit","hit","getHits","hit","getHits","getHits"]
      * // [[],[1],[2],[3],[4],[300],[300],[301]]
      * // [null,null,null,null,3,null,4,3]
