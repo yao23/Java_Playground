@@ -17,7 +17,7 @@ public class DesignHitCounter { // LC 362 [Google]
      *
      * ["HitCounter","hit","hit","hit","getHits","hit","getHits","getHits"]
      * [[],[1],[2],[3],[4],[300],[300],[301]]
-     * / [null,null,null,null,3,null,4,3]
+     *  [null,null,null,null,3,null,4,3]
      */
     class HitCounter { // beats 80.30%
         private int[] times;
