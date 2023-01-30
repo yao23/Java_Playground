@@ -1,6 +1,11 @@
 package com.leetcode.www;
 
 public class DesignTicTacToe { // LC 348
+    /**
+     * Your TicTacToe object will be instantiated and called as such:
+     * TicTacToe obj = new TicTacToe(n);
+     * int param_1 = obj.move(row,col,player);
+     */
     class TicTacToe {
         /**
          * Runtime: 47 ms, faster than 74.49% of Java online submissions for Design Tic-Tac-Toe.
@@ -44,10 +49,4 @@ public class DesignTicTacToe { // LC 348
             return 0;
         }
     }
-
-    /**
-     * Your TicTacToe object will be instantiated and called as such:
-     * TicTacToe obj = new TicTacToe(n);
-     * int param_1 = obj.move(row,col,player);
-     */
 }
