@@ -64,7 +64,7 @@ public class DesignTinyURL { // LC 534
 }
 
 /*
-S: Scenario
+ * S: Scenario
 Long URL to short URL and reversed.
 
 N: Need (Assume the system is not massive if you are not sure)
