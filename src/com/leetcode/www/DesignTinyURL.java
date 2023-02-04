@@ -67,7 +67,7 @@ public class DesignTinyURL { // LC 534
  * S: Scenario
  * Long URL to short URL and reversed.
 
-N: Need (Assume the system is not massive if you are not sure)
+* N: Need (Assume the system is not massive if you are not sure)
 QPS (queries per second)
 
 Daily User: 100M
