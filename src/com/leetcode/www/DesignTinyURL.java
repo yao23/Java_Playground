@@ -68,7 +68,7 @@ public class DesignTinyURL { // LC 534
  * Long URL to short URL and reversed.
 
  * N: Need (Assume the system is not massive if you are not sure)
-QPS (queries per second)
+* QPS (queries per second)
 
 Daily User: 100M
 Daily usage per person: (Write) long2short 0.1, (Read) short2long 1
