@@ -71,7 +71,7 @@ public class DesignTinyURL { // LC 534
  * QPS (queries per second)
 
  * Daily User: 100M
-* Daily usage per person: (Write) long2short 0.1, (Read) short2long 1
+ * Daily usage per person: (Write) long2short 0.1, (Read) short2long 1
 Daily request: Write 10M, Read 100M
 QPS: Since a day is 86400s approximately 100K.
 Write 100, Read 1K
