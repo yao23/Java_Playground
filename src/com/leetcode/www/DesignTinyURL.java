@@ -74,7 +74,7 @@ public class DesignTinyURL { // LC 534
  * Daily usage per person: (Write) long2short 0.1, (Read) short2long 1
  * Daily request: Write 10M, Read 100M
  * QPS: Since a day is 86400s approximately 100K.
-* Write 100, Read 1K
+ * Write 100, Read 1K
 
 Peak QPS: Write 200, Read 2K
 (Thousand level can be handled by a single SSD MySQL Machine)
