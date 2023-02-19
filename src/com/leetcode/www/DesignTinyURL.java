@@ -77,7 +77,7 @@ public class DesignTinyURL { // LC 534
  * Write 100, Read 1K
 
  * Peak QPS: Write 200, Read 2K
-(Thousand level can be handled by a single SSD MySQL Machine)
+* (Thousand level can be handled by a single SSD MySQL Machine)
 
 Storage
 
