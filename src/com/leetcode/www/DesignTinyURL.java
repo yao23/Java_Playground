@@ -79,7 +79,7 @@ public class DesignTinyURL { // LC 534
  * Peak QPS: Write 200, Read 2K
  * (Thousand level can be handled by a single SSD MySQL Machine)
 
-* Storage
+ * Storage
 
 10M new mappings (long URL to short URL) per day
 assume each mapping takes 100B in average
