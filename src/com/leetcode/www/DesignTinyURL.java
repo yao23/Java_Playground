@@ -82,7 +82,7 @@ public class DesignTinyURL { // LC 534
  * Storage
 
  * 10M new mappings (long URL to short URL) per day
-* assume each mapping takes 100B in average
+ * assume each mapping takes 100B in average
 1GB every day. 1 TB hard drive could stand for 3 years.
 Storage is not the problem for this kind of system. Service like Netflix may have storage issues.
 
