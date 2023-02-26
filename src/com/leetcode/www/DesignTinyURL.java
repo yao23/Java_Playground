@@ -83,7 +83,7 @@ public class DesignTinyURL { // LC 534
 
  * 10M new mappings (long URL to short URL) per day
  * assume each mapping takes 100B in average
-* 1GB every day. 1 TB hard drive could stand for 3 years.
+ * 1GB every day. 1 TB hard drive could stand for 3 years.
 Storage is not the problem for this kind of system. Service like Netflix may have storage issues.
 
 Through SN analysis, we could have a big picture of the system. In general, this system is not hard and could be handled by a single SSD Machine.
