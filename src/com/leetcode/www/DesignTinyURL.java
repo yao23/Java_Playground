@@ -89,7 +89,7 @@ public class DesignTinyURL { // LC 534
  * Through SN analysis, we could have a big picture of the system. In general, this system is not hard and could be handled by a single SSD Machine.
 
  * A: API
-* Only one service: URLService
+ * Only one service: URLService
 
 Core (Business Logic) Layer:
 Class: URLService
