@@ -91,7 +91,7 @@ public class DesignTinyURL { // LC 534
  * A: API
  * Only one service: URLService
 
-* Core (Business Logic) Layer:
+ * Core (Business Logic) Layer:
 Class: URLService
 Interface:
 URLService.encode(String long_url)
