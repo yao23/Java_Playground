@@ -95,7 +95,7 @@ public class DesignTinyURL { // LC 534
  * Class: URLService
  * Interface:
  * URLService.encode(String long_url)
-URLService.decode(String short_url)
+* URLService.decode(String short_url)
 Web Layer:
 REST API:
 GET: /{short_url}, return a http redirect response(301)
