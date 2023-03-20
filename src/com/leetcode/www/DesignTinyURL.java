@@ -97,7 +97,7 @@ public class DesignTinyURL { // LC 534
  * URLService.encode(String long_url)
  * URLService.decode(String short_url)
  * Web Layer:
-REST API:
+* REST API:
 GET: /{short_url}, return a http redirect response(301)
 POST: goo.gl method - google shorten URL
 Request Body: {url=longUrl} e.g. {"longUrl": "http://www.google.com/"}
