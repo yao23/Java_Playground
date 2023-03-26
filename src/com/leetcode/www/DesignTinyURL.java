@@ -100,7 +100,7 @@ public class DesignTinyURL { // LC 534
  * REST API:
  * GET: /{short_url}, return a http redirect response(301)
  * POST: goo.gl method - google shorten URL
-Request Body: {url=longUrl} e.g. {"longUrl": "http://www.google.com/"}
+* Request Body: {url=longUrl} e.g. {"longUrl": "http://www.google.com/"}
 Return OK(200), short_url is included in the data
 
 K: Data Access
