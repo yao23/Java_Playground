@@ -103,7 +103,7 @@ public class DesignTinyURL { // LC 534
  * Request Body: {url=longUrl} e.g. {"longUrl": "http://www.google.com/"}
  * Return OK(200), short_url is included in the data
 
-K: Data Access
+* K: Data Access
 Step 1: Pick a storage structure
 
 SQL VS NOSQL?
