@@ -104,7 +104,7 @@ public class DesignTinyURL { // LC 534
  * Return OK(200), short_url is included in the data
 
  * K: Data Access
-* Step 1: Pick a storage structure
+ * Step 1: Pick a storage structure
 
 SQL VS NOSQL?
 
