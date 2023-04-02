@@ -106,7 +106,7 @@ public class DesignTinyURL { // LC 534
  * K: Data Access
  * Step 1: Pick a storage structure
 
-SQL VS NOSQL?
+* SQL VS NOSQL?
 
 Does it need to support transactions? NoSQL does not support transaction.
 Do we need rich SQL query? NoSQL does not support as many queries as SQL.
