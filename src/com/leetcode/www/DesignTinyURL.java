@@ -108,7 +108,7 @@ public class DesignTinyURL { // LC 534
 
 * SQL VS NOSQL?
 
-Does it need to support transactions? NoSQL does not support transaction.
+* Does it need to support transactions? NoSQL does not support transaction.
 Do we need rich SQL query? NoSQL does not support as many queries as SQL.
 Pursue development efficiency? Most Web Framework supports SQL database very well (with ORM). It means fewer codes for the system.
 Do we need to use AUTO_INCREMENT ID? NoSQL couldn't do this. It only has a global unique Object_id.
