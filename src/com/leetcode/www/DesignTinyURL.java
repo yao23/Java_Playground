@@ -112,7 +112,7 @@ public class DesignTinyURL { // LC 534
  * Do we need rich SQL query? NoSQL does not support as many queries as SQL.
  * Pursue development efficiency? Most Web Framework supports SQL database very well (with ORM). It means fewer codes for the system.
  * Do we need to use AUTO_INCREMENT ID? NoSQL couldn't do this. It only has a global unique Object_id.
-Does the system has a high requirement for QPS? NoSQL has high performance. For example, Memcached's QPS could reach million level, MondoDB does 10K level, MySQL only supports K level.
+* Does the system has a high requirement for QPS? NoSQL has high performance. For example, Memcached's QPS could reach million level, MondoDB does 10K level, MySQL only supports K level.
 How high is the system's scalability? SQL requires developers write their codes to scale, while NoSQL comes with them (sharding, replica).
 ANSWER:
 
