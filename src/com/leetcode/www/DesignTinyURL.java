@@ -116,7 +116,7 @@ public class DesignTinyURL { // LC 534
  * How high is the system's scalability? SQL requires developers write their codes to scale, while NoSQL comes with them (sharding, replica).
  * ANSWER:
 
-* No -> NoSQL
+ * No -> NoSQL
 No -> NoSQL
 Doesn't matter because there are only a few codes. -> NoSQL
 Our algorithm needs AUTO_INCREMENT ID. -> SQL
