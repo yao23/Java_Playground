@@ -117,7 +117,7 @@ public class DesignTinyURL { // LC 534
  * ANSWER:
 
  * No -> NoSQL
-* No -> NoSQL
+ * No -> NoSQL
 Doesn't matter because there are only a few codes. -> NoSQL
 Our algorithm needs AUTO_INCREMENT ID. -> SQL
 Write 200, Read 2K. Not high. -> SQL
