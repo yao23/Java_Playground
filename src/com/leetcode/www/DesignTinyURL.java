@@ -121,7 +121,7 @@ public class DesignTinyURL { // LC 534
  * Doesn't matter because there are only a few codes. -> NoSQL
  * Our algorithm needs AUTO_INCREMENT ID. -> SQL
  * Write 200, Read 2K. Not high. -> SQL
-Not high. -> SQL
+* Not high. -> SQL
 SYSTEM ALGORITHM
 
 OK, let's talk about the system algorithm. There are following solutions:
