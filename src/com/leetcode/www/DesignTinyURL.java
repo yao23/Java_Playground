@@ -124,7 +124,7 @@ public class DesignTinyURL { // LC 534
  * Not high. -> SQL
  * SYSTEM ALGORITHM
 
-* OK, let's talk about the system algorithm. There are following solutions:
+ * OK, let's talk about the system algorithm. There are following solutions:
 
 Hash function:
 
