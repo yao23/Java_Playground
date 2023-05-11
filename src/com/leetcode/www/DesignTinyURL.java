@@ -126,7 +126,7 @@ public class DesignTinyURL { // LC 534
 
  * OK, let's talk about the system algorithm. There are following solutions:
 
-* Hash function:
+ * Hash function:
 
 long_url -> md5/sha1
 
