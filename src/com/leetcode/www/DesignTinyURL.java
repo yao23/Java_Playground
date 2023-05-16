@@ -131,7 +131,7 @@ public class DesignTinyURL { // LC 534
  * long_url -> md5/sha1
 
  * md5 convert a string into 128 binary bits, generally represented as 16 bytes hex:
-* http://site.douban.com/chuan -> c93a360dc7f3eb093ab6e304db516653
+ * http://site.douban.com/chuan -> c93a360dc7f3eb093ab6e304db516653
 
 sha1 convert a string into 160 binary bits, generally represented as 20 bytes hex:
 http://site.douban.com/chuan -> dff85871a72c73c3eae09e39ffe97aea63047094
