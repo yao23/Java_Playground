@@ -138,7 +138,7 @@ public class DesignTinyURL { // LC 534
 
  * These two algorithms could make sure hash values are randomly distributed, but the conflicts are inevitable. Any hash algorithm could have inevitable conflicts.
 
-Pros: Simple. We could take the first 6 chars of the converted string.
+* Pros: Simple. We could take the first 6 chars of the converted string.
 
 Cons: Conflicts.
 
