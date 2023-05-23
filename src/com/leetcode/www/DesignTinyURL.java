@@ -136,7 +136,7 @@ public class DesignTinyURL { // LC 534
  * sha1 convert a string into 160 binary bits, generally represented as 20 bytes hex:
  * http://site.douban.com/chuan -> dff85871a72c73c3eae09e39ffe97aea63047094
 
-* These two algorithms could make sure hash values are randomly distributed, but the conflicts are inevitable. Any hash algorithm could have inevitable conflicts.
+ * These two algorithms could make sure hash values are randomly distributed, but the conflicts are inevitable. Any hash algorithm could have inevitable conflicts.
 
 Pros: Simple. We could take the first 6 chars of the converted string.
 
