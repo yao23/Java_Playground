@@ -140,7 +140,7 @@ public class DesignTinyURL { // LC 534
 
  * Pros: Simple. We could take the first 6 chars of the converted string.
 
-Cons: Conflicts.
+* Cons: Conflicts.
 
 Solutions: 1. use (long_url + timestamp) as the hash function key. 2. When conflicts, regenerates the hash value(it's different because timestamp changes).
 
