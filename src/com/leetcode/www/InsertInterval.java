@@ -4,7 +4,7 @@ package com.leetcode.www; /**
 import java.util.List;
 import java.util.ArrayList;
 
-public class InsertInterval {
+public class InsertInterval { // LC 57
     public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
         List<Interval> result = new ArrayList<>();
         if (intervals.size() == 0) { // test case 4

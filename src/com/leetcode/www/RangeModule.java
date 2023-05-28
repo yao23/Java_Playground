@@ -5,6 +5,9 @@ import java.util.TreeSet;
 
 /**
  * https://leetcode.com/problems/range-module/solutions/1286342/java-more-than-a-solution-with-treeset/
+ *
+ * MergeIntervals, LC 56
+ * InsertInterval, LC 57
  */
 class RangeModule { // LC 715, Runtime 105ms Beats 5.60%, Memory 51.8 MB Beats 10.33%
     TreeSet<int[]> ts;
