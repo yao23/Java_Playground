@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-class RangeModule {
+class RangeModule { // LC 715
     private List<int[]> ranges;
 
     public RangeModule() {
