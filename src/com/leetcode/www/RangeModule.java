@@ -1,10 +1,60 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.TreeSet;
 
-class RangeModule { // LC 715
+/**
+ * https://leetcode.com/problems/range-module/solutions/1286342/java-more-than-a-solution-with-treeset/
+ */
+class RangeModule { // LC 715, Runtime 105ms Beats 5.60%, Memory 51.8 MB Beats 10.33%
+    TreeSet<int[]> ts;
+    public RangeModule() {
+        this.ts = new TreeSet<>((a,b) -> a[0] - b[0]);
+    }
+
+    public void addRange(int left, int right) {
+        Iterator<int[]> iter = ts.headSet(new int[]{right, 0}, true).iterator();
+        while (iter.hasNext()) {
+            int[] temp = iter.next();
+            if (temp[1] < left) continue;
+
+            left = Math.min(left, temp[0]);
+            right = Math.max(right, temp[1]);
+            iter.remove();
+        }
+
+        ts.add(new int[]{left, right});
+    }
+
+    public boolean queryRange(int left, int right) {
+        int[] floor = ts.floor(new int[]{left, 0});
+        return floor != null && floor[1] >= right;
+    }
+
+    public void removeRange(int left, int right) {
+        Iterator<int[]> iter = ts.headSet(new int[]{right, 0}, false).iterator();
+
+        int[] front = null;
+        int[] back = null;
+
+        while (iter.hasNext()) {
+            int[] temp = iter.next();
+            if (temp[1] < left) continue;
+
+            if (temp[0] < left) front = new int[]{temp[0], left};
+            if (right < temp[1]) back = new int[]{right, temp[1]};
+            iter.remove();
+        }
+
+        if (front != null) ts.add(front);
+        if (back != null) ts.add(back);
+    }
+}
+
+class RangeModule0 {
     private List<int[]> ranges;
 
-    public RangeModule() {
+    public RangeModule0() { // beat 5%, Runtime: 199 ms Memory Usage: 54.6 MB
         ranges = new ArrayList<>();
     }
 
