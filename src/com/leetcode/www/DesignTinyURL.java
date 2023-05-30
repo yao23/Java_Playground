@@ -142,7 +142,7 @@ public class DesignTinyURL { // LC 534
 
  * Cons: Conflicts.
 
-* Solutions: 1. use (long_url + timestamp) as the hash function key. 2. When conflicts, regenerates the hash value(it's different because timestamp changes).
+ * Solutions: 1. use (long_url + timestamp) as the hash function key. 2. When conflicts, regenerates the hash value(it's different because timestamp changes).
 
 Overall, when urls are over 1 billion, there would be a lot of conflicts and the efficiency could be very low.
 
