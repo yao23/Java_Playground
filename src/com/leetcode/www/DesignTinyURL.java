@@ -144,7 +144,7 @@ public class DesignTinyURL { // LC 534
 
  * Solutions: 1. use (long_url + timestamp) as the hash function key. 2. When conflicts, regenerates the hash value(it's different because timestamp changes).
 
-Overall, when urls are over 1 billion, there would be a lot of conflicts and the efficiency could be very low.
+* Overall, when urls are over 1 billion, there would be a lot of conflicts and the efficiency could be very low.
 
 base62
 Take short_url as a 62 base notation. 6 bits could represent 62^6=57 billion.
