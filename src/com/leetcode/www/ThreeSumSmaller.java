@@ -21,7 +21,7 @@ public class ThreeSumSmaller { // LC 259
                     } else {
                         result += (right - left); // [left + 1, right] as smaller range
                         left++;
-                        right--; // should have this as line 22 has counted all range [left, right]
+                        right--; // should have this as line 22 has counted all range [left, right], verified for https://www.geeksforgeeks.org/count-triplets-with-sum-smaller-that-a-given-value/
                     }
                 }
             }
