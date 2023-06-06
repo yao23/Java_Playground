@@ -146,7 +146,7 @@ public class DesignTinyURL { // LC 534
 
  * Overall, when urls are over 1 billion, there would be a lot of conflicts and the efficiency could be very low.
 
-* base62
+ * base62
 Take short_url as a 62 base notation. 6 bits could represent 62^6=57 billion.
 Each short_url represent a decimal digit. It could be the auto_increment_id in SQL database.
 
