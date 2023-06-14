@@ -152,7 +152,7 @@ public class DesignTinyURL { // LC 534
 
  * Step 2: Database Schema
 
-* One table (id, long_url). id is the primary key, ordered by long_url
+ * One table (id, long_url). id is the primary key, ordered by long_url
 
 The basic system architecture:
 
