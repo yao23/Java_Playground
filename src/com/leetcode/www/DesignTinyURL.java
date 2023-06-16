@@ -154,7 +154,7 @@ public class DesignTinyURL { // LC 534
 
  * One table (id, long_url). id is the primary key, ordered by long_url
 
-The basic system architecture:
+* The basic system architecture:
 
 Browser <-> Web <-> Core <-> DB
 
