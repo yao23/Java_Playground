@@ -156,7 +156,7 @@ public class DesignTinyURL { // LC 534
 
  * The basic system architecture:
 
-Browser <-> Web <-> Core <-> DB
+* Browser <-> Web <-> Core <-> DB
 
 O: optimize
 How to improve the response speed?
