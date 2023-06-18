@@ -158,7 +158,7 @@ public class DesignTinyURL { // LC 534
 
  * Browser <-> Web <-> Core <-> DB
 
-O: optimize
+* O: optimize
 How to improve the response speed?
 
 IMPROVE THE RESPONSE SPEED BETWEEN WEB SERVER AND DATABASE
