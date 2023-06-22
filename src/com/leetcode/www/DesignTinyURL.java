@@ -161,7 +161,7 @@ public class DesignTinyURL { // LC 534
  * O: optimize
  * How to improve the response speed?
 
-IMPROVE THE RESPONSE SPEED BETWEEN WEB SERVER AND DATABASE
+* IMPROVE THE RESPONSE SPEED BETWEEN WEB SERVER AND DATABASE
 
 Use Memcached to improve response speed. When getting long_url, search in the cache first, then database. We could put 90% read request on the cache.
 
