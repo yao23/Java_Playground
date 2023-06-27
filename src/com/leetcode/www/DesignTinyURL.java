@@ -165,7 +165,7 @@ public class DesignTinyURL { // LC 534
 
  * Use Memcached to improve response speed. When getting long_url, search in the cache first, then database. We could put 90% read request on the cache.
 
-IMPROVE THE RESPONSE SPEED BETWEEN WEB SERVER AND USER'S BROWSER
+* IMPROVE THE RESPONSE SPEED BETWEEN WEB SERVER AND USER'S BROWSER
 
 Different locations use different web server and cache server. All the areas share a DB used to match the users to the closest web server (through DNS) when they have a miss on the cache.
 
