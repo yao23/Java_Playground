@@ -6,7 +6,7 @@ public class DesignTinyURL {
     /**
      * https://discuss.leetcode.com/topic/95853/a-complete-solution-for-tinyurl-leetcode-system-design/2
      *
-     *  LC 534
+     * LC 534
      */
     class URLService {
         HashMap<String, Integer> ltos;
