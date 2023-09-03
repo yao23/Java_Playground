@@ -207,4 +207,5 @@ Each time we add a new machine, put half of the range of the most used machine t
 
 More Optimization
 Put Chinese DB in China, American DB in the United States. Use geographical information as the sharding key, e.g. 0 for Chinese websites, 1 for American websites.
-*/
+
+* */
