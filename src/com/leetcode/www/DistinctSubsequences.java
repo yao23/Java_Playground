@@ -1,7 +1,13 @@
 package com.leetcode.www;
 
 public class DistinctSubsequences { // LC 115
-    public int numDistinct(String s, String t) { // beats 80.47%
+    /**
+     * // beats 80.47%
+     * @param s
+     * @param t
+     * @return
+     */
+    public int numDistinct(String s, String t) {
         int[] f = new int[t.length() + 1];
         f[t.length()] = 1;
         for (int i = s.length() - 1; i >= 0; i--) {
