@@ -2,7 +2,7 @@ package com.leetcode.www;
 
 public class DistinctSubsequences { // LC 115
     /**
-     *  beats 80.47%
+     * beats 80.47%
      *
      * @param s
      * @param t
