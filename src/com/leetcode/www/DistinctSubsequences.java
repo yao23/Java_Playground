@@ -4,6 +4,10 @@ public class DistinctSubsequences { // LC 115
     /**
      * beats 80.47%
      *
+     *
+     // S = "rabbbit", T = "rabbit", Return 3.
+     // "", "a" => 0
+     *
      * @param s
      * @param t
      * @return
@@ -49,6 +53,3 @@ public class DistinctSubsequences { // LC 115
         return numDisSub[sLen][tLen];
     }
 }
-
-// S = "rabbbit", T = "rabbit", Return 3.
-// "", "a" => 0
